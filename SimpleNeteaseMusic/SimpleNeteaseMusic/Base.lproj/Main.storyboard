@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCm-th-eTn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCm-th-eTn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,24 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--账号-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SimpleNeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="账号" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="XRf-60-u3C">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="4"/>
-                    </tabBarItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2422" y="-462"/>
-        </scene>
         <!--发现-->
         <scene sceneID="oB5-zj-IRy">
             <objects>
@@ -37,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="DCZ-zd-JxN" kind="relationship" relationship="rootViewController" id="mjM-RC-f3o"/>
+                        <segue destination="ooK-3l-APP" kind="relationship" relationship="rootViewController" id="AJJ-o3-Y2K"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CE3-Ma-q3p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -45,20 +27,33 @@
             <point key="canvasLocation" x="38" y="-1111"/>
         </scene>
         <!--Discovery View Controller-->
-        <scene sceneID="sKZ-VE-bpP">
+        <scene sceneID="gIz-ve-zHt">
             <objects>
-                <viewController id="DCZ-zd-JxN" customClass="DiscoveryViewController" customModule="SimpleNeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Sy-1l-7q2">
+                <tableViewController id="ooK-3l-APP" customClass="DiscoveryViewController" customModule="SimpleNeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="56n-eo-xqT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="vnu-E6-Zth"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ZOC-vY-Zxb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="imq-Xg-nEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1aI-jw-lsA">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1aI-jw-lsA" id="sWs-3L-FSG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ooK-3l-APP" id="gj7-zb-N2G"/>
+                            <outlet property="delegate" destination="ooK-3l-APP" id="0Ln-qQ-oww"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gyv-15-r1r"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sP-8J-mNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="-1112"/>
+            <point key="canvasLocation" x="1084" y="-1112"/>
         </scene>
         <!--视频-->
         <scene sceneID="Atd-ac-964">
@@ -78,6 +73,24 @@
             </objects>
             <point key="canvasLocation" x="38" y="-462"/>
         </scene>
+        <!--账号-->
+        <scene sceneID="Gx1-dI-N94">
+            <objects>
+                <viewController id="h1Q-L8-Uhi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M29-3Q-POJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="S7U-5D-I8E"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="账号" image="book" catalog="system" selectedImage="book.fill" id="L8k-Oe-S79">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="4"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0d-i7-ccX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="104" y="272"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="D5p-DL-wLS">
             <objects>
@@ -95,7 +108,7 @@
                         <segue destination="R65-6G-c3Y" kind="relationship" relationship="viewControllers" id="A86-2N-STC"/>
                         <segue destination="7t7-3T-uE5" kind="relationship" relationship="viewControllers" id="RID-tO-pmG"/>
                         <segue destination="0JA-Jp-ke8" kind="relationship" relationship="viewControllers" id="qT6-tr-tE2"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Xh9-ge-BhH"/>
+                        <segue destination="h1Q-L8-Uhi" kind="relationship" relationship="viewControllers" id="nBi-69-ZVt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvf-NX-sXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -140,8 +153,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="book.fill" catalog="system" width="128" height="100"/>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="folder.fill" catalog="system" width="128" height="95"/>
         <image name="paperplane" catalog="system" width="128" height="121"/>
