@@ -11,7 +11,10 @@ import UIKit
 class DiscoveryViewController: UITableViewController {
     
     //搜索
-    let searchController = UISearchController(searchResultsController: nil)
+    let resultViewController = ResultContainerViewController();
+    var searchController: UISearchController!
+    var cusSearchBar:JJCustomSearchbar!
+    var musicSearchController:MusicSearchViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +22,23 @@ class DiscoveryViewController: UITableViewController {
         setupSearchController()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.cusSearchBar.resignFirstResponder()
+    }
+    
     // 设置搜索视图
     func setupSearchController () {
+//        searchController = UISearchController(searchResultsController: resultViewController)
         let leftItem = UIBarButtonItem(image: UIImage(named: "icon-gmail")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(microphoneBtnClicked))
         let rightItem = UIBarButtonItem(image: UIImage(named: "icon-hangouts")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(playingBtnClicked))
         self.navigationItem.leftBarButtonItem = leftItem
         self.navigationItem.rightBarButtonItem = rightItem
-        searchController.searchResultsUpdater = self
-        definesPresentationContext = true
-        searchController.searchBar.delegate = self
-        self.navigationItem.titleView = searchController.searchBar
+        
+//        searchController.searchResultsUpdater = self
+//        searchController.searchBar.delegate = self
+        self.cusSearchBar = JJCustomSearchbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        self.cusSearchBar.delegate = self
+        self.navigationItem.titleView = self.cusSearchBar
     }
 
     
@@ -53,5 +63,11 @@ extension DiscoveryViewController: UISearchResultsUpdating {
 extension DiscoveryViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.musicSearchController = MusicSearchViewController()
+        self.navigationController?.pushViewController(self.musicSearchController, animated: true)
+        return true
     }
 }
