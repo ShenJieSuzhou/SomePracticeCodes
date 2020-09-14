@@ -10,21 +10,42 @@ import UIKit
 
 class MusicSearchViewController: UIViewController {
 
+    var searchController:UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSearchController()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupSearchController () {
+        self.searchController = UISearchController(searchResultsController: ResultContainerViewController())
+        self.searchController.searchBar.becomeFirstResponder()
+        self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.searchController = self.searchController
+        self.navigationItem.searchController?.isActive = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
-    */
 
+}
+
+extension MusicSearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+}
+
+extension MusicSearchViewController: UISearchBarDelegate{
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchController.searchBar.resignFirstResponder()
+    }
 }
