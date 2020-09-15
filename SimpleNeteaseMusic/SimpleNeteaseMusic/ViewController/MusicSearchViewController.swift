@@ -11,18 +11,29 @@ import UIKit
 class MusicSearchViewController: UIViewController {
 
     var searchController:UISearchController!
+    let resultContainerView = ResultContainerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setupSearchController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 设置打开后即呼出键盘
+        searchController.isActive = true
+        DispatchQueue.main.async{
+            self.searchController.searchBar.becomeFirstResponder()
+        }
+    }
 
     func setupSearchController () {
-        self.searchController = UISearchController(searchResultsController: ResultContainerViewController())
-        self.searchController.searchBar.becomeFirstResponder()
+        self.searchController = UISearchController(searchResultsController: resultContainerView)
+        self.searchController.delegate = self
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
         definesPresentationContext = true
@@ -31,7 +42,6 @@ class MusicSearchViewController: UIViewController {
         self.navigationItem.searchController?.isActive = true
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
-
 }
 
 extension MusicSearchViewController: UISearchResultsUpdating {
@@ -47,5 +57,11 @@ extension MusicSearchViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchController.searchBar.resignFirstResponder()
+    }
+}
+
+extension MusicSearchViewController: UISearchControllerDelegate {
+    func didPresentSearchController(_ searchController: UISearchController){
+
     }
 }

@@ -86,8 +86,8 @@
 				F4D113CD250E00C700860F59 /* CustomView */,
 				E57D873C250B75A00030B0FF /* JJCustomNavigationController.swift */,
 				E57D873E250B75B70030B0FF /* DiscoveryViewController.swift */,
-				E57D8740250F46D30030B0FF /* ResultContainerViewController.swift */,
 				E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */,
+				E57D8740250F46D30030B0FF /* ResultContainerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
