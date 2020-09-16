@@ -8,9 +8,12 @@
 
 import UIKit
 
-class ResultContainerViewController: UIViewController {
+class ResultContainerViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
+    
 }

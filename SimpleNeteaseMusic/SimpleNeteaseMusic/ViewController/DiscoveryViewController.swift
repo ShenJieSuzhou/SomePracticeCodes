@@ -22,6 +22,11 @@ class DiscoveryViewController: UITableViewController {
         setupSearchController()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.cusSearchBar.adjustPosition()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.cusSearchBar.resignFirstResponder()
     }
@@ -33,9 +38,10 @@ class DiscoveryViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = leftItem
         self.navigationItem.rightBarButtonItem = rightItem
         
-        self.cusSearchBar = JJCustomSearchbar()
+        self.cusSearchBar = JJCustomSearchbar(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         self.cusSearchBar.delegate = self
         self.navigationItem.titleView = self.cusSearchBar
+        
     }
 
     
