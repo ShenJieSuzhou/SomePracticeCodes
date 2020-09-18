@@ -20,7 +20,7 @@ class DiscoveryViewController: UITableViewController {
         super.viewDidLoad()
         // 设置搜索栏
         setupSearchController()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
