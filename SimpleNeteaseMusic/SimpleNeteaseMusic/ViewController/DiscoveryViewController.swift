@@ -20,6 +20,7 @@ class DiscoveryViewController: UITableViewController {
         super.viewDidLoad()
         // 设置搜索栏
         setupSearchController()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,6 +52,41 @@ class DiscoveryViewController: UITableViewController {
     
     @objc func playingBtnClicked(){
         print("22222222")
+    }
+    
+    
+    // Mark UITableViewDelegate
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 50.0
+    }
+
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        return 40.0
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
+        return 0.0
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
+    // Mark UITableViewDataSource
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 6
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        cell.contentView.backgroundColor = UIColor.red
+        return cell
     }
 }
 

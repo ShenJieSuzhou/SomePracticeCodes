@@ -1,0 +1,86 @@
+ [
+  {
+  "cHeadlineShow": "0",
+  "cTemplateId":"1",
+  "content": [
+                 "https://pic1.zhimg.com/50/v2-637fe965b1fe027e814290dcb691bb3c_hd.jpg",
+                 "https://pic4.zhimg.com/50/v2-2273408eced6da59476edea711b107e3_hd.jpg",
+                 "https://pic2.zhimg.com/50/v2-18146559506936ec5602ae3a671b5f45_hd.jpg",
+                 "https://pic2.zhimg.com/50/v2-47c065ae55b6be6ca4eff7500097f45d_hd.jpg",
+                 "https://pic2.zhimg.com/50/v2-c3f045a945967890d6544c2156b9e971_hd.jpg"
+        ]
+  },
+  {
+  "cHeadlineShow": "0",
+  "cTemplateId":"2",
+  "MenuData": [
+               {
+               "name": "天猫",
+               "ImgUrl": "moon.png"
+               },
+               {
+               "name": "聚划算",
+               "ImgUrl": "nong.png"
+               },
+               {
+               "name": "天猫国际",
+               "ImgUrl": "qing.png"
+               },
+               {
+               "name": "外卖",
+               "ImgUrl": "zhong.png"
+               },
+               {
+               "name": "天猫超市",
+               "ImgUrl": "qiu.png"
+               },
+               {
+               "name": "充值中心",
+               "ImgUrl": "huan.png"
+               },
+               {
+               "name": "飞猪旅行",
+               "ImgUrl": "le.png"
+               },
+               {
+               "name": "领金币",
+               "ImgUrl": "guo.png"
+               },
+               {
+               "name": "拍卖",
+               "ImgUrl": "qin.png"
+               },
+               {
+               "name": "分类",
+               "ImgUrl": "china.png"
+               }
+               ]
+  },
+  {
+  "cHeadlineShow": "1",
+  "cTemplateId":"3",
+  "content": "",
+  "sTitle":"人气歌单推荐",
+  "sSubtitle":"查看更多"
+  },
+  {
+  "cHeadlineShow": "1",
+  "cTemplateId":"4",
+  "content": "",
+  "sTitle":"一秒沦陷 华语精选",
+  "sSubtitle":"播放全部"
+  },
+  {
+  "cHeadlineShow": "1",
+  "cTemplateId":"5",
+  "content": "",
+  "sTitle":"今日头条"
+  },
+  {
+  "cHeadlineShow": "1",
+  "cTemplateId":"6",
+  "content": "",
+  "sTitle":"原创专题"
+  }
+  ]
+

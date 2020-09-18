@@ -19,6 +19,7 @@
 		E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */; };
 		E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */; };
 		E57D87482511DEC50030B0FF /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D87472511DEC50030B0FF /* Results.swift */; };
+		E5CEFB2425149346007B6E0E /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5CEFB2325149346007B6E0E /* MockData.json */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSearchbar.swift; sourceTree = "<group>"; };
 		E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
 		E57D87472511DEC50030B0FF /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		E5CEFB2325149346007B6E0E /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 		E57D8726250B59680030B0FF /* SimpleNeteaseMusic */ = {
 			isa = PBXGroup;
 			children = (
+				E5CEFB22251491AD007B6E0E /* Config */,
 				E57D87462511DE890030B0FF /* Model */,
 				E57D873B250B752C0030B0FF /* ViewController */,
 				E57D8727250B59680030B0FF /* AppDelegate.swift */,
@@ -101,6 +104,14 @@
 				E57D87472511DEC50030B0FF /* Results.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E5CEFB22251491AD007B6E0E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				E5CEFB2325149346007B6E0E /* MockData.json */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		F4D113CD250E00C700860F59 /* CustomView */ = {
@@ -171,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E57D8734250B596C0030B0FF /* LaunchScreen.storyboard in Resources */,
+				E5CEFB2425149346007B6E0E /* MockData.json in Resources */,
 				E57D8731250B596C0030B0FF /* Assets.xcassets in Resources */,
 				E57D872F250B59680030B0FF /* Main.storyboard in Resources */,
 			);
@@ -356,7 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WSSN499SLU;
 				INFOPLIST_FILE = SimpleNeteaseMusic/Info.plist;
@@ -364,9 +376,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.SimpleNeteaseMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.HeroSurvival;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = UniversalSnailDev;
+				PROVISIONING_PROFILE_SPECIFIER = HeroSurvivalDis;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
