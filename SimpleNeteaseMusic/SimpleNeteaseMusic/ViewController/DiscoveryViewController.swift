@@ -16,11 +16,15 @@ class DiscoveryViewController: UITableViewController {
     var cusSearchBar:JJCustomSearchbar!
     var musicSearchController:MusicSearchViewController!
     
+    // 数据源
+    var homeDataSource:NSArray!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置搜索栏
         setupSearchController()
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        // 初始化
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

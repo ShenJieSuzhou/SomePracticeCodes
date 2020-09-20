@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8546B108612069BBFA2DC0E7 /* Pods_SimpleNeteaseMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */; };
 		E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8727250B59680030B0FF /* AppDelegate.swift */; };
 		E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8729250B59680030B0FF /* SceneDelegate.swift */; };
 		E57D872C250B59680030B0FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D872B250B59680030B0FF /* ViewController.swift */; };
@@ -24,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleNeteaseMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.release.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.release.xcconfig"; sourceTree = "<group>"; };
 		E57D8724250B59680030B0FF /* SimpleNeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D8727250B59680030B0FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E57D8729250B59680030B0FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,17 +51,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8546B108612069BBFA2DC0E7 /* Pods_SimpleNeteaseMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		123442FDC851E038F4F5970A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1DEC8E36DF2E5382A632D7ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */,
+				DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E57D871B250B59680030B0FF = {
 			isa = PBXGroup;
 			children = (
 				E57D8726250B59680030B0FF /* SimpleNeteaseMusic */,
 				E57D8725250B59680030B0FF /* Products */,
+				1DEC8E36DF2E5382A632D7ED /* Pods */,
+				123442FDC851E038F4F5970A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,9 +155,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E57D8738250B596C0030B0FF /* Build configuration list for PBXNativeTarget "SimpleNeteaseMusic" */;
 			buildPhases = (
+				0F1C1708238C9E37E69DD217 /* [CP] Check Pods Manifest.lock */,
 				E57D8720250B59680030B0FF /* Sources */,
 				E57D8721250B59680030B0FF /* Frameworks */,
 				E57D8722250B59680030B0FF /* Resources */,
+				8A3A8E88EFF91E5294180224 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,6 +216,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F1C1708238C9E37E69DD217 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleNeteaseMusic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A3A8E88EFF91E5294180224 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E57D8720250B59680030B0FF /* Sources */ = {
@@ -346,6 +415,7 @@
 		};
 		E57D8739250B596C0030B0FF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -366,6 +436,7 @@
 		};
 		E57D873A250B596C0030B0FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
