@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
-class NetworkManager: NSObject {
+class NetworkManager {
+    
+    
 
 }

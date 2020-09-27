@@ -23,7 +23,8 @@ class DiscoveryViewController: UITableViewController {
         super.viewDidLoad()
         // 设置搜索栏
         setupSearchController()
-        // 初始化
+        // 初始化 请求首页数据
+        
         
     }
     
@@ -46,7 +47,6 @@ class DiscoveryViewController: UITableViewController {
         self.cusSearchBar = JJCustomSearchbar(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         self.cusSearchBar.delegate = self
         self.navigationItem.titleView = self.cusSearchBar
-        
     }
 
     
