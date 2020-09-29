@@ -22,13 +22,11 @@ class NetworkTools {
         AF.request(URLString, method: method, parameters: parameters).responseJSON { (response) in
             
             guard let result = response.value else {
-                print(response.error)
+                print(response.error!)
                 return
             }
             
             finishedCallback(result)
         }
-        
-        
     }
 }

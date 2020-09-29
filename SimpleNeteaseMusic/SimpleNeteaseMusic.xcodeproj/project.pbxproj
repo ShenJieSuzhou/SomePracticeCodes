@@ -20,6 +20,7 @@
 		E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */; };
 		E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */; };
 		E57D87482511DEC50030B0FF /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D87472511DEC50030B0FF /* Results.swift */; };
+		E587C3FC252357D70091747D /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C3FB252357D70091747D /* BannerModel.swift */; };
 		E59B0CDB251B160F00BF4E6D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDA251B160E00BF4E6D /* API.swift */; };
 		E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */; };
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
@@ -46,6 +47,7 @@
 		E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSearchbar.swift; sourceTree = "<group>"; };
 		E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
 		E57D87472511DEC50030B0FF /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		E587C3FB252357D70091747D /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		E59B0CDA251B160E00BF4E6D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				E57D87472511DEC50030B0FF /* Results.swift */,
+				E587C3FB252357D70091747D /* BannerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
 				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
+				E587C3FC252357D70091747D /* BannerModel.swift in Sources */,
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
 				E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */,
 				F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */,

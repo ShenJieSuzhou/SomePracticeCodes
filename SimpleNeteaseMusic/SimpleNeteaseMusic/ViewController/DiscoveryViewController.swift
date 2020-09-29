@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+
 
 class DiscoveryViewController: UITableViewController {
     
@@ -24,7 +26,7 @@ class DiscoveryViewController: UITableViewController {
         // 设置搜索栏
         setupSearchController()
         // 初始化 请求首页数据
-        
+        fetchBanner(url: "http://localhost:3000/banner?type=2")
         
     }
     
@@ -49,6 +51,16 @@ class DiscoveryViewController: UITableViewController {
         self.navigationItem.titleView = self.cusSearchBar
     }
 
+    // 请求轮播图数据
+    func fetchBanner(url: String){
+        NetworkTools.requestData(MethodType.get, URLString: url, parameters: nil) { (result) in
+            print(result)
+            
+            let json = JSON(result)
+            let banners = json["banners"]
+            print(banners.count)
+        }
+    }
     
     @objc func microphoneBtnClicked(){
         print("11111111")
