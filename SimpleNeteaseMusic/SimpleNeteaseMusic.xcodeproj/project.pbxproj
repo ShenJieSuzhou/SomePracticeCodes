@@ -124,6 +124,7 @@
 		E57D873B250B752C0030B0FF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E587C408252480400091747D /* SubVIew */,
 				F4D113CD250E00C700860F59 /* CustomView */,
 				E57D873C250B75A00030B0FF /* JJCustomNavigationController.swift */,
 				E57D873E250B75B70030B0FF /* DiscoveryViewController.swift */,
@@ -140,6 +141,13 @@
 				E587C3FB252357D70091747D /* BannerModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E587C408252480400091747D /* SubVIew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubVIew;
 			sourceTree = "<group>";
 		};
 		E59B0CD9251B15F200BF4E6D /* Util */ = {

@@ -19,6 +19,7 @@ class DiscoveryViewController: UITableViewController {
     var musicSearchController:MusicSearchViewController!
     
     // 数据源
+    var bannersData = [BannerModel]()
     var homeDataSource:NSArray!
     
     override func viewDidLoad() {
@@ -54,11 +55,14 @@ class DiscoveryViewController: UITableViewController {
     // 请求轮播图数据
     func fetchBanner(url: String){
         NetworkTools.requestData(MethodType.get, URLString: url, parameters: nil) { (result) in
-            print(result)
-            
             let json = JSON(result)
             let banners = json["banners"]
-            print(banners.count)
+            for i in 0 ..< banners.count {
+                if let picUrl = banners[i]["pic"].string {
+                   let model = BannerModel(pic: picUrl)
+                    self.bannersData.append(model)
+                }
+            }
         }
     }
     
@@ -78,6 +82,10 @@ class DiscoveryViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        if (section == 0) {
+            return 0;
+        }
+        
         return 40.0
     }
 
@@ -101,7 +109,14 @@ class DiscoveryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        cell.contentView.backgroundColor = UIColor.red
+        if indexPath.section == 0 {
+            
+            
+        } else {
+            
+            cell.contentView.backgroundColor = UIColor.red
+            
+        }
         return cell
     }
 }

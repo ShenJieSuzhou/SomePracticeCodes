@@ -9,6 +9,9 @@
 import Foundation
 
 class BannerModel {
+    var pic: String?
     
-    
+    init(pic: String) {
+        self.pic = pic
+    }
 }
