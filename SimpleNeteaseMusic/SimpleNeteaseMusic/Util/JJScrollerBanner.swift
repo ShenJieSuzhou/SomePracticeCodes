@@ -122,6 +122,80 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
     }
     
     func setCurrent(currIndex: Int) {
+        self.currIndex = currIndex
         
+        if(type == .Image){
+            centerImage.image = UIImage.init(named: bannersData[currIndex])
+            firstImage.image = UIImage.init(named: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count])
+            secondImage.image = UIImage.init(named: bannersData[(currIndex + 1) % bannersData.count])
+        }else{
+            centerImage.setMyImage(URL: NSURL(string: bannersData[currIndex]))
+            firstImage.setMyImage(URL:  NSURL(string: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count]))
+            secondImage.setMyImage(URL: NSURL(string: bannersData[(currIndex + 1) % bannersData.count]))
+        }
+        centerImage.tag = currIndex
+        pageController.currentPage = currIndex
+        scrollView.setContentOffset(CGPoint(x: width, y: 0), animated: false)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        openTimer()
+    }
+    
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.x > 0){
+            currIndex = (currIndex + 1) % bannersData.count
+        }else {
+            currIndex = (currIndex - 1 + bannersData.count) % bannersData.count
+        }
+        setCurrent(currIndex: currIndex)
+    }
+    
+    func openTimer(){
+        if(isAuto){
+            if(timer == nil){
+                timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(startAutoScroll), userInfo: nil, repeats: true)
+            }
+        }
+    }
+    
+    func closeTimer(){
+        if(timer != nil){
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+
+
+    @objc func startAutoScroll(){
+        if(isDisplayInScreen()){
+            setCurrent(currIndex: (currIndex + 1) % bannersData.count)
+        }
+    }
+
+    func isDisplayInScreen() -> Bool {
+        if(self.window == nil){
+            return false
+        }
+        return true
+    }
+    
+}
+
+
+
+extension UIImageView{
+    public func setMyImage(URL: NSURL?, placeholderImage: Image? = nil, optionsInfo: KingfisherOptionsInfo? = nil, progressBlock: DownloadProgressBlock? = nil, completionHandler: CompletionHandler? = nil){
+        
+        kf.setImage(with: URL as? Resource, placeholder: placeholderImage, options: optionsInfo, progressBlock: progressBlock, completionHandler: completionHandler)
     }
 }
