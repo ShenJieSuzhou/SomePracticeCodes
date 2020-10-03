@@ -26,6 +26,7 @@
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
 		E5CEFB2425149346007B6E0E /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5CEFB2325149346007B6E0E /* MockData.json */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
+		F4827E3F25285CF6008CBCF7 /* JJScrollerBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4827E3E25285CF6008CBCF7 /* JJScrollerBanner.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
 		E5CEFB2325149346007B6E0E /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		F4827E3E25285CF6008CBCF7 /* JJScrollerBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JJScrollerBanner.swift; path = SimpleNeteaseMusic/Util/JJScrollerBanner.swift; sourceTree = SOURCE_ROOT; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 		E587C408252480400091747D /* SubVIew */ = {
 			isa = PBXGroup;
 			children = (
+				F4827E3E25285CF6008CBCF7 /* JJScrollerBanner.swift */,
 			);
 			path = SubVIew;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
+				F4827E3F25285CF6008CBCF7 /* JJScrollerBanner.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
 				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
