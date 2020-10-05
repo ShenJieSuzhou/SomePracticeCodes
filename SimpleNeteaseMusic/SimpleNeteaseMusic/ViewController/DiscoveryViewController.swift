@@ -77,6 +77,10 @@ class DiscoveryViewController: UITableViewController {
     
     // Mark UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        if(indexPath.section == 0){
+            return 180.0
+        }
+        
         return 50.0
     }
 
@@ -110,13 +114,15 @@ class DiscoveryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
-            
-            
+            let imageV:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 180))
+            imageV.image = UIImage(named: "123")
+            cell.addSubview(imageV)
         } else {
             
             cell.contentView.backgroundColor = UIColor.red
             
         }
+        
         return cell
     }
 }
