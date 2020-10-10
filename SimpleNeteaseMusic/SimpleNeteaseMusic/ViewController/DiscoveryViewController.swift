@@ -9,6 +9,12 @@
 import UIKit
 import SwiftyJSON
 
+// 屏幕的宽
+let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+
+// 屏幕的高
+let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+
 
 class DiscoveryViewController: UITableViewController {
     
@@ -104,19 +110,24 @@ class DiscoveryViewController: UITableViewController {
     
     // Mark UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if(self.bannersData.count == 0){
+            return 1;
+        }
         return 6
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if(self.bannersData.count == 0){
+            return 0;
+        }
         return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
-            let imageV:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 180))
-            imageV.image = UIImage(named: "123")
-            cell.addSubview(imageV)
+            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200))
+            cell.addSubview(scrollBanner)
         } else {
             
             cell.contentView.backgroundColor = UIColor.red
