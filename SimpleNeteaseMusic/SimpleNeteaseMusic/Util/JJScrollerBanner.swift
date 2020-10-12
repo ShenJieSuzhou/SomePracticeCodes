@@ -129,11 +129,13 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
             firstImage.image = UIImage.init(named: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count].pic!)
             secondImage.image = UIImage.init(named: bannersData[(currIndex + 1) % bannersData.count].pic!)
         }else{
-            centerImage.setMyImage(URL: NSURL(string: bannersData[currIndex].pic!))
-            firstImage.setMyImage(URL:  NSURL(string: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count].pic!))
-            secondImage.setMyImage(URL: NSURL(string: bannersData[(currIndex + 1) % bannersData.count].pic!))
-            
-            
+//            centerImage.setMyImage(URL: NSURL(string: bannersData[currIndex].pic!) )
+//            firstImage.setMyImage(URL:  NSURL(string: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count].pic!))
+//            secondImage.setMyImage(URL: NSURL(string: bannersData[(currIndex + 1) % bannersData.count].pic!))
+                        
+            centerImage.kf.setImage(with: URL(string: bannersData[currIndex].pic!))
+            firstImage.kf.setImage(with: URL(string: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count].pic!))
+            secondImage.kf.setImage(with: URL(string: bannersData[(currIndex + 1) % bannersData.count].pic!))
         }
         centerImage.tag = currIndex
         pageController.currentPage = currIndex
@@ -196,8 +198,22 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
 
 
 extension UIImageView{
-    public func setMyImage(URL: NSURL?, placeholderImage: Image? = nil, optionsInfo: KingfisherOptionsInfo? = nil, progressBlock: DownloadProgressBlock? = nil, completionHandler: CompletionHandler? = nil){
+    public func setMyImage(URL: NSURL?, placeholderImage: UIImage? = nil, optionsInfo: KingfisherOptionsInfo? = nil, progressBlock: DownloadProgressBlock? = nil, completionHandler: CompletionHandler? = nil){
         
-        kf.setImage(with: URL as? Resource, placeholder: placeholderImage, options: optionsInfo, progressBlock: progressBlock, completionHandler: completionHandler)
+//        kf.setImage(with: URL as? Resource, placeholder: placeholderImage, options: optionsInfo, progressBlock: progressBlock, completionHandler: completionHandler)
+        kf.setImage(with: URL as? Resource,
+                    placeholder: placeholderImage,
+                    options: optionsInfo,
+                    progressBlock: progressBlock)
+        {
+            result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+            }
+        }
+        
     }
 }
