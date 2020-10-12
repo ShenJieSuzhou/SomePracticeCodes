@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 // 屏幕的宽
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -17,6 +18,9 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 
 class DiscoveryViewController: UITableViewController {
+    
+    
+    @IBOutlet var homeTableView: UITableView!
     
     //搜索
     let resultViewController = ResultContainerViewController();
@@ -69,6 +73,9 @@ class DiscoveryViewController: UITableViewController {
                     self.bannersData.append(model)
                 }
             }
+            
+            // 刷新 tableView
+            self.homeTableView.reloadData()
         }
     }
     
@@ -127,7 +134,17 @@ class DiscoveryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
             let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200))
+            scrollBanner.setBannerImages(images: self.bannersData)
             cell.addSubview(scrollBanner)
+            
+//            let firstImage:UIImageView = UIImageView()
+//            firstImage.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200)
+//            firstImage.contentMode = .scaleAspectFill
+//            firstImage.isUserInteractionEnabled = true
+////            firstImage.setMyImage(URL: NSURL(string: "http://p1.music.126.net/Hg-1mnhZp-NTvo8CMD6osg==/109951165350682670.jpg"))
+//            let url = URL(string: "http://p1.music.126.net/Hg-1mnhZp-NTvo8CMD6osg==/109951165350682670.jpg")
+//            firstImage.kf.setImage(with: url)
+//            cell.addSubview(firstImage)
         } else {
             
             cell.contentView.backgroundColor = UIColor.red

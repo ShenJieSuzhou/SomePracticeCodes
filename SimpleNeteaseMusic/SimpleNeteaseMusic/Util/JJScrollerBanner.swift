@@ -28,7 +28,7 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
     private var secondImage:UIImageView = UIImageView()
     
     // 数据源
-    private var bannersData:Array<String> = []
+    private var bannersData:Array<BannerModel> = []
     private var type:ImageType = .Image
     
     private var width:CGFloat = 0
@@ -65,7 +65,7 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
         super.layoutSubviews()
     }
     
-    public func setImages(images:Array<String>, type:ImageType = .Image){
+    public func setBannerImages(images:Array<BannerModel>, type:ImageType = .URL){
         self.type = type
         self.bannersData = images
         self.initLayout()
@@ -125,13 +125,15 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
         self.currIndex = currIndex
         
         if(type == .Image){
-            centerImage.image = UIImage.init(named: bannersData[currIndex])
-            firstImage.image = UIImage.init(named: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count])
-            secondImage.image = UIImage.init(named: bannersData[(currIndex + 1) % bannersData.count])
+            centerImage.image = UIImage.init(named: bannersData[currIndex].pic!)
+            firstImage.image = UIImage.init(named: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count].pic!)
+            secondImage.image = UIImage.init(named: bannersData[(currIndex + 1) % bannersData.count].pic!)
         }else{
-            centerImage.setMyImage(URL: NSURL(string: bannersData[currIndex]))
-            firstImage.setMyImage(URL:  NSURL(string: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count]))
-            secondImage.setMyImage(URL: NSURL(string: bannersData[(currIndex + 1) % bannersData.count]))
+            centerImage.setMyImage(URL: NSURL(string: bannersData[currIndex].pic!))
+            firstImage.setMyImage(URL:  NSURL(string: bannersData[(currIndex - 1 + bannersData.count) % bannersData.count].pic!))
+            secondImage.setMyImage(URL: NSURL(string: bannersData[(currIndex + 1) % bannersData.count].pic!))
+            
+            
         }
         centerImage.tag = currIndex
         pageController.currentPage = currIndex

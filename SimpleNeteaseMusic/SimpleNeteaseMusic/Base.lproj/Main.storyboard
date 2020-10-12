@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCm-th-eTn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCm-th-eTn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +35,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="56n-eo-xqT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="1aI-jw-lsA">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -50,6 +52,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gyv-15-r1r"/>
+                    <connections>
+                        <outlet property="homeTableView" destination="56n-eo-xqT" id="W5M-72-whz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sP-8J-mNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,8 +67,8 @@
                     <view key="view" contentMode="scaleToFill" id="npR-5Z-C7o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="srj-Ax-NfZ"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="视频" image="tray" catalog="system" selectedImage="tray.fill" id="DvW-PL-Jt7">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="3"/>
@@ -80,8 +85,8 @@
                     <view key="view" contentMode="scaleToFill" id="M29-3Q-POJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="S7U-5D-I8E"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="账号" image="book" catalog="system" selectedImage="book.fill" id="L8k-Oe-S79">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="4"/>
@@ -122,8 +127,8 @@
                     <view key="view" contentMode="scaleToFill" id="hi3-1m-CYw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="nfN-1F-Pns"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="我的" image="paperplane" catalog="system" selectedImage="paperplane.fill" id="j0u-dX-Vdc">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="4"/>
@@ -140,8 +145,8 @@
                     <view key="view" contentMode="scaleToFill" id="Xh6-mk-QL8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eCb-yw-rOo"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="云村" image="pencil.circle" catalog="system" selectedImage="pencil.circle.fill" id="Cld-vM-Yp2">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="4"/>
@@ -153,15 +158,30 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book" catalog="system" width="128" height="101"/>
-        <image name="book.fill" catalog="system" width="128" height="100"/>
-        <image name="folder" catalog="system" width="128" height="95"/>
-        <image name="folder.fill" catalog="system" width="128" height="95"/>
-        <image name="paperplane" catalog="system" width="128" height="121"/>
-        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="book" catalog="system" width="128" height="102"/>
+        <image name="book.fill" catalog="system" width="128" height="102"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
+        <image name="folder.fill" catalog="system" width="128" height="97"/>
+        <image name="paperplane" catalog="system" width="128" height="118"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="tray" catalog="system" width="128" height="88"/>
         <image name="tray.fill" catalog="system" width="128" height="88"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
