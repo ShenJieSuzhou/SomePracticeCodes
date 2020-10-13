@@ -91,7 +91,7 @@ class DiscoveryViewController: UITableViewController {
     // Mark UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if(indexPath.section == 0){
-            return 180.0
+            return 200.0
         }
         
         return 50.0
@@ -133,7 +133,7 @@ class DiscoveryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
-            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200))
+            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 20, height: 180))
             scrollBanner.setBannerImages(images: self.bannersData)
             cell.addSubview(scrollBanner)
             

@@ -63,6 +63,16 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        // 设置圆角
+        let maskPath = UIBezierPath.init(roundedRect: self.bounds,
+                                         byRoundingCorners: [UIRectCorner.topLeft, UIRectCorner.topRight, UIRectCorner.bottomLeft, UIRectCorner.bottomRight],
+                cornerRadii: CGSize(width: 10, height: 10))
+
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = self.bounds
+        maskLayer.path = maskPath.cgPath
+        self.layer.mask = maskLayer
     }
     
     public func setBannerImages(images:Array<BannerModel>, type:ImageType = .URL){
@@ -78,15 +88,18 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
         }
         
         width = frame.size.width
-        height = frame.size.width
+        height = frame.size.height
         // 初始化 scrollView
-        scrollView.frame = self.bounds
+        scrollView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         scrollView.contentSize = CGSize(width: width * CGFloat(3), height: height)
         scrollView.contentOffset = CGPoint(x: width, y: 0)
         scrollView.isUserInteractionEnabled = true
         scrollView.isPagingEnabled = true
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.bounces = false
         scrollView.delegate = self
+        scrollView.backgroundColor = UIColor.clear
         addSubview(scrollView)
         
         // 左边图
@@ -107,12 +120,12 @@ class JJScrollerBanner: UIView, UIScrollViewDelegate {
         secondImage.isUserInteractionEnabled = true
         scrollView.addSubview(secondImage)
         
-        pageController.center = CGPoint(x: width/2, y: height - CGFloat(20))
+        pageController.center = CGPoint(x: width/2, y: height - CGFloat(50))
         pageController.isEnabled = true
         pageController.numberOfPages = bannersData.count
         pageController.currentPageIndicatorTintColor = pageControlTintColor
         pageController.isUserInteractionEnabled = false
-        addSubview(pageController)
+        scrollView.addSubview(pageController)
         
         if(isAuto){
             
