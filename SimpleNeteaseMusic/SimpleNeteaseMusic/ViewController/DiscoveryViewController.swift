@@ -19,6 +19,10 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 class DiscoveryViewController: UITableViewController {
     
+    let netAdArray = ["http://pic2.16pic.com/00/10/46/16pic_1046407_b.jpg",
+                      "http://pic.58pic.com/58pic/14/34/62/39S58PIC9jV_1024.jpg",
+                      "http://pic.qiantucdn.com/58pic/17/70/72/02U58PICKVg_1024.jpg",
+                      "http://pic.58pic.com/58pic/16/73/95/63E58PICQh7_1024.jpg"]
     
     @IBOutlet var homeTableView: UITableView!
     
@@ -31,6 +35,16 @@ class DiscoveryViewController: UITableViewController {
     // 数据源
     var bannersData = [BannerModel]()
     var homeDataSource:NSArray!
+    
+    // 轮播控件
+    lazy var newsBanner: JJNewsBanner = {
+        let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200), imageUrlStrArray: netAdArray, placeholderImage: UIImage(named: "ad_placeholder"))
+    
+        
+        
+        return banner
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,9 +147,9 @@ class DiscoveryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
-            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 20, height: 180))
-            scrollBanner.setBannerImages(images: self.bannersData)
-            cell.addSubview(scrollBanner)
+//            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 20, height: 180))
+//            scrollBanner.setBannerImages(images: self.bannersData)
+//            cell.addSubview(scrollBanner)
             
 //            let firstImage:UIImageView = UIImageView()
 //            firstImage.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200)
@@ -145,6 +159,8 @@ class DiscoveryViewController: UITableViewController {
 //            let url = URL(string: "http://p1.music.126.net/Hg-1mnhZp-NTvo8CMD6osg==/109951165350682670.jpg")
 //            firstImage.kf.setImage(with: url)
 //            cell.addSubview(firstImage)
+           
+            cell.addSubview(newsBanner)
         } else {
             
             cell.contentView.backgroundColor = UIColor.red

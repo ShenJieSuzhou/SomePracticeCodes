@@ -21,12 +21,14 @@
 		E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */; };
 		E57D87482511DEC50030B0FF /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D87472511DEC50030B0FF /* Results.swift */; };
 		E587C3FC252357D70091747D /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C3FB252357D70091747D /* BannerModel.swift */; };
+		E587C46A253697360091747D /* JJNewsBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C469253697360091747D /* JJNewsBanner.swift */; };
+		E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */; };
+		E587C4702536F56C0091747D /* JJPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46F2536F56C0091747D /* JJPageControl.swift */; };
 		E59B0CDB251B160F00BF4E6D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDA251B160E00BF4E6D /* API.swift */; };
 		E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */; };
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
 		E5CEFB2425149346007B6E0E /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5CEFB2325149346007B6E0E /* MockData.json */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
-		F4827E3F25285CF6008CBCF7 /* JJScrollerBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4827E3E25285CF6008CBCF7 /* JJScrollerBanner.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,12 +51,14 @@
 		E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
 		E57D87472511DEC50030B0FF /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		E587C3FB252357D70091747D /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		E587C469253697360091747D /* JJNewsBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJNewsBanner.swift; sourceTree = "<group>"; };
+		E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJNewsImageViewCell.swift; sourceTree = "<group>"; };
+		E587C46F2536F56C0091747D /* JJPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJPageControl.swift; sourceTree = "<group>"; };
 		E59B0CDA251B160E00BF4E6D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
 		E5CEFB2325149346007B6E0E /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
-		F4827E3E25285CF6008CBCF7 /* JJScrollerBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JJScrollerBanner.swift; path = SimpleNeteaseMusic/Util/JJScrollerBanner.swift; sourceTree = SOURCE_ROOT; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,9 +152,19 @@
 		E587C408252480400091747D /* SubVIew */ = {
 			isa = PBXGroup;
 			children = (
-				F4827E3E25285CF6008CBCF7 /* JJScrollerBanner.swift */,
+				E587C467253696770091747D /* Banner */,
 			);
 			path = SubVIew;
+			sourceTree = "<group>";
+		};
+		E587C467253696770091747D /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				E587C469253697360091747D /* JJNewsBanner.swift */,
+				E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */,
+				E587C46F2536F56C0091747D /* JJPageControl.swift */,
+			);
+			path = Banner;
 			sourceTree = "<group>";
 		};
 		E59B0CD9251B15F200BF4E6D /* Util */ = {
@@ -297,11 +311,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E587C4702536F56C0091747D /* JJPageControl.swift in Sources */,
 				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
-				F4827E3F25285CF6008CBCF7 /* JJScrollerBanner.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
 				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
+				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,
 				E57D872C250B59680030B0FF /* ViewController.swift in Sources */,
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
@@ -311,6 +326,7 @@
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
 				E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */,
 				F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */,
+				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,
 			);
