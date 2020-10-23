@@ -123,7 +123,9 @@ class JJNewsBanner: UIView{
     private var loopTimes = 100
     
     // item 总数
-    private var totalItemCount: Int!
+    private var totalItemCount: Int {
+        return self.sourceCount
+    }
     
     /// 分页控件位置
     public var pageControlAliment: PageControlAligment = .center
