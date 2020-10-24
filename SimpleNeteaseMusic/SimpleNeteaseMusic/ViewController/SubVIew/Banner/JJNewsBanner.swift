@@ -64,7 +64,7 @@ class JJNewsBanner: UIView{
     public var placeholderImage: UIImage?
     
     // 网络图片URL
-    @objc public var imageUrlStrArray: [String]?{
+    public var imageUrlStrArray: [BannerModel]?{
         didSet{
             if imageUrlStrArray != nil {
                 self.collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJImageViewCellId)
@@ -240,7 +240,7 @@ class JJNewsBanner: UIView{
 extension JJNewsBanner {
     
     // 初始化
-    @objc open class func startPlay(frame: CGRect, imageUrlStrArray: [String]?, placeholderImage:UIImage?) -> JJNewsBanner{
+    @objc open class func startPlay(frame: CGRect, imageUrlStrArray: [AnyObject]?, placeholderImage:UIImage?) -> JJNewsBanner{
         let newsBanner = JJNewsBanner(frame: frame)
         newsBanner.updateUI(localImageArray: nil, imageUrlStrArray: imageUrlStrArray, placeholderImage: placeholderImage, viewArray: nil)
         
@@ -248,8 +248,8 @@ extension JJNewsBanner {
     }
     
     // 更新 UI
-    private func updateUI(localImageArray: [String]?, imageUrlStrArray: [String]?, placeholderImage: UIImage?, viewArray: [UIView]?){
-        self.imageUrlStrArray = imageUrlStrArray
+    private func updateUI(localImageArray: [String]?, imageUrlStrArray: [AnyObject]?, placeholderImage: UIImage?, viewArray: [UIView]?){
+        self.imageUrlStrArray = imageUrlStrArray as? [BannerModel]
         self.placeholderImage = placeholderImage
     }
 }
@@ -264,7 +264,7 @@ extension JJNewsBanner: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if self.imageUrlStrArray != nil {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJImageViewCellId, for: indexPath) as! JJNewsImageViewCell
-            cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row] : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
+            cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
             cell.backgroundColor = UIColor.white
             return cell
         } else {
