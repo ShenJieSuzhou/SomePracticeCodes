@@ -68,7 +68,6 @@ class JJNewsBanner: UIView{
         didSet{
             if imageUrlStrArray != nil {
                 self.collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJImageViewCellId)
-                
                 self.sourceArray = imageUrlStrArray as [AnyObject]?
             }
         }
@@ -320,7 +319,14 @@ extension JJNewsBanner{
     public func makeScrollViewScrollToIndex(index: Int){
         self.invalidateTimer()
         
+        if self.sourceCount == 0 {
+            return
+        }
         
+        var tmpIndex = index + self.totalItemCount / 2
+        self.scrollToIndex(targetIndex: &tmpIndex)
+        
+        self.setupTimer()
     }
 
     public func scrollToIndex(targetIndex: inout Int){

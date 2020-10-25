@@ -42,7 +42,6 @@ class DiscoveryViewController: UITableViewController {
         banner.currentPageDotColor = UIColor.white
 //        banner.autoScrollTimeInterval = 2.0
         
-        
         return banner
     }()
     
