@@ -89,9 +89,9 @@ class JJNewsBanner: UIView{
                 self.setupPageControl()
                 self.invalidateTimer()
                 
-                if autoScroll {
-                    self.setupTimer()
-                }
+//                if autoScroll {
+////                    self.setupTimer()
+//                }
                 self.layoutIfNeeded()
             }
         }
@@ -112,25 +112,25 @@ class JJNewsBanner: UIView{
     // 是否自动轮播
     @objc public var autoScroll = true {
         didSet {
-            self.invalidateTimer()
-            if autoScroll {
-                self.setupTimer()
-            }
+//            self.invalidateTimer()
+//            if autoScroll {
+//                self.setupTimer()
+//            }
         }
     }
     
     // 轮播时间间隔
     @objc public var autoScrollTimeInterval: TimeInterval = 2.0 {
         didSet {
-            self.invalidateTimer()
-            if autoScrollTimeInterval > 0 {
-                self.setupTimer()
-            }
+//            self.invalidateTimer()
+//            if autoScrollTimeInterval > 0 {
+//                self.setupTimer()
+//            }
         }
     }
     
     // 分页控件
-    private var pageControl: UIControl?
+    private var pageControl: UIPageControl?
     
     // 轮播次数
     private var loopTimes = 100
@@ -172,7 +172,7 @@ class JJNewsBanner: UIView{
     @objc public var itemDidClickedBlock: ItemDidClickedBlock?
     
     /// 图片ContentMode
-    private var myContentMode: UIView.ContentMode = .scaleToFill
+    private var myContentMode: UIImageView.ContentMode = .scaleAspectFill
     
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -247,7 +247,6 @@ class JJNewsBanner: UIView{
             tmpPageControl.currentPageIndicatorTintColor = self.currentPageDotColor
             tmpPageControl.pageIndicatorTintColor = self.pageDotColor
             tmpPageControl.isUserInteractionEnabled = false
-            tmpPageControl.backgroundColor = UIColor.blue
             tmpPageControl.currentPage = self.pageControlIndex(cellIndex: self.currentIndex())
             self.addSubview(tmpPageControl)
             
@@ -311,12 +310,12 @@ extension JJNewsBanner: UICollectionViewDelegate, UICollectionViewDataSource {
 extension JJNewsBanner{
  
     public func setupTimer() {
-        self.invalidateTimer()
-        
-        if self.autoScroll {
-            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
-            RunLoop.main.add(self.scrollTimer!, forMode: .common)
-        }
+//        self.invalidateTimer()
+//
+//        if self.autoScroll {
+//            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
+//            RunLoop.main.add(self.scrollTimer!, forMode: .common)
+//        }
     }
     
     public func invalidateTimer() {
@@ -342,27 +341,13 @@ extension JJNewsBanner{
         }
     }
     
-    
-//    // 手动控制滚动
-//    public func makeScrollViewScrollToIndex(index: Int){
-//        self.invalidateTimer()
-//
-//        if self.sourceCount == 0 {
-//            return
-//        }
-//
-//        var tmpIndex = index + self.totalItemCount / 2
-//        self.scrollToIndex(targetIndex: &tmpIndex)
-//
-//        self.setupTimer()
-//    }
 
     public func scrollToIndex(targetIndex: inout Int){
         if self.collectionView.numberOfItems(inSection: 0) != self.totalItemCount {
             return
         }
         
-        if targetIndex > self.totalItemCount {
+        if targetIndex >= self.totalItemCount {
             if self.loopTimes == 1 {
                 self.startScrollToItem(targetIndex: 0, animated: true)
             } else if self.loopTimes > 1 {
@@ -395,11 +380,11 @@ extension JJNewsBanner{
     }
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.invalidateTimer()
+//        self.invalidateTimer()
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        self.setupTimer()
+//        self.setupTimer()
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -412,8 +397,9 @@ extension JJNewsBanner{
         }
         
         let itemIndex = self.currentIndex()
+        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
         if self.itemDidClickedBlock != nil {
-            self.itemDidClickedBlock!(itemIndex)
+            self.itemDidClickedBlock!(indexOnPageControl)
         }
     }
 }

@@ -32,15 +32,9 @@ class JJNewsImageViewCell: UICollectionViewCell {
         if imageName != nil {
             self.imageView.image = UIImage(named: imageName!)
         } else if imageUrl != nil {
-//            self.imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: nil, progressBlock: nil, completionHandler: nil){ (reslt) in
-//
-//            }
-            
             self.imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: nil, progressBlock: nil) { (reslt) in
                 
             }
-
-//            self.imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: nil, progressBlock: nil, completionHandler: nil)
         }
     }
 }
