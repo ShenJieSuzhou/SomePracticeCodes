@@ -110,16 +110,32 @@ class JJNewsBanner: UIView{
     private var scrollTimer: Timer?
     
     // 是否自动轮播
-    @objc public var autoScroll = true
+    @objc public var autoScroll = true {
+        didSet {
+            self.invalidateTimer()
+            if autoScroll {
+                self.setupTimer()
+            }
+        }
+    }
     
     // 轮播时间间隔
-    @objc public var autoScrollTimeInterval: TimeInterval = 5.0
+    @objc public var autoScrollTimeInterval: TimeInterval = 2.0 {
+        didSet {
+            self.invalidateTimer()
+            if autoScrollTimeInterval > 0 {
+                self.setupTimer()
+            }
+        }
+    }
     
     // 分页控件
     private var pageControl: UIControl?
     
     // 轮播次数
     private var loopTimes = 100
+    
+    private var currentPage = 0
     
     // item 总数
     private var totalItemCount: Int {
@@ -130,13 +146,17 @@ class JJNewsBanner: UIView{
     public var pageControlAliment: PageControlAligment = .center
     
     /// 分页控件类型
-    public var pageControlType: PageControlType = .classic
+    public var pageControlType: PageControlType = .classic {
+        didSet {
+            self.setupPageControl()
+        }
+    }
    
     // 当前分页控件颜色
     public var currentPageDotColor = UIColor.white
     
     // 默认分页控件颜色
-    public var pageDotColor = UIColor.lightGray
+    public var pageDotColor = UIColor.red
     
     /// 分页控件默认距离的边距
     public var pageControlMargin: CGFloat = 10
@@ -161,15 +181,19 @@ class JJNewsBanner: UIView{
         self.collectionViewFlowLayout.scrollDirection = .horizontal
         
         if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
-            self.startScrollToItem(targetIndex: 0, animated: true)
+            var targetIndex = 0
+            if self.loopTimes > 0 {
+                targetIndex = self.totalItemCount / 2
+            }
+            if self.collectionView.numberOfItems(inSection: 0) == self.totalItemCount && self.loopTimes > 1 {
+                self.startScrollToItem(targetIndex: targetIndex, animated: false)
+            }
         }
     
         if self.pageControl != nil {
             var pSize = CGSize(width: 0, height: 0)
             if self.pageControl!.isKind(of: UIPageControl.self) {
                 pSize = CGSize(width: CGFloat(self.sourceCount) * self.pageControlDotSize.width, height: self.pageControlDotSize.height)
-            } else {
-                
             }
             
             var pX: CGFloat = 0
@@ -187,19 +211,22 @@ class JJNewsBanner: UIView{
         }
     }
     
+    private func pageControlIndex(cellIndex: Int) -> Int {
+        if self.sourceCount > 0 {
+            return cellIndex % self.sourceCount
+        } else {
+            return 0
+        }
+    }
+    
     private func currentIndex() -> Int {
         if collectionView.frame.width == 0 || collectionView.frame.height == 0 {
             return 0
         }
         
         var index = 0
-        if self.collectionViewFlowLayout.scrollDirection == .horizontal {
-            index = Int((self.collectionView.contentOffset.x + self.collectionViewFlowLayout.itemSize.width * 0.5) /
-                            self.collectionViewFlowLayout.itemSize.width)
-        }else{
-            
-        }
-        
+        index = Int((self.collectionView.contentOffset.x + self.collectionViewFlowLayout.itemSize.width * 0.5) / self.collectionViewFlowLayout.itemSize.width)
+
         return max(0, index)
     }
     
@@ -220,7 +247,8 @@ class JJNewsBanner: UIView{
             tmpPageControl.currentPageIndicatorTintColor = self.currentPageDotColor
             tmpPageControl.pageIndicatorTintColor = self.pageDotColor
             tmpPageControl.isUserInteractionEnabled = false
-            tmpPageControl.currentPage = self.currentIndex()
+            tmpPageControl.backgroundColor = UIColor.blue
+            tmpPageControl.currentPage = self.pageControlIndex(cellIndex: self.currentIndex())
             self.addSubview(tmpPageControl)
             
             self.pageControl = tmpPageControl
@@ -315,26 +343,26 @@ extension JJNewsBanner{
     }
     
     
-    // 手动控制滚动
-    public func makeScrollViewScrollToIndex(index: Int){
-        self.invalidateTimer()
-        
-        if self.sourceCount == 0 {
-            return
-        }
-        
-        var tmpIndex = index + self.totalItemCount / 2
-        self.scrollToIndex(targetIndex: &tmpIndex)
-        
-        self.setupTimer()
-    }
+//    // 手动控制滚动
+//    public func makeScrollViewScrollToIndex(index: Int){
+//        self.invalidateTimer()
+//
+//        if self.sourceCount == 0 {
+//            return
+//        }
+//
+//        var tmpIndex = index + self.totalItemCount / 2
+//        self.scrollToIndex(targetIndex: &tmpIndex)
+//
+//        self.setupTimer()
+//    }
 
     public func scrollToIndex(targetIndex: inout Int){
         if self.collectionView.numberOfItems(inSection: 0) != self.totalItemCount {
             return
         }
         
-        if targetIndex >= self.totalItemCount {
+        if targetIndex > self.totalItemCount {
             if self.loopTimes == 1 {
                 self.startScrollToItem(targetIndex: 0, animated: true)
             } else if self.loopTimes > 1 {
@@ -356,10 +384,10 @@ extension JJNewsBanner{
         }
         
         let itemIndex = self.currentIndex()
-        //let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
+        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
         
         if self.pageControl!.isKind(of: UIPageControl.self) {
-            (self.pageControl as! UIPageControl).currentPage = itemIndex
+            (self.pageControl as! UIPageControl).currentPage = indexOnPageControl
         }
 //        else {
 //            (self.pageControl as! FWPageControl).currentPage = indexOnPageControl
