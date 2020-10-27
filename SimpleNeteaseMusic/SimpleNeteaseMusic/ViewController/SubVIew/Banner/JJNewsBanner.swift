@@ -34,18 +34,21 @@ let JJImageViewCellId = "JJImageViewCellId"
 public typealias ItemDidClickedBlock = (_ currentIndex: Int) -> Void
 
 
-class JJNewsBanner: UIView{
+class JJNewsBanner: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         
     // 布局
     private lazy var collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.minimumInteritemSpacing = 0
+        collectionViewFlowLayout.minimumLineSpacing = 0
+        collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionViewFlowLayout.itemSize = self.frame.size
         return collectionViewFlowLayout
     }()
     
     // collection
-    private lazy var collectionView: UICollectionView = {
-    
+        private lazy var collectionView: UICollectionView = {
+        
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: self.collectionViewFlowLayout)
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
@@ -89,9 +92,9 @@ class JJNewsBanner: UIView{
                 self.setupPageControl()
                 self.invalidateTimer()
                 
-//                if autoScroll {
-////                    self.setupTimer()
-//                }
+                if autoScroll {
+                    self.setupTimer()
+                }
                 self.layoutIfNeeded()
             }
         }
@@ -112,20 +115,20 @@ class JJNewsBanner: UIView{
     // 是否自动轮播
     @objc public var autoScroll = true {
         didSet {
-//            self.invalidateTimer()
-//            if autoScroll {
-//                self.setupTimer()
-//            }
+            self.invalidateTimer()
+            if autoScroll {
+                self.setupTimer()
+            }
         }
     }
     
     // 轮播时间间隔
     @objc public var autoScrollTimeInterval: TimeInterval = 2.0 {
         didSet {
-//            self.invalidateTimer()
-//            if autoScrollTimeInterval > 0 {
-//                self.setupTimer()
-//            }
+            self.invalidateTimer()
+            if autoScrollTimeInterval > 0 {
+                self.setupTimer()
+            }
         }
     }
     
@@ -181,7 +184,7 @@ class JJNewsBanner: UIView{
         if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
             var targetIndex = 0
             if self.loopTimes > 0 {
-                targetIndex = self.totalItemCount / 2
+                targetIndex = 0
             }
             if self.collectionView.numberOfItems(inSection: 0) == self.totalItemCount && self.loopTimes > 1 {
                 self.startScrollToItem(targetIndex: targetIndex, animated: false)
@@ -208,7 +211,7 @@ class JJNewsBanner: UIView{
             self.pageControl!.frame = pageControlFrame
             
             if #available(iOS 14.0, *) {
-                self.pageControl?.backgroundStyle = .prominent
+//                self.pageControl?.backgroundStyle = .prominent
             }
         }
     }
@@ -282,7 +285,7 @@ extension JJNewsBanner {
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
-extension JJNewsBanner: UICollectionViewDelegate, UICollectionViewDataSource {
+extension JJNewsBanner {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.totalItemCount
@@ -310,12 +313,12 @@ extension JJNewsBanner: UICollectionViewDelegate, UICollectionViewDataSource {
 extension JJNewsBanner{
  
     public func setupTimer() {
-//        self.invalidateTimer()
-//
-//        if self.autoScroll {
-//            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
-//            RunLoop.main.add(self.scrollTimer!, forMode: .common)
-//        }
+        self.invalidateTimer()
+
+        if self.autoScroll {
+            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
+            RunLoop.main.add(self.scrollTimer!, forMode: .common)
+        }
     }
     
     public func invalidateTimer() {
@@ -380,11 +383,11 @@ extension JJNewsBanner{
     }
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        self.invalidateTimer()
+        self.invalidateTimer()
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        self.setupTimer()
+        self.setupTimer()
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

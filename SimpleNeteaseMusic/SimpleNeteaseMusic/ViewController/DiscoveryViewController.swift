@@ -53,7 +53,7 @@ class DiscoveryViewController: UITableViewController {
         // 设置搜索栏
         setupSearchController()
         // 初始化 请求首页数据
-        fetchBanner(url: "http://10.200.22.166:3000/banner?type=2")
+        fetchBanner(url: "http://localhost:3000/banner?type=2")
         
     }
     
