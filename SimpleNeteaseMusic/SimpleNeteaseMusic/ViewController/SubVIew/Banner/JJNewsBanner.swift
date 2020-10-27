@@ -135,8 +135,6 @@ class JJNewsBanner: UIView{
     // 轮播次数
     private var loopTimes = 100
     
-    private var currentPage = 0
-    
     // item 总数
     private var totalItemCount: Int {
         return self.sourceCount
@@ -156,7 +154,7 @@ class JJNewsBanner: UIView{
     public var currentPageDotColor = UIColor.white
     
     // 默认分页控件颜色
-    public var pageDotColor = UIColor.red
+    public var pageDotColor = UIColor.gray
     
     /// 分页控件默认距离的边距
     public var pageControlMargin: CGFloat = 10
@@ -196,18 +194,22 @@ class JJNewsBanner: UIView{
                 pSize = CGSize(width: CGFloat(self.sourceCount) * self.pageControlDotSize.width, height: self.pageControlDotSize.height)
             }
             
-            var pX: CGFloat = 0
-            if self.pageControlAliment == .center {
-                pX = (self.frame.width - pSize.width) / 2
-            } else if self.pageControlAliment == .left {
-                pX = pageControlMargin + 10
-            } else if self.pageControlAliment == .right {
-                pX = self.frame.width - pSize.width - (pageControlMargin + 10)
-            }
+//            if self.pageControlAliment == .center {
+//                pX = (self.frame.width - pSize.width) / 2
+//            } else if self.pageControlAliment == .left {
+//                pX = pageControlMargin + 10
+//            } else if self.pageControlAliment == .right {
+//                pX = self.frame.width - pSize.width - (pageControlMargin + 10)
+//            }
+            let pX: CGFloat = 0
             let pY = self.frame.height - pSize.height - pageControlMargin
             
-            let pageControlFrame = CGRect(x: pX, y: pY, width: pSize.width, height: pSize.height)
+            let pageControlFrame = CGRect(x: pX, y: pY, width: self.frame.width, height: pSize.height)
             self.pageControl!.frame = pageControlFrame
+            
+            if #available(iOS 14.0, *) {
+                self.pageControl?.backgroundStyle = .prominent
+            }
         }
     }
     
@@ -249,7 +251,6 @@ class JJNewsBanner: UIView{
             tmpPageControl.isUserInteractionEnabled = false
             tmpPageControl.currentPage = self.pageControlIndex(cellIndex: self.currentIndex())
             self.addSubview(tmpPageControl)
-            
             self.pageControl = tmpPageControl
         case .custom:
             self.pageControl = nil
@@ -291,7 +292,6 @@ extension JJNewsBanner: UICollectionViewDelegate, UICollectionViewDataSource {
         if self.imageUrlStrArray != nil {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJImageViewCellId, for: indexPath) as! JJNewsImageViewCell
             cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
-            cell.backgroundColor = UIColor.white
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJImageViewCellId, for: indexPath)
@@ -372,7 +372,7 @@ extension JJNewsBanner{
         let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
         
         if self.pageControl!.isKind(of: UIPageControl.self) {
-            (self.pageControl as! UIPageControl).currentPage = indexOnPageControl
+            self.pageControl?.currentPage = indexOnPageControl
         }
 //        else {
 //            (self.pageControl as! FWPageControl).currentPage = indexOnPageControl

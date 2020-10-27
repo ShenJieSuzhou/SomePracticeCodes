@@ -18,7 +18,7 @@ class JJNewsImageViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.imageView.frame = self.bounds
-        self.addSubview(self.imageView)
+        self.contentView.addSubview(self.imageView)
     }
     
     required init?(coder aDecoder: NSCoder) {
