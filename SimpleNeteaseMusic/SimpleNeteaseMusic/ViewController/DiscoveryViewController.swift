@@ -24,6 +24,8 @@ class DiscoveryViewController: UITableViewController {
                       "http://pic.qiantucdn.com/58pic/17/70/72/02U58PICKVg_1024.jpg",
                       "http://pic.58pic.com/58pic/16/73/95/63E58PICQh7_1024.jpg"]
     
+    let menus = ["每日推荐", "私人FM", "歌单", "排行榜", "宝藏声音", "每日推荐", "私人FM", "歌单", "排行榜", "宝藏声音"]
+    
     @IBOutlet var homeTableView: UITableView!
     
     //搜索
@@ -108,6 +110,8 @@ class DiscoveryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         if(indexPath.section == 0){
             return 200.0
+        } else if (indexPath.section == 1){
+            return 100.0
         }
         
         return 50.0
@@ -115,7 +119,7 @@ class DiscoveryViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        if (section == 0) {
+        if (section == 0 || section == 1) {
             return 0;
         }
         
