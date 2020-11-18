@@ -4,4 +4,5 @@ target 'SimpleNeteaseMusic' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Moya', '~> 14.0'
   pod 'Kingfisher'
+  pod 'SnapKit'
 end

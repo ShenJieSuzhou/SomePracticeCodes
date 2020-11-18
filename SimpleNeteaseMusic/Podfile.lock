@@ -7,12 +7,14 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - SnapKit (5.0.1)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Kingfisher
   - Moya (~> 14.0)
+  - SnapKit
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -20,14 +22,16 @@ SPEC REPOS:
     - Alamofire
     - Kingfisher
     - Moya
+    - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Kingfisher: e3ec347a5ab8817b7585ef46923a2d2b9a7d8fbe
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: c8bf2464d85a4795a5662349608442070055ba4c
+PODFILE CHECKSUM: 116d03c561cdb89face10838a22d428feeb17fef
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

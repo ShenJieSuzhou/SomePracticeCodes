@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8546B108612069BBFA2DC0E7 /* Pods_SimpleNeteaseMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */; };
+		E51802272564F3C20041E813 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802262564F3C20041E813 /* HomeMenu.swift */; };
 		E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8727250B59680030B0FF /* AppDelegate.swift */; };
 		E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8729250B59680030B0FF /* SceneDelegate.swift */; };
 		E57D872C250B59680030B0FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D872B250B59680030B0FF /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 		451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleNeteaseMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.release.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.release.xcconfig"; sourceTree = "<group>"; };
+		E51802262564F3C20041E813 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
 		E57D8724250B59680030B0FF /* SimpleNeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D8727250B59680030B0FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E57D8729250B59680030B0FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */,
+				E51802262564F3C20041E813 /* HomeMenu.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
 				E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */,
 				F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */,
+				E51802272564F3C20041E813 /* HomeMenu.swift in Sources */,
 				F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */,
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
