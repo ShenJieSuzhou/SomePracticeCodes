@@ -34,11 +34,14 @@ class DiscoveryViewController: UITableViewController {
     var cusSearchBar:JJCustomSearchbar!
     var musicSearchController:MusicSearchViewController!
     
-    // 数据源
+    // 顶楼数据源
     var bannersData = [BannerModel]()
     var homeDataSource:NSArray!
     
-    // 轮播控件
+    // 二楼数据源
+    var menusData = [DragonBallModel]()
+    
+    // 顶楼轮播控件
     lazy var newsBanner: JJNewsBanner = {
         let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
         banner.currentPageDotColor = UIColor.white
@@ -49,14 +52,21 @@ class DiscoveryViewController: UITableViewController {
         return banner
     }()
     
+    // 二楼菜单按钮
+    lazy var menusView: HomeMenu = {
+        let menusV = HomeMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
+        menusV.update(data: menusData)
+        return menusV
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置搜索栏
         setupSearchController()
-        // 初始化 请求首页数据
+        // 初始化 请求首页顶楼数据
         fetchBanner(url: "http://localhost:3000/banner?type=2")
-        
+        // 请求首页二楼图标数据
+        fetchDragonBall()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,6 +104,15 @@ class DiscoveryViewController: UITableViewController {
             
             // 刷新 tableView
             self.homeTableView.reloadData()
+        }
+    }
+    
+    // 请求圆形图标
+    func fetchDragonBall(){
+        for item in self.menus {
+            var menu:DragonBallModel!
+            menu = DragonBallModel(menuIcon: "music", title: item)
+            self.menusData.append(menu)
         }
     }
     
@@ -167,10 +186,10 @@ class DiscoveryViewController: UITableViewController {
 //            cell.addSubview(firstImage)
            
             cell.addSubview(newsBanner)
+        } else if indexPath.section == 1{
+            cell.addSubview(menusView)
         } else {
-            
             cell.contentView.backgroundColor = UIColor.red
-            
         }
         
         return cell
