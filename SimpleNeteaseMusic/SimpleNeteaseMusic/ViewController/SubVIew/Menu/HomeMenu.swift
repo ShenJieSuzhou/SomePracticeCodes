@@ -96,12 +96,11 @@ extension HomeMenu {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJDragonBallCellId, for: indexPath) as! HomeMenuCell
             let model:DragonBallModel = self.menusArray[indexPath.row]
             cell.setupUI(imageName: model.menuIcon!, title: model.menuTitle!)
+            return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJImageViewCellId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJDragonBallCellId, for: indexPath)
             return cell
         }
-        
-        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
