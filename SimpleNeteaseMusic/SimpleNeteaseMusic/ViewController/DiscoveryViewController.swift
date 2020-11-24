@@ -54,7 +54,7 @@ class DiscoveryViewController: UITableViewController {
     
     // 二楼菜单按钮
     lazy var menusView: HomeMenu = {
-        let menusV = HomeMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
+        let menusV = HomeMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 160))
         menusV.update(data: menusData)
         return menusV
     }()
@@ -130,7 +130,7 @@ class DiscoveryViewController: UITableViewController {
         if(indexPath.section == 0){
             return 200.0
         } else if (indexPath.section == 1){
-            return 100.0
+            return 150.0
         }
         
         return 50.0

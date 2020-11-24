@@ -19,8 +19,8 @@ class HomeMenu: UIView , UICollectionViewDelegate, UICollectionViewDataSource{
         let collectionFlowLayout = UICollectionViewFlowLayout()
         collectionFlowLayout.minimumLineSpacing = 0
         collectionFlowLayout.minimumInteritemSpacing = 0
-        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionFlowLayout.itemSize = CGSize(width: 60, height: 60)
+        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        collectionFlowLayout.itemSize = CGSize(width: 100, height: 140)
         return collectionFlowLayout
     }()
     
