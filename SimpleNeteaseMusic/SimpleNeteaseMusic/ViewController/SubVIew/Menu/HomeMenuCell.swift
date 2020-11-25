@@ -11,30 +11,59 @@ import Foundation
 import SnapKit
 
 class HomeMenuCell: UICollectionViewCell {
-    var menuLayer = UIView()
-    var menuIcon = UIImageView()
-    var menuText = UILabel()
+    
+    lazy var menuLayer: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        return view
+    }()
+    
+    lazy var menuIcon: UIImageView = {
+        let mIcon = UIImageView()
+        return mIcon
+    }()
+    
+    lazy var menuText: UILabel = {
+        let mText = UILabel()
+        mText.textColor = UIColor.black
+        mText.textAlignment = .center
+        mText.font = UIFont.systemFont(ofSize: 18)
+        return mText
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(self.menuLayer)
-        self.menuLayer.addSubview(self.menuIcon)
-        self.contentView.addSubview(self.menuText)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.menuLayer.frame = CGRect(x: (self.frame.size.width - self.frame.size.width * 0.8) / 2, y: 0, width: self.frame.size.width * 0.8, height: self.frame.size.width * 0.8)
-        self.menuLayer.backgroundColor = UIColor.black
-        // 设置圆角
-        self.setCornersRadius(self.menuLayer, radius: self.menuLayer.frame.width/2, roundingCorners: [[.topLeft, .topRight, .bottomLeft, .bottomRight]])
         
+        self.contentView.addSubview(self.menuLayer)
+        self.menuLayer.addSubview(self.menuIcon)
+        self.contentView.addSubview(self.menuText)
         
-        self.menuIcon.frame = CGRect(x: (self.menuLayer.frame.width - 30) / 2, y: (self.menuLayer.frame.width - 30) / 2, width: 30, height: 30)
-        self.menuText.frame = CGRect(x: 0, y: self.frame.size.height - 40, width: self.frame.size.width, height: 30)
-        self.menuText.textColor = UIColor.black
-        self.menuText.textAlignment = .center
-        self.menuText.font = UIFont.systemFont(ofSize: 18)
+        self.menuLayer.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(self.frame.size.width * 0.8)
+            make.height.equalTo(self.frame.size.width * 0.8)
+        }
+        
+        self.menuIcon.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        
+        self.menuText.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
+            make.height.equalTo(30)
+            make.width.equalTo(self.frame.size.width * 0.8)
+        }
+        
+        // 设置菜单圆角
+        self.menuLayer.layer.cornerRadius = self.frame.size.width * 0.8 * 0.5
     }
 
     required init?(coder: NSCoder) {
