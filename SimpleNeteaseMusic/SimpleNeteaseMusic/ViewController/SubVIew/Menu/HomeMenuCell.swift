@@ -57,7 +57,7 @@ class HomeMenuCell: UICollectionViewCell {
         
         self.menuText.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(30)
             make.width.equalTo(self.frame.size.width * 0.8)
         }

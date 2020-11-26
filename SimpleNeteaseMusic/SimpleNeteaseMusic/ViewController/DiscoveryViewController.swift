@@ -67,6 +67,8 @@ class DiscoveryViewController: UITableViewController {
         fetchBanner(url: "http://localhost:3000/banner?type=2")
         // 请求首页二楼图标数据
         fetchDragonBall()
+        // 人气歌单推荐
+        fetchHotLists(url: "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -116,6 +118,12 @@ class DiscoveryViewController: UITableViewController {
         }
     }
     
+    // 请求人气歌单
+    func fetchHotLists(url: String) -> Void {
+        
+        
+    }
+    
     @objc func microphoneBtnClicked(){
         print("11111111")
     }
@@ -127,10 +135,12 @@ class DiscoveryViewController: UITableViewController {
     
     // Mark UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        if(indexPath.section == 0){
+        if indexPath.section == 0 {
             return 200.0
-        } else if (indexPath.section == 1){
+        } else if indexPath.section == 1 {
             return 150.0
+        } else if indexPath.section == 2 {
+            return 200.0
         }
         
         return 50.0
@@ -151,6 +161,18 @@ class DiscoveryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let width: CGFloat = tableView.frame.size.width
+        let height: CGFloat = 40
+        let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        headerView.backgroundColor = UIColor.black
+        if section == 2 {
+            headerView.setupUI(title: "人气歌单推荐", btnName: "查看更多")
+        }
+        
+        return headerView
     }
     
     
@@ -194,6 +216,8 @@ class DiscoveryViewController: UITableViewController {
         
         return cell
     }
+    
+    
 }
 
 extension DiscoveryViewController: UISearchBarDelegate {

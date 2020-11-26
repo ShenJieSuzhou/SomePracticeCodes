@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8546B108612069BBFA2DC0E7 /* Pods_SimpleNeteaseMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */; };
 		E51802272564F3C20041E813 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802262564F3C20041E813 /* HomeMenu.swift */; };
+		E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */; };
+		E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB5256F509700F0A5B4 /* CardViewCell.swift */; };
+		E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */; };
 		E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8727250B59680030B0FF /* AppDelegate.swift */; };
 		E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8729250B59680030B0FF /* SceneDelegate.swift */; };
 		E57D872C250B59680030B0FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D872B250B59680030B0FF /* ViewController.swift */; };
@@ -40,6 +43,9 @@
 		8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleNeteaseMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.release.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.release.xcconfig"; sourceTree = "<group>"; };
 		E51802262564F3C20041E813 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
+		E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
+		E547FAB5256F509700F0A5B4 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJTableViewHeader.swift; sourceTree = "<group>"; };
 		E57D8724250B59680030B0FF /* SimpleNeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D8727250B59680030B0FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E57D8729250B59680030B0FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +101,23 @@
 				DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E547FAB1256F500600F0A5B4 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */,
+				E547FAB5256F509700F0A5B4 /* CardViewCell.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		E547FAB8256F50AE00F0A5B4 /* CustomHeader */ = {
+			isa = PBXGroup;
+			children = (
+				E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */,
+			);
+			path = CustomHeader;
 			sourceTree = "<group>";
 		};
 		E57D871B250B59680030B0FF = {
@@ -159,6 +182,8 @@
 		E587C408252480400091747D /* SubVIew */ = {
 			isa = PBXGroup;
 			children = (
+				E547FAB8256F50AE00F0A5B4 /* CustomHeader */,
+				E547FAB1256F500600F0A5B4 /* Card */,
 				F40F5C852562D089006AD685 /* Menu */,
 				E587C467253696770091747D /* Banner */,
 			);
@@ -330,6 +355,7 @@
 			files = (
 				E587C4702536F56C0091747D /* JJPageControl.swift in Sources */,
 				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
+				E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
 				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
@@ -338,10 +364,12 @@
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
 				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
+				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
 				E587C3FC252357D70091747D /* BannerModel.swift in Sources */,
 				E5A7077F2567B02F006D23AB /* DragonBallModel.swift in Sources */,
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
+				E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */,
 				E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */,
 				F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */,
 				E51802272564F3C20041E813 /* HomeMenu.swift in Sources */,
