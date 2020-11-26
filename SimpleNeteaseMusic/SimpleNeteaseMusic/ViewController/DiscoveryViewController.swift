@@ -41,6 +41,9 @@ class DiscoveryViewController: UITableViewController {
     // 二楼数据源
     var menusData = [DragonBallModel]()
     
+    // 三楼数据源
+    var hotAlbumData = [HotAlbumModel]()
+    
     // 顶楼轮播控件
     lazy var newsBanner: JJNewsBanner = {
         let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
@@ -57,6 +60,12 @@ class DiscoveryViewController: UITableViewController {
         let menusV = HomeMenu(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 160))
         menusV.update(data: menusData)
         return menusV
+    }()
+    
+    // 三楼推荐歌单视图
+    lazy var hotAlbumsView: CardCollectionView = {
+        let view = CardCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        return view
     }()
     
     override func viewDidLoad() {
@@ -208,16 +217,16 @@ class DiscoveryViewController: UITableViewController {
 //            cell.addSubview(firstImage)
            
             cell.addSubview(newsBanner)
-        } else if indexPath.section == 1{
+        } else if indexPath.section == 1 {
             cell.addSubview(menusView)
+        } else if indexPath.section == 2 {
+            cell.addSubview(hotAlbumsView)
         } else {
             cell.contentView.backgroundColor = UIColor.red
         }
         
         return cell
     }
-    
-    
 }
 
 extension DiscoveryViewController: UISearchBarDelegate {
