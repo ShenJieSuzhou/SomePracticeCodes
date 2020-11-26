@@ -23,7 +23,8 @@ class CardCollectionView: UIView {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: 120, height: 200)
+        layout.itemSize = CGSize(width: 100, height: 200)
+        layout.scrollDirection = .horizontal
         return layout
     }()
     
