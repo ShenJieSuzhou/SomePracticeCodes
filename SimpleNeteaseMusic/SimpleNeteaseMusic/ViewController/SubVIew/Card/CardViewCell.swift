@@ -8,12 +8,14 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class CardViewCell: UICollectionViewCell {
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
         cover.backgroundColor = UIColor.black
-        
+        cover.layer.cornerRadius = 6
+        cover.contentMode = .scaleAspectFill
         return cover
     }()
     
@@ -41,7 +43,6 @@ class CardViewCell: UICollectionViewCell {
         let height: CGFloat = self.frame.size.height
         let width: CGFloat = self.frame.size.width
         
-        let coverHeight: CGFloat = height * (3/4)
         let descHeight: CGFloat = height * (1/4)
         
         self.addSubview(self.albumCover)
@@ -50,24 +51,28 @@ class CardViewCell: UICollectionViewCell {
         self.addSubview(self.albumDesc)
     
         self.albumCover.snp.makeConstraints { (make) in
-            make.width.equalTo(width - 20)
-            make.height.equalTo(coverHeight)
+            make.width.equalTo(width - 10)
+            make.height.equalTo(width - 10)
             make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
         }
         
         self.albumDesc.snp.makeConstraints { (make) in
-            make.width.equalTo(width - 20)
+            make.width.equalTo(width - 10)
             make.height.equalTo(descHeight)
             make.centerX.equalToSuperview()
             make.top.equalTo(self.albumCover.snp.bottom).offset(5)
         }
-        
     }
     
-    
     func updateUI(coverUrl: String, desc: String, views: String) -> Void {
-    
+        if coverUrl != "" {
+            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
+                
+            }
+        }
         
-        
+        self.albumDesc.text = desc
+        self.albumViews.text = views
     }
 }

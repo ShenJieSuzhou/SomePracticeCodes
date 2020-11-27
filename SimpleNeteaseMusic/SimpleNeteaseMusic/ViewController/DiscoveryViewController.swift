@@ -42,7 +42,7 @@ class DiscoveryViewController: UITableViewController {
     var menusData = [DragonBallModel]()
     
     // 三楼数据源
-    var hotAlbumData = [HotAlbumModel]()
+    var hotAlbumData = [HotListResult]()
     
     // 顶楼轮播控件
     lazy var newsBanner: JJNewsBanner = {
@@ -77,7 +77,7 @@ class DiscoveryViewController: UITableViewController {
         // 请求首页二楼图标数据
         fetchDragonBall()
         // 人气歌单推荐
-        fetchHotLists(url: "")
+        fetchHotLists(url: "http://localhost:3000/personalized?limit=5")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -129,8 +129,20 @@ class DiscoveryViewController: UITableViewController {
     
     // 请求人气歌单
     func fetchHotLists(url: String) -> Void {
-        
-        
+        NetworkTools.requestData(MethodType.get, URLString: url, parameters: nil) { (result) in
+            let jsonData = try? JSONSerialization.data(withJSONObject: result, options: [])
+            let jsonString = String(data: jsonData!, encoding: .utf8)
+            
+            if let data = jsonString?.data(using: .utf8) {
+                let decoder = JSONDecoder()
+                if let hotAlbum = try? decoder.decode(HotAlbum.self, from: data) {
+                    if hotAlbum.code == 200 {
+                        self.hotAlbumData = hotAlbum.result
+                        self.hotAlbumsView.updateUI(hotList: self.hotAlbumData)
+                    }
+                }
+            }
+        }
     }
     
     @objc func microphoneBtnClicked(){
@@ -149,7 +161,7 @@ class DiscoveryViewController: UITableViewController {
         } else if indexPath.section == 1 {
             return 150.0
         } else if indexPath.section == 2 {
-            return 200.0
+            return 180.0
         }
         
         return 50.0

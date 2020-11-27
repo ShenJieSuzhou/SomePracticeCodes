@@ -12,18 +12,22 @@ import SnapKit
 let JJHotAlbumCellId = "JJHotAlbumCellId"
 
 class CardCollectionView: UIView {
-//    lazy var hotList: Array[HotAlbumModel]? = {
-//
-//    }()
     
-    
+    // 推荐歌单数据
+    private var hotList: [HotListResult]? {
+        didSet{
+            if hotList != nil {
+                self.hotAlbumContainer.reloadData()
+            }
+        }
+    }
+        
     /// 布局
     lazy var cardFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: 100, height: 200)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         return layout
     }()
@@ -56,6 +60,9 @@ class CardCollectionView: UIView {
         super.layoutSubviews()
         self.addSubview(self.hotAlbumContainer)
         
+        // 设置 item size 大小
+        self.cardFlowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height)
+        
         self.hotAlbumContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
@@ -79,15 +86,25 @@ extension CardCollectionView: UICollectionViewDelegate {
 extension CardCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.hotList == nil {
+            return 0
+        }
         
-        return 10
+        return self.hotList!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJHotAlbumCellId, for: indexPath) as! CardViewCell
-//        let model:DragonBallModel = self.menusArray[indexPath.row]
-//        cell.setupUI(imageName: model.menuIcon!, title: model.menuTitle!)
+        let result:HotListResult = self.hotList![indexPath.row]
+        cell.updateUI(coverUrl: result.picURL, desc: result.name, views: String(result.playCount))
         return cell
+    }
+}
+
+// MARK: - 初始化
+extension CardCollectionView {
+    // 更新 UI
+    open func updateUI(hotList: [HotListResult]?){
+        self.hotList = hotList
     }
 }
