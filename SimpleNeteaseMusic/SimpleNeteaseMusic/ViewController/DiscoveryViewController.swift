@@ -70,6 +70,8 @@ class DiscoveryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 设置背景
+        self.view.backgroundColor = UIColor.darkModeViewColor
         // 设置搜索栏
         setupSearchController()
         // 初始化 请求首页顶楼数据

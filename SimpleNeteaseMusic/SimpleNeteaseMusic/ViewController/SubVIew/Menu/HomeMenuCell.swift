@@ -14,7 +14,7 @@ class HomeMenuCell: UICollectionViewCell {
     
     lazy var menuLayer: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.darkModeMenuColor
         return view
     }()
     
@@ -25,7 +25,7 @@ class HomeMenuCell: UICollectionViewCell {
     
     lazy var menuText: UILabel = {
         let mText = UILabel()
-        mText.textColor = UIColor.black
+        mText.textColor = UIColor.darkModeTextColor
         mText.textAlignment = .center
         mText.font = UIFont.systemFont(ofSize: 18)
         return mText
