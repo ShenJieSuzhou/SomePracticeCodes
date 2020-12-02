@@ -26,6 +26,13 @@ class JJTableViewHeader: UIView {
         myTitle.font = UIFont.systemFont(ofSize: 22)
         return myTitle
     }()
+    
+    lazy var mySubtTitle: UILabel = {
+        let subTitle = UILabel()
+        subTitle.textColor = UIColor.white
+        subTitle.font = UIFont.systemFont(ofSize: 14)
+        return subTitle
+    }()
 
     // 查看更多按妞
     lazy var buttom: UIButton = {
@@ -74,5 +81,11 @@ class JJTableViewHeader: UIView {
     func setupUI(title: String, btnName: String) -> Void {
         self.title.text = title
         self.buttom.setTitle(btnName, for: .normal)
+    }
+    
+    func setupUIWithButtom(title: String, subTitle: String, buttom: UIButton) -> Void {
+        self.title.text = title
+        self.mySubtTitle.text = subTitle
+        self.buttom = buttom
     }
 }

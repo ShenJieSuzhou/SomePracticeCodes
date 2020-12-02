@@ -35,6 +35,8 @@
 		E5A7077F2567B02F006D23AB /* DragonBallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A7077E2567B02F006D23AB /* DragonBallModel.swift */; };
 		E5CEFB2425149346007B6E0E /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5CEFB2325149346007B6E0E /* MockData.json */; };
 		E5D8DFCE2574CCB6002DF517 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */; };
+		E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */; };
+		E5D8E05E25779706002DF517 /* LayoutScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E05D25779706002DF517 /* LayoutScale.swift */; };
 		F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
@@ -73,6 +75,8 @@
 		E5A7077E2567B02F006D23AB /* DragonBallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallModel.swift; sourceTree = "<group>"; };
 		E5CEFB2325149346007B6E0E /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleCardViewCell.swift; sourceTree = "<group>"; };
+		E5D8E05D25779706002DF517 /* LayoutScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutScale.swift; sourceTree = "<group>"; };
 		F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			children = (
 				E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */,
 				E547FAB5256F509700F0A5B4 /* CardViewCell.swift */,
+				E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 				E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */,
 				F42F35A52520F125007EDADD /* NetworkTools.swift */,
 				E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */,
+				E5D8E05D25779706002DF517 /* LayoutScale.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
 				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,
 				E547FB12256F8C7100F0A5B4 /* HotAlbumModel.swift in Sources */,
+				E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */,
 				E57D872C250B59680030B0FF /* ViewController.swift in Sources */,
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
@@ -384,6 +391,7 @@
 				F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */,
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
+				E5D8E05E25779706002DF517 /* LayoutScale.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
