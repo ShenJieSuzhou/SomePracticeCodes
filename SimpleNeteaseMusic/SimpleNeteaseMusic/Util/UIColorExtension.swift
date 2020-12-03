@@ -63,4 +63,9 @@ extension UIColor {
             return .red
         }
     }
+    
+    // author color
+    public class var defaultAuthorColor: UIColor {
+        return UIColor(red: 65/255, green: 65/255, blue: 65/255, alpha: 1)
+    }
 }

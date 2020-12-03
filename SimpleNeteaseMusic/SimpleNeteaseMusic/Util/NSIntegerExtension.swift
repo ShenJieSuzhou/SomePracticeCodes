@@ -1,26 +1,28 @@
 //
-//  LayoutScale.swift
+//  NSIntegerExtension.swift
 //  SimpleNeteaseMusic
 //
-//  Created by shenjie on 2020/12/2.
+//  Created by shenjie on 2020/12/3.
 //  Copyright © 2020 shenjie. All rights reserved.
 //
 
 import UIKit
 
-//class LayoutScale: NSObject {
-//
-//}
+let screenWidth = UIScreen.main.bounds.width // max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
+let screenHeight = UIScreen.main.bounds.height // min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
+let screenBounds = UIScreen.main.bounds
 
 
-// 是否为横屏的宏
-//#define IS_LANDSCAPE (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]))
-//
-//// 根据横屏竖屏取屏幕宽高
-//#define SCREEN_WIDTH (IS_LANDSCAPE ? [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
-//#define SCREEN_HEIGHT (IS_LANDSCAPE ? [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height)
-
-let JJSCREEN_WIDTH = UIScreen.main.bounds.size.width
+extension NSInteger{
+    
+    func scaleW() -> CGFloat {
+        return (screenWidth / 414 * CGFloat(self))
+    }
+    
+    func scaleH() -> CGFloat {
+        return (screenHeight / 667 * CGFloat(self))
+    }
+}
 
 // 根据屏幕尺寸进行缩放
 //static func UIAdapter (param: CGFloat) -> NSInteger{
