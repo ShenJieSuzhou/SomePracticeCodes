@@ -68,6 +68,12 @@ class DiscoveryViewController: UITableViewController {
         return view
     }()
     
+    // 四楼私人定制视图
+    lazy var privateSongListView: RowStyleCollectionView = {
+        let view = RowStyleCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 240))
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置背景
@@ -164,8 +170,10 @@ class DiscoveryViewController: UITableViewController {
             return 150.0
         } else if indexPath.section == 2 {
             return 180.0
+        } else if indexPath.section == 3 {
+            return 240.0
         }
-        
+ 
         return 50.0
     }
 
@@ -190,9 +198,11 @@ class DiscoveryViewController: UITableViewController {
         let width: CGFloat = tableView.frame.size.width
         let height: CGFloat = 40
         let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        headerView.backgroundColor = UIColor.black
+        headerView.backgroundColor = .darkModeViewColor
         if section == 2 {
             headerView.setupUI(title: "人气歌单推荐", btnName: "查看更多")
+        } else if section == 3 {
+            headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
         }
         
         return headerView
@@ -235,8 +245,10 @@ class DiscoveryViewController: UITableViewController {
             cell.addSubview(menusView)
         } else if indexPath.section == 2 {
             cell.addSubview(hotAlbumsView)
+        } else if indexPath.section == 3 {
+            cell.addSubview(privateSongListView)
         } else {
-            cell.contentView.backgroundColor = UIColor.red
+            cell.contentView.backgroundColor = UIColor.clear
         }
         
         return cell

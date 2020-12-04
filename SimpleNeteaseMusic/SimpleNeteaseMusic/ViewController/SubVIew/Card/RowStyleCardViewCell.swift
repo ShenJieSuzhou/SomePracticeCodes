@@ -37,7 +37,6 @@ class RowView: UIView {
     // name
     lazy var songName: UILabel = {
         let name = UILabel()
-        name.text = ""
         name.font = UIFont.systemFont(ofSize: 14)
         name.textColor = .darkModeTextColor
         name.lineBreakMode = .byTruncatingTail
@@ -47,7 +46,6 @@ class RowView: UIView {
     // author
     lazy var author: UILabel = {
         let author = UILabel()
-        author.text = ""
         author.font = UIFont.systemFont(ofSize: 13)
         author.textColor = .defaultAuthorColor
         author.lineBreakMode = .byTruncatingTail
@@ -57,7 +55,6 @@ class RowView: UIView {
     // desc
     lazy var songDetail: UILabel = {
         let songDetail = UILabel()
-        songDetail.text = ""
         songDetail.font = UIFont.systemFont(ofSize: 13)
         songDetail.textColor = .defaultAuthorColor
         songDetail.lineBreakMode = .byTruncatingTail
@@ -116,6 +113,7 @@ class RowView: UIView {
             make.left.equalToSuperview().offset(5)
             make.top.equalToSuperview()
         }
+        self.songName.text = mockdata1[num]
         
         // 计算歌手名字长度，但不超过最大值，超过部分用省略号代替
         let max_singerLen = rowWidth * 0.4
@@ -127,6 +125,7 @@ class RowView: UIView {
             make.left.equalTo(self.songName.snp.right)
             make.top.equalToSuperview()
         }
+        self.author.text = mockdata2[num]
         
         // 计算专辑简介长度，但不超过最大值，超过部分用省略号代替
 //        let max_albumDetailLen = rowWidth
@@ -138,6 +137,7 @@ class RowView: UIView {
             make.left.equalToSuperview().offset(5)
             make.top.equalTo(self.songName.snp.bottom).offset(5)
         }
+        self.songDetail.text = mockdata3[num]
         
         // 设置 playButtom 的约束
         self.playButtom.snp.makeConstraints { (make) in
@@ -171,7 +171,7 @@ class RowView: UIView {
     func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
                              option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin)->CGRect{
         let attr = [NSAttributedString.Key.font:font]
-        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
         return rect
     }
     
@@ -181,21 +181,54 @@ class RowStyleCardViewCell: UICollectionViewCell {
     
     lazy var rowView1: RowView = {
        let view = RowView()
+        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
     }()
     
     lazy var rowView2: RowView = {
        let view = RowView()
+        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
     }()
     
     
     lazy var rowView3: RowView = {
        let view = RowView()
+        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
     }()
 
-    
-
-
+    override func layoutSubviews() {
+        superview?.layoutSubviews()
+        
+        // 构建 Cell UI
+        self.addSubview(rowView1)
+        self.addSubview(rowView2)
+        self.addSubview(rowView3)
+        
+        // 每个 row 的行高
+        let rowHeight: Float = Float(self.frame.size.height) / 3
+        
+        // 约束
+        self.rowView1.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+        
+        self.rowView2.snp.makeConstraints { (make) in
+            make.top.equalTo(self.rowView1.snp.bottom)
+            make.left.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+        
+        self.rowView3.snp.makeConstraints { (make) in
+            make.top.equalTo(self.rowView2.snp.bottom)
+            make.left.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(rowHeight)
+        }
+    }
 }
