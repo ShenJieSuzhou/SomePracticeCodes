@@ -164,7 +164,7 @@ class RowView: UIView {
         })
     }
     
-    
+                                                                                  
     /*
     * 获取字符串边框
     */
@@ -174,11 +174,9 @@ class RowView: UIView {
         let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
         return rect
     }
-    
 }
 
 class RowStyleCardViewCell: UICollectionViewCell {
-    
     lazy var rowView1: RowView = {
        let view = RowView()
         view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")

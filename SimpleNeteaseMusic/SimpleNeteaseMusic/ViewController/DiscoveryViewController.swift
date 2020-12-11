@@ -44,6 +44,9 @@ class DiscoveryViewController: UITableViewController {
     // 三楼数据源
     var hotAlbumData = [HotListResult]()
     
+    // 5楼数据源
+    var exclusiveListData = [HotListResult]()
+    
     // 顶楼轮播控件
     lazy var newsBanner: JJNewsBanner = {
         let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
@@ -74,6 +77,14 @@ class DiscoveryViewController: UITableViewController {
         return view
     }()
     
+    // 五楼专属歌单
+    lazy var exclusivePlaylistView: CardCollectionView = {
+        let view = CardCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        return view
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置背景
@@ -86,6 +97,8 @@ class DiscoveryViewController: UITableViewController {
         fetchDragonBall()
         // 人气歌单推荐
         fetchHotLists(url: "http://localhost:3000/personalized?limit=5")
+        // 专属歌单
+        fetchExclusivePlaylist(url: "http://localhost:3000/personalized?limit=5")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,6 +166,24 @@ class DiscoveryViewController: UITableViewController {
         }
     }
     
+    // 专属歌单场景
+    func fetchExclusivePlaylist(url: String) -> Void {
+        NetworkTools.requestData(MethodType.get, URLString: url, parameters: nil) { (result) in
+            let jsonData = try? JSONSerialization.data(withJSONObject: result, options: [])
+            let jsonString = String(data: jsonData!, encoding: .utf8)
+            
+            if let data = jsonString?.data(using: .utf8) {
+                let decoder = JSONDecoder()
+                if let hotAlbum = try? decoder.decode(HotAlbum.self, from: data) {
+                    if hotAlbum.code == 200 {
+                        self.exclusiveListData = hotAlbum.result
+                        self.exclusivePlaylistView.updateUI(hotList: self.exclusiveListData)
+                    }
+                }
+            }
+        }
+    }
+    
     @objc func microphoneBtnClicked(){
         print("11111111")
     }
@@ -171,6 +202,10 @@ class DiscoveryViewController: UITableViewController {
         } else if indexPath.section == 2 {
             return 180.0
         } else if indexPath.section == 3 {
+            return 240.0
+        } else if indexPath.section == 4 {
+            return 180.0
+        } else if indexPath.section == 5 {
             return 240.0
         }
  
@@ -203,6 +238,8 @@ class DiscoveryViewController: UITableViewController {
             headerView.setupUI(title: "人气歌单推荐", btnName: "查看更多")
         } else if section == 3 {
             headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
+        } else if section == 4 {
+            headerView.setupUI(title: "专属场景歌单", btnName: "查看更多")
         }
         
         return headerView
@@ -247,6 +284,8 @@ class DiscoveryViewController: UITableViewController {
             cell.addSubview(hotAlbumsView)
         } else if indexPath.section == 3 {
             cell.addSubview(privateSongListView)
+        } else if indexPath.section == 4 {
+            cell.addSubview(exclusivePlaylistView)
         } else {
             cell.contentView.backgroundColor = UIColor.clear
         }

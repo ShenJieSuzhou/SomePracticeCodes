@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "740707CD-336C-4EC2-9DBD-F4513B250C66"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimpleNeteaseMusic/ViewController/SubVIew/Card/RowStyleCardViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "layoutSubviews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2BB69140-A8FE-42FD-A481-0E166090EFC2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -30,58 +14,10 @@
             filePath = "SimpleNeteaseMusic/ViewController/SubVIew/Card/RowStyleCardViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "layoutSubviews()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8ED6B20F-C3EA-4D40-AC69-386344B0202E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimpleNeteaseMusic/ViewController/SubVIew/Card/RowStyleCardViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "layoutSubviews()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8ED6B20F-C3EA-4D40-AC69-386344B0202E - ff2b95ce4d0cc33e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SimpleNeteaseMusic.RowStyleCardViewCell.layoutSubviews() -&gt; ()"
-                  moduleName = "SimpleNeteaseMusic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shenjie/Documents/Myproject/GitProj/SomePracticeCodes/SimpleNeteaseMusic/SimpleNeteaseMusic/ViewController/SubVIew/Card/RowStyleCardViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
-                  offsetFromSymbolStart = "864">
-               </Location>
-               <Location
-                  uuid = "8ED6B20F-C3EA-4D40-AC69-386344B0202E - ae63bf68806a800f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (SnapKit.ConstraintMaker) -&gt; () in SimpleNeteaseMusic.RowStyleCardViewCell.layoutSubviews() -&gt; ()"
-                  moduleName = "SimpleNeteaseMusic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shenjie/Documents/Myproject/GitProj/SomePracticeCodes/SimpleNeteaseMusic/SimpleNeteaseMusic/ViewController/SubVIew/Card/RowStyleCardViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "228"
-                  endingLineNumber = "228"
-                  offsetFromSymbolStart = "49">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,15 +9,23 @@
 import UIKit
 import SnapKit
 
+//public protocol TagSwitchDelegate:  {
+//    <#requirements#>
+//}
+
 class JJTableViewHeader: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+//    @IBOutlet weak var interfaceSegmented: CustomSegmentedControl!{
+//        didSet{
+//            interfaceSegmented.setButtonTitles(buttonTitles: ["OFF","HTTP","AUTO"])
+//            interfaceSegmented.selectorViewColor = .orange
+//            interfaceSegmented.selectorTextColor = .orange
+//        }
+//    }
+    
+//    let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: ["OFF","HTTP","AUTO"])
+//    codeSegmented.backgroundColor = .clear
+//    view.addSubview(codeSegmented)
     
     // tableView header 名称
     lazy var title: UILabel = {
@@ -33,6 +41,9 @@ class JJTableViewHeader: UIView {
         subTitle.font = UIFont.systemFont(ofSize: 14)
         return subTitle
     }()
+        
+    // 标签
+    var tagButtoms: [UIButton]?
 
     // 查看更多按妞
     lazy var buttom: UIButton = {
@@ -78,14 +89,21 @@ class JJTableViewHeader: UIView {
         self.buttom.layer.borderWidth = 1
     }
     
-    func setupUI(title: String, btnName: String) -> Void {
+    public func setupUI(title: String, btnName: String) -> Void {
         self.title.text = title
         self.buttom.setTitle(btnName, for: .normal)
     }
     
-    func setupUIWithButtom(title: String, subTitle: String, buttom: UIButton) -> Void {
+    public func setupUIWithButtom(title: String, subTitle: String, buttom: UIButton) -> Void {
         self.title.text = title
         self.mySubtTitle.text = subTitle
         self.buttom = buttom
+    }
+    
+    public func setupUIWithMutiTags(titles: Array<String>!) -> Void {
+        for item in titles {
+            let buttom:UIButton = UIButton(type: .custom)
+            buttom.setTitle(item, for: .normal)
+        }
     }
 }
