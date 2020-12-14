@@ -240,6 +240,8 @@ class DiscoveryViewController: UITableViewController {
             headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
         } else if section == 4 {
             headerView.setupUI(title: "专属场景歌单", btnName: "查看更多")
+        } else if section == 5 {
+            headerView.setupUIWithMutiTags(titles: ["新歌","新碟"], btnName: "查看更多")
         }
         
         return headerView
