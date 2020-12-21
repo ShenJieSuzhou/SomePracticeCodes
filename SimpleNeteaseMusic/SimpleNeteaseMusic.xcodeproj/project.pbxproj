@@ -549,9 +549,9 @@
 			baseConfigurationReference = 451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = WSSN499SLU;
+				DEVELOPMENT_TEAM = 3VC2ZZSR35;
 				INFOPLIST_FILE = SimpleNeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -559,7 +559,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.SimpleNeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = UniversalSnailDev;
+				PROVISIONING_PROFILE_SPECIFIER = snailgamesDis;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -572,15 +572,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = WSSN499SLU;
+				DEVELOPMENT_TEAM = 3VC2ZZSR35;
 				INFOPLIST_FILE = SimpleNeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.HeroSurvival;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.SimpleNeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = HeroSurvivalDis;
+				PROVISIONING_PROFILE_SPECIFIER = snailgamesDis;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

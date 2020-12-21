@@ -30,14 +30,14 @@ class JJTableViewHeader: UIView {
     // tableView header 名称
     lazy var title: UILabel = {
         let myTitle = UILabel()
-        myTitle.textColor = UIColor.white
+        myTitle.textColor = UIColor.darkModeTextColor
         myTitle.font = UIFont.systemFont(ofSize: 22)
         return myTitle
     }()
     
     lazy var mySubtTitle: UILabel = {
         let subTitle = UILabel()
-        subTitle.textColor = UIColor.white
+        subTitle.textColor = UIColor.darkModeTextColor
         subTitle.font = UIFont.systemFont(ofSize: 14)
         return subTitle
     }()
@@ -48,7 +48,7 @@ class JJTableViewHeader: UIView {
     // 查看更多按妞
     lazy var buttom: UIButton = {
         let myButtom = UIButton()
-        myButtom.setTitleColor(UIColor.white, for: .normal)
+        myButtom.setTitleColor(UIColor.darkModeTextColor, for: .normal)
         
         return myButtom
     }()
