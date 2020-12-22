@@ -44,7 +44,7 @@ class JJCustomSegmentedControl: UIView {
     }
     
     func setIndex(index:Int) {
-        for (viewIndex, view) in buttons.enumerated() {
+        for view in buttons {
             if view.isKind(of: UIButton.self) {
                 let button = view as! UIButton
                 button.setTitleColor(textColor, for: .normal)
@@ -84,21 +84,18 @@ extension JJCustomSegmentedControl {
     }
     
     private func configStackView() {
-//        var width: CGFloat!
-//        for (viewIndex, view) in buttons.enumerated() {
-//            let w = view.frame.width
-//            width += w
-//        }
+        var width: CGFloat = 0
+        for view in buttons {
+            let w = view.frame.width
+            width += w
+        }
         
         let stack = UIStackView(arrangedSubviews: buttons)
         stack.axis = .horizontal
-////        stack.alignment = .fill
-//        stack.distribution = .equalCentering
-////        stack.spacing = 10
         addSubview(stack)
         
         stack.snp.makeConstraints { (maker) in
-//            maker.width.equalTo(width)
+            maker.width.equalTo(width)
             maker.height.equalToSuperview()
         }
     }
@@ -111,8 +108,12 @@ extension JJCustomSegmentedControl {
     }
     
     private func createButton() {
-        let seperate = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
-        seperate.backgroundColor = UIColor.white
+        // 分割线
+        let seperate = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.height))
+        let line = UIImageView(frame: CGRect(x: 20, y: 0, width: 2, height: self.frame.height))
+        line.backgroundColor = UIColor.white
+        seperate.backgroundColor = UIColor.clear
+        seperate.addSubview(line)
         
         buttons = [UIView]()
         buttons.removeAll()
