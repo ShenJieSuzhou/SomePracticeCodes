@@ -549,17 +549,17 @@
 			baseConfigurationReference = 451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 3VC2ZZSR35;
+				DEVELOPMENT_TEAM = WSSN499SLU;
 				INFOPLIST_FILE = SimpleNeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.SimpleNeteaseMusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.MobileSDKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = snailgamesDis;
+				PROVISIONING_PROFILE_SPECIFIER = UniversalSnailDev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -572,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 3VC2ZZSR35;
+				DEVELOPMENT_TEAM = 8SRP47XFRN;
 				INFOPLIST_FILE = SimpleNeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,7 +580,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.SimpleNeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = snailgamesDis;
+				PROVISIONING_PROFILE_SPECIFIER = UniversalUSAEntDis_snailgames;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

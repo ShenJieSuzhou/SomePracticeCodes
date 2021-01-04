@@ -106,5 +106,6 @@ extension CardCollectionView {
     // 更新 UI
     open func updateUI(hotList: [HotListResult]?){
         self.hotList = hotList
+        
     }
 }

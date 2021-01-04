@@ -9,23 +9,14 @@
 import UIKit
 import SnapKit
 
-//public protocol TagSwitchDelegate:  {
-//    <#requirements#>
-//}
+public protocol TagSwitchDelegate: NSObject {
+    func tagSwitchTo(to index:Int)
+}
 
 class JJTableViewHeader: UIView {
-
-//    @IBOutlet weak var interfaceSegmented: CustomSegmentedControl!{
-//        didSet{
-//            interfaceSegmented.setButtonTitles(buttonTitles: ["OFF","HTTP","AUTO"])
-//            interfaceSegmented.selectorViewColor = .orange
-//            interfaceSegmented.selectorTextColor = .orange
-//        }
-//    }
     
-//    let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: ["OFF","HTTP","AUTO"])
-//    codeSegmented.backgroundColor = .clear
-//    view.addSubview(codeSegmented)
+    // 回调实例
+    weak var tagDelegate: TagSwitchDelegate?
     
     // tableView header 名称
     lazy var title: UILabel = {
@@ -133,12 +124,12 @@ class JJTableViewHeader: UIView {
         
         let codeSegmented = JJCustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: 0, height: 0), titles: titles)
         codeSegmented.backgroundColor = .clear
-        
+        codeSegmented.delegate = self
         self.addSubview(codeSegmented)
         self.addSubview(self.buttom)
         
         codeSegmented.snp.makeConstraints { (make) in
-            make.width.equalTo(width * 0.6)
+            make.width.equalTo(width * 0.7)
             make.height.equalTo(height - 20)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(10)
@@ -155,5 +146,11 @@ class JJTableViewHeader: UIView {
         self.buttom.layer.cornerRadius = 10
         self.buttom.layer.borderColor = UIColor.white.cgColor
         self.buttom.layer.borderWidth = 1
+    }
+}
+
+extension JJTableViewHeader: JJCustomSegmentedControlDelegate {
+    func switchTo(to index: Int) {
+        tagDelegate?.tagSwitchTo(to: index)
     }
 }

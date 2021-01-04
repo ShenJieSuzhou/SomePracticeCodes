@@ -47,6 +47,9 @@ class DiscoveryViewController: UITableViewController {
     // 5楼数据源
     var exclusiveListData = [HotListResult]()
     
+    // 6楼数据源
+    var newReleaseList = [HotListResult]()
+    
     // 顶楼轮播控件
     lazy var newsBanner: JJNewsBanner = {
         let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
@@ -80,6 +83,12 @@ class DiscoveryViewController: UITableViewController {
     // 五楼专属歌单
     lazy var exclusivePlaylistView: CardCollectionView = {
         let view = CardCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        return view
+    }()
+    
+    // 六楼 新歌新碟
+    lazy var newReleaseSongListView: RowStyleCollectionView = {
+        let view = RowStyleCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 240))
         return view
     }()
     
@@ -153,7 +162,7 @@ class DiscoveryViewController: UITableViewController {
         NetworkTools.requestData(MethodType.get, URLString: url, parameters: nil) { (result) in
             let jsonData = try? JSONSerialization.data(withJSONObject: result, options: [])
             let jsonString = String(data: jsonData!, encoding: .utf8)
-            
+                                                                            
             if let data = jsonString?.data(using: .utf8) {
                 let decoder = JSONDecoder()
                 if let hotAlbum = try? decoder.decode(HotAlbum.self, from: data) {
@@ -183,6 +192,25 @@ class DiscoveryViewController: UITableViewController {
             }
         }
     }
+    
+    // 新歌、新碟
+//    func fetchNewReleaseSongs(url: String) -> Void {
+//        NetworkTools.requestData(MethodType.get, URLString: url, parameters: nil) { (result) in
+//            let jsonData = try? JSONSerialization.data(withJSONObject: result, options: [])
+//            let jsonString = String(data: jsonData!, encoding: .utf8)
+//
+//            if let data = jsonString?.data(using: .utf8) {
+//                let decoder = JSONDecoder()
+//                if let hotAlbum = try? decoder.decode(HotAlbum.self, from: data) {
+//                    if hotAlbum.code == 200 {
+//                        self.newReleaseList = hotAlbum.result
+//                        self.newReleaseSongListView.updateUI(hotList: self.hotAlbumData)
+//                        self.newReleaseSongListView.updateUI(hotList: self.newReleaseList)
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     @objc func microphoneBtnClicked(){
         print("11111111")
@@ -234,6 +262,7 @@ class DiscoveryViewController: UITableViewController {
         let height: CGFloat = 40
         let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
         headerView.backgroundColor = .darkModeViewColor
+        headerView.tagDelegate = self
         if section == 2 {
             headerView.setupUI(title: "人气歌单推荐", btnName: "查看更多")
         } else if section == 3 {
@@ -264,7 +293,8 @@ class DiscoveryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "CellReuseIdentifier")
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
 //            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 20, height: 180))
 //            scrollBanner.setBannerImages(images: self.bannersData)
@@ -288,6 +318,8 @@ class DiscoveryViewController: UITableViewController {
             cell.addSubview(privateSongListView)
         } else if indexPath.section == 4 {
             cell.addSubview(exclusivePlaylistView)
+        } else if indexPath.section == 5 {
+            cell.addSubview(newReleaseSongListView)
         } else {
             cell.contentView.backgroundColor = UIColor.clear
         }
@@ -302,5 +334,13 @@ extension DiscoveryViewController: UISearchBarDelegate {
         self.musicSearchController = MusicSearchViewController()
         self.navigationController?.pushViewController(self.musicSearchController, animated: false)
         return true
+    }
+}
+
+extension DiscoveryViewController: TagSwitchDelegate {
+    // Tag 切换
+    func tagSwitchTo(to index: Int) {
+        // refresh 数据
+        print("1111111");
     }
 }
