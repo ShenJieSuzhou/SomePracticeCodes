@@ -235,6 +235,8 @@ class DiscoveryViewController: UITableViewController {
             return 180.0
         } else if indexPath.section == 5 {
             return 240.0
+        } else if indexPath.section == 6 {
+            return 250.0
         }
  
         return 50.0
@@ -271,6 +273,8 @@ class DiscoveryViewController: UITableViewController {
             headerView.setupUI(title: "专属场景歌单", btnName: "查看更多")
         } else if section == 5 {
             headerView.setupUIWithMutiTags(titles: ["新歌","新碟"], btnName: "查看更多")
+        } else if section == 6 {
+            headerView.setupUI(title: "排行榜", btnName: "更多")
         }
         
         return headerView
@@ -282,7 +286,7 @@ class DiscoveryViewController: UITableViewController {
         if(self.bannersData.count == 0){
             return 1;
         }
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
