@@ -96,3 +96,9 @@ extension RowStyleCollectionView: UICollectionViewDataSource {
         return 1
     }
 }
+
+extension RowStyleCollectionView {
+    
+    
+    
+}

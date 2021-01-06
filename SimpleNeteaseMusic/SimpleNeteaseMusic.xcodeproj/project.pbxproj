@@ -40,6 +40,9 @@
 		E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */; };
 		E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E063257895C4002DF517 /* CGFloatExtension.swift */; };
 		E5D8E068257A0095002DF517 /* RowStyleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E067257A0095002DF517 /* RowStyleCollectionView.swift */; };
+		E5F941C425A58B7600119D34 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C325A58B7600119D34 /* RankView.swift */; };
+		E5F941C825A58D7100119D34 /* RankDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C725A58D7100119D34 /* RankDetailViewCell.swift */; };
+		E5F941D025A5922400119D34 /* RowStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941CF25A5922400119D34 /* RowStyleView.swift */; };
 		F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
@@ -83,6 +86,9 @@
 		E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSIntegerExtension.swift; sourceTree = "<group>"; };
 		E5D8E063257895C4002DF517 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		E5D8E067257A0095002DF517 /* RowStyleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleCollectionView.swift; sourceTree = "<group>"; };
+		E5F941C325A58B7600119D34 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
+		E5F941C725A58D7100119D34 /* RankDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailViewCell.swift; sourceTree = "<group>"; };
+		E5F941CF25A5922400119D34 /* RowStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleView.swift; sourceTree = "<group>"; };
 		F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
@@ -200,6 +206,8 @@
 		E587C408252480400091747D /* SubVIew */ = {
 			isa = PBXGroup;
 			children = (
+				E5F941CE25A591F200119D34 /* Common */,
+				E5F941C225A58B1100119D34 /* Rank */,
 				E547FAB8256F50AE00F0A5B4 /* CustomHeader */,
 				E547FAB1256F500600F0A5B4 /* Card */,
 				F40F5C852562D089006AD685 /* Menu */,
@@ -238,6 +246,23 @@
 				E5CEFB2325149346007B6E0E /* MockData.json */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		E5F941C225A58B1100119D34 /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				E5F941C325A58B7600119D34 /* RankView.swift */,
+				E5F941C725A58D7100119D34 /* RankDetailViewCell.swift */,
+			);
+			path = Rank;
+			sourceTree = "<group>";
+		};
+		E5F941CE25A591F200119D34 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E5F941CF25A5922400119D34 /* RowStyleView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		F40F5C852562D089006AD685 /* Menu */ = {
@@ -390,10 +415,12 @@
 				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
 				E587C3FC252357D70091747D /* BannerModel.swift in Sources */,
+				E5F941C425A58B7600119D34 /* RankView.swift in Sources */,
 				E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */,
 				E5A7077F2567B02F006D23AB /* DragonBallModel.swift in Sources */,
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
 				E5D8E068257A0095002DF517 /* RowStyleCollectionView.swift in Sources */,
+				E5F941D025A5922400119D34 /* RowStyleView.swift in Sources */,
 				E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */,
 				E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */,
 				E5D8DFCE2574CCB6002DF517 /* UIColorExtension.swift in Sources */,
@@ -404,6 +431,7 @@
 				E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */,
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
+				E5F941C825A58D7100119D34 /* RankDetailViewCell.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
