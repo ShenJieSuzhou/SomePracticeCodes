@@ -19,8 +19,9 @@ class RankDetailViewCell: UICollectionViewCell {
     }()
     
     // 第一名
-    lazy var rowView1: RowStyleView = {
+    lazy var rowView1: RowStyleView = {     
 //        let view = RowStyleView.initRowViewWithHeaderStyle(<#T##self: RowStyleView##RowStyleView#>)
+//        RowStyleView(style: <#T##RowStyle#>)
         let view: RowStyleView = RowStyleView()
         view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
