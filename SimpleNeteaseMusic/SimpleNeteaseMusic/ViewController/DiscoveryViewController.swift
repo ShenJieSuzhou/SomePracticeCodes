@@ -92,6 +92,10 @@ class DiscoveryViewController: UITableViewController {
         return view
     }()
     
+    // 七楼 排行榜
+    private var rankView: RankView!
+    
+    private var rankData: [RankModel]!
     
     
     override func viewDidLoad() {
@@ -108,6 +112,19 @@ class DiscoveryViewController: UITableViewController {
         fetchHotLists(url: "http://localhost:3000/personalized?limit=5")
         // 专属歌单
         fetchExclusivePlaylist(url: "http://localhost:3000/personalized?limit=5")
+        
+        // 测试
+        let songMode1: SongModel = SongModel(image: "http://p2.music.126.net/1gNcBmzdIaQtU00Dvp_TvQ==/109951163912081772.jpg", order: 1, songName: "一路向北", singer: "周杰伦", extra: "新")
+        let songMode2: SongModel = SongModel(image: "http://p2.music.126.net/1gNcBmzdIaQtU00Dvp_TvQ==/109951163912081772.jpg", order: 1, songName: "一路向北", singer: "周杰伦", extra: "新")
+        let songMode3: SongModel = SongModel(image: "http://p2.music.126.net/1gNcBmzdIaQtU00Dvp_TvQ==/109951163912081772.jpg", order: 1, songName: "一路向北", singer: "周杰伦", extra: "新")
+        
+        let songs: [SongModel] = [songMode1, songMode2, songMode3]
+        let title: String = "内地原创音乐榜"
+        
+        let rankModel: RankModel = RankModel(title: title, rankList: songs)
+        
+        let testRankData: [RankModel]! = [rankModel, rankModel, rankModel]
+        rankData = testRankData
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -236,7 +253,7 @@ class DiscoveryViewController: UITableViewController {
         } else if indexPath.section == 5 {
             return 240.0
         } else if indexPath.section == 6 {
-            return 250.0
+            return (60 * 4 + 5 * 10)
         }
  
         return 50.0
@@ -324,6 +341,10 @@ class DiscoveryViewController: UITableViewController {
             cell.addSubview(exclusivePlaylistView)
         } else if indexPath.section == 5 {
             cell.addSubview(newReleaseSongListView)
+        } else if indexPath.section == 6 {
+            let height: CGFloat = h
+            rankView = RankView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height), rankData: rankData)
+            cell.addSubview(rankView)
         } else {
             cell.contentView.backgroundColor = UIColor.clear
         }

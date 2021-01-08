@@ -9,17 +9,11 @@
 import Foundation
 
 struct RankModel {
-    let image: String
-    let order:Int
-    let songName: String
-    let singer: String
-    let extra: String
+    let title: String
+    let rankList:[SongModel]
     
-    init(image: String, order: Int, songName: String, singer: String, extra: String) {
-        self.image = image
-        self.order = order
-        self.songName = songName
-        self.singer = singer
-        self.extra = extra
+    init(title: String, rankList: [SongModel]) {
+        self.title = title
+        self.rankList = rankList
     }
 }

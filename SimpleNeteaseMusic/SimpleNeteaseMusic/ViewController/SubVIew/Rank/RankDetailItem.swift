@@ -32,7 +32,7 @@ class RankDetailItem: UICollectionViewCell {
     private var title: String!
     
     // 排行榜数据
-    private var rankDataList: [RankModel]!
+    private var rankDataList: [SongModel]!
     
     // 排行榜榜单列表
     private var rankRowViews: [RowStyleView]!
@@ -40,18 +40,18 @@ class RankDetailItem: UICollectionViewCell {
     // 默认排行榜单个 item 的高度为 40
     public var height: CGFloat = 40.0
     
-    convenience init(frame: CGRect, rank: [RankModel], headTitle: String) {
-        self.init(frame:frame)
-        // 赋值
+    // 更新数据，并重绘界面
+    public func updateRankItem(rank: [SongModel], headTitle: String) {
         rankDataList = rank
         title = headTitle
-        // 构建 UI
         
-        configUI()
+        layoutSubviews()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        // 构建 UI
+        configUI()
     }
     
     required init?(coder: NSCoder) {
