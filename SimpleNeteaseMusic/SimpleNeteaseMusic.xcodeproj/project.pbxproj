@@ -35,13 +35,14 @@
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
 		E5A7077F2567B02F006D23AB /* DragonBallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A7077E2567B02F006D23AB /* DragonBallModel.swift */; };
 		E5CEFB2425149346007B6E0E /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = E5CEFB2325149346007B6E0E /* MockData.json */; };
+		E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633A25A8293900A7D455 /* RankModel.swift */; };
 		E5D8DFCE2574CCB6002DF517 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */; };
 		E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */; };
 		E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */; };
 		E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E063257895C4002DF517 /* CGFloatExtension.swift */; };
 		E5D8E068257A0095002DF517 /* RowStyleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E067257A0095002DF517 /* RowStyleCollectionView.swift */; };
 		E5F941C425A58B7600119D34 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C325A58B7600119D34 /* RankView.swift */; };
-		E5F941C825A58D7100119D34 /* RankDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C725A58D7100119D34 /* RankDetailViewCell.swift */; };
+		E5F941C825A58D7100119D34 /* RankDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C725A58D7100119D34 /* RankDetailItem.swift */; };
 		E5F941D025A5922400119D34 /* RowStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941CF25A5922400119D34 /* RowStyleView.swift */; };
 		F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
@@ -81,13 +82,14 @@
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
 		E5A7077E2567B02F006D23AB /* DragonBallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallModel.swift; sourceTree = "<group>"; };
 		E5CEFB2325149346007B6E0E /* MockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
+		E5D8633A25A8293900A7D455 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
 		E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleCardViewCell.swift; sourceTree = "<group>"; };
 		E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSIntegerExtension.swift; sourceTree = "<group>"; };
 		E5D8E063257895C4002DF517 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		E5D8E067257A0095002DF517 /* RowStyleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleCollectionView.swift; sourceTree = "<group>"; };
 		E5F941C325A58B7600119D34 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
-		E5F941C725A58D7100119D34 /* RankDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailViewCell.swift; sourceTree = "<group>"; };
+		E5F941C725A58D7100119D34 /* RankDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailItem.swift; sourceTree = "<group>"; };
 		E5F941CF25A5922400119D34 /* RowStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleView.swift; sourceTree = "<group>"; };
 		F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				E587C3FB252357D70091747D /* BannerModel.swift */,
 				E5A7077E2567B02F006D23AB /* DragonBallModel.swift */,
 				E547FB11256F8C7100F0A5B4 /* HotAlbumModel.swift */,
+				E5D8633A25A8293900A7D455 /* RankModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,7 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				E5F941C325A58B7600119D34 /* RankView.swift */,
-				E5F941C725A58D7100119D34 /* RankDetailViewCell.swift */,
+				E5F941C725A58D7100119D34 /* RankDetailItem.swift */,
 			);
 			path = Rank;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
 				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
+				E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */,
 				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
 				E587C3FC252357D70091747D /* BannerModel.swift in Sources */,
@@ -431,7 +435,7 @@
 				E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */,
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
-				E5F941C825A58D7100119D34 /* RankDetailViewCell.swift in Sources */,
+				E5F941C825A58D7100119D34 /* RankDetailItem.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

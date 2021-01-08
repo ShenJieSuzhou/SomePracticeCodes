@@ -15,14 +15,14 @@ class RankView: UIView {
 }
 
 
-extension RankView: UICollectionViewDelegate{
-    
-    
-}
-
-extension RankView: UICollectionViewDataSource{
-    
-    
-}
+//extension RankView: UICollectionViewDelegate{
+//
+//
+//}
+//
+//extension RankView: UICollectionViewDataSource{
+//
+//
+//}
 
 

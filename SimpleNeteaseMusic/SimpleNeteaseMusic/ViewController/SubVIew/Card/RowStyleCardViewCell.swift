@@ -21,20 +21,20 @@ let mockdata4:[String] = ["http://p2.music.126.net/1gNcBmzdIaQtU00Dvp_TvQ==/1099
 class RowStyleCardViewCell: UICollectionViewCell {
     lazy var rowView1: RowStyleView = {
        let view = RowStyleView()
-        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
+//        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
     }()
     
     lazy var rowView2: RowStyleView = {
        let view = RowStyleView()
-        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
+//        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
     }()
     
     
     lazy var rowView3: RowStyleView = {
        let view = RowStyleView()
-        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
+//        view.updateUI(mImgUrl: "", mSongname: "", mAuthor: "", mSongDetail: "")
         return view
     }()
 
