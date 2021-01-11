@@ -260,6 +260,7 @@ extension RowStyleView {
         // 默认样式
         if style == .NoneStyle {
             self.addSubview(albumCover)
+            self.addSubview(orderLabel)
             self.addSubview(midView)
             self.addSubview(trailText)
             

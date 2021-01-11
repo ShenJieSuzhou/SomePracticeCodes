@@ -44,9 +44,8 @@ class RankDetailItem: UICollectionViewCell {
     public func updateRankItem(rank: [SongModel], headTitle: String) {
         rankDataList = rank
         title = headTitle
-        
         subRankBtn.setTitle(title, for: .normal)
-        
+        createRowStyleView()
         
         self.layoutIfNeeded()
     }
@@ -99,9 +98,10 @@ extension RankDetailItem {
 // MARK: - Configuration
 extension RankDetailItem {
     
-    private func createHeaderTitle() {
+    private func configUI() {
+        // 构建 UI
         headTitle.addSubview(subRankBtn)
-        self.addSubview(headTitle)
+        self.contentView.addSubview(headTitle)
     }
     
     private func createRowStyleView() {
@@ -120,11 +120,6 @@ extension RankDetailItem {
         stack = UIStackView(arrangedSubviews: rankRowViews)
         stack.axis = .vertical
         stack.alignment = .center
-        addSubview(stack)
-    }
-    
-    private func configUI() {
-        // 构建 UI
-        createHeaderTitle()
+        self.contentView.addSubview(stack)
     }
 }
