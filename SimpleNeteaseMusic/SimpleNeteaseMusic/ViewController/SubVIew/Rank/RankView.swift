@@ -14,34 +14,60 @@ let JJRanktemCellId = "JJRanktemCellId"
 class RankView: UIView {
     
     // 容器使用 UICOllectionVIew
-    private var collectionView: UICollectionView!
+    fileprivate var collectionView: UICollectionView!
     
     // 排行榜数据
-    private var rankListData: [RankModel]!
+    fileprivate var rankListData: [RankModel]!
     
     // layout 布局
-    private lazy var layout: UICollectionViewFlowLayout = {
+    fileprivate lazy var layout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 0
-        flowLayout.minimumInteritemSpacing = 10
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        flowLayout.minimumLineSpacing = 0
+//        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: 20, bottom: marginButtom, right: 20)
         flowLayout.scrollDirection = .horizontal
         return flowLayout
     }()
+    
+    // 高度
+    public var height: CGFloat = 0
+    
+    // 宽度
+    public var width: CGFloat = 0
+    
+    // 默认高度
+    public var rowHeight: CGFloat = 45.0
+    
+    // 默认间隔
+    fileprivate var horizonSpace: CGFloat = 10.0
+    
+    // 默认上边距
+    fileprivate var marginTop: CGFloat = 10.0
+    
+    // 默认下边距
+    fileprivate var marginButtom: CGFloat = 10.0
     
     // 初始化接口
     convenience init(frame: CGRect, rankData: [RankModel]) {
         self.init(frame:frame)
         self.rankListData = rankData
-        ConfigUI()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        width = frame.size.width
+        height = frame.size.height
+        ConfigUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func updateUI(rankData: [RankModel]){
+        rankListData = rankData
+        self.layoutIfNeeded()
     }
     
     deinit {
@@ -56,19 +82,42 @@ extension RankView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        if rankListData == nil {
+            height = 0
+        } else {
+            height = caculateViewHeight()
+        }
+
         // 设置 item size 大小
-        layout.itemSize = CGSize(width: self.frame.size.width - 60, height: self.frame.size.height - 20)
+        layout.itemSize = CGSize(width: width - 40, height: height)
+        
         // 添加约束
         collectionView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
+            make.width.equalTo(width)
+            make.height.equalTo(height + marginTop + marginButtom)
         }
+    }
+    
+    // 计算视图的高度
+    private func caculateViewHeight() -> CGFloat {
+        // 如果没有数据则高度为 0
+        if rankListData.isEmpty {
+            return 0
+        }
+        
+        // 获取排行榜的
+        let model: RankModel = self.rankListData[0]
+        // +1 是将头部的标题算进去
+        let rows: Int = model.rankList.count + 1
+        // 总的高度
+        let totalHeight: CGFloat = rowHeight * CGFloat(rows) + horizonSpace * CGFloat(rows + 1)
+        
+        return totalHeight
     }
 }
 
 // MARK - Configuration UI
 extension RankView {
-    
     private func ConfigUI() {
         // 构建排行榜视图
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)

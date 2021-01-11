@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Kingfisher
+import Foundation
 
 // 屏幕的宽
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -93,7 +94,10 @@ class DiscoveryViewController: UITableViewController {
     }()
     
     // 七楼 排行榜
-    private var rankView: RankView!
+    private lazy var rankView: RankView = {
+        let rankView = RankView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height:1))
+        return rankView
+    }()
     
     private var rankData: [RankModel]!
     
@@ -125,6 +129,8 @@ class DiscoveryViewController: UITableViewController {
         
         let testRankData: [RankModel]! = [rankModel, rankModel, rankModel]
         rankData = testRankData
+        // 刷新
+        rankView.updateUI(rankData: rankData)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -253,7 +259,7 @@ class DiscoveryViewController: UITableViewController {
         } else if indexPath.section == 5 {
             return 240.0
         } else if indexPath.section == 6 {
-            return (60 * 4 + 5 * 10)
+            return rankView.height
         }
  
         return 50.0
@@ -330,21 +336,20 @@ class DiscoveryViewController: UITableViewController {
 //            firstImage.kf.setImage(with: url)
 //            cell.addSubview(firstImage)
            
-            cell.addSubview(newsBanner)
+            cell.contentView.addSubview(newsBanner)
         } else if indexPath.section == 1 {
-            cell.addSubview(menusView)
+            cell.contentView.addSubview(menusView)
         } else if indexPath.section == 2 {
-            cell.addSubview(hotAlbumsView)
+            cell.contentView.addSubview(hotAlbumsView)
         } else if indexPath.section == 3 {
-            cell.addSubview(privateSongListView)
+            cell.contentView.addSubview(privateSongListView)
         } else if indexPath.section == 4 {
-            cell.addSubview(exclusivePlaylistView)
+            cell.contentView.addSubview(exclusivePlaylistView)
         } else if indexPath.section == 5 {
-            cell.addSubview(newReleaseSongListView)
+            cell.contentView.addSubview(newReleaseSongListView)
         } else if indexPath.section == 6 {
-            let height: CGFloat = h
-            rankView = RankView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height), rankData: rankData)
-            cell.addSubview(rankView)
+            cell.frame = CGRect(x: 0, y: 0, width: rankView.width, height: rankView.height)
+            cell.contentView.addSubview(rankView)
         } else {
             cell.contentView.backgroundColor = UIColor.clear
         }

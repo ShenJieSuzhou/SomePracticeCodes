@@ -45,12 +45,14 @@ class RankDetailItem: UICollectionViewCell {
         rankDataList = rank
         title = headTitle
         
-        layoutSubviews()
+        subRankBtn.setTitle(title, for: .normal)
+        
+        
+        self.layoutIfNeeded()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // 构建 UI
         configUI()
     }
     
@@ -98,7 +100,6 @@ extension RankDetailItem {
 extension RankDetailItem {
     
     private func createHeaderTitle() {
-        subRankBtn.setTitle(title, for: .normal)
         headTitle.addSubview(subRankBtn)
         self.addSubview(headTitle)
     }
@@ -125,6 +126,5 @@ extension RankDetailItem {
     private func configUI() {
         // 构建 UI
         createHeaderTitle()
-        createRowStyleView()
     }
 }
