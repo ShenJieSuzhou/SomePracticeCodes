@@ -111,7 +111,7 @@ extension RowStyleView {
             // Row height
             let rowHeight: Float = Float(self.frame.height)
             let rowWidth: Float = Float(self.frame.size.width)
-            
+
             // 设置 albumCover 的约束
             self.albumCover.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -119,7 +119,7 @@ extension RowStyleView {
                 make.left.equalToSuperview()
                 make.top.equalToSuperview().offset(5)
             }
-            
+
             // 设置排名的约束
             self.orderLabel.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -127,7 +127,7 @@ extension RowStyleView {
                 make.left.equalTo(self.albumCover.snp.right)
                 make.top.equalToSuperview().offset(5)
             }
-            
+
             // 设置 midView 的约束
             self.midView.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -135,9 +135,9 @@ extension RowStyleView {
                 make.left.equalTo(self.orderLabel.snp.right)
                 make.top.equalToSuperview().offset(5)
             }
-            
+
             let num:Int = Int.random(in: 0..<3)
-            
+
             // 计算歌名长度， 但不超过最大值，超过部分用省略号代替
             let max_songNameLen = Float(self.midView.frame.size.width * 0.6)
             var songNameLen: Float = 0
@@ -148,7 +148,7 @@ extension RowStyleView {
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(5)
             }
-            
+
             // 计算歌手名字长度，但不超过最大值，超过部分用省略号代替
             let max_singerLen = Float(self.midView.frame.size.width * 0.4)
             var singerLen: Float = 0
@@ -160,7 +160,7 @@ extension RowStyleView {
                 make.left.equalTo(self.songName.snp.right)
             }
             self.author.text = mockdata2[num]
-            
+
             // 设置 trailText 的约束
             self.trailText.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -168,15 +168,15 @@ extension RowStyleView {
                 make.centerY.equalToSuperview()
                 make.left.equalTo(self.midView.snp.right)
             }
-            
+
             self.trailText.text = "新"
-            
+
             // 带标题样式
         } else if self.style == RowStyle.SubTitleStyle {
             // Row height
             let rowHeight: Float = Float(self.frame.height)
             let rowWidth: Float = Float(self.frame.size.width)
-            
+
             // 设置 albumCover 的约束
             self.albumCover.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -184,7 +184,7 @@ extension RowStyleView {
                 make.left.equalToSuperview()
                 make.top.equalToSuperview().offset(5)
             }
-            
+
             // 设置 midView 的约束
             self.midView.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -192,9 +192,9 @@ extension RowStyleView {
                 make.left.equalTo(self.albumCover.snp.right)
                 make.top.equalToSuperview().offset(5)
             }
-            
+
             let num:Int = Int.random(in: 0..<3)
-            
+
             // 计算歌名长度， 但不超过最大值，超过部分用省略号代替
             let max_songNameLen = rowWidth * 0.6
             var songNameLen: Float = 0
@@ -206,7 +206,7 @@ extension RowStyleView {
                 make.top.equalToSuperview()
             }
             self.songName.text = mockdata1[num]
-            
+
             // 计算歌手名字长度，但不超过最大值，超过部分用省略号代替
             let max_singerLen = rowWidth * 0.4
             var singerLen: Float = 0
@@ -218,7 +218,7 @@ extension RowStyleView {
                 make.top.equalToSuperview()
             }
             self.author.text = mockdata2[num]
-            
+
             // 计算专辑简介长度，但不超过最大值，超过部分用省略号代替
             //        let max_albumDetailLen = rowWidth
             var albumDetailLen: Float = 0
@@ -230,7 +230,7 @@ extension RowStyleView {
                 make.top.equalTo(self.songName.snp.bottom).offset(5)
             }
             self.songDetail.text = mockdata3[num]
-            
+
             // 设置 playButtom 的约束
             self.playButtom.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -293,7 +293,14 @@ extension RowStyleView {
     }
     
     public func setUpRowViewWithDefultStyle(image picUrl: String, order: Int, songName: String, singer: String, style: RowStyle, extra: String){
-
+        self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
+            
+        })
+        
+        self.orderLabel.text = String(order)
+        self.songName.text = songName
+        self.author.text = singer
+        self.trailText.text = extra
     }
     
     public func setUpRowViewWithSubTitleStyle(image picUrl: String, order: Int, songName: String, singer: String, style: RowStyle, extra: String){

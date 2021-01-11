@@ -149,6 +149,7 @@ extension RankView: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJRanktemCellId, for: indexPath) as! RankDetailItem
+        cell.height = rowHeight
         let result:RankModel = rankListData![indexPath.row]
         cell.updateRankItem(rank: result.rankList, headTitle: result.title)
         return cell

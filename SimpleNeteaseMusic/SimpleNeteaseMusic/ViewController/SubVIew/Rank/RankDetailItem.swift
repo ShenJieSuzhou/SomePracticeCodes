@@ -47,7 +47,7 @@ class RankDetailItem: UICollectionViewCell {
         subRankBtn.setTitle(title, for: .normal)
         createRowStyleView()
         
-        self.layoutIfNeeded()
+//        self.layoutIfNeeded()
     }
     
     override init(frame: CGRect) {
@@ -86,7 +86,7 @@ extension RankDetailItem {
         
         stack.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height.equalTo(height * CGFloat(rankRowViews.count))
+            make.height
             make.left.equalToSuperview()
             make.top.equalTo(headTitle.snp.bottom)
             make.right.equalToSuperview()
@@ -112,14 +112,15 @@ extension RankDetailItem {
         rankRowViews.removeAll()
         
         for listItem in rankDataList {
-            let rowView = RowStyleView(frame: CGRect(x: 0, y: 0, width: Double(width), height: Double(height)), style: .NoneStyle)
+            let rowView = RowStyleView(frame: CGRect(x: 0, y: 0, width: Double(width), height: Double(20)), style: .NoneStyle)
             rowView.setUpRowViewWithDefultStyle(image: listItem.image, order: listItem.order, songName: listItem.songName, singer: listItem.singer, style: .NoneStyle, extra: listItem.extra)
             rankRowViews.append(rowView)
         }
         
         stack = UIStackView(arrangedSubviews: rankRowViews)
+        stack.spacing = 10
         stack.axis = .vertical
-        stack.alignment = .center
+        stack.distribution = .fillEqually
         self.contentView.addSubview(stack)
     }
 }
