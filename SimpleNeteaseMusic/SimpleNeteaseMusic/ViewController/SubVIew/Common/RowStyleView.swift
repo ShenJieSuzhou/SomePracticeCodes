@@ -38,7 +38,7 @@ class RowStyleView: UIView {
     // middle content
     private lazy var midView: UIView = {
         let view = UIView()
-        view.backgroundColor = .darkModeViewColor
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -92,7 +92,6 @@ class RowStyleView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .darkModeViewColor
     }
 
     required init?(coder: NSCoder) {

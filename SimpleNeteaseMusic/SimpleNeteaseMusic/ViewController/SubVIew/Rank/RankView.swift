@@ -26,6 +26,7 @@ class RankView: UIView {
 //        flowLayout.minimumInteritemSpacing = 10
         flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: 20, bottom: marginButtom, right: 20)
         flowLayout.scrollDirection = .horizontal
+
         return flowLayout
     }()
     

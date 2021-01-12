@@ -16,14 +16,14 @@ class RankDetailItem: UICollectionViewCell {
     // 排行榜标题 View
     private lazy var headTitle: UIView = {
        let view = UIView()
-        view.backgroundColor = .darkModeViewColor
+        view.backgroundColor = .clear
         return view
     }()
     
     // 排行榜标题按钮
     private lazy var subRankBtn: UIButton = {
         let button = UIButton(type: .custom)
-        button.backgroundColor = .darkModeViewColor
+        button.backgroundColor = .clear
         button.titleLabel?.textColor = .darkModeTextColor
         return button;
     }()
@@ -86,7 +86,6 @@ extension RankDetailItem {
         
         stack.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height
             make.left.equalToSuperview()
             make.top.equalTo(headTitle.snp.bottom)
             make.right.equalToSuperview()
@@ -100,6 +99,9 @@ extension RankDetailItem {
     
     private func configUI() {
         // 构建 UI
+        self.backgroundColor = .darkModeCellColor
+        self.layer.cornerRadius = 10
+        
         headTitle.addSubview(subRankBtn)
         self.contentView.addSubview(headTitle)
     }

@@ -68,4 +68,19 @@ extension UIColor {
     public class var defaultAuthorColor: UIColor {
         return UIColor(red: 65/255, green: 65/255, blue: 65/255, alpha: 1)
     }
+    
+    // cell color
+    public class var darkModeCellColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor{ (trainCollection) -> UIColor in
+                if trainCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1)
+                } else {
+                    return .red
+                }
+            }
+        } else {
+            return .red
+        }
+    }
 }
