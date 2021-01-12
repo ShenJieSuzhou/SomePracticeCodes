@@ -45,9 +45,8 @@ class RankDetailItem: UICollectionViewCell {
         rankDataList = rank
         title = headTitle
         subRankBtn.setTitle(title, for: .normal)
-        createRowStyleView()
         
-//        self.layoutIfNeeded()
+        createRowStyleView()
     }
     
     override init(frame: CGRect) {
@@ -108,7 +107,7 @@ extension RankDetailItem {
     
     private func createRowStyleView() {
         // 宽度
-        let width: CGFloat = self.frame.size.width - 20
+        let width: CGFloat = self.frame.size.width - JJINTERVAL * 2
         
         rankRowViews = [RowStyleView]()
         rankRowViews.removeAll()

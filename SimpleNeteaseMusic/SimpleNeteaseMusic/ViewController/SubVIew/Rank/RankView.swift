@@ -10,6 +10,8 @@ import UIKit
 import Foundation
 
 let JJRanktemCellId = "JJRanktemCellId"
+// 边距
+let JJINTERVAL: CGFloat = 20
 
 class RankView: UIView {
     
@@ -22,9 +24,7 @@ class RankView: UIView {
     // layout 布局
     fileprivate lazy var layout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.minimumLineSpacing = 0
-//        flowLayout.minimumInteritemSpacing = 10
-        flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: 20, bottom: marginButtom, right: 20)
+        flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: JJINTERVAL, bottom: marginButtom, right: JJINTERVAL)
         flowLayout.scrollDirection = .horizontal
 
         return flowLayout
