@@ -45,6 +45,9 @@ class DiscoveryViewController: UITableViewController {
     // 三楼数据源
     var hotAlbumData = [HotListResult]()
     
+    // 四楼数据源
+    var privateData = [PrivateCustomModel]()
+    
     // 5楼数据源
     var exclusiveListData = [HotListResult]()
     
@@ -76,8 +79,8 @@ class DiscoveryViewController: UITableViewController {
     }()
     
     // 四楼私人定制视图
-    lazy var privateSongListView: RowStyleCollectionView = {
-        let view = RowStyleCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 240))
+    lazy var privateSongListView: PrivateCustomView = {
+        let view = PrivateCustomView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 1), data: privateData)
         return view
     }()
     
@@ -88,8 +91,8 @@ class DiscoveryViewController: UITableViewController {
     }()
     
     // 六楼 新歌新碟
-    lazy var newReleaseSongListView: RowStyleCollectionView = {
-        let view = RowStyleCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 240))
+    lazy var newReleaseSongListView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 240))
         return view
     }()
     
@@ -99,7 +102,7 @@ class DiscoveryViewController: UITableViewController {
         return rankView
     }()
     
-    private var rankData: [RankModel]!
+//    private var rankData: [RankModel]!
     
     
     override func viewDidLoad() {
@@ -122,15 +125,16 @@ class DiscoveryViewController: UITableViewController {
         let songMode2: SongModel = SongModel(image: "http://p2.music.126.net/1gNcBmzdIaQtU00Dvp_TvQ==/109951163912081772.jpg", order: 1, songName: "一路向北", singer: "周杰伦", extra: "新")
         let songMode3: SongModel = SongModel(image: "http://p2.music.126.net/1gNcBmzdIaQtU00Dvp_TvQ==/109951163912081772.jpg", order: 1, songName: "一路向北", singer: "周杰伦", extra: "新")
         
-        let songs: [SongModel] = [songMode1, songMode2, songMode3]
-        let title: String = "内地原创音乐榜"
-        
-        let rankModel: RankModel = RankModel(title: title, rankList: songs)
-        
-        let testRankData: [RankModel]! = [rankModel, rankModel, rankModel]
-        rankData = testRankData
         // 刷新
-        rankView.updateUI(rankData: rankData)
+        let songs: [SongModel] = [songMode1, songMode2, songMode3]
+        let privateModel: PrivateCustomModel = PrivateCustomModel(songsList: songs)
+        privateData = [privateModel, privateModel, privateModel]
+        
+        let title: String = "内地原创音乐榜"
+        let rankModel: RankModel = RankModel(title: title, rankList: songs)
+        let testRankData: [RankModel]! = [rankModel, rankModel, rankModel]
+        // 刷新
+        rankView.updateUI(rankData: testRankData)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -253,13 +257,13 @@ class DiscoveryViewController: UITableViewController {
         } else if indexPath.section == 2 {
             return 180.0
         } else if indexPath.section == 3 {
-            return 240.0
+            return privateSongListView.caculateViewHeight()
         } else if indexPath.section == 4 {
             return 180.0
         } else if indexPath.section == 5 {
             return 240.0
         } else if indexPath.section == 6 {
-            return rankView.height
+            return rankView.caculateViewHeight()
         }
  
         return 50.0
@@ -342,13 +346,14 @@ class DiscoveryViewController: UITableViewController {
         } else if indexPath.section == 2 {
             cell.contentView.addSubview(hotAlbumsView)
         } else if indexPath.section == 3 {
+            
             cell.contentView.addSubview(privateSongListView)
         } else if indexPath.section == 4 {
             cell.contentView.addSubview(exclusivePlaylistView)
         } else if indexPath.section == 5 {
             cell.contentView.addSubview(newReleaseSongListView)
         } else if indexPath.section == 6 {
-            cell.frame = CGRect(x: 0, y: 0, width: rankView.width, height: rankView.height)
+//            cell.frame = CGRect(x: 0, y: 0, width: rankView.width, height: rankView.height)
             cell.contentView.addSubview(rankView)
         } else {
             cell.contentView.backgroundColor = UIColor.clear

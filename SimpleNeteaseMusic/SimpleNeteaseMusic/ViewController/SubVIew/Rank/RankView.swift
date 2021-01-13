@@ -49,16 +49,16 @@ class RankView: UIView {
     fileprivate var marginButtom: CGFloat = 10.0
     
     // 初始化接口
-    convenience init(frame: CGRect, rankData: [RankModel]) {
-        self.init(frame:frame)
-        self.rankListData = rankData
-    }
+//    convenience init(frame: CGRect, rankData: [RankModel]) {
+//        self.init(frame:frame)
+//        self.rankListData = rankData
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        width = frame.size.width
-        height = frame.size.height
+//        width = frame.size.width
+//        height = frame.size.height
         ConfigUI()
     }
     
@@ -84,8 +84,9 @@ extension RankView {
         super.layoutSubviews()
         
         if rankListData == nil {
-            height = 0
+            return
         } else {
+            width = self.frame.width
             height = caculateViewHeight()
         }
 
@@ -100,7 +101,7 @@ extension RankView {
     }
     
     // 计算视图的高度
-    private func caculateViewHeight() -> CGFloat {
+    public func caculateViewHeight() -> CGFloat {
         // 如果没有数据则高度为 0
         if rankListData.isEmpty {
             return 0
@@ -145,7 +146,7 @@ extension RankView: UICollectionViewDelegate{
 extension RankView: UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return rankListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

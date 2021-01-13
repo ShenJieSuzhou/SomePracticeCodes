@@ -87,8 +87,8 @@ class RowStyleView: UIView {
         label.textColor = .darkModeTextColor
         return label
     }()
-                   
-
+       
+    
     convenience init(frame: CGRect, style: RowStyle) {
         self.init(frame: frame)
         self.style = style
@@ -188,56 +188,51 @@ extension RowStyleView {
             // 设置 midView 的约束
             self.midView.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
-                make.width.equalTo(rowWidth - Float(self.albumCover.frame.size.width) - 40)
-                make.left.equalTo(self.albumCover.snp.right)
+                make.width.equalTo(rowWidth - Float(self.albumCover.frame.size.width) - 30 - 40 - 20)
+                make.left.equalTo(self.albumCover.snp.right).offset(5)
                 make.top.equalToSuperview().offset(5)
             }
 
-            let num:Int = Int.random(in: 0..<3)
-
             // 计算歌名长度， 但不超过最大值，超过部分用省略号代替
-            let max_songNameLen = rowWidth * 0.6
+            let max_songNameLen = Float(viewWidth * 0.6 - 100)
             var songNameLen: Float = 0
-            let rect = getStrBoundRect(str: mockdata1[num], font: self.songName.font, constrainedSize: CGSize(width: self.songName.frame.size.width, height: 20))
-            songNameLen = Float(rect.width)
+            let rect = getStrBoundRect(str: songName.text!, font: self.songName.font, constrainedSize: CGSize(width: self.songName.frame.size.width, height: 20))
+            songNameLen = Float((Float(rect.width) > max_songNameLen) ? max_songNameLen : Float(rect.width))
             self.songName.snp.makeConstraints { (make) in
-                make.width.equalTo((songNameLen > max_songNameLen) ? max_songNameLen : rect.width)
+                make.width.equalTo(songNameLen)
                 make.left.equalToSuperview().offset(5)
                 make.top.equalToSuperview()
             }
-            self.songName.text = mockdata1[num]
-
+            
             // 计算歌手名字长度，但不超过最大值，超过部分用省略号代替
-            let max_singerLen = rowWidth * 0.4
+            let max_singerLen = Float(100)
             var singerLen: Float = 0
-            let singerRect = getStrBoundRect(str: mockdata2[num], font: self.author.font, constrainedSize: CGSize(width: self.author.frame.size.width, height: 20))
-            singerLen = Float(singerRect.width)
+            let singerRect = getStrBoundRect(str: author.text!, font: self.author.font, constrainedSize: CGSize(width: self.author.frame.size.width, height: 20))
+            singerLen = Float((Float(singerRect.width) > max_singerLen) ? max_singerLen : Float(singerRect.width))
             self.author.snp.makeConstraints { (make) in
-                make.width.equalTo((singerLen > max_singerLen) ? max_singerLen : singerLen)
+                make.width.equalTo(singerLen)
                 make.left.equalTo(self.songName.snp.right)
                 make.top.equalToSuperview()
             }
-            self.author.text = mockdata2[num]
 
             // 计算专辑简介长度，但不超过最大值，超过部分用省略号代替
-            //        let max_albumDetailLen = rowWidth
+            let max_albumDetailLen = rowWidth - Float(self.albumCover.frame.size.width) - 30 - 40 - 20
             var albumDetailLen: Float = 0
-            let detailRect = getStrBoundRect(str: mockdata3[num], font: self.songDetail.font, constrainedSize: CGSize(width: self.songDetail.frame.size.width, height: 20))
-            albumDetailLen = Float(detailRect.width)
+            let detailRect = getStrBoundRect(str: songDetail.text!, font: self.songDetail.font, constrainedSize: CGSize(width: self.songDetail.frame.size.width, height: 20))
+            albumDetailLen = Float((Float(detailRect.width) > max_albumDetailLen) ? max_albumDetailLen : Float(detailRect.width))
             self.songDetail.snp.makeConstraints { (make) in
                 make.width.equalTo(albumDetailLen)
                 make.left.equalToSuperview().offset(5)
                 make.top.equalTo(self.songName.snp.bottom).offset(5)
             }
-            self.songDetail.text = mockdata3[num]
 
             // 设置 playButtom 的约束
-            self.playButtom.snp.makeConstraints { (make) in
-                make.height.equalTo(rowHeight - 10)
-                make.width.equalTo(40)
-                make.centerY.equalToSuperview()
-                make.left.equalTo(self.midView.snp.right)
-            }
+//            self.playButtom.snp.makeConstraints { (make) in
+//                make.height.equalTo(rowHeight - 10)
+//                make.width.equalTo(40)
+//                make.centerY.equalToSuperview()
+//                make.left.equalTo(self.midView.snp.right)
+//            }
         }
     }
     
@@ -271,7 +266,7 @@ extension RowStyleView {
         } else if style == .SubTitleStyle {
             self.addSubview(albumCover)
             self.addSubview(midView)
-            self.addSubview(playButtom)
+//            self.addSubview(playButtom)
             
             midView.addSubview(songName)
             midView.addSubview(author)
@@ -306,8 +301,14 @@ extension RowStyleView {
         self.style = style
     }
     
-    public func setUpRowViewWithSubTitleStyle(image picUrl: String, order: Int, songName: String, singer: String, style: RowStyle, extra: String){
+    public func setUpRowViewWithSubTitleStyle(image picUrl: String, songName: String, singer: String, foreword: String, style: RowStyle, extra: String){
+        self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
+            
+        })
         
-        
+        self.songName.text = songName
+        self.author.text = "- " + singer
+        self.songDetail.text = foreword
+        self.style = style
     }
 }

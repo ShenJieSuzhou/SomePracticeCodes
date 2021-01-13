@@ -40,15 +40,6 @@ class RankDetailItem: UICollectionViewCell {
     // 默认排行榜单个 item 的高度为 40
     public var height: CGFloat = 40.0
     
-    // 更新数据，并重绘界面
-    public func updateRankItem(rank: [SongModel], headTitle: String) {
-        rankDataList = rank
-        title = headTitle
-        subRankBtn.setTitle(title, for: .normal)
-        
-        createRowStyleView()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
@@ -123,5 +114,15 @@ extension RankDetailItem {
         stack.axis = .vertical
         stack.distribution = .fillEqually
         self.contentView.addSubview(stack)
+    }
+    
+    // 更新数据，并重绘界面
+    public func updateRankItem(rank: [SongModel], headTitle: String) {
+        rankDataList = rank
+        title = headTitle
+        subRankBtn.setTitle(title, for: .normal)
+        
+        createRowStyleView()
+        self.layoutIfNeeded()
     }
 }
