@@ -158,3 +158,66 @@ extension PrivateCustomView {
         self.layoutIfNeeded()
     }
 }
+
+
+extension PrivateCustomView {
+//    - (void)scrollViewDidEndScrollingAnimation:(UIScrollView*)scrollView{
+//
+//    _offer= scrollView.contentOffset.x;
+//
+//    }
+//
+//    - (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView{
+//
+//    if(fabs(scrollView.contentOffset.x-_offer) >10) {
+//
+//    if(scrollView.contentOffset.x>_offer) {
+//
+//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
+//
+//    NSIndexPath* index =[NSIndexPathindexPathForRow:iinSection:0];
+//
+//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
+//
+//    }else{
+//
+//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
+//
+//    NSIndexPath* index =[NSIndexPathindexPathForRow:i-1inSection:0];
+//
+//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
+//
+//    }
+//
+//    }
+//
+//    }
+//
+//    - (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inoutCGPoint*)targetContentOffset{
+//
+//    if(fabs(scrollView.contentOffset.x-_offer) >20) {
+//
+//    if(scrollView.contentOffset.x>_offer) {
+//
+//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
+//
+//    NSIndexPath* index =[NSIndexPathindexPathForRow:iinSection:0];
+//
+//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
+//
+//    }else{
+//
+//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
+//
+//    i = (i -1)<0?0:(i -1);
+//
+//    NSIndexPath* index =[NSIndexPathindexPathForRow:iinSection:0];
+//
+//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
+//
+//    }
+//
+//    }
+//
+//    }
+}
