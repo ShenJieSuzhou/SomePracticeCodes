@@ -65,7 +65,6 @@ extension PrivateCustomItem {
         }
         
         stack = UIStackView(arrangedSubviews: privateRowViews)
-//        stack.frame = self.frame
         stack.spacing = 10
         stack.axis = .vertical
         stack.distribution = .fillEqually
@@ -76,7 +75,5 @@ extension PrivateCustomItem {
     public func updateUI(data: [SongModel]) {
         privateDataList = data
         createRowStyleView()
-        
-//        self.layoutIfNeeded()
     }
 }

@@ -161,9 +161,26 @@ extension PrivateCustomView {
 
 
 extension PrivateCustomView {
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+////        let offer = scrollView.contentOffset.x
+////        print(offer)
+//    }
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+////        let offer = scrollView.contentOffset.x
+////        print(offer)
+//
+//    }
+//
+//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+////        let offer = scrollView.contentOffset.x
+////        print(offer)
+//    }
+    
 //    - (void)scrollViewDidEndScrollingAnimation:(UIScrollView*)scrollView{
 //
-//    _offer= scrollView.contentOffset.x;
+//     _offer= scrollView.contentOffset.x;
 //
 //    }
 //
