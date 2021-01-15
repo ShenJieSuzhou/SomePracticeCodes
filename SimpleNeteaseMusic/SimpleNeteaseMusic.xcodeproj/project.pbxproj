@@ -39,6 +39,7 @@
 		E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633D25A85DEE00A7D455 /* SongModel.swift */; };
 		E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */; };
 		E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8635125AEC1B500A7D455 /* PrivateCustomModel.swift */; };
+		E5D8635525B18A1200A7D455 /* RowStyleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */; };
 		E5D8DFCE2574CCB6002DF517 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */; };
 		E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */; };
 		E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */; };
@@ -89,6 +90,7 @@
 		E5D8633D25A85DEE00A7D455 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomItem.swift; sourceTree = "<group>"; };
 		E5D8635125AEC1B500A7D455 /* PrivateCustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomModel.swift; sourceTree = "<group>"; };
+		E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleLayout.swift; sourceTree = "<group>"; };
 		E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleCardViewCell.swift; sourceTree = "<group>"; };
 		E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSIntegerExtension.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				E5F941CF25A5922400119D34 /* RowStyleView.swift */,
+				E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
 				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
+				E5D8635525B18A1200A7D455 /* RowStyleLayout.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
 				E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */,
 				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,

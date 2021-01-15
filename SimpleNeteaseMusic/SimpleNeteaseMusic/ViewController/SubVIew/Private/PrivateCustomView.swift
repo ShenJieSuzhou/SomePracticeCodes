@@ -34,8 +34,8 @@ class PrivateCustomView: UIView {
     fileprivate var privateListData: [PrivateCustomModel]!
     
     // 布局 layout
-    private lazy var flowLayout: UICollectionViewFlowLayout = {
-      let flowLayout = UICollectionViewFlowLayout()
+    private lazy var flowLayout: RowStyleLayout = {
+      let flowLayout = RowStyleLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: marginButtom, right: 0)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
@@ -108,7 +108,7 @@ extension PrivateCustomView {
         // 设置 frame
         self.frame = CGRect(x: 0, y: 0, width: width, height: height)
         // 设置 item size 大小
-        flowLayout.itemSize = CGSize(width: width, height: height - marginTop - marginButtom)
+        flowLayout.itemSize = CGSize(width: width - 40, height: height - marginTop - marginButtom)
         
         // 设置大小约束
         self.collectionView.snp.makeConstraints { (make) in
