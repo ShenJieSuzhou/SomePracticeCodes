@@ -11,61 +11,76 @@ import UIKit
 
 class RowStyleLayout: UICollectionViewFlowLayout {
     
+    private var lastOffset: CGPoint!
+    
+    override init() {
+        super.init()
+        lastOffset = CGPoint.zero
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // 初始化
     override func prepare() {
         
         super.prepare()
+        self.collectionView?.decelerationRate = .fast
     }
     
-    // cell 怎么排布
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        // 屏幕上显示的 cell
-        let array = super.layoutAttributesForElements(in: rect) ?? []
-
-        var attributesCopy = [UICollectionViewLayoutAttributes]()
-        for itemAttributes in array {
-            let itemAttributesCopy = itemAttributes.copy() as! UICollectionViewLayoutAttributes
-            attributesCopy.append(itemAttributesCopy)
-        }
-        
-//        for attrs in attributesCopy {
-//            attrs.size = CGSize(width: attrs.size.width - 40, height: attrs.size.height)
-//                // 计算 cell 中点的 x 值 与 centerX 的差值
-//                let delta = abs(centerX - attrs.center.x)
-//                // W：[0.8 ~ 1.0]
-//                // H：[0.3 ~ 1.0]
-//                // 反比
-//                let baseScale = 1 - delta / (collectionView!.frame.size.width + itemSize.width)
-//                let scaleW = minScaleW + baseScale * (1 - minScaleW)
-//                let scaleH = minScaleH + baseScale * (1 - minScaleH)
-//                let alpha = minAlpha + baseScale * (1 - minAlpha)
-//                // 改变transform（越到中间 越大）
-//                attrs.transform =CGAffineTransformMakeScale(scaleW, scaleH)
-//                if setAlpha {
-//                    // 改变透明度（越到中间 越不透明）
-//                    attrs.alpha = abs(alpha)
-//                }
-//        }
-
-        return attributesCopy
-    }
-    
+    // 这个方法的返回值，决定了 CollectionView 停止滚动时的偏移量
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
-        let size = collectionView!.frame.size
-        // 计算可见区域的面积
-        let rect = CGRect(x: proposedContentOffset.x, y: proposedContentOffset.y, width: size.width, height: size.height)
-        let array = super.layoutAttributesForElements(in: rect) ?? []
-        // 计算 CollectionView 中点值
-        let centerX = proposedContentOffset.x + collectionView!.frame.size.width * 0.5
-        // 标记 cell 的中点与 UICollectionView 中点最小的间距
-        var minDetal = CGFloat(MAXFLOAT)
-        for attrs in array {
-            if abs(minDetal) > abs(centerX - attrs.center.x) {
-                minDetal = attrs.center.x - centerX
-            }
+        // 分页的 width
+        let pageSpace = self.stepSpace()
+        let offsetMax: CGFloat = self.collectionView!.contentSize.width - (pageSpace + self.sectionInset.right + self.minimumLineSpacing)
+        let offsetMin: CGFloat = 0
+        
+        // 修改之前记录的位置，如果小于最小的contentsize或者最大的contentsize则重置值
+        if lastOffset.x < offsetMin {
+            lastOffset.x = offsetMin
+        } else if lastOffset.x > offsetMax{
+            lastOffset.x = offsetMax
         }
-
-        return CGPoint(x: proposedContentOffset.x , y: proposedContentOffset.y)
+        
+        // 目标位移点距离当前点距离的绝对值
+        let offsetForCurrentPointX: CGFloat = abs(proposedContentOffset.x - lastOffset.x)
+        let velocityX = velocity.x
+        
+        // 判断当前滑动方向，向左 true, 向右 fasle
+        let direction: Bool = (proposedContentOffset.x - lastOffset.x) > 0
+        
+        var newProposedContentOffset: CGPoint = CGPoint.zero
+        
+        if (offsetForCurrentPointX > pageSpace/8.0) && (lastOffset.x >= offsetMin) && (lastOffset.x <= offsetMax) {
+            // 分页因子，用于计算滑过的cell数量
+            var pageFactor: NSInteger = 0
+            if velocityX != 0 {
+                // 滑动
+                // 速率越快，cell 滑过的数量越多
+                pageFactor = abs(NSInteger(velocityX))
+            } else {
+                // 拖动
+                pageFactor = abs(NSInteger(offsetForCurrentPointX / pageSpace))
+            }
+            
+            //设置 pageFactor 的上限为2，防止滑动速率过大，导致翻页过多
+            pageFactor = pageFactor < 1 ? 1: (pageFactor < 3 ? 1: 2)
+            
+            let pageOffsetX: CGFloat = pageSpace * CGFloat(pageFactor)
+            newProposedContentOffset = CGPoint(x: lastOffset.x + (direction ? pageOffsetX : -pageOffsetX), y: proposedContentOffset.y)
+        } else {
+            // 滚动距离小于翻页步距，则不进行翻页
+            newProposedContentOffset = CGPoint(x: lastOffset.x, y: lastOffset.y)
+        }
+        
+        lastOffset.x = newProposedContentOffset.x
+        return newProposedContentOffset
+    }
+    
+    // 每滑动一页的间距
+    public func stepSpace() -> CGFloat {
+        return self.itemSize.width + self.minimumLineSpacing
     }
 }

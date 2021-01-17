@@ -36,7 +36,7 @@ class PrivateCustomView: UIView {
     // 布局 layout
     private lazy var flowLayout: RowStyleLayout = {
       let flowLayout = RowStyleLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: marginButtom, right: 0)
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: marginButtom, right: 10)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
       return flowLayout
@@ -140,7 +140,7 @@ extension PrivateCustomView {
     private func configUI() {
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: flowLayout)
         collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
-        collectionView.isPagingEnabled = true
+//        collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
@@ -164,8 +164,9 @@ extension PrivateCustomView {
 extension PrivateCustomView {
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-////        let offer = scrollView.contentOffset.x
-////        print(offer)
+//        let offer = scrollView.contentOffset.x
+//        print(offer)
+        
 //    }
 //
 //    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
