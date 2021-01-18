@@ -17,22 +17,33 @@ class JJNewsImageViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.imageView.frame = self.bounds
-        self.contentView.addSubview(self.imageView)
+        imageView.frame = CGRect.zero
+        self.contentView.addSubview(imageView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let width: CGFloat = self.frame.size.width
+        
+        imageView.snp.makeConstraints { (make) in
+            make.height.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+    }
+    
     func setupUI(imageName: String?, imageUrl: String?, placeholderImage: UIImage?, contentMode: ContentMode) {
         
-        self.imageView.contentMode = contentMode
+        imageView.contentMode = .scaleToFill
         
         if imageName != nil {
-            self.imageView.image = UIImage(named: imageName!)
+            imageView.image = UIImage(named: imageName!)
         } else if imageUrl != nil {
-            self.imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: nil, progressBlock: nil) { (reslt) in
+            imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: nil, progressBlock: nil) { (reslt) in
                 
             }
         }

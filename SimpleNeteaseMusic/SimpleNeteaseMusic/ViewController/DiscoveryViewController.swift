@@ -56,7 +56,7 @@ class DiscoveryViewController: UITableViewController {
     
     // 顶楼轮播控件
     lazy var newsBanner: JJNewsBanner = {
-        let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
+        let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
         banner.currentPageDotColor = UIColor.white
         banner.pageDotColor = UIColor.gray
         banner.autoScrollTimeInterval = 5.0

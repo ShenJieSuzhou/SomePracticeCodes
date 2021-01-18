@@ -3,22 +3,4 @@
    uuid = "B37F7E94-361B-4CD9-A27E-58CE4AE342DD"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "43DDEDA0-2719-4D25-98EC-745BF7CF0EB7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimpleNeteaseMusic/ViewController/SubVIew/Common/RowStyleLayout.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "targetContentOffset(forProposedContentOffset:withScrollingVelocity:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
