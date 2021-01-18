@@ -67,17 +67,17 @@ class JJNewsBanner: UIView {
                     if currentIndex > sourceArray!.count {
                         row = currentIndex - currentIndex % sourceArray!.count
                     }
-//                    self.collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: UICollectionView.ScrollPosition.left, animated: false)
+                    self.collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: UICollectionView.ScrollPosition.left, animated: false)
                 }
                 self.collectionView.reloadData()
-//                self.setupPageControl()
-//                self.invalidateTimer()
-//
-//                if autoScroll {
-//                    self.setupTimer()
-//                }
-//
-//                self.layoutIfNeeded()
+                self.setupPageControl()
+                self.invalidateTimer()
+
+                if autoScroll {
+                    self.setupTimer()
+                }
+
+                self.layoutIfNeeded()
             }
         }
     }
@@ -97,20 +97,20 @@ class JJNewsBanner: UIView {
     // 是否自动轮播
     @objc public var autoScroll = true {
         didSet {
-//            self.invalidateTimer()
-//            if autoScroll {
-//                self.setupTimer()
-//            }
+            self.invalidateTimer()
+            if autoScroll {
+                self.setupTimer()
+            }
         }
     }
     
     // 轮播时间间隔
     @objc public var autoScrollTimeInterval: TimeInterval = 2.0 {
         didSet {
-//            self.invalidateTimer()
-//            if autoScrollTimeInterval > 0 {
-//                self.setupTimer()
-//            }
+            self.invalidateTimer()
+            if autoScrollTimeInterval > 0 {
+                self.setupTimer()
+            }
         }
     }
     
@@ -179,39 +179,39 @@ extension JJNewsBanner {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-//        if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
-//            var targetIndex = 0
-//            if self.loopTimes > 0 {
-//                targetIndex = 0
+        if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
+            var targetIndex = 0
+            if self.loopTimes > 0 {
+                targetIndex = 0
+            }
+            if self.collectionView.numberOfItems(inSection: 0) == self.totalItemCount && self.loopTimes > 1 {
+//                self.startScrollToItem(targetIndex: targetIndex, animated: false)
+            }
+        }
+
+        if self.pageControl != nil {
+            var pSize = CGSize(width: 0, height: 0)
+            if self.pageControl!.isKind(of: UIPageControl.self) {
+                pSize = CGSize(width: CGFloat(self.sourceCount) * self.pageControlDotSize.width, height: self.pageControlDotSize.height)
+            }
+
+//            if self.pageControlAliment == .center {
+//                pX = (self.frame.width - pSize.width) / 2
+//            } else if self.pageControlAliment == .left {
+//                pX = pageControlMargin + 10
+//            } else if self.pageControlAliment == .right {
+//                pX = self.frame.width - pSize.width - (pageControlMargin + 10)
 //            }
-//            if self.collectionView.numberOfItems(inSection: 0) == self.totalItemCount && self.loopTimes > 1 {
-////                self.startScrollToItem(targetIndex: targetIndex, animated: false)
-//            }
-//        }
-//
-//        if self.pageControl != nil {
-//            var pSize = CGSize(width: 0, height: 0)
-//            if self.pageControl!.isKind(of: UIPageControl.self) {
-//                pSize = CGSize(width: CGFloat(self.sourceCount) * self.pageControlDotSize.width, height: self.pageControlDotSize.height)
-//            }
-//
-////            if self.pageControlAliment == .center {
-////                pX = (self.frame.width - pSize.width) / 2
-////            } else if self.pageControlAliment == .left {
-////                pX = pageControlMargin + 10
-////            } else if self.pageControlAliment == .right {
-////                pX = self.frame.width - pSize.width - (pageControlMargin + 10)
-////            }
-//            let pX: CGFloat = 0
-//            let pY = self.frame.height - pSize.height - pageControlMargin
-//
-//            let pageControlFrame = CGRect(x: pX, y: pY, width: self.frame.width, height: pSize.height)
-//            self.pageControl!.frame = pageControlFrame
-//
-//            if #available(iOS 14.0, *) {
-////                self.pageControl?.backgroundStyle = .prominent
-//            }
-//        }
+            let pX: CGFloat = 0
+            let pY = self.frame.height - pSize.height - pageControlMargin
+
+            let pageControlFrame = CGRect(x: pX, y: pY, width: self.frame.width, height: pSize.height)
+            self.pageControl!.frame = pageControlFrame
+
+            if #available(iOS 14.0, *) {
+//                self.pageControl?.backgroundStyle = .prominent
+            }
+        }
     }
     
     // 设置滚动分页控件
@@ -334,97 +334,97 @@ extension JJNewsBanner :UICollectionViewDelegate, UICollectionViewDataSource {
 // MARK: - Scroll logic
 extension JJNewsBanner{
  
-//    public func setupTimer() {
-//        self.invalidateTimer()
-//
-//        if self.autoScroll {
-//            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
-//            RunLoop.main.add(self.scrollTimer!, forMode: .common)
+    public func setupTimer() {
+        self.invalidateTimer()
+
+        if self.autoScroll {
+            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
+            RunLoop.main.add(self.scrollTimer!, forMode: .common)
+        }
+    }
+
+    public func invalidateTimer() {
+        if self.scrollTimer != nil {
+            self.scrollTimer?.invalidate()
+            self.scrollTimer = nil
+        }
+    }
+
+    @objc private func automaticScroll(){
+        if self.totalItemCount == 0 {
+            return
+        }
+
+        var targetIndex = self.currentIndex() + 1
+        self.scrollToIndex(targetIndex: &targetIndex)
+    }
+
+    override func willMove(toSuperview newSuperview: UIView?) {
+
+        if newSuperview == nil {
+            self.invalidateTimer()
+        }
+    }
+
+
+    public func scrollToIndex(targetIndex: inout Int){
+        if self.collectionView.numberOfItems(inSection: 0) != self.totalItemCount {
+            return
+        }
+
+        if targetIndex >= self.totalItemCount {
+            if self.loopTimes == 1 {
+                self.startScrollToItem(targetIndex: 0, animated: true)
+            } else if self.loopTimes > 1 {
+                targetIndex = self.totalItemCount / 2
+                self.startScrollToItem(targetIndex: targetIndex, animated: false)
+            }
+            return
+        }
+        self.startScrollToItem(targetIndex: targetIndex, animated: true)
+    }
+
+    private func startScrollToItem(targetIndex: Int, animated: Bool){
+        self.collectionView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: .right, animated: animated)
+    }
+
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.sourceCount == 0 || self.pageControl == nil {
+            return
+        }
+
+        let itemIndex = self.currentIndex()
+        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
+
+        if self.pageControl!.isKind(of: UIPageControl.self) {
+            self.pageControl?.currentPage = indexOnPageControl
+        }
+//        else {
+//            (self.pageControl as! FWPageControl).currentPage = indexOnPageControl
 //        }
-//    }
-//
-//    public func invalidateTimer() {
-//        if self.scrollTimer != nil {
-//            self.scrollTimer?.invalidate()
-//            self.scrollTimer = nil
-//        }
-//    }
-//
-//    @objc private func automaticScroll(){
-//        if self.totalItemCount == 0 {
-//            return
-//        }
-//
-//        var targetIndex = self.currentIndex() + 1
-//        self.scrollToIndex(targetIndex: &targetIndex)
-//    }
-//
-//    override func willMove(toSuperview newSuperview: UIView?) {
-//
-//        if newSuperview == nil {
-//            self.invalidateTimer()
-//        }
-//    }
-//
-//
-//    public func scrollToIndex(targetIndex: inout Int){
-//        if self.collectionView.numberOfItems(inSection: 0) != self.totalItemCount {
-//            return
-//        }
-//
-//        if targetIndex >= self.totalItemCount {
-//            if self.loopTimes == 1 {
-//                self.startScrollToItem(targetIndex: 0, animated: true)
-//            } else if self.loopTimes > 1 {
-//                targetIndex = self.totalItemCount / 2
-//                self.startScrollToItem(targetIndex: targetIndex, animated: false)
-//            }
-//            return
-//        }
-//        self.startScrollToItem(targetIndex: targetIndex, animated: true)
-//    }
-//
-//    private func startScrollToItem(targetIndex: Int, animated: Bool){
-//        self.collectionView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: .right, animated: animated)
-//    }
-//
-//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if self.sourceCount == 0 || self.pageControl == nil {
-//            return
-//        }
-//
-//        let itemIndex = self.currentIndex()
-//        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
-//
-//        if self.pageControl!.isKind(of: UIPageControl.self) {
-//            self.pageControl?.currentPage = indexOnPageControl
-//        }
-////        else {
-////            (self.pageControl as! FWPageControl).currentPage = indexOnPageControl
-////        }
-//    }
-//
-//    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        self.invalidateTimer()
-//    }
-//
-//    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        self.setupTimer()
-//    }
-//
-//    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        self.scrollViewDidEndScrollingAnimation(self.collectionView)
-//    }
-//
-//    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        if self.sourceCount == 0 {
-//            return
-//        }
-//
-//        let itemIndex = self.currentIndex()
-//        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
-//        if self.itemDidClickedBlock != nil {
-//            self.itemDidClickedBlock!(indexOnPageControl)
-//        }
-//    }
+    }
+
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.invalidateTimer()
+    }
+
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.setupTimer()
+    }
+
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.scrollViewDidEndScrollingAnimation(self.collectionView)
+    }
+
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        if self.sourceCount == 0 {
+            return
+        }
+
+        let itemIndex = self.currentIndex()
+        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
+        if self.itemDidClickedBlock != nil {
+            self.itemDidClickedBlock!(indexOnPageControl)
+        }
+    }
 }

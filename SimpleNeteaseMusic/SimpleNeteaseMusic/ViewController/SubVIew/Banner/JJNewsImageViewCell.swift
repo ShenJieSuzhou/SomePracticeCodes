@@ -17,6 +17,7 @@ class JJNewsImageViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        // 设置样式
         imageView.frame = CGRect.zero
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
@@ -40,9 +41,9 @@ class JJNewsImageViewCell: UICollectionViewCell {
     }
     
     func setupUI(imageName: String?, imageUrl: String?, placeholderImage: UIImage?, contentMode: ContentMode) {
-        
-//        imageView.contentMode = .
-        
+        // 设置模式
+        imageView.contentMode = .scaleAspectFill
+        // 加载网络图片
         if imageName != nil {
             imageView.image = UIImage(named: imageName!)
         } else if imageUrl != nil {
