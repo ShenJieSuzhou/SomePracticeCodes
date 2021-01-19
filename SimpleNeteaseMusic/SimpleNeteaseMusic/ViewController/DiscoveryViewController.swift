@@ -55,8 +55,9 @@ class DiscoveryViewController: UITableViewController {
     var newReleaseList = [HotListResult]()
     
     // 顶楼轮播控件
-    lazy var newsBanner: JJNewsBanner = {
-        let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
+    lazy var adScrollerBanner: JJNewsBanner = {
+//        let banner = JJNewsBanner.startPlay(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200), imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
+        let banner = JJNewsBanner(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
         banner.currentPageDotColor = UIColor.white
         banner.pageDotColor = UIColor.gray
         banner.autoScrollTimeInterval = 5.0
@@ -170,7 +171,8 @@ class DiscoveryViewController: UITableViewController {
                 }
             }
             
-            // 刷新 tableView
+            // 轮播刷新数据
+            self.adScrollerBanner.updateUI(imageUrlStrArray: self.bannersData, placeholderImage: UIImage(named: "ad_placeholder"))
             self.homeTableView.reloadData()
         }
     }
@@ -340,7 +342,7 @@ class DiscoveryViewController: UITableViewController {
 //            firstImage.kf.setImage(with: url)
 //            cell.addSubview(firstImage)
            
-            cell.contentView.addSubview(newsBanner)
+            cell.contentView.addSubview(adScrollerBanner)
         } else if indexPath.section == 1 {
             cell.contentView.addSubview(menusView)
         } else if indexPath.section == 2 {

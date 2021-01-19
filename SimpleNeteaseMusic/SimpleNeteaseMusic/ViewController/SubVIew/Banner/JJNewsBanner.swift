@@ -9,28 +9,21 @@
 import UIKit
 
 
-let JJImageViewCellId = "JJImageViewCellId"
+let JJScrollBannerCellID = "JJScrollBannerCellID"
 
-
-@objc public enum PageControlType: Int{
+public enum PageControlType: Int{
     case none
     case classic
     case custom
 }
 
-@objc public enum JJCustomDotType: Int{
-    case hollow
-    case solid
-    case image
-}
-
-@objc public enum PageControlAligment: Int{
+public enum PageControlAligment: Int{
     case center
     case right
     case left
 }
 
-// 点击cell回调
+// 点击 cell 回调
 public typealias ItemDidClickedBlock = (_ currentIndex: Int) -> Void
 
 
@@ -51,36 +44,18 @@ class JJNewsBanner: UIView {
     // 网络图片URL
     public var imageUrlStrArray: [BannerModel]?{
         didSet{
-            if imageUrlStrArray != nil {
-                sourceArray = imageUrlStrArray as [AnyObject]?
+            self.collectionView.reloadData()
+            self.setupPageControl()
+            self.invalidateTimer()
+
+            if autoScroll {
+                self.setupTimer()
             }
+            
+            self.layoutIfNeeded()
         }
     }
     
-    // 传入的资源
-    private var sourceArray: [AnyObject]? {
-        didSet{
-            if sourceArray != nil && sourceArray!.count > 0 {
-                let currentIndex = self.currentIndex()
-                if currentIndex != 0 {
-                    var row = 0
-                    if currentIndex > sourceArray!.count {
-                        row = currentIndex - currentIndex % sourceArray!.count
-                    }
-                    self.collectionView.scrollToItem(at: IndexPath(row: row, section: 0), at: UICollectionView.ScrollPosition.left, animated: false)
-                }
-                self.collectionView.reloadData()
-                self.setupPageControl()
-                self.invalidateTimer()
-
-                if autoScroll {
-                    self.setupTimer()
-                }
-
-                self.layoutIfNeeded()
-            }
-        }
-    }
     
     // 资源总数
     private var sourceCount: Int{
@@ -95,7 +70,7 @@ class JJNewsBanner: UIView {
     private var scrollTimer: Timer?
     
     // 是否自动轮播
-    @objc public var autoScroll = true {
+    public var autoScroll = true {
         didSet {
             self.invalidateTimer()
             if autoScroll {
@@ -105,7 +80,7 @@ class JJNewsBanner: UIView {
     }
     
     // 轮播时间间隔
-    @objc public var autoScrollTimeInterval: TimeInterval = 2.0 {
+    public var autoScrollTimeInterval: TimeInterval = 2.0 {
         didSet {
             self.invalidateTimer()
             if autoScrollTimeInterval > 0 {
@@ -129,11 +104,7 @@ class JJNewsBanner: UIView {
     public var pageControlAliment: PageControlAligment = .center
     
     // 分页控件类型
-    public var pageControlType: PageControlType = .classic {
-        didSet {
-            self.setupPageControl()
-        }
-    }
+    public var pageControlType: PageControlType = .classic
    
     // 当前分页控件颜色
     public var currentPageDotColor = UIColor.white
@@ -145,18 +116,15 @@ class JJNewsBanner: UIView {
     public var pageControlMargin: CGFloat = 10
     
     // 分页控件大小，注意：当PageControlType不等于自定义类型时，只能影响当前分页控件的大小，不能影响分页控件原点的大小
-    public var pageControlDotSize: CGSize = CGSize(width: 10, height: 10) {
-        didSet {
-            self.setupPageControl()
-        }
-    }
+    public var pageControlDotSize: CGSize = CGSize(width: 10, height: 10)
     
-    /// 某一项点击回调
+    // 某一项点击回调
     @objc public var itemDidClickedBlock: ItemDidClickedBlock?
     
-    /// 图片ContentMode
+    // 图片ContentMode
     private var myContentMode: UIImageView.ContentMode = .scaleAspectFill
     
+    // 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
@@ -173,7 +141,7 @@ class JJNewsBanner: UIView {
 }
 
 
-// MARK - lifeCycle
+// MARK: - lifeCycle
 extension JJNewsBanner {
     
     override func layoutSubviews() {
@@ -185,38 +153,31 @@ extension JJNewsBanner {
                 targetIndex = 0
             }
             if self.collectionView.numberOfItems(inSection: 0) == self.totalItemCount && self.loopTimes > 1 {
-//                self.startScrollToItem(targetIndex: targetIndex, animated: false)
+                self.startScrollToItem(targetIndex: targetIndex, animated: false)
             }
         }
 
         if self.pageControl != nil {
-            var pSize = CGSize(width: 0, height: 0)
+            var pSize: CGSize = CGSize(width: 0, height: 0)
             if self.pageControl!.isKind(of: UIPageControl.self) {
                 pSize = CGSize(width: CGFloat(self.sourceCount) * self.pageControlDotSize.width, height: self.pageControlDotSize.height)
             }
 
-//            if self.pageControlAliment == .center {
-//                pX = (self.frame.width - pSize.width) / 2
-//            } else if self.pageControlAliment == .left {
-//                pX = pageControlMargin + 10
-//            } else if self.pageControlAliment == .right {
-//                pX = self.frame.width - pSize.width - (pageControlMargin + 10)
-//            }
             let pX: CGFloat = 0
-            let pY = self.frame.height - pSize.height - pageControlMargin
+            let pY = self.frame.height - margin - pSize.height - pageControlMargin
 
             let pageControlFrame = CGRect(x: pX, y: pY, width: self.frame.width, height: pSize.height)
             self.pageControl!.frame = pageControlFrame
 
             if #available(iOS 14.0, *) {
-//                self.pageControl?.backgroundStyle = .prominent
+                self.pageControl?.backgroundStyle = .automatic
             }
         }
     }
     
     // 设置滚动分页控件
     private func setupPageControl() {
-        if self.sourceArray == nil {
+        if self.imageUrlStrArray == nil {
             return
         }
         if self.pageControl != nil {
@@ -240,7 +201,7 @@ extension JJNewsBanner {
         }
     }
     
-    // cell 转换成 页面索引
+    // 页转换
     private func pageControlIndex(cellIndex: Int) -> Int {
         if self.sourceCount > 0 {
             return cellIndex % self.sourceCount
@@ -264,7 +225,7 @@ extension JJNewsBanner {
 
 
 
-// MARK - Configuration UI
+// MARK: - Configuration UI
 extension JJNewsBanner {
     
     // 构建 UI
@@ -277,7 +238,7 @@ extension JJNewsBanner {
         collectionViewFlowLayout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
 
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), collectionViewLayout: collectionViewFlowLayout)
-        collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJImageViewCellId)
+        collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJScrollBannerCellID)
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -286,21 +247,10 @@ extension JJNewsBanner {
         collectionView.backgroundColor = UIColor.clear
         self.addSubview(collectionView)
     }
-}
-
-// MARK: - 初始化
-extension JJNewsBanner {
-    
-    // 初始化
-    @objc open class func startPlay(frame: CGRect, imageUrlStrArray: [AnyObject]?, placeholderImage:UIImage?) -> JJNewsBanner{
-        let newsBanner = JJNewsBanner(frame: frame)
-        newsBanner.updateUI(localImageArray: nil, imageUrlStrArray: imageUrlStrArray, placeholderImage: placeholderImage, viewArray: nil)
-        
-        return newsBanner
-    }
     
     // 更新 UI
-    private func updateUI(localImageArray: [String]?, imageUrlStrArray: [AnyObject]?, placeholderImage: UIImage?, viewArray: [UIView]?){
+    public func updateUI(imageUrlStrArray: [AnyObject]?, placeholderImage: UIImage?){
+        
         self.imageUrlStrArray = imageUrlStrArray as? [BannerModel]
         self.placeholderImage = placeholderImage
     }
@@ -315,11 +265,11 @@ extension JJNewsBanner :UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if self.imageUrlStrArray != nil {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJImageViewCellId, for: indexPath) as! JJNewsImageViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJScrollBannerCellID, for: indexPath) as! JJNewsImageViewCell
             cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJImageViewCellId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJScrollBannerCellID, for: indexPath)
             return cell
         }
     }
@@ -331,9 +281,10 @@ extension JJNewsBanner :UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-// MARK: - Scroll logic
+// MARK: - Scroll Logic
 extension JJNewsBanner{
- 
+    
+    // 设置定时器
     public func setupTimer() {
         self.invalidateTimer()
 
@@ -343,6 +294,7 @@ extension JJNewsBanner{
         }
     }
 
+    // 使定时器失效
     public func invalidateTimer() {
         if self.scrollTimer != nil {
             self.scrollTimer?.invalidate()
@@ -366,7 +318,7 @@ extension JJNewsBanner{
         }
     }
 
-
+    // 滚动到指定索引
     public func scrollToIndex(targetIndex: inout Int){
         if self.collectionView.numberOfItems(inSection: 0) != self.totalItemCount {
             return
@@ -381,6 +333,7 @@ extension JJNewsBanner{
             }
             return
         }
+        
         self.startScrollToItem(targetIndex: targetIndex, animated: true)
     }
 
@@ -388,6 +341,7 @@ extension JJNewsBanner{
         self.collectionView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: .right, animated: animated)
     }
 
+    // 设置页面控制器当前页索引
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.sourceCount == 0 || self.pageControl == nil {
             return
@@ -399,9 +353,6 @@ extension JJNewsBanner{
         if self.pageControl!.isKind(of: UIPageControl.self) {
             self.pageControl?.currentPage = indexOnPageControl
         }
-//        else {
-//            (self.pageControl as! FWPageControl).currentPage = indexOnPageControl
-//        }
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -410,21 +361,5 @@ extension JJNewsBanner{
 
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.setupTimer()
-    }
-
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.scrollViewDidEndScrollingAnimation(self.collectionView)
-    }
-
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        if self.sourceCount == 0 {
-            return
-        }
-
-        let itemIndex = self.currentIndex()
-        let indexOnPageControl = self.pageControlIndex(cellIndex: itemIndex)
-        if self.itemDidClickedBlock != nil {
-            self.itemDidClickedBlock!(indexOnPageControl)
-        }
     }
 }
