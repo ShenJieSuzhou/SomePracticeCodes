@@ -32,6 +32,18 @@
 		E587C4702536F56C0091747D /* JJPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46F2536F56C0091747D /* JJPageControl.swift */; };
 		E590C607264D0BE400E15377 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C606264D0BE400E15377 /* HomePageModel.swift */; };
 		E590C60B264D0C8600E15377 /* HomeCircleMenusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C60A264D0C8600E15377 /* HomeCircleMenusModel.swift */; };
+		E590C634264E2A1700E15377 /* BannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62C264E2A1600E15377 /* BannerViewModel.swift */; };
+		E590C635264E2A1700E15377 /* PlaylistRcmdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62D264E2A1700E15377 /* PlaylistRcmdViewModel.swift */; };
+		E590C636264E2A1700E15377 /* YunBeiNewSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62E264E2A1700E15377 /* YunBeiNewSongViewModel.swift */; };
+		E590C637264E2A1700E15377 /* OfficialPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62F264E2A1700E15377 /* OfficialPlaylistViewModel.swift */; };
+		E590C638264E2A1700E15377 /* VideoPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C630264E2A1700E15377 /* VideoPlaylistViewModel.swift */; };
+		E590C639264E2A1700E15377 /* VoivelistRcmdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C631264E2A1700E15377 /* VoivelistRcmdViewModel.swift */; };
+		E590C63A264E2A1700E15377 /* MusicCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C632264E2A1700E15377 /* MusicCalendarViewModel.swift */; };
+		E590C63B264E2A1700E15377 /* MusicMLOGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C633264E2A1700E15377 /* MusicMLOGViewModel.swift */; };
+		E590C63F264E2B6200E15377 /* HomeViewModelSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C63D264E2B6200E15377 /* HomeViewModelSectionType.swift */; };
+		E590C640264E2B6200E15377 /* HomeViewModeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C63E264E2B6200E15377 /* HomeViewModeSection.swift */; };
+		E590C643264E434300E15377 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C642264E434300E15377 /* HomeViewModel.swift */; };
+		E590C647264E458200E15377 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C646264E458200E15377 /* HomeTableViewCell.swift */; };
 		E59B0CDB251B160F00BF4E6D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDA251B160E00BF4E6D /* API.swift */; };
 		E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */; };
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
@@ -85,6 +97,18 @@
 		E587C46F2536F56C0091747D /* JJPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJPageControl.swift; sourceTree = "<group>"; };
 		E590C606264D0BE400E15377 /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		E590C60A264D0C8600E15377 /* HomeCircleMenusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCircleMenusModel.swift; sourceTree = "<group>"; };
+		E590C62C264E2A1600E15377 /* BannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerViewModel.swift; path = SimpleNeteaseMusic/Model/BannerViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C62D264E2A1700E15377 /* PlaylistRcmdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistRcmdViewModel.swift; path = SimpleNeteaseMusic/Model/PlaylistRcmdViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C62E264E2A1700E15377 /* YunBeiNewSongViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YunBeiNewSongViewModel.swift; path = SimpleNeteaseMusic/Model/YunBeiNewSongViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C62F264E2A1700E15377 /* OfficialPlaylistViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfficialPlaylistViewModel.swift; path = SimpleNeteaseMusic/Model/OfficialPlaylistViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C630264E2A1700E15377 /* VideoPlaylistViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlaylistViewModel.swift; path = SimpleNeteaseMusic/Model/VideoPlaylistViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C631264E2A1700E15377 /* VoivelistRcmdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VoivelistRcmdViewModel.swift; path = SimpleNeteaseMusic/Model/VoivelistRcmdViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C632264E2A1700E15377 /* MusicCalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicCalendarViewModel.swift; path = SimpleNeteaseMusic/Model/MusicCalendarViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C633264E2A1700E15377 /* MusicMLOGViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicMLOGViewModel.swift; path = SimpleNeteaseMusic/Model/MusicMLOGViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E590C63D264E2B6200E15377 /* HomeViewModelSectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelSectionType.swift; sourceTree = "<group>"; };
+		E590C63E264E2B6200E15377 /* HomeViewModeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModeSection.swift; sourceTree = "<group>"; };
+		E590C642264E434300E15377 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E590C646264E458200E15377 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		E59B0CDA251B160E00BF4E6D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
@@ -226,6 +250,7 @@
 		E587C408252480400091747D /* SubVIew */ = {
 			isa = PBXGroup;
 			children = (
+				E590C645264E453800E15377 /* Cell */,
 				E5F941CE25A591F200119D34 /* Common */,
 				E5F941C225A58B1100119D34 /* Rank */,
 				E547FAB8256F50AE00F0A5B4 /* CustomHeader */,
@@ -249,6 +274,9 @@
 		E590C604264D036E00E15377 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E590C63D264E2B6200E15377 /* HomeViewModelSectionType.swift */,
+				E590C63E264E2B6200E15377 /* HomeViewModeSection.swift */,
+				E590C642264E434300E15377 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -256,10 +284,26 @@
 		E590C605264D0BC300E15377 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E590C62C264E2A1600E15377 /* BannerViewModel.swift */,
+				E590C632264E2A1700E15377 /* MusicCalendarViewModel.swift */,
+				E590C633264E2A1700E15377 /* MusicMLOGViewModel.swift */,
+				E590C62F264E2A1700E15377 /* OfficialPlaylistViewModel.swift */,
+				E590C62D264E2A1700E15377 /* PlaylistRcmdViewModel.swift */,
+				E590C630264E2A1700E15377 /* VideoPlaylistViewModel.swift */,
+				E590C631264E2A1700E15377 /* VoivelistRcmdViewModel.swift */,
+				E590C62E264E2A1700E15377 /* YunBeiNewSongViewModel.swift */,
 				E590C606264D0BE400E15377 /* HomePageModel.swift */,
 				E590C60A264D0C8600E15377 /* HomeCircleMenusModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		E590C645264E453800E15377 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E590C646264E458200E15377 /* HomeTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E59B0CD9251B15F200BF4E6D /* Util */ = {
@@ -437,28 +481,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				E587C4702536F56C0091747D /* JJPageControl.swift in Sources */,
+				E590C639264E2A1700E15377 /* VoivelistRcmdViewModel.swift in Sources */,
 				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
 				E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
 				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
 				E5D8635525B18A1200A7D455 /* RowStyleLayout.swift in Sources */,
+				E590C640264E2B6200E15377 /* HomeViewModeSection.swift in Sources */,
+				E590C637264E2A1700E15377 /* OfficialPlaylistViewModel.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
 				E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */,
 				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,
 				E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */,
+				E590C636264E2A1700E15377 /* YunBeiNewSongViewModel.swift in Sources */,
+				E590C638264E2A1700E15377 /* VideoPlaylistViewModel.swift in Sources */,
 				E547FB12256F8C7100F0A5B4 /* HotAlbumModel.swift in Sources */,
 				E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */,
 				E57D872C250B59680030B0FF /* ViewController.swift in Sources */,
 				E590C607264D0BE400E15377 /* HomePageModel.swift in Sources */,
+				E590C634264E2A1700E15377 /* BannerViewModel.swift in Sources */,
+				E590C63F264E2B6200E15377 /* HomeViewModelSectionType.swift in Sources */,
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
 				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
+				E590C635264E2A1700E15377 /* PlaylistRcmdViewModel.swift in Sources */,
+				E590C647264E458200E15377 /* HomeTableViewCell.swift in Sources */,
 				E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */,
 				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
 				E587C3FC252357D70091747D /* BannerModel.swift in Sources */,
 				E5F941C425A58B7600119D34 /* RankView.swift in Sources */,
 				E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */,
+				E590C63A264E2A1700E15377 /* MusicCalendarViewModel.swift in Sources */,
 				E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */,
 				E5A7077F2567B02F006D23AB /* DragonBallModel.swift in Sources */,
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
@@ -474,8 +528,10 @@
 				E590C60B264D0C8600E15377 /* HomeCircleMenusModel.swift in Sources */,
 				E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */,
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
+				E590C643264E434300E15377 /* HomeViewModel.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
 				E5F941C825A58D7100119D34 /* RankDetailItem.swift in Sources */,
+				E590C63B264E2A1700E15377 /* MusicMLOGViewModel.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
