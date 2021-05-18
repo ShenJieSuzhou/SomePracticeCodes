@@ -22,11 +22,18 @@ class HomeViewModel: NSObject {
     // 获取首页数据，异步请求并将数据配置好
     func fetchData(url: String) {
         // 请求数据
-        AF.request(url, method: .get).responseDecodable { (response:DataResponse<HomePage, AFError>) in
-            guard let value = response.value else {
-                print(response.error ?? "Unknown error")
-                return
-            }
+//        AF.request(url, method: .get).responseDecodable { (response:DataResponse<HomePage, AFError>) in
+//            guard let value = response.value else {
+//                print(response.error ?? "Unknown error")
+//                return
+//            }
+//        }
+        
+        if let bundlePath = Bundle.main.path(forResource: "mockdata",
+                                             ofType: "json"),
+            let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+            let aAlbum = try JSONDecoder().decode(HomePage.self, from: jsonData)
+            dump(aAlbum)
         }
     }
 }

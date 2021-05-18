@@ -50,14 +50,15 @@ struct Creative: Codable {
     let resources: [ResourceElement]?
     let alg: String?
     let position: Int
-    let logInfo, code: String?
+    let code: String?
+    let logInfo: String? = ""
     let creativeEXTInfoVO: CreativeEXTInfoVO?
     let source: String?
 
     enum CodingKeys: String, CodingKey {
         case creativeType
         case creativeID = "creativeId"
-        case action, actionType, uiElement, resources, alg, position, logInfo, code
+        case action, actionType, uiElement, resources, alg, position, code
         case creativeEXTInfoVO = "creativeExtInfoVO"
         case source
     }
@@ -71,23 +72,25 @@ struct CreativeEXTInfoVO: Codable {
 // MARK: - ResourceElement
 struct ResourceElement: Codable {
     let uiElement: ResourceUIElement
-    let resourceType: ResourceType
+    let resourceType: String
     let resourceID: String
     let resourceURL: String?
     let resourceEXTInfo: ResourceEXTInfo?
     let action: String
     let actionType: ActionType
     let valid: Bool
-    let alg, logInfo: String?
+    let alg: String?
+    let logInfo: String? = ""
 
     enum CodingKeys: String, CodingKey {
         case uiElement, resourceType
         case resourceID = "resourceId"
         case resourceURL = "resourceUrl"
         case resourceEXTInfo = "resourceExtInfo"
-        case action, actionType, valid, alg, logInfo
+        case action, actionType, valid, alg
     }
 }
+
 
 // MARK: - ResourceEXTInfo
 struct ResourceEXTInfo: Codable {
@@ -959,4 +962,5 @@ class JSONAny: Codable {
         }
     }
 }
+
 
