@@ -8,16 +8,16 @@
 
 import Foundation
 
-class PlaylistRcmdViewModel: HomeViewModelSection {
+class PlaylistRcmdModel: HomeViewModelSection {
     var type: HomeViewModelSectionType {
         return .PLAYLIST_RCMD
     }
     
-    var sectionTitle: String!
-    var creatives: Creative!
+    var creatives: [Creative]!
+    var uiElement: BlockUIElement?
     
-    init(creatives: Creative) {
+    init(creatives: [Creative], ui elements: BlockUIElement) {
         self.creatives = creatives
+        self.uiElement = elements
     }
-    
 }

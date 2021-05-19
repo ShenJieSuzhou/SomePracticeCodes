@@ -1,5 +1,5 @@
 //
-//  MusicMLOGViewModel.swift
+//  VideoPlaylistViewModel.swift
 //  SimpleNeteaseMusic
 //
 //  Created by shenjie on 2021/5/14.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-class MusicMLOGViewModel: HomeViewModelSection {
+class VideoPlaylistModel: HomeViewModelSection {
     var type: HomeViewModelSectionType {
-        return .MUSIC_MLOG
+        return .VIDEO_PLAYLIST
     }
     
+    var creatives: [Creative]!
     var uiElement: BlockUIElement?
-    var mLog: [EXTInfoElement]!
     
-    init(mLog: [EXTInfoElement], ui elements: BlockUIElement) {
-        self.mLog = mLog
+    init(creatives: [Creative], ui elements: BlockUIElement) {
+        self.creatives = creatives
         self.uiElement = elements
     }
 }

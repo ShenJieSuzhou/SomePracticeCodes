@@ -13,7 +13,6 @@ class BannerModel: HomeViewModelSection {
         return .BANNER
     }
     
-    var sectionTitle: String!
     var banners: [Banner]!
     
     init(banners: [Banner]) {
