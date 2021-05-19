@@ -26,13 +26,11 @@
 		E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */; };
 		E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */; };
 		E57D87482511DEC50030B0FF /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D87472511DEC50030B0FF /* Results.swift */; };
-		E587C3FC252357D70091747D /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C3FB252357D70091747D /* BannerModel.swift */; };
 		E587C46A253697360091747D /* JJNewsBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C469253697360091747D /* JJNewsBanner.swift */; };
 		E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */; };
 		E587C4702536F56C0091747D /* JJPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46F2536F56C0091747D /* JJPageControl.swift */; };
 		E590C607264D0BE400E15377 /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C606264D0BE400E15377 /* HomePageModel.swift */; };
 		E590C60B264D0C8600E15377 /* HomeCircleMenusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C60A264D0C8600E15377 /* HomeCircleMenusModel.swift */; };
-		E590C634264E2A1700E15377 /* BannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62C264E2A1600E15377 /* BannerViewModel.swift */; };
 		E590C635264E2A1700E15377 /* PlaylistRcmdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62D264E2A1700E15377 /* PlaylistRcmdViewModel.swift */; };
 		E590C636264E2A1700E15377 /* YunBeiNewSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62E264E2A1700E15377 /* YunBeiNewSongViewModel.swift */; };
 		E590C637264E2A1700E15377 /* OfficialPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C62F264E2A1700E15377 /* OfficialPlaylistViewModel.swift */; };
@@ -49,6 +47,7 @@
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
 		E5A7077F2567B02F006D23AB /* DragonBallModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A7077E2567B02F006D23AB /* DragonBallModel.swift */; };
 		E5B225572653C6D300A47B5B /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = E5B225562653C6D300A47B5B /* mockdata.json */; };
+		E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B225592654BDD700A47B5B /* BannerModel.swift */; };
 		E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633A25A8293900A7D455 /* RankModel.swift */; };
 		E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633D25A85DEE00A7D455 /* SongModel.swift */; };
 		E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */; };
@@ -91,13 +90,11 @@
 		E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSearchbar.swift; sourceTree = "<group>"; };
 		E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
 		E57D87472511DEC50030B0FF /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
-		E587C3FB252357D70091747D /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		E587C469253697360091747D /* JJNewsBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJNewsBanner.swift; sourceTree = "<group>"; };
 		E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJNewsImageViewCell.swift; sourceTree = "<group>"; };
 		E587C46F2536F56C0091747D /* JJPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJPageControl.swift; sourceTree = "<group>"; };
 		E590C606264D0BE400E15377 /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		E590C60A264D0C8600E15377 /* HomeCircleMenusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCircleMenusModel.swift; sourceTree = "<group>"; };
-		E590C62C264E2A1600E15377 /* BannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerViewModel.swift; path = SimpleNeteaseMusic/Model/BannerViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E590C62D264E2A1700E15377 /* PlaylistRcmdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistRcmdViewModel.swift; path = SimpleNeteaseMusic/Model/PlaylistRcmdViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E590C62E264E2A1700E15377 /* YunBeiNewSongViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YunBeiNewSongViewModel.swift; path = SimpleNeteaseMusic/Model/YunBeiNewSongViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E590C62F264E2A1700E15377 /* OfficialPlaylistViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfficialPlaylistViewModel.swift; path = SimpleNeteaseMusic/Model/OfficialPlaylistViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -114,6 +111,7 @@
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
 		E5A7077E2567B02F006D23AB /* DragonBallModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallModel.swift; sourceTree = "<group>"; };
 		E5B225562653C6D300A47B5B /* mockdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata.json; sourceTree = "<group>"; };
+		E5B225592654BDD700A47B5B /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		E5D8633A25A8293900A7D455 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
 		E5D8633D25A85DEE00A7D455 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomItem.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 			children = (
 				E590C605264D0BC300E15377 /* Home */,
 				E57D87472511DEC50030B0FF /* Results.swift */,
-				E587C3FB252357D70091747D /* BannerModel.swift */,
 				E5A7077E2567B02F006D23AB /* DragonBallModel.swift */,
 				E547FB11256F8C7100F0A5B4 /* HotAlbumModel.swift */,
 				E5D8633A25A8293900A7D455 /* RankModel.swift */,
@@ -284,7 +281,6 @@
 		E590C605264D0BC300E15377 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				E590C62C264E2A1600E15377 /* BannerViewModel.swift */,
 				E590C632264E2A1700E15377 /* MusicCalendarViewModel.swift */,
 				E590C633264E2A1700E15377 /* MusicMLOGViewModel.swift */,
 				E590C62F264E2A1700E15377 /* OfficialPlaylistViewModel.swift */,
@@ -294,6 +290,7 @@
 				E590C62E264E2A1700E15377 /* YunBeiNewSongViewModel.swift */,
 				E590C606264D0BE400E15377 /* HomePageModel.swift */,
 				E590C60A264D0C8600E15377 /* HomeCircleMenusModel.swift */,
+				E5B225592654BDD700A47B5B /* BannerModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -483,6 +480,7 @@
 				E587C4702536F56C0091747D /* JJPageControl.swift in Sources */,
 				E590C639264E2A1700E15377 /* VoivelistRcmdViewModel.swift in Sources */,
 				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
+				E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */,
 				E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
 				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
@@ -499,7 +497,6 @@
 				E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */,
 				E57D872C250B59680030B0FF /* ViewController.swift in Sources */,
 				E590C607264D0BE400E15377 /* HomePageModel.swift in Sources */,
-				E590C634264E2A1700E15377 /* BannerViewModel.swift in Sources */,
 				E590C63F264E2B6200E15377 /* HomeViewModelSectionType.swift in Sources */,
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
@@ -509,7 +506,6 @@
 				E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */,
 				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
-				E587C3FC252357D70091747D /* BannerModel.swift in Sources */,
 				E5F941C425A58B7600119D34 /* RankView.swift in Sources */,
 				E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */,
 				E590C63A264E2A1700E15377 /* MusicCalendarViewModel.swift in Sources */,

@@ -392,6 +392,7 @@ struct Button: Codable {
 }
 
 enum EXTInfoUnion: Codable {
+
     case extInfoElementArray([EXTInfoElement])
     case purpleEXTInfo(PurpleEXTInfo)
 

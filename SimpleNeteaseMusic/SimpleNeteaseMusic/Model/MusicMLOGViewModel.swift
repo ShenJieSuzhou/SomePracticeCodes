@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class MusicMLOGViewModel: HomeViewModelSection {
+    var type: HomeViewModelSectionType {
+        return .MUSIC_MLOG
+    }
+    
+    var uiElement: BlockUIElement?
+    var mLog: [EXTInfoElement]!
+    
+    init(mLog: [EXTInfoElement], ui elements: BlockUIElement) {
+        self.mLog = mLog
+        self.uiElement = elements
+    }
+}

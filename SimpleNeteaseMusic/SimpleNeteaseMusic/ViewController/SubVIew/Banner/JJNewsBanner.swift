@@ -266,7 +266,7 @@ extension JJNewsBanner :UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if self.imageUrlStrArray != nil {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJScrollBannerCellID, for: indexPath) as! JJNewsImageViewCell
-            cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
+//            cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJScrollBannerCellID, for: indexPath)

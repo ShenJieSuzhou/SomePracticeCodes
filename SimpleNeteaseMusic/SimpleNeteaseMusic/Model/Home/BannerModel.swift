@@ -1,14 +1,14 @@
 //
-//  BannerViewModel.swift
+//  BannerModel.swift
 //  SimpleNeteaseMusic
 //
-//  Created by shenjie on 2021/5/14.
+//  Created by shenjie on 2021/5/19.
 //  Copyright © 2021 shenjie. All rights reserved.
 //
 
 import Foundation
 
-class BannerViewModel: HomeViewModelSection {
+class BannerModel: HomeViewModelSection {
     var type: HomeViewModelSectionType {
         return .BANNER
     }
@@ -19,7 +19,4 @@ class BannerViewModel: HomeViewModelSection {
     init(banners: [Banner]) {
         self.banners = banners
     }
-    
-    
-    
 }
