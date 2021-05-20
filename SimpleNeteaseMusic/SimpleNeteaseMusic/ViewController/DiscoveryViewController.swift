@@ -41,7 +41,7 @@ class DiscoveryViewController: UITableViewController {
         // 设置搜索栏
         setupSearchController()
         
-        homeViewModel.fetchData(url: "http://localhost:3000/homepage/block/page")
+        homeViewModel.fetchData(url: "http://localhost:3000/homepage/dragon/ball")
     }
     
     override func viewDidAppear(_ animated: Bool) {

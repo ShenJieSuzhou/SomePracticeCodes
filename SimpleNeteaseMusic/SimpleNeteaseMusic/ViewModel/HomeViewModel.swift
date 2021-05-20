@@ -21,33 +21,50 @@ class HomeViewModel: NSObject {
     
     // 获取首页数据，异步请求并将数据配置好
     func fetchData(url: String) {
-        
-        // 从配置文件中读取首页的数据并转换成数据模型
-        do {
-            if let bundlePath = Bundle.main.path(forResource: "mockdata", ofType: "json"),
-                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                let homeData = try JSONDecoder().decode(HomePage.self, from: jsonData)
-                
-                // 拆分数据模型到各个板块
-                sections = splitData(data: homeData.data.blocks)
-                print(sections)
-                
-            } else {
-                print("++++++++++++ 解析首页发现数据失败 ++++++++++++")
+        // 1.创建任务组
+        let queueGroup = DispatchGroup()
+        // 2.异步获取首页数据
+        let queueHomeData = DispatchQueue(label: "homePage")
+        queueHomeData.async(group: queueGroup, qos: .default, flags: []) {
+            // 从配置文件中读取首页的数据并转换成数据模型
+            do {
+                if let bundlePath = Bundle.main.path(forResource: "mockdata", ofType: "json"),
+                    let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                    let homeData = try JSONDecoder().decode(HomePage.self, from: jsonData)
+                    
+                    // 拆分数据模型到各个板块
+                    self.sections = self.splitData(data: homeData.data.blocks)
+                    
+                    
+                } else {
+                    print("++++++++++++ 解析首页发现数据失败 ++++++++++++")
+                }
+            } catch let err {
+                print(err)
             }
-        } catch let err {
-            print(err)
         }
         
-        // 请求数据 首页发现 + 圆形图片
-//        AF.request(url, method: .get).responseDecodable { (response:DataResponse<HomePage, AFError>) in
-//            guard let value = response.value else {
-//                print(response.error ?? "Unknown error")
-//                return
-//            }
-//        }
+        // 3. 异步获取首页圆形按钮
+        let queueMenus = DispatchQueue(label: "menus")
+        queueMenus.async(group: queueGroup, qos: .default, flags: []) {
+            // 请求数据 首页发现 + 圆形图片
+            AF.request(url, method: .get).responseDecodable { (response:DataResponse<Menus, AFError>) in
+                guard let value = response.value else {
+                    print(response.error ?? "Unknown error")
+                    return
+                }
+                let data: [Datum] = value.data
+                let model: MenusModel = MenusModel(data: data)
+                self.sections.append(model)
+            }
+        }
+        
+        // 4. 执行结果
+        queueGroup.notify(qos: .default, flags: [], queue: DispatchQueue.main) {
+            // 数据回调给 view, 结束 loading 并加载数据
+            print(" all done ")
+        }
     }
-    
     
     /// 拆分已解析好的数据到各个数据模型
     /// - Parameter data: 首页发现数据模型
