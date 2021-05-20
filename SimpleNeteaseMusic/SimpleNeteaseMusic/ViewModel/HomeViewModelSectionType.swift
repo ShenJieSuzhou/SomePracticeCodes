@@ -10,6 +10,7 @@ import Foundation
 
 enum HomeViewModelSectionType {
     case BANNER             // Banner
+    case MENUS              // 圆形按钮
     case PLAYLIST_RCMD      // 推荐歌单
     case STYLE_RCMD         // 个性推荐
     case MUSIC_MLOG         // 精选音乐视频

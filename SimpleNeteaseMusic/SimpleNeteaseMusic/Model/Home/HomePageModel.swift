@@ -964,4 +964,24 @@ class JSONAny: Codable {
     }
 }
 
+struct Menus: Codable {
+    let code: Int
+    let data: [Datum]
+    let message: String
+}
 
+// MARK: - Datum
+struct Datum: Codable {
+    let id: Int
+    let name: String
+    let iconURL: String
+    let url: String
+    let skinSupport: Bool
+    let homepageMode: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case iconURL = "iconUrl"
+        case url, skinSupport, homepageMode
+    }
+}
