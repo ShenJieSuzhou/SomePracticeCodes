@@ -9,10 +9,15 @@
 import Foundation
 import Alamofire
 
-// 协议回调
+// 视图更新回调
+protocol HomeViewModelDelegate: NSObject {
+    func onFetchComplete()
+    func onFetchFailed(with reason: String)
+}
 
 class HomeViewModel: NSObject {
     var sections = [HomeViewModelSection]()
+    weak var delegate: HomeViewModelDelegate?
     
     override init() {
         super.init()
@@ -34,13 +39,12 @@ class HomeViewModel: NSObject {
                     
                     // 拆分数据模型到各个板块
                     self.sections = self.splitData(data: homeData.data.blocks)
-                    
-                    
                 } else {
-                    print("++++++++++++ 解析首页发现数据失败 ++++++++++++")
+                    self.delegate?.onFetchFailed(with:"++++++++++++ 解析首页发现数据失败 ++++++++++++")
                 }
             } catch let err {
                 print(err)
+                self.delegate?.onFetchFailed(with: err.localizedDescription)
             }
         }
         
@@ -51,6 +55,7 @@ class HomeViewModel: NSObject {
             AF.request(url, method: .get).responseDecodable { (response:DataResponse<Menus, AFError>) in
                 guard let value = response.value else {
                     print(response.error ?? "Unknown error")
+                    self.delegate?.onFetchFailed(with: (response.error?.errorDescription)!)
                     return
                 }
                 let data: [Datum] = value.data
@@ -62,7 +67,7 @@ class HomeViewModel: NSObject {
         // 4. 执行结果
         queueGroup.notify(qos: .default, flags: [], queue: DispatchQueue.main) {
             // 数据回调给 view, 结束 loading 并加载数据
-            print(" all done ")
+            self.delegate?.onFetchComplete()
         }
     }
     

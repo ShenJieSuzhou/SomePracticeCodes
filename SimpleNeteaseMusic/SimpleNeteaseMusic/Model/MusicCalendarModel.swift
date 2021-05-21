@@ -13,6 +13,11 @@ class MusicCalendarModel: HomeViewModelSection {
         return .MUSIC_CALENDAR
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var creatives: [Creative]!
     var uiElement: BlockUIElement?
     

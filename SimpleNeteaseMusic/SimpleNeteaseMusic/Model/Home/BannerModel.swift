@@ -13,6 +13,11 @@ class BannerModel: HomeViewModelSection {
         return .BANNER
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var banners: [Banner]!
     
     init(banners: [Banner]) {

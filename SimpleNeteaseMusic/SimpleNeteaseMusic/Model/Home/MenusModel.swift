@@ -13,6 +13,11 @@ class MenusModel: HomeViewModelSection {
         return .BANNER
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var data: [Datum]!
     
     init(data: [Datum]) {

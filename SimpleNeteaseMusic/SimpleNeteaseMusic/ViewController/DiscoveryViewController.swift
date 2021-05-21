@@ -23,16 +23,14 @@ class DiscoveryViewController: UITableViewController {
     @IBOutlet var homeTableView: UITableView!
     
     //搜索
+    fileprivate var indicatorView: UIActivityIndicatorView!
     let resultViewController = ResultContainerViewController();
     var searchController: UISearchController!
     var cusSearchBar:JJCustomSearchbar!
     var musicSearchController:MusicSearchViewController!
     
-    private lazy var homeViewModel: HomeViewModel = {
-        let homeVM = HomeViewModel()
-        return homeVM
-    }()
-    
+    // 首页发现 viewModel
+    fileprivate var homeViewModel: HomeViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +38,14 @@ class DiscoveryViewController: UITableViewController {
         self.view.backgroundColor = UIColor.darkModeViewColor
         // 设置搜索栏
         setupSearchController()
+        // 获取首页数据
+        indicatorView = UIActivityIndicatorView(style: .medium)
+        indicatorView.color = .red
+        indicatorView.startAnimating()
+        homeTableView.tableFooterView = indicatorView
         
+        homeViewModel = HomeViewModel()
+        homeTableView.delegate = self
         homeViewModel.fetchData(url: "http://localhost:3000/homepage/dragon/ball")
     }
     
@@ -73,7 +78,6 @@ class DiscoveryViewController: UITableViewController {
     @objc func playingBtnClicked(){
         print("22222222")
     }
-    
 }
 
 
@@ -95,8 +99,7 @@ extension DiscoveryViewController {
 //        } else if indexPath.section == 6 {
 //            return rankView.caculateViewHeight()
 //        }
- 
-        return 50.0
+        return 0
     }
 
 
@@ -141,17 +144,14 @@ extension DiscoveryViewController {
 extension DiscoveryViewController {
     // Mark UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        if(self.bannersData.count == 0){
-//            return 1;
-//        }
-        return 7
+        if homeViewModel.sections.isEmpty {
+            return 0
+        }
+        return homeViewModel.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-//        if(self.bannersData.count == 0){
-//            return 0;
-//        }
-        return 1
+        return homeViewModel.sections[section].rowCount
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -208,5 +208,18 @@ extension DiscoveryViewController: TagSwitchDelegate {
     func tagSwitchTo(to index: Int) {
         // refresh 数据
         print("1111111");
+    }
+}
+
+extension DiscoveryViewController: HomeViewModelDelegate{
+    
+    func onFetchComplete(){
+        indicatorView.stopAnimating()
+        homeTableView.reloadData()
+    }
+    
+    func onFetchFailed(with reason: String){
+        indicatorView.stopAnimating()
+        homeTableView.reloadData()
     }
 }

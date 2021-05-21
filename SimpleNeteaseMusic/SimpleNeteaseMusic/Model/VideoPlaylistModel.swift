@@ -13,6 +13,11 @@ class VideoPlaylistModel: HomeViewModelSection {
         return .VIDEO_PLAYLIST
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var creatives: [Creative]!
     var uiElement: BlockUIElement?
     

@@ -13,6 +13,11 @@ class VoiceListRcmdModel: HomeViewModelSection {
         return .VOICELIST_RCMD
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var creatives: [Creative]!
     var uiElement: BlockUIElement?
     

@@ -12,3 +12,5 @@ import UIKit
 class BannerCell: UITableViewCell {
      
 }
+
+

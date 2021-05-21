@@ -13,6 +13,11 @@ class MusicMLOGModel: HomeViewModelSection {
         return .MUSIC_MLOG
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var uiElement: BlockUIElement?
     var mLog: [EXTInfoElement]!
     

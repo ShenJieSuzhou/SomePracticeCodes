@@ -13,6 +13,11 @@ class AlbumNewSongModel: HomeViewModelSection {
         return .ALBUM_NEW_SONG
     }
     
+    var rowCount: Int{
+        return 1
+    }
+    
+    var rowHeight: Int = 0
     var creatives: [Creative]!
     var uiElement: BlockUIElement?
     

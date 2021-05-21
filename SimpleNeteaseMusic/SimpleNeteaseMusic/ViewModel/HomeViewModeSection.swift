@@ -11,6 +11,7 @@ import Foundation
 protocol HomeViewModelSection {
     var type: HomeViewModelSectionType { get }
     var rowCount: Int { get }
+    var rowHeight: Int { get set}
 }
 
 extension HomeViewModelSection {
