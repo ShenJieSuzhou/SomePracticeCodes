@@ -14,3 +14,18 @@ class BannerCell: UITableViewCell {
 }
 
 
+/// UITableViewCell 的基类
+class BaseViewCell: UITableViewCell {
+    
+}
+
+class ScrollBannerCell: BaseViewCell {
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? BannerModel else {
+                return
+            }
+            
+        }
+    }
+}
