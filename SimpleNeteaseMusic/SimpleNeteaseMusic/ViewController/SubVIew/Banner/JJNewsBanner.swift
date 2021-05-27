@@ -42,7 +42,7 @@ class JJNewsBanner: UIView {
     public var placeholderImage: UIImage?
     
     // 网络图片URL
-    public var imageUrlStrArray: [BannerModel]?{
+    public var bannerModel: BannerModel?{
         didSet{
             self.collectionView.reloadData()
             self.setupPageControl()
@@ -59,8 +59,8 @@ class JJNewsBanner: UIView {
     
     // 资源总数
     private var sourceCount: Int{
-        if self.imageUrlStrArray != nil {
-            return self.imageUrlStrArray!.count
+        if self.bannerModel != nil {
+            return self.bannerModel!.banners.count
         }
         
         return 0
@@ -177,7 +177,7 @@ extension JJNewsBanner {
     
     // 设置滚动分页控件
     private func setupPageControl() {
-        if self.imageUrlStrArray == nil {
+        if self.bannerModel == nil {
             return
         }
         if self.pageControl != nil {
@@ -249,9 +249,9 @@ extension JJNewsBanner {
     }
     
     // 更新 UI
-    public func updateUI(imageUrlStrArray: [AnyObject]?, placeholderImage: UIImage?){
+    public func updateUI(model: BannerModel?, placeholderImage: UIImage?){
         
-        self.imageUrlStrArray = imageUrlStrArray as? [BannerModel]
+        self.bannerModel = model
         self.placeholderImage = placeholderImage
     }
 }
@@ -264,9 +264,9 @@ extension JJNewsBanner :UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if self.imageUrlStrArray != nil {
+        if self.bannerModel != nil {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJScrollBannerCellID, for: indexPath) as! JJNewsImageViewCell
-//            cell.setupUI(imageName: nil, imageUrl: (self.imageUrlStrArray != nil ? self.imageUrlStrArray![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
+            cell.setupUI(imageName: nil, imageUrl: (self.bannerModel?.banners != nil ? self.bannerModel?.banners![indexPath.row].pic : nil), placeholderImage: self.placeholderImage, contentMode: self.myContentMode)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJScrollBannerCellID, for: indexPath)

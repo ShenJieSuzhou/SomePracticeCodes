@@ -155,6 +155,17 @@ extension DiscoveryViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = homeViewModel.sections[indexPath.section]
+        switch item.type {
+        case .BANNER:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ScrollBannerCell.identifier, for: indexPath) as? ScrollBannerCell {
+                cell.item = item
+                return cell
+            }
+        default:
+            <#code#>
+        }
+        
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "CellReuseIdentifier")
         //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
 //        if indexPath.section == 0 {
