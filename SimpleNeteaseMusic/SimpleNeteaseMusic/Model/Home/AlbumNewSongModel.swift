@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class AlbumNewSongModel: HomeViewModelSection {
+    var rowHeight: CGFloat
+    
+    var frame: CGRect
+    
     var type: HomeViewModelSectionType {
         return .ALBUM_NEW_SONG
     }
@@ -16,14 +21,15 @@ class AlbumNewSongModel: HomeViewModelSection {
     var rowCount: Int{
         return 1
     }
-    
-    var rowHeight: Int = 0
+
     var creatives: [Creative]!
     var uiElement: BlockUIElement?
     
     init(creatives: [Creative], ui elements: BlockUIElement) {
         self.creatives = creatives
         self.uiElement = elements
+        self.frame = CGRect.zero
+        self.rowHeight = 0
     }
 }
 

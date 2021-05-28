@@ -21,7 +21,6 @@ class HomeViewModel: NSObject {
     
     override init() {
         super.init()
-        
     }
     
     // 获取首页数据，异步请求并将数据配置好

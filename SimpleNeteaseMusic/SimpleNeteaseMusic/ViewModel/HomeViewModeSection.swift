@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 protocol HomeViewModelSection {
     var type: HomeViewModelSectionType { get }
     var rowCount: Int { get }
-    var rowHeight: Int { get set}
+    var rowHeight: CGFloat { get }
+    var frame: CGRect { get set }
 }
 
 extension HomeViewModelSection {

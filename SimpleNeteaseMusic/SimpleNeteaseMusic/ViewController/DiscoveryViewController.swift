@@ -30,7 +30,7 @@ class DiscoveryViewController: UITableViewController {
     var musicSearchController:MusicSearchViewController!
     
     // 首页发现 viewModel
-    fileprivate var homeViewModel: HomeViewModel!
+    fileprivate var homeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +42,11 @@ class DiscoveryViewController: UITableViewController {
         indicatorView = UIActivityIndicatorView(style: .medium)
         indicatorView.color = .red
         indicatorView.startAnimating()
+        homeTableView.register(ScrollBannerCell.self, forCellReuseIdentifier: "ScrollBannerCell")
         homeTableView.tableFooterView = indicatorView
         
-        homeViewModel = HomeViewModel()
         homeTableView.delegate = self
+        homeViewModel.delegate = self
         homeViewModel.fetchData(url: "http://localhost:3000/homepage/dragon/ball")
     }
     
@@ -84,22 +85,7 @@ class DiscoveryViewController: UITableViewController {
 extension DiscoveryViewController {
     // Mark UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-//        if indexPath.section == 0 {
-//            return 200.0
-//        } else if indexPath.section == 1 {
-//            return 150.0
-//        } else if indexPath.section == 2 {
-//            return 180.0
-//        } else if indexPath.section == 3 {
-//            return privateSongListView.caculateViewHeight()
-//        } else if indexPath.section == 4 {
-//            return 180.0
-//        } else if indexPath.section == 5 {
-//            return 240.0
-//        } else if indexPath.section == 6 {
-//            return rankView.caculateViewHeight()
-//        }
-        return 0
+        return homeViewModel.sections[indexPath.section].rowHeight
     }
 
 
@@ -107,7 +93,6 @@ extension DiscoveryViewController {
         if (section == 0 || section == 1) {
             return 0;
         }
-        
         return 40.0
     }
 
@@ -163,10 +148,10 @@ extension DiscoveryViewController {
                 return cell
             }
         default:
-            <#code#>
+            break
         }
         
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "CellReuseIdentifier")
+//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "CellReuseIdentifier")
         //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
 //        if indexPath.section == 0 {
 //            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 20, height: 180))
@@ -201,7 +186,8 @@ extension DiscoveryViewController {
 //            cell.contentView.backgroundColor = UIColor.clear
 //        }
         
-        return cell
+        // return the default cell if none of above succeed
+           return UITableViewCell()
     }
 }
 

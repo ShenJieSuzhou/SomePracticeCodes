@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class MusicMLOGModel: HomeViewModelSection {
+    var rowHeight: CGFloat
+    
+    var frame: CGRect
+    
+    
     var type: HomeViewModelSectionType {
         return .MUSIC_MLOG
     }
@@ -17,12 +23,13 @@ class MusicMLOGModel: HomeViewModelSection {
         return 1
     }
     
-    var rowHeight: Int = 0
     var uiElement: BlockUIElement?
     var mLog: [EXTInfoElement]!
     
     init(mLog: [EXTInfoElement], ui elements: BlockUIElement) {
         self.mLog = mLog
         self.uiElement = elements
+        self.frame = CGRect.zero
+        self.rowHeight = 0
     }
 }

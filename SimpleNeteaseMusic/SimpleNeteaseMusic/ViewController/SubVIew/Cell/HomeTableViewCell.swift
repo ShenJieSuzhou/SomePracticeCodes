@@ -24,7 +24,7 @@ class ScrollBannerCell: BaseViewCell {
           return String(describing: self)
     }
     
-    var scrollBanner = JJNewsBanner()
+    var scrollBanner: JJNewsBanner!
     
     var item: HomeViewModelSection? {
         didSet {
@@ -38,8 +38,8 @@ class ScrollBannerCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
-        scrollBanner.frame = CGRect.zero
-        self.contentView.addSubview(scrollBanner)
+        scrollBanner = JJNewsBanner(frame: self.frame)
+        self.contentView.addSubview(scrollBanner!)
     }
     
     required init?(coder: NSCoder) {
@@ -49,15 +49,16 @@ class ScrollBannerCell: BaseViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        scrollBanner.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
-        }
+//        scrollBanner.snp.makeConstraints { (make) in
+//            make.left.equalToSuperview().offset(10)
+//            make.right.equalToSuperview().offset(-10)
+//            make.top.equalToSuperview().offset(10)
+//            make.bottom.equalToSuperview().offset(-10)
+//        }
     }
     
     func setupUI(model: BannerModel) {
-        scrollBanner.updateUI(model: model, placeholderImage: UIImage(named: ""))
+        self.scrollBanner.frame = model.frame
+        self.scrollBanner.updateUI(model: model, placeholderImage: UIImage(named: "ad_placeholder"))
     }
 }

@@ -146,6 +146,8 @@ extension JJNewsBanner {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.collectionView.frame = CGRect(x: kLeftMargin, y: kTopMargin, width: self.frame.size.width - 2 * kLeftMargin , height: self.frame.size.height - 2 * kTopMargin)
 
         if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
             var targetIndex = 0
@@ -217,17 +219,14 @@ extension JJNewsBanner {
         }
         
         var index = 0
-        index = Int((self.collectionView.contentOffset.x + self.collectionViewFlowLayout.itemSize.width * 0.5) / self.collectionViewFlowLayout.itemSize.width)
+//        index = Int((self.collectionView.contentOffset.x + self.collectionViewFlowLayout.itemSize.width * 0.5) / self.collectionViewFlowLayout.itemSize.width)
 
         return max(0, index)
     }
 }
 
-
-
 // MARK: - Configuration UI
 extension JJNewsBanner {
-    
     // 构建 UI
     private func configUI() {
         collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -237,7 +236,7 @@ extension JJNewsBanner {
         collectionViewFlowLayout.sectionInset = UIEdgeInsets.zero
         collectionViewFlowLayout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
 
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height), collectionViewLayout: collectionViewFlowLayout)
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJScrollBannerCellID)
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
@@ -250,7 +249,6 @@ extension JJNewsBanner {
     
     // 更新 UI
     public func updateUI(model: BannerModel?, placeholderImage: UIImage?){
-        
         self.bannerModel = model
         self.placeholderImage = placeholderImage
     }
@@ -288,10 +286,10 @@ extension JJNewsBanner{
     public func setupTimer() {
         self.invalidateTimer()
 
-        if self.autoScroll {
-            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
-            RunLoop.main.add(self.scrollTimer!, forMode: .common)
-        }
+//        if self.autoScroll {
+//            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
+//            RunLoop.main.add(self.scrollTimer!, forMode: .common)
+//        }
     }
 
     // 使定时器失效

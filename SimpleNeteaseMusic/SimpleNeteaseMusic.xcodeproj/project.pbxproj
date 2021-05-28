@@ -695,7 +695,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.snailgames.MobileSDKDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = UniversalSnailDev;
+				PROVISIONING_PROFILE_SPECIFIER = UniversialDev;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

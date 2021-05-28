@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class StyleRcmdModel: HomeViewModelSection {
+    var rowHeight: CGFloat
+    
+    var frame: CGRect
+    
     var type: HomeViewModelSectionType {
         return .STYLE_RCMD
     }
@@ -17,12 +22,13 @@ class StyleRcmdModel: HomeViewModelSection {
         return 1
     }
     
-    var rowHeight: Int = 0
     var creatives: [Creative]!
     var uiElement: BlockUIElement?
     
     init(creatives: [Creative], ui elements: BlockUIElement) {
         self.creatives = creatives
         self.uiElement = elements
+        self.frame = CGRect.zero
+        self.rowHeight = 0
     }
 }

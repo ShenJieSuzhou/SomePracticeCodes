@@ -31,13 +31,13 @@ class JJNewsImageViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-            
-        imageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.top.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(-20)
-        }
+        imageView.frame = self.frame
+//        imageView.snp.makeConstraints { (make) in
+//            make.left.equalToSuperview().offset(20)
+//            make.right.equalToSuperview().offset(-20)
+//            make.top.equalToSuperview().offset(20)
+//            make.bottom.equalToSuperview().offset(-20)
+//        }
     }
     
     func setupUI(imageName: String?, imageUrl: String?, placeholderImage: UIImage?, contentMode: ContentMode) {

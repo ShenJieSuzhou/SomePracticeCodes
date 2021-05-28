@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class MenusModel: HomeViewModelSection {
+    var rowHeight: CGFloat
+    
+    var frame: CGRect
+    
     var type: HomeViewModelSectionType {
         return .BANNER
     }
@@ -17,10 +22,11 @@ class MenusModel: HomeViewModelSection {
         return 1
     }
     
-    var rowHeight: Int = 0
     var data: [Datum]!
     
     init(data: [Datum]) {
         self.data = data
+        self.frame = CGRect.zero
+        self.rowHeight = 0
     }
 }
