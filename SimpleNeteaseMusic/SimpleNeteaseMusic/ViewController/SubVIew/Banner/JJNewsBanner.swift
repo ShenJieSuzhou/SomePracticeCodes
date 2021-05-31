@@ -30,7 +30,7 @@ public typealias ItemDidClickedBlock = (_ currentIndex: Int) -> Void
 class JJNewsBanner: UIView {
     
     // item 左右边距
-    private let margin: CGFloat = 20
+    private let margin: CGFloat = 10
         
     // 布局
     private var collectionViewFlowLayout: UICollectionViewFlowLayout!
@@ -80,7 +80,7 @@ class JJNewsBanner: UIView {
     }
     
     // 轮播时间间隔
-    public var autoScrollTimeInterval: TimeInterval = 2.0 {
+    public var autoScrollTimeInterval: TimeInterval = 4.0 {
         didSet {
             self.invalidateTimer()
             if autoScrollTimeInterval > 0 {
@@ -146,8 +146,14 @@ extension JJNewsBanner {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.collectionView.frame = CGRect(x: kLeftMargin, y: kTopMargin, width: self.frame.size.width - 2 * kLeftMargin , height: self.frame.size.height - 2 * kTopMargin)
+            
+        // 设置 item size 大小
+        self.collectionViewFlowLayout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
+        // 设置 collectionView frame 大小
+        self.collectionView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+        }
 
         if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
             var targetIndex = 0
@@ -158,7 +164,8 @@ extension JJNewsBanner {
                 self.startScrollToItem(targetIndex: targetIndex, animated: false)
             }
         }
-
+        
+        // 设置分页控件
         if self.pageControl != nil {
             var pSize: CGSize = CGSize(width: 0, height: 0)
             if self.pageControl!.isKind(of: UIPageControl.self) {
@@ -219,7 +226,7 @@ extension JJNewsBanner {
         }
         
         var index = 0
-//        index = Int((self.collectionView.contentOffset.x + self.collectionViewFlowLayout.itemSize.width * 0.5) / self.collectionViewFlowLayout.itemSize.width)
+        index = Int((self.collectionView.contentOffset.x + self.collectionViewFlowLayout.itemSize.width * 0.5) / self.collectionViewFlowLayout.itemSize.width)
 
         return max(0, index)
     }
@@ -234,7 +241,6 @@ extension JJNewsBanner {
         collectionViewFlowLayout.minimumLineSpacing = 0
         collectionViewFlowLayout.minimumInteritemSpacing = 0
         collectionViewFlowLayout.sectionInset = UIEdgeInsets.zero
-        collectionViewFlowLayout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
 
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJScrollBannerCellID)
@@ -286,10 +292,10 @@ extension JJNewsBanner{
     public func setupTimer() {
         self.invalidateTimer()
 
-//        if self.autoScroll {
-//            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
-//            RunLoop.main.add(self.scrollTimer!, forMode: .common)
-//        }
+        if self.autoScroll {
+            self.scrollTimer = Timer.scheduledTimer(timeInterval: self.autoScrollTimeInterval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
+            RunLoop.main.add(self.scrollTimer!, forMode: .common)
+        }
     }
 
     // 使定时器失效

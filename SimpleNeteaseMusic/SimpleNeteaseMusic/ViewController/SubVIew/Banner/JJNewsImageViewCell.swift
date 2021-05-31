@@ -18,7 +18,6 @@ class JJNewsImageViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         // 设置样式
-        imageView.frame = CGRect.zero
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
         
@@ -31,13 +30,12 @@ class JJNewsImageViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = self.frame
-//        imageView.snp.makeConstraints { (make) in
-//            make.left.equalToSuperview().offset(20)
-//            make.right.equalToSuperview().offset(-20)
-//            make.top.equalToSuperview().offset(20)
-//            make.bottom.equalToSuperview().offset(-20)
-//        }
+        imageView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.top.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
     
     func setupUI(imageName: String?, imageUrl: String?, placeholderImage: UIImage?, contentMode: ContentMode) {

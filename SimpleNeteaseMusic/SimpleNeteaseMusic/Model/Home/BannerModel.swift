@@ -32,7 +32,7 @@ class BannerModel: HomeViewModelSection {
     
     /// 根据模型计算 View frame
     class func caculateFrame() -> CGRect {
-        let height: Double = 120 * Double(scaleW)
+        let height: Double = 180 * Double(scaleW)
         let width: Double = Double(kScreenWidth)
         return CGRect(x: 0, y: 0, width: width, height: height)
     }
