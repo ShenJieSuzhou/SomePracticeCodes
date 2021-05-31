@@ -27,7 +27,7 @@ class HomeMenuCell: UICollectionViewCell {
         let mText = UILabel()
         mText.textColor = UIColor.darkModeTextColor
         mText.textAlignment = .center
-        mText.font = UIFont.systemFont(ofSize: 18)
+        mText.font = UIFont.systemFont(ofSize: 14)
         return mText
     }()
     
@@ -44,26 +44,26 @@ class HomeMenuCell: UICollectionViewCell {
         
         self.menuLayer.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.width.equalTo(self.frame.size.width * 0.8)
-            make.height.equalTo(self.frame.size.width * 0.8)
+            make.width.equalTo(self.frame.size.width * 0.6)
+            make.height.equalTo(self.frame.size.width * 0.6)
         }
         
         self.menuIcon.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.equalTo(30)
-            make.height.equalTo(30)
+            make.width.equalTo(self.frame.size.width * 0.6)
+            make.height.equalTo(self.frame.size.width * 0.6)
         }
         
         self.menuText.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-15)
-            make.height.equalTo(30)
+            make.bottom.equalToSuperview().offset(-25)
+            make.height.equalTo(self.frame.size.width * 0.4)
             make.width.equalTo(self.frame.size.width * 0.8)
         }
         
         // 设置菜单圆角
-        self.menuLayer.layer.cornerRadius = self.frame.size.width * 0.8 * 0.5
+        self.menuLayer.layer.cornerRadius = self.frame.size.width * 0.6 * 0.5
     }
 
     required init?(coder: NSCoder) {
@@ -72,7 +72,6 @@ class HomeMenuCell: UICollectionViewCell {
 
     func setupUI(imageUrl: String, title: String) -> Void {
         self.menuIcon.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
-            
         }
         self.menuText.text = title
     }

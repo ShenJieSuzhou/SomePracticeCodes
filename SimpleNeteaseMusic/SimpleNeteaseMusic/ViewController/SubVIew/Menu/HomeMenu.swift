@@ -19,7 +19,7 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
         let collectionFlowLayout = UICollectionViewFlowLayout()
         collectionFlowLayout.minimumLineSpacing = 0
         collectionFlowLayout.minimumInteritemSpacing = 0
-        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
         return collectionFlowLayout
     }()
     
@@ -31,7 +31,7 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.scrollsToTop = false
+        collectionView.bounces = true
         collectionView.backgroundColor = UIColor.clear
         collectionView.bounces = false
         return collectionView
@@ -59,8 +59,8 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.menusContainer.frame = self.bounds
-        self.menusViewFlowLayout.itemSize = CGSize(width: 100 * Double(scaleW), height: 140 * Double(scaleW))
+        self.menusContainer.frame = CGRect(x: 0, y: 10, width: self.bounds.size.width, height: self.bounds.size.height)
+        self.menusViewFlowLayout.itemSize = CGSize(width: 75 * Double(scaleW), height: 100 * Double(scaleW))
         self.menusViewFlowLayout.scrollDirection = .horizontal
     }
     

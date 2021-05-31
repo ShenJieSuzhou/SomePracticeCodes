@@ -54,7 +54,7 @@ extension UIColor {
         if #available(iOS 13.0, *) {
             return UIColor{ (trainCollection) -> UIColor in
                 if trainCollection.userInterfaceStyle == .dark {
-                    return UIColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 1)
+                    return UIColor(red: 43/255, green: 25/255, blue: 23/255, alpha: 1)
                 } else {
                     return .red
                 }
