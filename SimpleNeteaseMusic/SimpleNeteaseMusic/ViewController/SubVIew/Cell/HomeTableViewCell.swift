@@ -19,6 +19,7 @@ class BaseViewCell: UITableViewCell {
     
 }
 
+/// 分页滚动 Cell
 class ScrollBannerCell: BaseViewCell {
     class var identifier: String {
           return String(describing: self)
@@ -48,13 +49,6 @@ class ScrollBannerCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-//        scrollBanner.snp.makeConstraints { (make) in
-//            make.left.equalToSuperview().offset(10)
-//            make.right.equalToSuperview().offset(-10)
-//            make.top.equalToSuperview().offset(10)
-//            make.bottom.equalToSuperview().offset(-10)
-//        }
     }
     
     func setupUI(model: BannerModel) {
@@ -62,3 +56,43 @@ class ScrollBannerCell: BaseViewCell {
         self.scrollBanner.updateUI(model: model, placeholderImage: UIImage(named: "ad_placeholder"))
     }
 }
+
+
+/// 首页-发现 圆形按钮
+class CircleMenusCell: BaseViewCell {
+    class var identifier: String {
+          return String(describing: self)
+    }
+    
+    var homeMenu: HomeMenu!
+    
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? MenusModel else {
+                return
+            }
+            self.setupUI(model: item)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /// 初始化
+        homeMenu = HomeMenu(frame: self.frame)
+        self.contentView.addSubview(homeMenu!)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setupUI(model: MenusModel) {
+        self.homeMenu.frame = model.frame
+        self.homeMenu.updateUI(data: model.data)
+    }
+}
+

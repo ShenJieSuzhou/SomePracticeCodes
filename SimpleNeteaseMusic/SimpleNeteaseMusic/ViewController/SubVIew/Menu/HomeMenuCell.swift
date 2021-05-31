@@ -70,8 +70,10 @@ class HomeMenuCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupUI(imageName: String, title: String) -> Void {
-        self.menuIcon.image = UIImage(named: "music")
+    func setupUI(imageUrl: String, title: String) -> Void {
+        self.menuIcon.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
+            
+        }
         self.menuText.text = title
     }
     

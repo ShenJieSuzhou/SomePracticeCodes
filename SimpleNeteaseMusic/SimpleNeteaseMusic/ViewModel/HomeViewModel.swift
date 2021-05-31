@@ -59,14 +59,14 @@ class HomeViewModel: NSObject {
                 }
                 let data: [Datum] = value.data
                 let model: MenusModel = MenusModel(data: data)
-                self.sections.append(model)
+                self.sections.insert(model, at: 1)
+                
+                // 4. 执行结果
+                queueGroup.notify(qos: .default, flags: [], queue: DispatchQueue.main) {
+                    // 数据回调给 view, 结束 loading 并加载数据
+                    self.delegate?.onFetchComplete()
+                }
             }
-        }
-        
-        // 4. 执行结果
-        queueGroup.notify(qos: .default, flags: [], queue: DispatchQueue.main) {
-            // 数据回调给 view, 结束 loading 并加载数据
-            self.delegate?.onFetchComplete()
         }
     }
     

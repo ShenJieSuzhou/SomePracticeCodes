@@ -42,7 +42,8 @@ class DiscoveryViewController: UITableViewController {
         indicatorView = UIActivityIndicatorView(style: .medium)
         indicatorView.color = .red
         indicatorView.startAnimating()
-        homeTableView.register(ScrollBannerCell.self, forCellReuseIdentifier: "ScrollBannerCell")
+        homeTableView.register(ScrollBannerCell.self, forCellReuseIdentifier: ScrollBannerCell.identifier)
+        homeTableView.register(CircleMenusCell.self, forCellReuseIdentifier: CircleMenusCell.identifier)
         homeTableView.tableFooterView = indicatorView
         
         homeTableView.delegate = self
@@ -147,6 +148,13 @@ extension DiscoveryViewController {
                 cell.item = item
                 return cell
             }
+            break
+        case .MENUS:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CircleMenusCell.identifier, for: indexPath) as? CircleMenusCell {
+                cell.item = item
+                return cell
+            }
+            break
         default:
             break
         }

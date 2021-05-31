@@ -15,7 +15,7 @@ class MenusModel: HomeViewModelSection {
     var frame: CGRect
     
     var type: HomeViewModelSectionType {
-        return .BANNER
+        return .MENUS
     }
     
     var rowCount: Int{
@@ -26,7 +26,14 @@ class MenusModel: HomeViewModelSection {
     
     init(data: [Datum]) {
         self.data = data
-        self.frame = CGRect.zero
-        self.rowHeight = 0
+        self.frame = MenusModel.caculateFrame()
+        self.rowHeight = self.frame.size.height
+    }
+    
+    /// 根据模型计算 View frame
+    class func caculateFrame() -> CGRect {
+        let height: Double = 150 * Double(scaleW)
+        let width: Double = Double(kScreenWidth)
+        return CGRect(x: 0, y: 0, width: width, height: height)
     }
 }

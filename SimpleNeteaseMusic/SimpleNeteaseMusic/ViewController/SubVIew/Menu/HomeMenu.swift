@@ -13,14 +13,13 @@ let JJDragonBallCellId = "JJDragonBallCellId"
 // 点击cell回调
 public typealias MenuDidClickedBlock = (_ currentIndex: Int) -> Void
 
-class HomeMenu: UIView , UICollectionViewDelegate, UICollectionViewDataSource{
+class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
     // 圆形图标布局
     private lazy var menusViewFlowLayout: UICollectionViewFlowLayout = {
         let collectionFlowLayout = UICollectionViewFlowLayout()
         collectionFlowLayout.minimumLineSpacing = 0
         collectionFlowLayout.minimumInteritemSpacing = 0
         collectionFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        collectionFlowLayout.itemSize = CGSize(width: 100, height: 140)
         return collectionFlowLayout
     }()
     
@@ -35,12 +34,11 @@ class HomeMenu: UIView , UICollectionViewDelegate, UICollectionViewDataSource{
         collectionView.scrollsToTop = false
         collectionView.backgroundColor = UIColor.clear
         collectionView.bounces = false
-        self.addSubview(collectionView)
         return collectionView
     }()
     
     // 数据源
-    private var menusArray: [DragonBallModel]! {
+    private var menusArray: [Datum]! {
         didSet{
             if menusArray != nil {
                 self.menusContainer.register(HomeMenuCell.self, forCellWithReuseIdentifier: JJDragonBallCellId)
@@ -60,8 +58,19 @@ class HomeMenu: UIView , UICollectionViewDelegate, UICollectionViewDataSource{
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         self.menusContainer.frame = self.bounds
+        self.menusViewFlowLayout.itemSize = CGSize(width: 100 * Double(scaleW), height: 140 * Double(scaleW))
         self.menusViewFlowLayout.scrollDirection = .horizontal
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubview(self.menusContainer)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
@@ -71,19 +80,10 @@ class HomeMenu: UIView , UICollectionViewDelegate, UICollectionViewDataSource{
 }
 
 extension HomeMenu {
-    
-    public func update(data: [DragonBallModel]?){
+    public func updateUI(data: [Datum]?){
         self.menusArray = data
     }
-//   // 初始化
-//    @objc open class func create(frame: CGRect, imageUrlStrArray: [AnyObject]?, placeholderImage:UIImage?) -> JJNewsBanner{
-//        let newsBanner = JJNewsBanner(frame: frame)
-//        newsBanner.updateUI(localImageArray: nil, imageUrlStrArray: imageUrlStrArray, placeholderImage: placeholderImage, viewArray: nil)
-//
-//        return newsBanner
-//    }
 }
-
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension HomeMenu {
@@ -94,8 +94,8 @@ extension HomeMenu {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if self.menusArray != nil {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJDragonBallCellId, for: indexPath) as! HomeMenuCell
-            let model:DragonBallModel = self.menusArray[indexPath.row]
-            cell.setupUI(imageName: model.menuIcon!, title: model.menuTitle!)
+            let model:Datum = self.menusArray[indexPath.row]
+            cell.setupUI(imageUrl: model.iconURL, title: model.name)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJDragonBallCellId, for: indexPath)
