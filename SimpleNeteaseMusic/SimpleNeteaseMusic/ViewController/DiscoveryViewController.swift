@@ -120,6 +120,10 @@ extension DiscoveryViewController {
                 let model = item as? PlaylistRcmdModel
                 headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
                 break
+            case .STYLE_RCMD:
+                let model = item as? StyleRcmdModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
             case .MUSIC_MLOG:
                 let model = item as? MusicMLOGModel
                 headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
@@ -143,7 +147,7 @@ extension DiscoveryViewController {
                 for creative in model!.creatives {
                     if !titles.contains((creative.uiElement?.mainTitle!.title)!) {
                         titles.append((creative.uiElement?.mainTitle!.title)!)
-                    } 
+                    }
                 }
                 headerView.setupUIWithMutiTags(titles: titles, btnName: "更多")
                 break
@@ -163,17 +167,17 @@ extension DiscoveryViewController {
                 break
         }
         
-        if section == 2 {
-            headerView.setupUI(title: "推荐", btnName: "查看更多")
-        } else if section == 3 {
-            headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
-        } else if section == 4 {
-            headerView.setupUI(title: "专属场景歌单", btnName: "查看更多")
-        } else if section == 5 {
-            headerView.setupUIWithMutiTags(titles: ["新歌","新碟"], btnName: "查看更多")
-        } else if section == 6 {
-            headerView.setupUI(title: "排行榜", btnName: "更多")
-        }
+//        if section == 2 {
+//            headerView.setupUI(title: "推荐", btnName: "查看更多")
+//        } else if section == 3 {
+//            headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
+//        } else if section == 4 {
+//            headerView.setupUI(title: "专属场景歌单", btnName: "查看更多")
+//        } else if section == 5 {
+//            headerView.setupUIWithMutiTags(titles: ["新歌","新碟"], btnName: "查看更多")
+//        } else if section == 6 {
+//            headerView.setupUI(title: "排行榜", btnName: "更多")
+//        }
         
         return headerView
     }

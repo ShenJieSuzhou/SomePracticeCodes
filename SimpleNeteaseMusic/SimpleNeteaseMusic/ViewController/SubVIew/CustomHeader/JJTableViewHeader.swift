@@ -22,7 +22,7 @@ class JJTableViewHeader: UIView {
     lazy var title: UILabel = {
         let myTitle = UILabel()
         myTitle.textColor = UIColor.darkModeTextColor
-        myTitle.font = UIFont.systemFont(ofSize: 22)
+        myTitle.font = UIFont(name: "Helvetica-Bold", size: 16)
         return myTitle
     }()
     
@@ -40,6 +40,7 @@ class JJTableViewHeader: UIView {
     lazy var buttom: UIButton = {
         let myButtom = UIButton()
         myButtom.setTitleColor(UIColor.darkModeTextColor, for: .normal)
+        myButtom.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         
         return myButtom
     }()
@@ -67,17 +68,17 @@ class JJTableViewHeader: UIView {
         self.addSubview(self.buttom)
         
         self.title.snp.makeConstraints { (make) in
-            make.width.equalTo(width * 0.5)
+            make.width.equalTo(width * 0.7)
             make.height.equalTo(height - 20)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(10)
         }
         
         self.buttom.snp.makeConstraints { (make) in
-            make.width.equalTo(width / 3)
+            make.width.equalTo(width * 0.15)
             make.height.equalTo(height - 20)
+            make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-10)
         }
         
         // 设置按钮样式
