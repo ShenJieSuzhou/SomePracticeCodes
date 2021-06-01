@@ -83,4 +83,9 @@ extension UIColor {
             return .red
         }
     }
+    
+    /// circel menu color
+    public class var dragonBallColor: UIColor {
+        return UIColor(red: 214/255, green: 56/255, blue: 57/255, alpha: 1)
+    }
 }

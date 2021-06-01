@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SnapKit
+import Kingfisher
 
 class HomeMenuCell: UICollectionViewCell {
     
@@ -20,6 +21,7 @@ class HomeMenuCell: UICollectionViewCell {
     
     lazy var menuIcon: UIImageView = {
         let mIcon = UIImageView()
+        mIcon.tintColor = UIColor.dragonBallColor
         return mIcon
     }()
     
@@ -71,13 +73,10 @@ class HomeMenuCell: UICollectionViewCell {
     }
 
     func setupUI(imageUrl: String, title: String) -> Void {
-        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
-            if let image = UIImage(data: data)?.withRenderingMode(.alwaysTemplate) {
-                self.menuIcon.image = image
-            }
-        }
-
-        self.menuIcon.tintColor = UIColor(red: 214/255, green: 56/255, blue: 57/255, alpha: 1)
+        let imgModify = RenderingModeImageModifier(renderingMode: .alwaysTemplate)
+        self.menuIcon.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: [.imageModifier(imgModify)], completionHandler:  { ( result ) in
+            
+        })
         self.menuText.text = title
     }
     
