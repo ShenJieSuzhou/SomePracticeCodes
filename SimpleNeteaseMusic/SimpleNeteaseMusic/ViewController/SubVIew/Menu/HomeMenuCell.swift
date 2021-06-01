@@ -57,9 +57,9 @@ class HomeMenuCell: UICollectionViewCell {
         
         self.menuText.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-25)
+            make.bottom.equalToSuperview()
             make.height.equalTo(self.frame.size.width * 0.4)
-            make.width.equalTo(self.frame.size.width * 0.8)
+            make.width.equalTo(self.frame.size.width)
         }
         
         // 设置菜单圆角
@@ -71,8 +71,13 @@ class HomeMenuCell: UICollectionViewCell {
     }
 
     func setupUI(imageUrl: String, title: String) -> Void {
-        self.menuIcon.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
+        if let data = try? Data(contentsOf: URL(string: imageUrl)!) {
+            if let image = UIImage(data: data)?.withRenderingMode(.alwaysTemplate) {
+                self.menuIcon.image = image
+            }
         }
+
+        self.menuIcon.tintColor = UIColor(red: 214/255, green: 56/255, blue: 57/255, alpha: 1)
         self.menuText.text = title
     }
     

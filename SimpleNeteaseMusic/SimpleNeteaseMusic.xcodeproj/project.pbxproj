@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8546B108612069BBFA2DC0E7 /* Pods_SimpleNeteaseMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */; };
+		E505EC892665D01900C62819 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505EC882665D01900C62819 /* UIImageViewExtension.swift */; };
 		E51802272564F3C20041E813 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802262564F3C20041E813 /* HomeMenu.swift */; };
 		E52429DA2583747700082F48 /* JJCustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */; };
 		E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */; };
@@ -72,6 +73,7 @@
 		451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleNeteaseMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.release.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.release.xcconfig"; sourceTree = "<group>"; };
+		E505EC882665D01900C62819 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E51802262564F3C20041E813 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
 		E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSegmentedControl.swift; sourceTree = "<group>"; };
 		E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */,
 				E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */,
 				E5D8E063257895C4002DF517 /* CGFloatExtension.swift */,
+				E505EC882665D01900C62819 /* UIImageViewExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E5490515265513DD008C19AC /* OfficialPlaylistModel.swift in Sources */,
 				E590C643264E434300E15377 /* HomeViewModel.swift in Sources */,
+				E505EC892665D01900C62819 /* UIImageViewExtension.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
 				E5F941C825A58D7100119D34 /* RankDetailItem.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,

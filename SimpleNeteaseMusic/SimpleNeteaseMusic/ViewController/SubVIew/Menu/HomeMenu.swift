@@ -59,8 +59,8 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.menusContainer.frame = CGRect(x: 0, y: 10, width: self.bounds.size.width, height: self.bounds.size.height)
-        self.menusViewFlowLayout.itemSize = CGSize(width: 75 * Double(scaleW), height: 100 * Double(scaleW))
+        self.menusContainer.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
+        self.menusViewFlowLayout.itemSize = CGSize(width: 75 * scaleW, height: self.bounds.size.height-20)
         self.menusViewFlowLayout.scrollDirection = .horizontal
     }
     
