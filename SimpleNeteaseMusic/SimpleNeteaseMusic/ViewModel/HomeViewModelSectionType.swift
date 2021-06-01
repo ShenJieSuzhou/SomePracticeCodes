@@ -19,5 +19,6 @@ enum HomeViewModelSectionType {
     case OFFICIAL_PLAYLIST  // 专属场景歌单
     case ALBUM_NEW_SONG     // 云贝新歌
     case VOICELIST_RCMD     // 播客合辑
+    case PODCAST24          // 24小时播客
     case VIDEO_PLAYLIST     // 视频合辑
 }

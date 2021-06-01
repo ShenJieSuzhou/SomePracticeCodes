@@ -16,7 +16,7 @@ class Podcast24Model: HomeViewModelSection
     var frame: CGRect
     
     var type: HomeViewModelSectionType {
-        return .VOICELIST_RCMD
+        return .PODCAST24
     }
     
     var rowCount: Int{

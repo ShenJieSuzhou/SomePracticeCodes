@@ -8,10 +8,9 @@
 
 import UIKit
 
+let screenBounds = UIScreen.main.bounds
 let screenWidth = UIScreen.main.bounds.width // max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
 let screenHeight = UIScreen.main.bounds.height // min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
-let screenBounds = UIScreen.main.bounds
-
 
 extension NSInteger{
     

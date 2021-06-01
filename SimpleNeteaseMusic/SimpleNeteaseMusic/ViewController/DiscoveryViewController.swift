@@ -11,12 +11,10 @@ import SwiftyJSON
 import Kingfisher
 import Foundation
 
-// 屏幕的宽
-let SCREEN_WIDTH = UIScreen.main.bounds.size.width
-
-// 屏幕的高
-let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
-
+/// headview 宽
+let HEADVIEW_W = UIScreen.main.bounds.size.width
+/// headview 高
+let HEADVIEW_H = CGFloat(40)
 
 class DiscoveryViewController: UITableViewController {
     
@@ -89,12 +87,12 @@ extension DiscoveryViewController {
         return homeViewModel.sections[indexPath.section].rowHeight
     }
 
-
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         if (section == 0 || section == 1) {
             return 0;
         }
-        return 40.0
+        
+        return HEADVIEW_H
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
@@ -106,13 +104,67 @@ extension DiscoveryViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 || section == 1 {
+            return nil
+        }
+        
         let width: CGFloat = tableView.frame.size.width
-        let height: CGFloat = 40
+        let height: CGFloat = HEADVIEW_H
         let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
         headerView.backgroundColor = .darkModeViewColor
         headerView.tagDelegate = self
+        /// 获取headview标题和最右按钮数据
+        let item = homeViewModel.sections[section]
+        switch item.type {
+            case .PLAYLIST_RCMD:
+                let model = item as? PlaylistRcmdModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            case .MUSIC_MLOG:
+                let model = item as? MusicMLOGModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            case .MGC_PLAYLIST:
+                let model = item as? MgcPlaylistModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            case .MUSIC_CALENDAR:
+                let model = item as? MusicCalendarModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            case .OFFICIAL_PLAYLIST:
+                let model = item as? OfficialPlaylistModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            case .ALBUM_NEW_SONG:
+                let model = item as? AlbumNewSongModel
+                var titles:Array<String> = []
+                /// 整理 新歌 / 新碟 / 数字专辑
+                for creative in model!.creatives {
+                    if !titles.contains((creative.uiElement?.mainTitle!.title)!) {
+                        titles.append((creative.uiElement?.mainTitle!.title)!)
+                    } 
+                }
+                headerView.setupUIWithMutiTags(titles: titles, btnName: "更多")
+                break
+            case .VOICELIST_RCMD:
+                let model = item as? VoiceListRcmdModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            case .PODCAST24:
+                let model = item as? Podcast24Model
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "")
+                break
+            case .VIDEO_PLAYLIST:
+                let model = item as? VideoPlaylistModel
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                break
+            default:
+                break
+        }
+        
         if section == 2 {
-            headerView.setupUI(title: "人气歌单推荐", btnName: "查看更多")
+            headerView.setupUI(title: "推荐", btnName: "查看更多")
         } else if section == 3 {
             headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
         } else if section == 4 {
