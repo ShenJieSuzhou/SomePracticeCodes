@@ -9,22 +9,20 @@
 import Foundation
 import UIKit
 
+let marginSpace: CGFloat = 10
+
 class PrivateCustomItem: UICollectionViewCell {
     // stackView
     private var stack: UIStackView!
     
     // 私人定制数据
-    private var privateDataList: [SongModel]!
+    private var privateDataList: [ResourceElement]!
     
     // 私人定制列表
     private var privateRowViews: [RowStyleView]!
-    
-    // 默认排行榜单个 item 的高度为 40
-    public var height: CGFloat = 40.0
-
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -54,26 +52,29 @@ extension PrivateCustomItem {
     
     private func createRowStyleView() {
         // 宽度
-        let width: CGFloat = self.frame.size.width - JJINTERVAL * 2
+        let width: CGFloat = self.frame.size.width
+        // 高度
+        let height: CGFloat = (self.frame.size.height - 20) / 3
         
         privateRowViews = [RowStyleView]()
         privateRowViews.removeAll()
         
         for listItem in privateDataList {
-            let rowView = RowStyleView(frame: CGRect(x: 0, y: 0, width: Double(width), height: Double(20)), style: .SubTitleStyle)
-            rowView.setUpRowViewWithSubTitleStyle(image: listItem.image, songName: listItem.songName, singer: listItem.singer, foreword: " privateRowViews = [RowStyleView]()", style: .SubTitleStyle, extra: "")
+            let rowView = RowStyleView(frame: CGRect(x: 0, y: 0, width: Double(width), height: Double(height)), style: .SubTitleStyle)
+            let artists = (listItem.resourceEXTInfo?.artists![0])! as ResourceEXTInfoArtist
+            rowView.setUpRowViewWithSubTitleStyle(image: listItem.uiElement.image.imageURL, songName: listItem.uiElement.mainTitle.title, singer: artists.name, foreword: listItem.uiElement.subTitle?.title ?? "", style: .SubTitleStyle, extra: "")
             privateRowViews.append(rowView)
         }
         
         stack = UIStackView(arrangedSubviews: privateRowViews)
-        stack.spacing = 10
+        stack.spacing = marginSpace
         stack.axis = .vertical
         stack.distribution = .fillEqually
         self.contentView.addSubview(stack)
     }
     
     // 更新数据，并重绘界面
-    public func updateUI(data: [SongModel]) {
+    public func updateUI(data: [ResourceElement]) {
         privateDataList = data
         createRowStyleView()
     }

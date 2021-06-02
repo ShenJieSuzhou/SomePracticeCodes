@@ -18,8 +18,8 @@ class PrivateCustomView: UIView {
     // 宽度
     public var width: CGFloat = 0
     
-    // 默认高度
-    public var rowHeight: CGFloat = 45.0
+//    // 默认高度
+//    public var rowHeight: CGFloat = 45.0
     
     // 默认间隔
     fileprivate var horizonSpace: CGFloat = 10.0
@@ -31,28 +31,39 @@ class PrivateCustomView: UIView {
     fileprivate var marginButtom: CGFloat = 10.0
     
     // 私人定制数据
-    fileprivate var privateListData: [PrivateCustomModel]!
+    fileprivate var privateListData: [Creative]!
     
     // 布局 layout
     private lazy var flowLayout: RowStyleLayout = {
-      let flowLayout = RowStyleLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: marginButtom, right: 10)
+        let flowLayout = RowStyleLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: marginButtom, bottom: marginButtom, right: marginButtom)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
-      return flowLayout
+        return flowLayout
     }()
     
     /// 歌单的视图
     private var collectionView: UICollectionView!
     
-    convenience init(frame: CGRect ,data: [PrivateCustomModel]) {
-        self.init(frame:frame)
-        privateListData = data
-        configUI()
-    }
+//    convenience init(frame: CGRect ,data: [Creative]) {
+//        self.init(frame:frame)
+//        privateListData = data
+//        configUI()
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: flowLayout)
+        collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.scrollsToTop = false
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.bounces = false
+
+        self.addSubview(collectionView)
     }
     
     required init?(coder: NSCoder) {
@@ -72,23 +83,20 @@ extension  PrivateCustomView: UICollectionViewDelegate {
 }
 
 extension  PrivateCustomView: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return privateListData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJPrivateCustomViewID, for: indexPath) as! PrivateCustomItem
-        let result:PrivateCustomModel = self.privateListData![indexPath.row]
-        cell.height = rowHeight
-        cell.updateUI(data: result.privateList)
+        let result = self.privateListData![indexPath.row] as Creative
+        cell.updateUI(data: result.resources!)
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
 }
 
 // MARK - LifeCycle
@@ -96,65 +104,53 @@ extension PrivateCustomView {
     
     override func layoutSubviews() {
         superview?.layoutSubviews()
-       
-        if privateListData == nil {
-            width = self.frame.width
-            height = self.frame.height
-        } else {
-            width = self.frame.width
-            height = caculateViewHeight()
-        }
+        let height: CGFloat = self.frame.size.height
+        let width: CGFloat = self.frame.size.width
         
         // 设置 frame
-        self.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        self.collectionView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         // 设置 item size 大小
-        flowLayout.itemSize = CGSize(width: width - 40, height: height - marginTop - marginButtom)
-        
+        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height)
         // 设置大小约束
         self.collectionView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalToSuperview()
         }
     }
-    
-    
-    // 计算视图的高度
-    public func caculateViewHeight() -> CGFloat {
-        // 如果没有数据则高度为 0
-        if privateListData.isEmpty {
-            return 0
-        }
-        
-        let rows: Int = privateListData.count
-        // 总的高度
-        let totalHeight: CGFloat = rowHeight * CGFloat(rows) + horizonSpace * CGFloat(rows + 1) + marginTop + marginButtom
-        
-        return totalHeight
-    }
+//    // 计算视图的高度
+//    public func caculateViewHeight() -> CGFloat {
+//        // 如果没有数据则高度为 0
+//        if privateListData.isEmpty {
+//            return 0
+//        }
+//
+//        let rows: Int = privateListData
+//        // 总的高度
+//        let totalHeight: CGFloat = rowHeight * CGFloat(rows) + horizonSpace * CGFloat(rows + 1) + marginTop + marginButtom
+//
+//        return totalHeight
+//    }
 }
 
 // MARK - Configuration UI
 extension PrivateCustomView {
-    
-    // 构建 UI
-    private func configUI() {
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: flowLayout)
-        collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
-//        collectionView.isPagingEnabled = true
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.scrollsToTop = false
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.bounces = false
-        
-        self.addSubview(collectionView)
-    }
+//    // 构建 UI
+//    private func configUI() {
+//        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: flowLayout)
+//        collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
+//        collectionView.showsVerticalScrollIndicator = false
+//        collectionView.showsHorizontalScrollIndicator = false
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
+//        collectionView.scrollsToTop = false
+//        collectionView.backgroundColor = UIColor.clear
+//        collectionView.bounces = false
+//
+//        self.addSubview(collectionView)
+//    }
     
     // 更新数据
-    public func updateUI(privateData: [PrivateCustomModel]){
-        
+    public func updateUI(privateData: [Creative]){
         self.privateListData = privateData
         self.layoutIfNeeded()
     }

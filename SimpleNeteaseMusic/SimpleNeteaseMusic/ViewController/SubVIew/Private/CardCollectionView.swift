@@ -14,7 +14,7 @@ let JJHotAlbumCellId = "JJHotAlbumCellId"
 class CardCollectionView: UIView {
     
     // 推荐歌单数据
-    private var hotList: [HotListResult]? {
+    private var hotList: [Creative]? {
         didSet{
             if hotList != nil {
                 self.hotAlbumContainer.reloadData()
@@ -95,8 +95,9 @@ extension CardCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJHotAlbumCellId, for: indexPath) as! CardViewCell
-        let result:HotListResult = self.hotList![indexPath.row]
-        cell.updateUI(coverUrl: result.picURL, desc: result.name, views: String(result.playCount))
+        let result:Creative = self.hotList![indexPath.row]
+        let element = result.resources?[0]
+        cell.updateUI(coverUrl: (element?.uiElement.image.imageURL)!, desc: (element?.uiElement.mainTitle.title)!, views: String((element?.resourceEXTInfo?.playCount)!))
         return cell
     }
 }
@@ -104,8 +105,7 @@ extension CardCollectionView: UICollectionViewDataSource {
 // MARK: - 初始化
 extension CardCollectionView {
     // 更新 UI
-    open func updateUI(hotList: [HotListResult]?){
+    open func updateUI(hotList: [Creative]?){
         self.hotList = hotList
-        
     }
 }

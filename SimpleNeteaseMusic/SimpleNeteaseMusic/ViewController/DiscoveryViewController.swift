@@ -42,6 +42,8 @@ class DiscoveryViewController: UITableViewController {
         indicatorView.startAnimating()
         homeTableView.register(ScrollBannerCell.self, forCellReuseIdentifier: ScrollBannerCell.identifier)
         homeTableView.register(CircleMenusCell.self, forCellReuseIdentifier: CircleMenusCell.identifier)
+        homeTableView.register(PlaylistRcmdCell.self, forCellReuseIdentifier: PlaylistRcmdCell.identifier)
+        homeTableView.register(StyleRcmdCell.self, forCellReuseIdentifier: StyleRcmdCell.identifier)
         homeTableView.tableFooterView = indicatorView
         
         homeTableView.delegate = self
@@ -167,18 +169,6 @@ extension DiscoveryViewController {
                 break
         }
         
-//        if section == 2 {
-//            headerView.setupUI(title: "推荐", btnName: "查看更多")
-//        } else if section == 3 {
-//            headerView.setupUI(title: "欲罢不能的电音旋律", btnName: "播放全部")
-//        } else if section == 4 {
-//            headerView.setupUI(title: "专属场景歌单", btnName: "查看更多")
-//        } else if section == 5 {
-//            headerView.setupUIWithMutiTags(titles: ["新歌","新碟"], btnName: "查看更多")
-//        } else if section == 6 {
-//            headerView.setupUI(title: "排行榜", btnName: "更多")
-//        }
-        
         return headerView
     }
 }
@@ -207,6 +197,18 @@ extension DiscoveryViewController {
             break
         case .MENUS:
             if let cell = tableView.dequeueReusableCell(withIdentifier: CircleMenusCell.identifier, for: indexPath) as? CircleMenusCell {
+                cell.item = item
+                return cell
+            }
+            break
+        case .PLAYLIST_RCMD:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistRcmdCell.identifier, for: indexPath) as? PlaylistRcmdCell {
+                cell.item = item
+                return cell
+            }
+            break
+        case .STYLE_RCMD:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: StyleRcmdCell.identifier, for: indexPath) as? StyleRcmdCell {
                 cell.item = item
                 return cell
             }

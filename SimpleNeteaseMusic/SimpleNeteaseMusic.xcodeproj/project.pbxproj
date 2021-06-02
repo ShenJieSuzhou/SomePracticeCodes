@@ -14,7 +14,6 @@
 		E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */; };
 		E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB5256F509700F0A5B4 /* CardViewCell.swift */; };
 		E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */; };
-		E547FB12256F8C7100F0A5B4 /* HotAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FB11256F8C7100F0A5B4 /* HotAlbumModel.swift */; };
 		E54904F8265510B7008C19AC /* StyleRcmdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54904F7265510B7008C19AC /* StyleRcmdModel.swift */; };
 		E549050F265513DD008C19AC /* VideoPlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5490508265513DD008C19AC /* VideoPlaylistModel.swift */; };
 		E5490510265513DD008C19AC /* MusicMLOGModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5490509265513DD008C19AC /* MusicMLOGModel.swift */; };
@@ -79,7 +78,6 @@
 		E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
 		E547FAB5256F509700F0A5B4 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJTableViewHeader.swift; sourceTree = "<group>"; };
-		E547FB11256F8C7100F0A5B4 /* HotAlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotAlbumModel.swift; sourceTree = "<group>"; };
 		E54904F7265510B7008C19AC /* StyleRcmdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleRcmdModel.swift; sourceTree = "<group>"; };
 		E5490508265513DD008C19AC /* VideoPlaylistModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlaylistModel.swift; path = SimpleNeteaseMusic/Model/VideoPlaylistModel.swift; sourceTree = SOURCE_ROOT; };
 		E5490509265513DD008C19AC /* MusicMLOGModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicMLOGModel.swift; path = SimpleNeteaseMusic/Model/MusicMLOGModel.swift; sourceTree = SOURCE_ROOT; };
@@ -241,7 +239,6 @@
 			children = (
 				E590C605264D0BC300E15377 /* Home */,
 				E57D87472511DEC50030B0FF /* Results.swift */,
-				E547FB11256F8C7100F0A5B4 /* HotAlbumModel.swift */,
 				E5D8633A25A8293900A7D455 /* RankModel.swift */,
 				E5D8633D25A85DEE00A7D455 /* SongModel.swift */,
 				E5D8635125AEC1B500A7D455 /* PrivateCustomModel.swift */,
@@ -501,7 +498,6 @@
 				E54905222656391A008C19AC /* MenusModel.swift in Sources */,
 				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,
 				E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */,
-				E547FB12256F8C7100F0A5B4 /* HotAlbumModel.swift in Sources */,
 				E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */,
 				E57D872C250B59680030B0FF /* ViewController.swift in Sources */,
 				E590C607264D0BE400E15377 /* HomePageModel.swift in Sources */,
