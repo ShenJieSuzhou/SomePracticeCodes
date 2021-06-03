@@ -249,3 +249,119 @@ class MGCPlayListCell: BaseViewCell {
         self.mgcListView.updateUI(songList: model.creatives)
     }
 }
+
+/// 首页-发现  专属歌单
+class OfficialPlayListCell: BaseViewCell {
+    class var identifier: String {
+          return String(describing: self)
+    }
+    
+    var officialListView: CardCollectionView!
+    
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? OfficialPlaylistModel else {
+                return
+            }
+            self.setupUI(model: item)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /// 初始化
+        officialListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(officialListView!)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setupUI(model: OfficialPlaylistModel) {
+        self.officialListView.frame = model.frame
+        self.officialListView.updateUI(songList: model.creatives)
+    }
+}
+
+
+/// 首页-发现  播客推荐
+class VoiceListCell: BaseViewCell {
+    class var identifier: String {
+          return String(describing: self)
+    }
+    
+    var voiceListView: CardCollectionView!
+    
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? VoiceListRcmdModel else {
+                return
+            }
+            self.setupUI(model: item)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /// 初始化
+        voiceListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(voiceListView!)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setupUI(model: VoiceListRcmdModel) {
+        self.voiceListView.frame = model.frame
+        self.voiceListView.updateUI(songList: model.creatives)
+    }
+}
+
+
+/// 首页-发现  视频合辑
+class VideoPlayListCell: BaseViewCell {
+    class var identifier: String {
+          return String(describing: self)
+    }
+    
+    var videoListView: CardCollectionView!
+    
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? VideoPlaylistModel else {
+                return
+            }
+            self.setupUI(model: item)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /// 初始化
+        videoListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(videoListView!)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setupUI(model: VideoPlaylistModel) {
+        self.videoListView.frame = model.frame
+        self.videoListView.updateUI(songList: model.creatives)
+    }
+}

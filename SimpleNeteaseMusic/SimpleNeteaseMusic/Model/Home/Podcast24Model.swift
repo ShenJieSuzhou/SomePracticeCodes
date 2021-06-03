@@ -29,7 +29,14 @@ class Podcast24Model: HomeViewModelSection
     init(creatives: [Creative], ui elements: BlockUIElement) {
         self.creatives = creatives
         self.uiElement = elements
-        self.frame = CGRect.zero
-        self.rowHeight = 0
+        self.frame = Podcast24Model.caculateFrame()
+        self.rowHeight = self.frame.height
+    }
+    
+    /// 根据模型计算 View frame
+    class func caculateFrame() -> CGRect {
+        let height: Double = 180 * Double(scaleW)
+        let width: Double = Double(kScreenWidth)
+        return CGRect(x: 0, y: 0, width: width, height: height)
     }
 }

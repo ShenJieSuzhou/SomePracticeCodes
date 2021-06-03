@@ -96,8 +96,13 @@ extension CardCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJHotAlbumCellId, for: indexPath) as! CardViewCell
         let result:Creative = self.songList![indexPath.row]
-        let element = result.resources?[0]
-        cell.updateUI(coverUrl: (element?.uiElement.image.imageURL)!, desc: (element?.uiElement.mainTitle.title)!, views: String((element?.resourceEXTInfo?.playCount)!))
+        if result.creativeType == "voiceList" {
+            cell.updateUI(coverUrl: (result.uiElement?.image!.imageURL)!, desc: (result.uiElement?.mainTitle!.title)!, views: String((result.creativeEXTInfoVO?.playCount)!))
+        } else {
+            let element = result.resources?[0]
+            cell.updateUI(coverUrl: (element?.uiElement.image.imageURL)!, desc: (element?.uiElement.mainTitle.title)!, views: String((element?.resourceEXTInfo?.playCount)!))
+        }
+        
         return cell
     }
 }
