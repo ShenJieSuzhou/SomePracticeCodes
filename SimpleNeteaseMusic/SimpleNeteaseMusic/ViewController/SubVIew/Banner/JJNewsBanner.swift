@@ -148,7 +148,7 @@ extension JJNewsBanner {
         super.layoutSubviews()
             
         // 设置 item size 大小
-        self.collectionViewFlowLayout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
+        self.collectionViewFlowLayout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height - 10)
         // 设置 collectionView frame 大小
         self.collectionView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()

@@ -14,9 +14,9 @@ let JJHotAlbumCellId = "JJHotAlbumCellId"
 class CardCollectionView: UIView {
     
     // 推荐歌单数据
-    private var hotList: [Creative]? {
+    private var songList: [Creative]? {
         didSet{
-            if hotList != nil {
+            if songList != nil {
                 self.hotAlbumContainer.reloadData()
             }
         }
@@ -61,7 +61,7 @@ class CardCollectionView: UIView {
         self.addSubview(self.hotAlbumContainer)
         
         // 设置 item size 大小
-        self.cardFlowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height)
+        self.cardFlowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height - 10)
         
         self.hotAlbumContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -86,16 +86,16 @@ extension CardCollectionView: UICollectionViewDelegate {
 extension CardCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.hotList == nil {
+        if self.songList == nil {
             return 0
         }
         
-        return self.hotList!.count
+        return self.songList!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJHotAlbumCellId, for: indexPath) as! CardViewCell
-        let result:Creative = self.hotList![indexPath.row]
+        let result:Creative = self.songList![indexPath.row]
         let element = result.resources?[0]
         cell.updateUI(coverUrl: (element?.uiElement.image.imageURL)!, desc: (element?.uiElement.mainTitle.title)!, views: String((element?.resourceEXTInfo?.playCount)!))
         return cell
@@ -105,7 +105,7 @@ extension CardCollectionView: UICollectionViewDataSource {
 // MARK: - 初始化
 extension CardCollectionView {
     // 更新 UI
-    open func updateUI(hotList: [Creative]?){
-        self.hotList = hotList
+    open func updateUI(songList: [Creative]?){
+        self.songList = songList
     }
 }

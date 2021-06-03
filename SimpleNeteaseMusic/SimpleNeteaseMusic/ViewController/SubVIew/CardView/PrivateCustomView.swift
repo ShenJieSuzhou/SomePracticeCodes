@@ -110,12 +110,12 @@ extension PrivateCustomView {
         // 设置 frame
         self.collectionView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         // 设置 item size 大小
-        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height)
+        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height - 20)
         // 设置大小约束
-        self.collectionView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
-        }
+//        self.collectionView.snp.makeConstraints { (make) in
+//            make.width.equalToSuperview()
+//            make.height.equalToSuperview()
+//        }
     }
 //    // 计算视图的高度
 //    public func caculateViewHeight() -> CGFloat {

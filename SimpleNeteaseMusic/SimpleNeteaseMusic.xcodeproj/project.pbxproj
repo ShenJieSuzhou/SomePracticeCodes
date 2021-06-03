@@ -11,6 +11,8 @@
 		E505EC892665D01900C62819 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505EC882665D01900C62819 /* UIImageViewExtension.swift */; };
 		E51802272564F3C20041E813 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802262564F3C20041E813 /* HomeMenu.swift */; };
 		E52429DA2583747700082F48 /* JJCustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */; };
+		E53CBF9F2668D2530065CFB3 /* MusicMLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */; };
+		E53CBFA32668D35C0065CFB3 /* MusicMLogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBFA22668D35C0065CFB3 /* MusicMLogViewCell.swift */; };
 		E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */; };
 		E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB5256F509700F0A5B4 /* CardViewCell.swift */; };
 		E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */; };
@@ -75,6 +77,8 @@
 		E505EC882665D01900C62819 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E51802262564F3C20041E813 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
 		E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSegmentedControl.swift; sourceTree = "<group>"; };
+		E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMLogView.swift; sourceTree = "<group>"; };
+		E53CBFA22668D35C0065CFB3 /* MusicMLogViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMLogViewCell.swift; sourceTree = "<group>"; };
 		E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
 		E547FAB5256F509700F0A5B4 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJTableViewHeader.swift; sourceTree = "<group>"; };
@@ -163,16 +167,26 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E547FAB1256F500600F0A5B4 /* Private */ = {
+		E53CBF9D2668D2120065CFB3 /* MusicMLog */ = {
 			isa = PBXGroup;
 			children = (
+				E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */,
+				E53CBFA22668D35C0065CFB3 /* MusicMLogViewCell.swift */,
+			);
+			path = MusicMLog;
+			sourceTree = "<group>";
+		};
+		E547FAB1256F500600F0A5B4 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				E53CBF9D2668D2120065CFB3 /* MusicMLog */,
 				E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */,
 				E547FAB5256F509700F0A5B4 /* CardViewCell.swift */,
 				E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */,
 				E5D8E067257A0095002DF517 /* PrivateCustomView.swift */,
 				E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */,
 			);
-			path = Private;
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		E547FAB8256F50AE00F0A5B4 /* CustomHeader */ = {
@@ -253,7 +267,7 @@
 				E5F941CE25A591F200119D34 /* Common */,
 				E5F941C225A58B1100119D34 /* Rank */,
 				E547FAB8256F50AE00F0A5B4 /* CustomHeader */,
-				E547FAB1256F500600F0A5B4 /* Private */,
+				E547FAB1256F500600F0A5B4 /* CardView */,
 				F40F5C852562D089006AD685 /* Menu */,
 				E587C467253696770091747D /* Banner */,
 			);
@@ -507,10 +521,12 @@
 				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
 				E590C647264E458200E15377 /* HomeTableViewCell.swift in Sources */,
 				E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */,
+				E53CBF9F2668D2530065CFB3 /* MusicMLogView.swift in Sources */,
 				E54905182655156B008C19AC /* AlbumNewSongModel.swift in Sources */,
 				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
 				E5F941C425A58B7600119D34 /* RankView.swift in Sources */,
+				E53CBFA32668D35C0065CFB3 /* MusicMLogViewCell.swift in Sources */,
 				E549051C26551632008C19AC /* VoiceListRcmdModel.swift in Sources */,
 				E5490511265513DD008C19AC /* MgcPlaylistModel.swift in Sources */,
 				E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */,
