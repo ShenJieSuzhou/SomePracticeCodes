@@ -50,6 +50,7 @@ class DiscoveryViewController: UITableViewController {
         homeTableView.register(VoiceListCell.self, forCellReuseIdentifier: VoiceListCell.identifier)
         homeTableView.register(VideoPlayListCell.self, forCellReuseIdentifier: VideoPlayListCell.identifier)
         homeTableView.register(CalendarCell.self, forCellReuseIdentifier: CalendarCell.identifier)
+        homeTableView.register(NewAlbumsCell.self, forCellReuseIdentifier: NewAlbumsCell.identifier)
         homeTableView.tableFooterView = indicatorView
         
         homeTableView.delegate = self
@@ -244,7 +245,7 @@ extension DiscoveryViewController {
             }
             break
         case .ALBUM_NEW_SONG:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: VoiceListCell.identifier, for: indexPath) as? VoiceListCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: NewAlbumsCell.identifier, for: indexPath) as? NewAlbumsCell {
                 cell.item = item
                 return cell
             }
@@ -263,47 +264,10 @@ extension DiscoveryViewController {
                 return cell
             }
             break
-        default:
-            break
+
         }
         
-//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "CellReuseIdentifier")
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-//        if indexPath.section == 0 {
-//            let scrollBanner:JJScrollerBanner = JJScrollerBanner(frame: CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 20, height: 180))
-//            scrollBanner.setBannerImages(images: self.bannersData)
-//            cell.addSubview(scrollBanner)
-            
-//            let firstImage:UIImageView = UIImageView()
-//            firstImage.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200)
-//            firstImage.contentMode = .scaleAspectFill
-//            firstImage.isUserInteractionEnabled = true
-////            firstImage.setMyImage(URL: NSURL(string: "http://p1.music.126.net/Hg-1mnhZp-NTvo8CMD6osg==/109951165350682670.jpg"))
-//            let url = URL(string: "http://p1.music.126.net/Hg-1mnhZp-NTvo8CMD6osg==/109951165350682670.jpg")
-//            firstImage.kf.setImage(with: url)
-//            cell.addSubview(firstImage)
-           
-//            cell.contentView.addSubview(adScrollerBanner)
-//        } else if indexPath.section == 1 {
-//            cell.contentView.addSubview(menusView)
-//        } else if indexPath.section == 2 {
-//            cell.contentView.addSubview(hotAlbumsView)
-//        } else if indexPath.section == 3 {
-//
-//            cell.contentView.addSubview(privateSongListView)
-//        } else if indexPath.section == 4 {
-//            cell.contentView.addSubview(exclusivePlaylistView)
-//        } else if indexPath.section == 5 {
-//            cell.contentView.addSubview(newReleaseSongListView)
-//        } else if indexPath.section == 6 {
-////            cell.frame = CGRect(x: 0, y: 0, width: rankView.width, height: rankView.height)
-//            cell.contentView.addSubview(rankView)
-//        } else {
-//            cell.contentView.backgroundColor = UIColor.clear
-//        }
-        
-        // return the default cell if none of above succeed
-           return UITableViewCell()
+        return UITableViewCell()
     }
 }
 
