@@ -244,6 +244,10 @@ extension DiscoveryViewController {
             }
             break
         case .ALBUM_NEW_SONG:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: VoiceListCell.identifier, for: indexPath) as? VoiceListCell {
+                cell.item = item
+                return cell
+            }
             break
         case .VOICELIST_RCMD:
             if let cell = tableView.dequeueReusableCell(withIdentifier: VoiceListCell.identifier, for: indexPath) as? VoiceListCell {

@@ -250,6 +250,45 @@ class MGCPlayListCell: BaseViewCell {
     }
 }
 
+/// 首页-发现  音乐日历
+class CalendarCell: BaseViewCell {
+    class var identifier: String {
+          return String(describing: self)
+    }
+    
+    var calendarView: MusicCalendarView!
+    
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? MusicCalendarModel else {
+                return
+            }
+            self.setupUI(model: item)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /// 初始化
+        calendarView = MusicCalendarView(frame: CGRect.zero)
+        self.contentView.addSubview(calendarView!)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setupUI(model: MusicCalendarModel) {
+        self.calendarView.frame = model.frame
+        self.calendarView.updateUI(data: model.creatives)
+    }
+}
+
+
 /// 首页-发现  专属歌单
 class OfficialPlayListCell: BaseViewCell {
     class var identifier: String {
@@ -288,17 +327,17 @@ class OfficialPlayListCell: BaseViewCell {
     }
 }
 
-/// 首页-发现  音乐日历
-class CalendarCell: BaseViewCell {
+/// 首页-发现  新歌 /新碟 /数字专辑
+class NewAlbumsCell: BaseViewCell {
     class var identifier: String {
           return String(describing: self)
     }
     
-    var calendarView: MusicCalendarView!
+    var newAlbumsView: PrivateCustomView!
     
     var item: HomeViewModelSection? {
         didSet {
-            guard let item = item as? MusicCalendarModel else {
+            guard let item = item as? AlbumNewSongModel else {
                 return
             }
             self.setupUI(model: item)
@@ -308,8 +347,8 @@ class CalendarCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
-        calendarView = MusicCalendarView(frame: CGRect.zero)
-        self.contentView.addSubview(calendarView!)
+        newAlbumsView = PrivateCustomView(frame: CGRect.zero)
+        self.contentView.addSubview(newAlbumsView!)
     }
     
     required init?(coder: NSCoder) {
@@ -320,11 +359,12 @@ class CalendarCell: BaseViewCell {
         super.layoutSubviews()
     }
     
-    func setupUI(model: MusicCalendarModel) {
-        self.calendarView.frame = model.frame
-        self.calendarView.updateUI(data: model.creatives)
+    func setupUI(model: AlbumNewSongModel) {
+        self.newAlbumsView.frame = model.frame
+        self.newAlbumsView.updateUI(privateData: model.creatives)
     }
 }
+
 
 /// 首页-发现  播客推荐
 class VoiceListCell: BaseViewCell {
