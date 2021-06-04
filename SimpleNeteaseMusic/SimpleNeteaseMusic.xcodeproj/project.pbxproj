@@ -13,6 +13,8 @@
 		E52429DA2583747700082F48 /* JJCustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */; };
 		E53CBF9F2668D2530065CFB3 /* MusicMLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */; };
 		E53CBFA32668D35C0065CFB3 /* MusicMLogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBFA22668D35C0065CFB3 /* MusicMLogViewCell.swift */; };
+		E53CBFA72669F65C0065CFB3 /* MusicCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBFA62669F65C0065CFB3 /* MusicCalendarView.swift */; };
+		E53CBFAB2669F67D0065CFB3 /* MusicCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBFAA2669F67D0065CFB3 /* MusicCalendarCell.swift */; };
 		E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */; };
 		E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB5256F509700F0A5B4 /* CardViewCell.swift */; };
 		E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */; };
@@ -79,6 +81,8 @@
 		E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSegmentedControl.swift; sourceTree = "<group>"; };
 		E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMLogView.swift; sourceTree = "<group>"; };
 		E53CBFA22668D35C0065CFB3 /* MusicMLogViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMLogViewCell.swift; sourceTree = "<group>"; };
+		E53CBFA62669F65C0065CFB3 /* MusicCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCalendarView.swift; sourceTree = "<group>"; };
+		E53CBFAA2669F67D0065CFB3 /* MusicCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCalendarCell.swift; sourceTree = "<group>"; };
 		E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
 		E547FAB5256F509700F0A5B4 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		E547FAB9256F50F800F0A5B4 /* JJTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJTableViewHeader.swift; sourceTree = "<group>"; };
@@ -176,9 +180,19 @@
 			path = MusicMLog;
 			sourceTree = "<group>";
 		};
+		E53CBFA52669F6050065CFB3 /* MusicCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				E53CBFA62669F65C0065CFB3 /* MusicCalendarView.swift */,
+				E53CBFAA2669F67D0065CFB3 /* MusicCalendarCell.swift */,
+			);
+			path = MusicCalendar;
+			sourceTree = "<group>";
+		};
 		E547FAB1256F500600F0A5B4 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				E53CBFA52669F6050065CFB3 /* MusicCalendar */,
 				E53CBF9D2668D2120065CFB3 /* MusicMLog */,
 				E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */,
 				E547FAB5256F509700F0A5B4 /* CardViewCell.swift */,
@@ -519,6 +533,7 @@
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
 				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
+				E53CBFAB2669F67D0065CFB3 /* MusicCalendarCell.swift in Sources */,
 				E590C647264E458200E15377 /* HomeTableViewCell.swift in Sources */,
 				E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */,
 				E53CBF9F2668D2530065CFB3 /* MusicMLogView.swift in Sources */,
@@ -530,6 +545,7 @@
 				E549051C26551632008C19AC /* VoiceListRcmdModel.swift in Sources */,
 				E5490511265513DD008C19AC /* MgcPlaylistModel.swift in Sources */,
 				E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */,
+				E53CBFA72669F65C0065CFB3 /* MusicCalendarView.swift in Sources */,
 				E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */,
 				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
 				E5D8E068257A0095002DF517 /* PrivateCustomView.swift in Sources */,

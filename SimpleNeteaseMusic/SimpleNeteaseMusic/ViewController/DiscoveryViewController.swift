@@ -49,6 +49,7 @@ class DiscoveryViewController: UITableViewController {
         homeTableView.register(OfficialPlayListCell.self, forCellReuseIdentifier: OfficialPlayListCell.identifier)
         homeTableView.register(VoiceListCell.self, forCellReuseIdentifier: VoiceListCell.identifier)
         homeTableView.register(VideoPlayListCell.self, forCellReuseIdentifier: VideoPlayListCell.identifier)
+        homeTableView.register(CalendarCell.self, forCellReuseIdentifier: CalendarCell.identifier)
         homeTableView.tableFooterView = indicatorView
         
         homeTableView.delegate = self
@@ -231,6 +232,10 @@ extension DiscoveryViewController {
             }
             break
         case .MUSIC_CALENDAR:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CalendarCell.identifier, for: indexPath) as? CalendarCell {
+                cell.item = item
+                return cell
+            }
             break
         case .OFFICIAL_PLAYLIST:
             if let cell = tableView.dequeueReusableCell(withIdentifier: OfficialPlayListCell.identifier, for: indexPath) as? OfficialPlayListCell {
