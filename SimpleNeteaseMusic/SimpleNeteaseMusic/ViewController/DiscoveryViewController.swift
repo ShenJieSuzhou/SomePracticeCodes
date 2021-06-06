@@ -47,10 +47,11 @@ class DiscoveryViewController: UITableViewController {
         homeTableView.register(MusicMLogCell.self, forCellReuseIdentifier: MusicMLogCell.identifier)
         homeTableView.register(MGCPlayListCell.self, forCellReuseIdentifier: MGCPlayListCell.identifier)
         homeTableView.register(OfficialPlayListCell.self, forCellReuseIdentifier: OfficialPlayListCell.identifier)
-        homeTableView.register(VoiceListCell.self, forCellReuseIdentifier: VoiceListCell.identifier)
+        homeTableView.register(VoiceCell.self, forCellReuseIdentifier: VoiceCell.identifier)
         homeTableView.register(VideoPlayListCell.self, forCellReuseIdentifier: VideoPlayListCell.identifier)
         homeTableView.register(CalendarCell.self, forCellReuseIdentifier: CalendarCell.identifier)
         homeTableView.register(NewAlbumsCell.self, forCellReuseIdentifier: NewAlbumsCell.identifier)
+        homeTableView.register(PodcastCell.self, forCellReuseIdentifier: PodcastCell.identifier)
         homeTableView.tableFooterView = indicatorView
         
         homeTableView.delegate = self
@@ -251,12 +252,16 @@ extension DiscoveryViewController {
             }
             break
         case .VOICELIST_RCMD:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: VoiceListCell.identifier, for: indexPath) as? VoiceListCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: VoiceCell.identifier, for: indexPath) as? VoiceCell {
                 cell.item = item
                 return cell
             }
             break
         case .PODCAST24:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: PodcastCell.identifier, for: indexPath) as? PodcastCell {
+                cell.item = item
+                return cell
+            }
             break
         case .VIDEO_PLAYLIST:
             if let cell = tableView.dequeueReusableCell(withIdentifier: VideoPlayListCell.identifier, for: indexPath) as? VideoPlayListCell {

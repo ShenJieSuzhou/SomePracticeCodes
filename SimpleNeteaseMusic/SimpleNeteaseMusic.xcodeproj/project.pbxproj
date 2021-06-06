@@ -70,6 +70,8 @@
 		F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
+		F4DF3F62266CEFCE0014EF56 /* PodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */; };
+		F4DF3F64266CEFE70014EF56 /* PodcastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +142,8 @@
 		F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
+		F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastView.swift; sourceTree = "<group>"; };
+		F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,7 @@
 		E547FAB1256F500600F0A5B4 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				F4DF3F60266CEF8C0014EF56 /* Podcast */,
 				E53CBFAF266A2EC00065CFB3 /* Default */,
 				E53CBFAE266A2EA90065CFB3 /* NewAlbums */,
 				E53CBFA52669F6050065CFB3 /* MusicCalendar */,
@@ -411,6 +416,15 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		F4DF3F60266CEF8C0014EF56 /* Podcast */ = {
+			isa = PBXGroup;
+			children = (
+				F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */,
+				F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */,
+			);
+			path = Podcast;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -560,6 +574,7 @@
 				E53CBFA32668D35C0065CFB3 /* MusicMLogViewCell.swift in Sources */,
 				E549051C26551632008C19AC /* VoiceListRcmdModel.swift in Sources */,
 				E5490511265513DD008C19AC /* MgcPlaylistModel.swift in Sources */,
+				F4DF3F62266CEFCE0014EF56 /* PodcastView.swift in Sources */,
 				E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */,
 				E53CBFA72669F65C0065CFB3 /* MusicCalendarView.swift in Sources */,
 				E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */,
@@ -570,6 +585,7 @@
 				E547FAB6256F509700F0A5B4 /* CardViewCell.swift in Sources */,
 				E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */,
 				E5D8DFCE2574CCB6002DF517 /* UIColorExtension.swift in Sources */,
+				F4DF3F64266CEFE70014EF56 /* PodcastViewCell.swift in Sources */,
 				E54904F8265510B7008C19AC /* StyleRcmdModel.swift in Sources */,
 				F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */,
 				E549051F265516D2008C19AC /* Podcast24Model.swift in Sources */,

@@ -367,7 +367,7 @@ class NewAlbumsCell: BaseViewCell {
 
 
 /// 首页-发现  播客推荐
-class VoiceListCell: BaseViewCell {
+class VoiceCell: BaseViewCell {
     class var identifier: String {
           return String(describing: self)
     }
@@ -401,6 +401,44 @@ class VoiceListCell: BaseViewCell {
     func setupUI(model: VoiceListRcmdModel) {
         self.voiceListView.frame = model.frame
         self.voiceListView.updateUI(songList: model.creatives)
+    }
+}
+
+/// 首页-发现  广播 24 小时
+class PodcastCell: BaseViewCell {
+    class var identifier: String {
+          return String(describing: self)
+    }
+    
+    var podCastView: PodcastView!
+    
+    var item: HomeViewModelSection? {
+        didSet {
+            guard let item = item as? Podcast24Model else {
+                return
+            }
+            self.setupUI(model: item)
+        }
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /// 初始化
+        podCastView = PodcastView(frame: CGRect.zero)
+        self.contentView.addSubview(podCastView!)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setupUI(model: Podcast24Model) {
+        self.podCastView.frame = model.frame
+        self.podCastView.updateUI(voiceList: model.creatives)
     }
 }
 
