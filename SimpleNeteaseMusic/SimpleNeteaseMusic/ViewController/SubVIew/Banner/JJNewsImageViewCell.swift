@@ -18,9 +18,6 @@ class JJNewsImageViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         // 设置样式
-        imageView.layer.cornerRadius = 10
-        imageView.layer.masksToBounds = true
-        
         self.contentView.addSubview(imageView)
     }
     
@@ -45,7 +42,10 @@ class JJNewsImageViewCell: UICollectionViewCell {
         if imageName != nil {
             imageView.image = UIImage(named: imageName!)
         } else if imageUrl != nil {
-            imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: nil, progressBlock: nil) { (reslt) in
+            let cache = KingfisherManager.shared.cache
+            let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache),
+                                KingfisherOptionsInfoItem.processor(RoundCornerImageProcessor(cornerRadius: 10))]
+            imageView.kf.setImage(with: URL(string: imageUrl!), placeholder: placeholderImage, options: optionsInfo, progressBlock: nil) { (reslt) in
                 
             }
         }

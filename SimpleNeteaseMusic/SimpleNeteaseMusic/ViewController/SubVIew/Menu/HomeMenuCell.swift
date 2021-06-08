@@ -73,26 +73,15 @@ class HomeMenuCell: UICollectionViewCell {
     }
 
     func setupUI(imageUrl: String, title: String) -> Void {
+        let cache = KingfisherManager.shared.cache
         let imgModify = RenderingModeImageModifier(renderingMode: .alwaysTemplate)
-        self.menuIcon.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: [.imageModifier(imgModify)], completionHandler:  { ( result ) in
+        let optionsInfo = [KingfisherOptionsInfoItem.imageModifier(imgModify),
+                        KingfisherOptionsInfoItem.targetCache(cache)]
+
+        self.menuIcon.kf.setImage(with: URL(string: imageUrl), placeholder: nil, options: optionsInfo, completionHandler:  { ( result ) in
             
         })
         self.menuText.text = title
-    }
-    
-    func setCornersRadius(_ view: UIView!, radius:CGFloat, roundingCorners: UIRectCorner) -> Void {
-        if view == nil {
-            return
-        }
-        
-        let maskPath = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: roundingCorners, cornerRadii: CGSize(width: radius, height: radius))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = view.bounds
-        maskLayer.path = maskPath.cgPath
-        maskLayer.shouldRasterize = true
-        maskLayer.rasterizationScale = UIScreen.main.scale
-        
-        view.layer.mask = maskLayer
     }
 }
 

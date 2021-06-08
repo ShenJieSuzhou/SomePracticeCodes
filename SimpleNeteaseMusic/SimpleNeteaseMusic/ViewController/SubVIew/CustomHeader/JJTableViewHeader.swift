@@ -82,7 +82,7 @@ class JJTableViewHeader: UIView {
         }
         
         // 设置按钮样式
-        self.buttom.layer.cornerRadius = 10
+//        self.buttom.layer.cornerRadius = 10
         self.buttom.layer.borderColor = UIColor.white.cgColor
         self.buttom.layer.borderWidth = 1
     }
@@ -113,7 +113,7 @@ class JJTableViewHeader: UIView {
         }
         
         // 设置按钮样式
-        self.buttom.layer.cornerRadius = 10
+        self.buttom.layer.cornerRadius = 5
         self.buttom.layer.borderColor = UIColor.white.cgColor
         self.buttom.layer.borderWidth = 1
     }
