@@ -132,11 +132,11 @@ extension DiscoveryViewController {
                 break
             case .STYLE_RCMD:
                 let model = item as? StyleRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .play)
                 break
             case .MUSIC_MLOG:
                 let model = item as? MusicMLOGModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .refresh)
                 break
             case .MGC_PLAYLIST:
                 let model = item as? MgcPlaylistModel
@@ -144,7 +144,7 @@ extension DiscoveryViewController {
                 break
             case .MUSIC_CALENDAR:
                 let model = item as? MusicCalendarModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .calender)
                 break
             case .OFFICIAL_PLAYLIST:
                 let model = item as? OfficialPlaylistModel
@@ -159,7 +159,7 @@ extension DiscoveryViewController {
                         titles.append((creative.uiElement?.mainTitle!.title)!)
                     }
                 }
-                headerView.setupUIWithMutiTags(titles: titles, btnName: "更多")
+                headerView.setupUIWithMutiTags(titles: titles, btnName: "更多", type: .rightArrow)
                 break
             case .VOICELIST_RCMD:
                 let model = item as? VoiceListRcmdModel
@@ -167,7 +167,7 @@ extension DiscoveryViewController {
                 break
             case .PODCAST24:
                 let model = item as? Podcast24Model
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "", type: .rightArrow)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "", type: .none)
                 break
             case .VIDEO_PLAYLIST:
                 let model = item as? VideoPlaylistModel

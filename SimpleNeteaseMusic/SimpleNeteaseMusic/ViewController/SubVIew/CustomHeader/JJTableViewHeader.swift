@@ -13,6 +13,7 @@ enum MoreStyle {
     case rightArrow
     case refresh
     case play
+    case calender
     case none
 }
 
@@ -48,7 +49,8 @@ class JJTableViewHeader: UIView {
         let myButtom = UIButton()
         myButtom.setTitleColor(UIColor.darkModeTextColor, for: .normal)
         myButtom.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
+        myButtom.layer.borderColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1).cgColor
+        myButtom.layer.borderWidth = 1
         return myButtom
     }()
     
@@ -65,27 +67,35 @@ class JJTableViewHeader: UIView {
     }
     
     public func setupUI(title: String, btnName: String, type: MoreStyle) -> Void {
+        let width: CGFloat = self.frame.size.width
+        let height: CGFloat = self.frame.size.height
+        var moreBtnW: CGFloat = 0
+        
+        self.addSubview(self.title)
+        self.addSubview(self.buttom)
+        
         self.title.text = title
         self.buttom.setTitle(btnName, for: .normal)
         
         if type == .rightArrow {
+            moreBtnW = 60
             self.buttom.setImage(UIImage(named: "right-arrow"), for: .normal)
-            self.buttom.moveImageRightTextCenter(imagePadding: 5)
+            self.buttom.moveImageRightTextCenter(imagePadding: 10)
         } else if type == .play {
+            moreBtnW = 60
             self.buttom.setImage(UIImage(named: "play"), for: .normal)
-            self.buttom.moveImageLeftTextCenter(imagePadding: 5)
+            self.buttom.moveImageLeftTextCenter(imagePadding: 10)
         } else if type == .refresh {
+            moreBtnW = 80
             self.buttom.setImage(UIImage(named: "refresh"), for: .normal)
-            self.buttom.moveImageLeftTextCenter(imagePadding: 5)
+            self.buttom.moveImageLeftTextCenter(imagePadding: 10)
+        } else if type == .calender {
+            moreBtnW = 80
+            self.buttom.setImage(UIImage(named: "right-arrow"), for: .normal)
+            self.buttom.moveImageRightTextCenter(imagePadding: 10)
         } else if type == .none {
             self.buttom.isHidden = true
         }
-        
-        let width: CGFloat = self.frame.size.width
-        let height: CGFloat = self.frame.size.height
-        
-        self.addSubview(self.title)
-        self.addSubview(self.buttom)
         
         self.title.snp.makeConstraints { (make) in
             make.width.equalTo(width * 0.7)
@@ -95,53 +105,27 @@ class JJTableViewHeader: UIView {
         }
         
         self.buttom.snp.makeConstraints { (make) in
-            make.width.equalTo(width * 0.15)
+            make.width.equalTo(moreBtnW)
             make.height.equalTo(height - 20)
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-10)
         }
         
         // 设置按钮样式
-        self.buttom.layer.cornerRadius = 10
-        self.buttom.layer.borderColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1).cgColor
-        self.buttom.layer.borderWidth = 1
+        self.buttom.layer.cornerRadius = moreBtnW * 0.15
     }
-    
-    public func setupUIWithButtom(title: String, subTitle: String, buttom: UIButton) -> Void {
-        self.title.text = title
-        self.mySubtTitle.text = subTitle
-        self.buttom = buttom
         
+    public func setupUIWithMutiTags(titles: Array<String>!, btnName: String, type: MoreStyle) -> Void {
+        var moreBtnW: CGFloat = 0
         let width: CGFloat = self.frame.size.width
         let height: CGFloat = self.frame.size.height
-        
-        self.addSubview(self.title)
-        self.addSubview(self.buttom)
-        
-        self.title.snp.makeConstraints { (make) in
-            make.width.equalTo(width * 0.5)
-            make.height.equalTo(height - 20)
-            make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(10)
-        }
-        
-        self.buttom.snp.makeConstraints { (make) in
-            make.width.equalTo(width / 3)
-            make.height.equalTo(height - 20)
-            make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-10)
-        }
-        
-        // 设置按钮样式
-        self.buttom.layer.cornerRadius = 5
-        self.buttom.layer.borderColor = UIColor.white.cgColor
-        self.buttom.layer.borderWidth = 1
-    }
-    
-    public func setupUIWithMutiTags(titles: Array<String>!, btnName: String) -> Void {
+       
         self.buttom.setTitle(btnName, for: .normal)
-        let width: CGFloat = self.frame.size.width
-        let height: CGFloat = self.frame.size.height
+        if type == .rightArrow {
+            moreBtnW = 60
+            self.buttom.setImage(UIImage(named: "right-arrow"), for: .normal)
+            self.buttom.moveImageRightTextCenter(imagePadding: 10)
+        }
         
         let codeSegmented = JJCustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: 0, height: 0), titles: titles)
         codeSegmented.backgroundColor = .clear
@@ -157,16 +141,14 @@ class JJTableViewHeader: UIView {
         }
         
         self.buttom.snp.makeConstraints { (make) in
-            make.width.equalTo(width / 3)
+            make.width.equalTo(moreBtnW)
             make.height.equalTo(height - 20)
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-10)
         }
         
         // 设置按钮样式
-        self.buttom.layer.cornerRadius = 10
-        self.buttom.layer.borderColor = UIColor.white.cgColor
-        self.buttom.layer.borderWidth = 1
+        self.buttom.layer.cornerRadius = moreBtnW * 0.15
     }
 }
 
@@ -175,3 +157,14 @@ extension JJTableViewHeader: JJCustomSegmentedControlDelegate {
         tagDelegate?.tagSwitchTo(to: index)
     }
 }
+
+extension JJTableViewHeader {
+    /// 获取字符串边框
+    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
+                             option:NSStringDrawingOptions = NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
+        let attr = [NSAttributedString.Key.font:font]
+        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+        return rect
+    }
+}
+
