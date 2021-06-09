@@ -195,26 +195,10 @@
 			path = MusicCalendar;
 			sourceTree = "<group>";
 		};
-		E53CBFAE266A2EA90065CFB3 /* NewAlbums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NewAlbums;
-			sourceTree = "<group>";
-		};
-		E53CBFAF266A2EC00065CFB3 /* Default */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Default;
-			sourceTree = "<group>";
-		};
 		E547FAB1256F500600F0A5B4 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
 				F4DF3F60266CEF8C0014EF56 /* Podcast */,
-				E53CBFAF266A2EC00065CFB3 /* Default */,
-				E53CBFAE266A2EA90065CFB3 /* NewAlbums */,
 				E53CBFA52669F6050065CFB3 /* MusicCalendar */,
 				E53CBF9D2668D2120065CFB3 /* MusicMLog */,
 				E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */,
