@@ -9,6 +9,13 @@
 import UIKit
 import SnapKit
 
+enum MoreStyle {
+    case rightArrow
+    case refresh
+    case play
+    case none
+}
+
 public protocol TagSwitchDelegate: NSObject {
     func tagSwitchTo(to index:Int)
 }
@@ -40,7 +47,7 @@ class JJTableViewHeader: UIView {
     lazy var buttom: UIButton = {
         let myButtom = UIButton()
         myButtom.setTitleColor(UIColor.darkModeTextColor, for: .normal)
-        myButtom.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        myButtom.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         
         return myButtom
     }()
@@ -57,9 +64,22 @@ class JJTableViewHeader: UIView {
         super.layoutSubviews()
     }
     
-    public func setupUI(title: String, btnName: String) -> Void {
+    public func setupUI(title: String, btnName: String, type: MoreStyle) -> Void {
         self.title.text = title
         self.buttom.setTitle(btnName, for: .normal)
+        
+        if type == .rightArrow {
+            self.buttom.setImage(UIImage(named: "right-arrow"), for: .normal)
+            self.buttom.moveImageRightTextCenter(imagePadding: 5)
+        } else if type == .play {
+            self.buttom.setImage(UIImage(named: "play"), for: .normal)
+            self.buttom.moveImageLeftTextCenter(imagePadding: 5)
+        } else if type == .refresh {
+            self.buttom.setImage(UIImage(named: "refresh"), for: .normal)
+            self.buttom.moveImageLeftTextCenter(imagePadding: 5)
+        } else if type == .none {
+            self.buttom.isHidden = true
+        }
         
         let width: CGFloat = self.frame.size.width
         let height: CGFloat = self.frame.size.height
@@ -82,8 +102,8 @@ class JJTableViewHeader: UIView {
         }
         
         // 设置按钮样式
-//        self.buttom.layer.cornerRadius = 10
-        self.buttom.layer.borderColor = UIColor.white.cgColor
+        self.buttom.layer.cornerRadius = 10
+        self.buttom.layer.borderColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1).cgColor
         self.buttom.layer.borderWidth = 1
     }
     

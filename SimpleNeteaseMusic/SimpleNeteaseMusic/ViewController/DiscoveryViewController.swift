@@ -128,27 +128,27 @@ extension DiscoveryViewController {
         switch item.type {
             case .PLAYLIST_RCMD:
                 let model = item as? PlaylistRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .STYLE_RCMD:
                 let model = item as? StyleRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .MUSIC_MLOG:
                 let model = item as? MusicMLOGModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .MGC_PLAYLIST:
                 let model = item as? MgcPlaylistModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .MUSIC_CALENDAR:
                 let model = item as? MusicCalendarModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .OFFICIAL_PLAYLIST:
                 let model = item as? OfficialPlaylistModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .ALBUM_NEW_SONG:
                 let model = item as? AlbumNewSongModel
@@ -163,15 +163,15 @@ extension DiscoveryViewController {
                 break
             case .VOICELIST_RCMD:
                 let model = item as? VoiceListRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             case .PODCAST24:
                 let model = item as? Podcast24Model
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "")
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "", type: .rightArrow)
                 break
             case .VIDEO_PLAYLIST:
                 let model = item as? VideoPlaylistModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!)
+                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
                 break
             default:
                 break
