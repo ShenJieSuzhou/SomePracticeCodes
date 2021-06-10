@@ -32,19 +32,8 @@ class JJCustomSegmentedControl: UIView {
         self.backgroundColor = .clear
         self.buttonTitles = titles
         configUI()
-//        configStackView()
     }
     
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-//
-//        updateView()
-//    }
-    
-//    func setButtonTitles(buttonTitles:[String]) {
-//        self.buttonTitles = buttonTitles
-//        self.updateView()
-//    }
     
     func setIndex(index:Int) {
         for view in viewContainer {
@@ -80,51 +69,14 @@ class JJCustomSegmentedControl: UIView {
 
 
 extension JJCustomSegmentedControl {
-//    private func updateView() {
-//        createButton()
-//        configSelectorView()
-//        configStackView()
-//    }
-    
-//    private func configStackView() {
-//        var width: CGFloat = 0
-//        for view in viewContainer {
-//            let w = view.frame.width
-//            width += w
-//        }
-//
-//        let stack = UIStackView(arrangedSubviews: viewContainer)
-//        stack.frame = CGRect(x: 0, y: 0, width: width+100, height: self.frame.height)
-//        stack.backgroundColor = .blue
-//        stack.axis = .horizontal
-//        self.addSubview(stack)
-//
-////        stack.snp.makeConstraints { (maker) in
-////            maker.width.equalTo(width)
-////            maker.height.equalToSuperview()
-////        }
-//    }
-    
-//    private func configSelectorView() {
-//        let selectorWidth = frame.width / CGFloat(self.buttonTitles.count)
-//        selectorView = UIView(frame: CGRect(x: 0, y: self.frame.height, width: selectorWidth, height: 2))
-//        selectorView.backgroundColor = selectorViewColor
-//        addSubview(selectorView)
-//    }
-    
+    /// 构建 UI
     private func configUI() {
-        // 分割线
-//        let seperate = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.height))
-//        let seperateLine = UIImageView(frame: CGRect(x: 0, y: 0, width: 2, height: self.frame.height))
-//        seperateLine.backgroundColor = UIColor.white
-//        seperateLine.backgroundColor = UIColor.clear
-//        seperate.addSubview(line)
-        
         viewContainer.removeAll()
         subviews.forEach({$0.removeFromSuperview()})
         var pX:CGFloat = 0
         let pY:CGFloat = 0
         let padding: CGFloat = 10
+        var count: Int = 0
         
         for buttonTitle in buttonTitles {
             let button = UIButton(type: .system)
@@ -135,17 +87,19 @@ extension JJCustomSegmentedControl {
             let rect = getStrBoundRect(str: buttonTitle, font: UIFont.systemFont(ofSize: 14), constrainedSize: CGSize.zero)
             button.frame = CGRect(x: pX, y: pY, width: rect.width * 1.2, height: rect.height)
             pX = button.frame.maxX + padding
-            
-            let seperateLine = UIView(frame: CGRect.zero)
-            seperateLine.backgroundColor = UIColor.white
-            seperateLine.frame = CGRect(x: pX, y: pY, width: 2, height: rect.height)
-            pX = seperateLine.frame.maxX + padding
-            viewContainer.append(button)
-            viewContainer.append(seperateLine)
             self.addSubview(button)
-            self.addSubview(seperateLine)
+            viewContainer.append(button)
+            
+            if count != buttonTitles.count - 1 {
+                let seperateLine = UIView(frame: CGRect.zero)
+                seperateLine.backgroundColor = UIColor.white
+                seperateLine.frame = CGRect(x: pX, y: pY, width: 2, height: rect.height)
+                pX = seperateLine.frame.maxX + padding
+                self.addSubview(seperateLine)
+                viewContainer.append(seperateLine)
+            }
+            count += 1
         }
-        viewContainer.removeLast()
         
         let firstBtn = viewContainer[0] as! UIButton
         firstBtn.setTitleColor(selectorTextColor, for: .normal)

@@ -24,8 +24,9 @@ class DiscoveryViewController: UITableViewController {
     fileprivate var indicatorView: UIActivityIndicatorView!
     let resultViewController = ResultContainerViewController();
     var searchController: UISearchController!
-    var cusSearchBar:JJCustomSearchbar!
-    var musicSearchController:MusicSearchViewController!
+    var cusSearchBar: JJCustomSearchbar!
+    var musicSearchController: MusicSearchViewController!
+    var newAlbumCell: NewAlbumsCell!
     
     // 首页发现 viewModel
     fileprivate var homeViewModel = HomeViewModel()
@@ -248,6 +249,9 @@ extension DiscoveryViewController {
         case .ALBUM_NEW_SONG:
             if let cell = tableView.dequeueReusableCell(withIdentifier: NewAlbumsCell.identifier, for: indexPath) as? NewAlbumsCell {
                 cell.item = item
+                if newAlbumCell == nil {
+                    newAlbumCell = cell
+                }
                 return cell
             }
             break
@@ -288,8 +292,8 @@ extension DiscoveryViewController: UISearchBarDelegate {
 extension DiscoveryViewController: TagSwitchDelegate {
     // Tag 切换
     func tagSwitchTo(to index: Int) {
-        // refresh 数据
-        print("1111111");
+        // 新歌新碟数字专辑切换事件
+        newAlbumCell.switchContent(to: index)
     }
 }
 

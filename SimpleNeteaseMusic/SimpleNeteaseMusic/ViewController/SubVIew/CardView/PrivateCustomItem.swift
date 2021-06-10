@@ -55,7 +55,7 @@ extension PrivateCustomItem {
         let width: CGFloat = self.frame.size.width
         // 高度
         let height: CGFloat = (self.frame.size.height - 20) / 3
-        
+
         privateRowViews = [RowStyleView]()
         privateRowViews.removeAll()
         
@@ -75,7 +75,11 @@ extension PrivateCustomItem {
     
     // 更新数据，并重绘界面
     public func updateUI(data: [ResourceElement]) {
+        privateDataList = nil
         privateDataList = data
+        if stack != nil {
+            stack.removeFromSuperview()
+        }
         createRowStyleView()
     }
 }

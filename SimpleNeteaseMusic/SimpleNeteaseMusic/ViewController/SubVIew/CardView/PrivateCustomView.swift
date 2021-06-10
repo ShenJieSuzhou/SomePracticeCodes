@@ -17,10 +17,7 @@ class PrivateCustomView: UIView {
     
     // 宽度
     public var width: CGFloat = 0
-    
-//    // 默认高度
-//    public var rowHeight: CGFloat = 45.0
-    
+        
     // 默认间隔
     fileprivate var horizonSpace: CGFloat = 10.0
     
@@ -44,12 +41,6 @@ class PrivateCustomView: UIView {
     
     /// 歌单的视图
     private var collectionView: UICollectionView!
-    
-//    convenience init(frame: CGRect ,data: [Creative]) {
-//        self.init(frame:frame)
-//        privateListData = data
-//        configUI()
-//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,6 +82,7 @@ extension  PrivateCustomView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJPrivateCustomViewID, for: indexPath) as! PrivateCustomItem
         let result = self.privateListData![indexPath.row] as Creative
         cell.updateUI(data: result.resources!)
+        cell.setNeedsLayout()
         return cell
     }
     
@@ -111,128 +103,17 @@ extension PrivateCustomView {
         self.collectionView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         // 设置 item size 大小
         flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height - 20)
-        // 设置大小约束
-//        self.collectionView.snp.makeConstraints { (make) in
-//            make.width.equalToSuperview()
-//            make.height.equalToSuperview()
-//        }
     }
-//    // 计算视图的高度
-//    public func caculateViewHeight() -> CGFloat {
-//        // 如果没有数据则高度为 0
-//        if privateListData.isEmpty {
-//            return 0
-//        }
-//
-//        let rows: Int = privateListData
-//        // 总的高度
-//        let totalHeight: CGFloat = rowHeight * CGFloat(rows) + horizonSpace * CGFloat(rows + 1) + marginTop + marginButtom
-//
-//        return totalHeight
-//    }
 }
 
 // MARK - Configuration UI
 extension PrivateCustomView {
-//    // 构建 UI
-//    private func configUI() {
-//        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: flowLayout)
-//        collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
-//        collectionView.showsVerticalScrollIndicator = false
-//        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.scrollsToTop = false
-//        collectionView.backgroundColor = UIColor.clear
-//        collectionView.bounces = false
-//
-//        self.addSubview(collectionView)
-//    }
-    
     // 更新数据
     public func updateUI(privateData: [Creative]){
+        self.privateListData = nil
         self.privateListData = privateData
-        self.layoutIfNeeded()
+        self.collectionView.scrollToItem(at: IndexPath(index: .zero), at: .left, animated: true)
+        self.collectionView.reloadData()
     }
 }
 
-
-extension PrivateCustomView {
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offer = scrollView.contentOffset.x
-//        print(offer)
-        
-//    }
-//
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-////        let offer = scrollView.contentOffset.x
-////        print(offer)
-//
-//    }
-//
-//    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-////        let offer = scrollView.contentOffset.x
-////        print(offer)
-//    }
-    
-//    - (void)scrollViewDidEndScrollingAnimation:(UIScrollView*)scrollView{
-//
-//     _offer= scrollView.contentOffset.x;
-//
-//    }
-//
-//    - (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView{
-//
-//    if(fabs(scrollView.contentOffset.x-_offer) >10) {
-//
-//    if(scrollView.contentOffset.x>_offer) {
-//
-//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
-//
-//    NSIndexPath* index =[NSIndexPathindexPathForRow:iinSection:0];
-//
-//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
-//
-//    }else{
-//
-//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
-//
-//    NSIndexPath* index =[NSIndexPathindexPathForRow:i-1inSection:0];
-//
-//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
-//
-//    }
-//
-//    }
-//
-//    }
-//
-//    - (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inoutCGPoint*)targetContentOffset{
-//
-//    if(fabs(scrollView.contentOffset.x-_offer) >20) {
-//
-//    if(scrollView.contentOffset.x>_offer) {
-//
-//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
-//
-//    NSIndexPath* index =[NSIndexPathindexPathForRow:iinSection:0];
-//
-//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
-//
-//    }else{
-//
-//    inti = scrollView.contentOffset.x/([UIScreenmainScreen].bounds.size.width-KCellSpace/2)+1;
-//
-//    i = (i -1)<0?0:(i -1);
-//
-//    NSIndexPath* index =[NSIndexPathindexPathForRow:iinSection:0];
-//
-//    [_collectionViewscrollToItemAtIndexPath:indexatScrollPosition:UICollectionViewScrollPositionCenteredHorizontallyanimated:YES];
-//
-//    }
-//
-//    }
-//
-//    }
-}

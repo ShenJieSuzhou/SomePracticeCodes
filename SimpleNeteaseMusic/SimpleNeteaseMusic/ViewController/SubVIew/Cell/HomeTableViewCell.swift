@@ -334,6 +334,12 @@ class NewAlbumsCell: BaseViewCell {
     }
     
     var newAlbumsView: PrivateCustomView!
+    /// 新歌
+    var newSongs = [Creative]()
+    /// 新碟
+    var newAlbums = [Creative]()
+    /// 数字专辑
+    var digitalAlbums = [Creative]()
     
     var item: HomeViewModelSection? {
         didSet {
@@ -361,7 +367,43 @@ class NewAlbumsCell: BaseViewCell {
     
     func setupUI(model: AlbumNewSongModel) {
         self.newAlbumsView.frame = model.frame
-        self.newAlbumsView.updateUI(privateData: model.creatives)
+        
+        /// 拆分新歌/新碟/数字专辑
+        newSongs.removeAll()
+        newAlbums.removeAll()
+        digitalAlbums.removeAll()
+        
+        splitDataToSongsAlbum(from: model)
+        /// 默认新歌
+        if newSongs.count > 0 {
+            self.newAlbumsView.updateUI(privateData: newSongs)
+        } else {
+            print("模型数据解析失败")
+        }
+    }
+    
+    /// 切换内容  0: 新歌  2：新碟  4： 数字专辑
+    func switchContent(to index: Int) {
+        if index == 0 {
+            self.newAlbumsView.updateUI(privateData: newSongs)
+        } else if index == 2 {
+            self.newAlbumsView.updateUI(privateData: newAlbums)
+        } else if index == 4 {
+            self.newAlbumsView.updateUI(privateData: digitalAlbums)
+        }
+    }
+    
+    /// 拆分数据
+    func splitDataToSongsAlbum(from model: AlbumNewSongModel) {
+        for item in model.creatives {
+            if item.creativeType == "NEW_SONG_HOMEPAGE" {
+                newSongs.append(item)
+            } else if item.creativeType == "NEW_ALBUM_HOMEPAGE" {
+                newAlbums.append(item)
+            } else if item.creativeType == "DIGITAL_ALBUM_HOMEPAGE" {
+                digitalAlbums.append(item)
+            }
+        }
     }
 }
 

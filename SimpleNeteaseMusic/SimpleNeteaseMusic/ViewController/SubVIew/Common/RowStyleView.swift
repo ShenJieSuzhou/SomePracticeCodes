@@ -302,6 +302,11 @@ extension RowStyleView {
     }
     
     public func setUpRowViewWithSubTitleStyle(image picUrl: String, songName: String, singer: String, foreword: String, style: RowStyle, extra: String){
+        self.songName.text = ""
+        self.author.text = ""
+        self.songDetail.text = ""
+        self.albumCover.image = nil
+        
         self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
             
         })
