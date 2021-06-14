@@ -38,12 +38,12 @@ extension PrivateCustomItem {
         superview?.layoutSubviews()
         
         // 进行约束
-        stack.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.top.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
+//        stack.snp.makeConstraints { (make) in
+//            make.left.equalToSuperview()
+//            make.top.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.bottom.equalToSuperview()
+//        }
     }
 }
 
@@ -67,6 +67,7 @@ extension PrivateCustomItem {
         }
         
         stack = UIStackView(arrangedSubviews: privateRowViews)
+        stack.frame = self.bounds
         stack.spacing = marginSpace
         stack.axis = .vertical
         stack.distribution = .fillEqually

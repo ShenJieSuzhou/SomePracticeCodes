@@ -34,6 +34,7 @@ class PrivateCustomView: UIView {
     private lazy var flowLayout: RowStyleLayout = {
         let flowLayout = RowStyleLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: marginButtom, bottom: marginButtom, right: marginButtom)
+        flowLayout.sectionInset = UIEdgeInsets.zero
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
         return flowLayout
@@ -44,7 +45,7 @@ class PrivateCustomView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: flowLayout)
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -112,7 +113,7 @@ extension PrivateCustomView {
     public func updateUI(privateData: [Creative]){
         self.privateListData = nil
         self.privateListData = privateData
-        self.collectionView.scrollToItem(at: IndexPath(index: .zero), at: .left, animated: true)
+//        self.collectionView.scrollToItem(at: IndexPath(index: .zero), at: .left, animated: true)
         self.collectionView.reloadData()
     }
 }

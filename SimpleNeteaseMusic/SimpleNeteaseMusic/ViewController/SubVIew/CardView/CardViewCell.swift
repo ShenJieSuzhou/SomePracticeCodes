@@ -13,21 +13,23 @@ import Kingfisher
 class CardViewCell: UICollectionViewCell {
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
-        cover.backgroundColor = UIColor.black
-        cover.layer.cornerRadius = 6
+        cover.backgroundColor = UIColor.clear
         cover.contentMode = .scaleAspectFill
         return cover
     }()
     
     lazy var albumDesc: UILabel! = {
         let descLabel = UILabel()
-        descLabel.backgroundColor = UIColor.red
+        descLabel.backgroundColor = UIColor.clear
+        descLabel.font = UIFont.systemFont(ofSize: 13)
+        descLabel.numberOfLines = 0
         return descLabel
     }()
     
     lazy var playIcon: UIImageView! = {
         let icon = UIImageView()
-        
+        icon.backgroundColor = .clear
+        icon.image = UIImage(named: "Views")
         return icon
     }()
     
@@ -35,6 +37,17 @@ class CardViewCell: UICollectionViewCell {
         let views = UILabel()
         
         return views
+    }()
+    
+    var views: String?
+    
+    lazy var viewsButton: UIButton! = {
+        let button = UIButton(type: .custom)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        button.backgroundColor = UIColor(red: 182/255, green: 182/255, blue: 182/255, alpha: 0.6)
+        button.setImage(UIImage(named: "Views"), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
     }()
     
     override func layoutSubviews() {
@@ -46,8 +59,8 @@ class CardViewCell: UICollectionViewCell {
         let descHeight: CGFloat = height * (1/4)
         
         self.addSubview(self.albumCover)
-        self.albumCover.addSubview(self.playIcon)
-        self.albumCover.addSubview(self.albumViews)
+        self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)
+//        self.albumCover.addSubview(self.viewsButton)
         self.addSubview(self.albumDesc)
     
         self.albumCover.snp.makeConstraints { (make) in
@@ -56,6 +69,19 @@ class CardViewCell: UICollectionViewCell {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(5)
         }
+        
+//        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
+//        let viewsW = viewsRect.width * 1.5
+//        let viewsH = viewsRect.height * 1.2
+//        self.viewsButton.snp.makeConstraints { make in
+//            make.width.equalTo(viewsW)
+//            make.height.equalTo(viewsH)
+//            make.top.equalToSuperview().offset(5)
+//            make.right.equalToSuperview().offset(-5)
+//        }
+//
+//        // 设置按钮样式
+//        self.viewsButton.layer.cornerRadius = viewsW * 0.15
         
         self.albumDesc.snp.makeConstraints { (make) in
             make.width.equalTo(width - 10)
@@ -67,12 +93,31 @@ class CardViewCell: UICollectionViewCell {
     
     func updateUI(coverUrl: String, desc: String, views: String) -> Void {
         if coverUrl != "" {
-            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
+            let radius = albumCover.frame.width * 0.5
+            let cache = KingfisherManager.shared.cache
+            let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache),
+                               KingfisherOptionsInfoItem.processor(RoundCornerImageProcessor(cornerRadius: radius))]
+            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: optionsInfo, progressBlock: nil) { (reslt) in
                 
             }
         }
         
         self.albumDesc.text = desc
-        self.albumViews.text = views
+        self.views = views
+        let count:Int = Int(views)!
+        if count % 100000 == 0 {
+            self.viewsButton.setTitle(String(count), for: .normal)
+        } else {
+            let value: String = String(count / 10000)
+            self.viewsButton.setTitle(String(value + "万"), for: .normal)
+        }
+    }
+    
+    /// 获取字符串边框
+    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
+                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
+        let attr = [NSAttributedString.Key.font:font]
+        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+        return rect
     }
 }

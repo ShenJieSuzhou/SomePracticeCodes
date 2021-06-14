@@ -203,7 +203,7 @@ extension RowStyleView {
                 make.left.equalToSuperview().offset(5)
                 make.top.equalToSuperview()
             }
-            
+
             // 计算歌手名字长度，但不超过最大值，超过部分用省略号代替
             let max_singerLen = Float(100)
             var singerLen: Float = 0
@@ -226,7 +226,7 @@ extension RowStyleView {
                 make.top.equalTo(self.songName.snp.bottom).offset(5)
             }
 
-            // 设置 playButtom 的约束
+//             设置 playButtom 的约束
 //            self.playButtom.snp.makeConstraints { (make) in
 //                make.height.equalTo(rowHeight - 10)
 //                make.width.equalTo(40)
@@ -281,13 +281,13 @@ extension RowStyleView {
     ///   - mAuthor: 歌手
     ///   - mSongDetail: 详情
     /// - Returns:
-    private func updateUI(mImgUrl: String, mSongname: String, mAuthor: String, mSongDetail: String) -> Void {
-        let num:Int = Int.random(in: 0..<3)
-        let url = mockdata4[num]
-        self.albumCover.kf.setImage(with: URL(string: url), placeholder: nil, options: nil, completionHandler:  { ( result ) in
-            
-        })
-    }
+//    private func updateUI(mImgUrl: String, mSongname: String, mAuthor: String, mSongDetail: String) -> Void {
+//        let num:Int = Int.random(in: 0..<3)
+//        let url = mockdata4[num]
+//        self.albumCover.kf.setImage(with: URL(string: url), placeholder: nil, options: nil, completionHandler:  { ( result ) in
+//
+//        })
+//    }
     
     public func setUpRowViewWithDefultStyle(image picUrl: String, order: Int, songName: String, singer: String, style: RowStyle, extra: String){
         self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
