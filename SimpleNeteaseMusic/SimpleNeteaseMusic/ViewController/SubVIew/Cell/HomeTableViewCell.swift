@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-//class BannerCell: UITableViewCell {
-//
-//}
-
-
 /// UITableViewCell 的基类
 class BaseViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
