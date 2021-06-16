@@ -19,6 +19,22 @@ extension UIColor {
         }
     }
     
+    // Cell 背景颜色
+    public class var homeCellColor:UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor{(trainCollection) -> UIColor in
+                if trainCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 23/255, green: 23/255, blue: 23/255, alpha: 1)
+                } else {
+                    return .black
+                }
+            }
+        } else {
+            return .black
+        }
+    }
+    
+    
     // 文字颜色
     public class var darkModeTextColor: UIColor {
        if #available(iOS 13.0, *) {

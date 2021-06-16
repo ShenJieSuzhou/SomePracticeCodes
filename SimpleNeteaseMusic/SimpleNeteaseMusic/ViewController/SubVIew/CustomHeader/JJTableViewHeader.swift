@@ -56,6 +56,8 @@ class JJTableViewHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .homeCellColor
+        self.roundCorners(UIRectCorner.topLeft.union(UIRectCorner.topRight), radius: 10)
     }
     
     required init?(coder: NSCoder) {

@@ -53,6 +53,7 @@
 		E59B0CDB251B160F00BF4E6D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDA251B160E00BF4E6D /* API.swift */; };
 		E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */; };
 		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
+		E59B25832679F617000F4CC1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B25822679F617000F4CC1 /* UIViewExtension.swift */; };
 		E5B225572653C6D300A47B5B /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = E5B225562653C6D300A47B5B /* mockdata.json */; };
 		E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B225592654BDD700A47B5B /* BannerModel.swift */; };
 		E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633A25A8293900A7D455 /* RankModel.swift */; };
@@ -126,6 +127,7 @@
 		E59B0CDA251B160E00BF4E6D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
+		E59B25822679F617000F4CC1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E5B225562653C6D300A47B5B /* mockdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata.json; sourceTree = "<group>"; };
 		E5B225592654BDD700A47B5B /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		E5D8633A25A8293900A7D455 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				E5D8E063257895C4002DF517 /* CGFloatExtension.swift */,
 				E505EC882665D01900C62819 /* UIImageViewExtension.swift */,
 				E53CBFF92670A0B00065CFB3 /* UIButtonExtension.swift */,
+				E59B25822679F617000F4CC1 /* UIViewExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				E5D8635525B18A1200A7D455 /* RowStyleLayout.swift in Sources */,
 				E590C640264E2B6200E15377 /* HomeViewModeSection.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
+				E59B25832679F617000F4CC1 /* UIViewExtension.swift in Sources */,
 				E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */,
 				E54905222656391A008C19AC /* MenusModel.swift in Sources */,
 				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,

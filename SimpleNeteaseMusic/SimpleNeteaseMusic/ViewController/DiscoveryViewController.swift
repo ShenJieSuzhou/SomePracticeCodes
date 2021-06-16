@@ -15,6 +15,7 @@ import Foundation
 let HEADVIEW_W = UIScreen.main.bounds.size.width
 /// headview 高
 let HEADVIEW_H = CGFloat(40)
+let FOOTVIEW_H = CGFloat(100)
 
 class DiscoveryViewController: UITableViewController {
     
@@ -81,7 +82,6 @@ class DiscoveryViewController: UITableViewController {
         self.navigationItem.titleView = self.cusSearchBar
     }
 
-    
     @objc func microphoneBtnClicked(){
         print("11111111")
     }
@@ -122,8 +122,8 @@ extension DiscoveryViewController {
         let width: CGFloat = tableView.frame.size.width
         let height: CGFloat = HEADVIEW_H
         let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        headerView.backgroundColor = .darkModeViewColor
         headerView.tagDelegate = self
+        
         /// 获取headview标题和最右按钮数据
         let item = homeViewModel.sections[section]
         switch item.type {
@@ -180,6 +180,13 @@ extension DiscoveryViewController {
         
         return headerView
     }
+    
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let width: CGFloat = tableView.frame.size.width
+//        let height: CGFloat = FOOTVIEW_H
+//        let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
+//        headerView.backgroundColor = .darkModeViewColor
+//    }
 }
 
 extension DiscoveryViewController {

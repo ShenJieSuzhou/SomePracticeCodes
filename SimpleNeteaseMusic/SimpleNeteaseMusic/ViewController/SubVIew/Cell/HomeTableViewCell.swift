@@ -9,14 +9,21 @@
 import Foundation
 import UIKit
 
-class BannerCell: UITableViewCell {
-     
-}
+//class BannerCell: UITableViewCell {
+//
+//}
 
 
 /// UITableViewCell 的基类
 class BaseViewCell: UITableViewCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .homeCellColor
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 /// 分页滚动 Cell
