@@ -11,6 +11,7 @@ import SnapKit
 import Kingfisher
 
 class CardViewCell: UICollectionViewCell {
+    /// 封面
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
         cover.backgroundColor = UIColor.clear
@@ -18,6 +19,7 @@ class CardViewCell: UICollectionViewCell {
         return cover
     }()
     
+    /// 描述
     lazy var albumDesc: UILabel! = {
         let descLabel = UILabel()
         descLabel.backgroundColor = UIColor.clear
@@ -26,21 +28,13 @@ class CardViewCell: UICollectionViewCell {
         return descLabel
     }()
     
-    lazy var playIcon: UIImageView! = {
-        let icon = UIImageView()
-        icon.backgroundColor = .clear
-        icon.image = UIImage(named: "Views")
-        return icon
-    }()
-    
-    lazy var albumViews: UILabel! = {
-        let views = UILabel()
-        
-        return views
-    }()
-    
+    /// 阅读量
     var views: String?
     
+    /// 内边距
+    let padding: CGFloat = 5
+    
+    /// 阅读量按钮
     lazy var viewsButton: UIButton! = {
         let button = UIButton(type: .custom)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
@@ -50,6 +44,19 @@ class CardViewCell: UICollectionViewCell {
         return button
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = .clear
+        self.addSubview(self.albumCover)
+        self.albumCover.addSubview(self.viewsButton)
+        self.addSubview(self.albumDesc)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -58,11 +65,6 @@ class CardViewCell: UICollectionViewCell {
         
         let descHeight: CGFloat = height * (1/4)
         
-        self.addSubview(self.albumCover)
-        self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)
-//        self.albumCover.addSubview(self.viewsButton)
-        self.addSubview(self.albumDesc)
-    
         self.albumCover.snp.makeConstraints { (make) in
             make.width.equalTo(width - 10)
             make.height.equalTo(width - 10)
@@ -70,18 +72,14 @@ class CardViewCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(5)
         }
         
-//        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
-//        let viewsW = viewsRect.width * 1.5
-//        let viewsH = viewsRect.height * 1.2
-//        self.viewsButton.snp.makeConstraints { make in
-//            make.width.equalTo(viewsW)
-//            make.height.equalTo(viewsH)
-//            make.top.equalToSuperview().offset(5)
-//            make.right.equalToSuperview().offset(-5)
-//        }
-//
-//        // 设置按钮样式
-//        self.viewsButton.layer.cornerRadius = viewsW * 0.15
+        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
+        let viewsW = viewsRect.width * 1.5
+        let viewsH = viewsRect.height * 1.2
+        self.viewsButton.frame = CGRect(x: self.albumCover.frame.width - viewsW - padding, y: padding, width: viewsW, height: viewsH)
+
+        // 设置按钮样式
+        self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)
+        self.viewsButton.layer.cornerRadius = viewsW * 0.15
         
         self.albumDesc.snp.makeConstraints { (make) in
             make.width.equalTo(width - 10)
@@ -117,7 +115,7 @@ class CardViewCell: UICollectionViewCell {
     func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
                              option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
         let attr = [NSAttributedString.Key.font:font]
-        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
         return rect
     }
 }

@@ -14,7 +14,7 @@ let JJMusicMLogCellId = "JJMusicMLogCellId"
 
 class MusicMLogView: UIView {
     
-    // 推荐歌单数据
+    // 推荐视频数据
     private var musicMLogList: [EXTInfoElement]? {
         didSet{
             if musicMLogList != nil {
@@ -34,7 +34,6 @@ class MusicMLogView: UIView {
     }()
     
     
-    /// 歌单的视图
     lazy var musicMLogContainer: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: self.flowLayout)
         collectionView.register(MusicMLogViewCell.self, forCellWithReuseIdentifier: JJMusicMLogCellId)
@@ -62,7 +61,7 @@ class MusicMLogView: UIView {
         self.addSubview(self.musicMLogContainer)
         
         // 设置 item size 大小
-        self.flowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height - 10)
+        self.flowLayout.itemSize = CGSize(width: 120 * scaleW, height: self.frame.size.height - 10)
         
         self.musicMLogContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()

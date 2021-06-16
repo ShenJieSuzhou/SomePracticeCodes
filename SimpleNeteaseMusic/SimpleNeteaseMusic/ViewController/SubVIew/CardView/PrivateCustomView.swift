@@ -11,13 +11,7 @@ import UIKit
 let JJPrivateCustomViewID = "JJPrivateCustomViewID"
 
 class PrivateCustomView: UIView {
-        
-    // 高度
-    public var height: CGFloat = 0
-    
-    // 宽度
-    public var width: CGFloat = 0
-        
+            
     // 默认间隔
     fileprivate var horizonSpace: CGFloat = 10.0
     
@@ -34,7 +28,7 @@ class PrivateCustomView: UIView {
     private lazy var flowLayout: RowStyleLayout = {
         let flowLayout = RowStyleLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: marginButtom, bottom: marginButtom, right: marginButtom)
-        flowLayout.sectionInset = UIEdgeInsets.zero
+//        flowLayout.sectionInset = UIEdgeInsets.zero
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
         return flowLayout
@@ -103,7 +97,7 @@ extension PrivateCustomView {
         // 设置 frame
         self.collectionView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         // 设置 item size 大小
-        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height - 20)
+        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height - 20 * scaleH)
     }
 }
 
@@ -113,7 +107,6 @@ extension PrivateCustomView {
     public func updateUI(privateData: [Creative]){
         self.privateListData = nil
         self.privateListData = privateData
-//        self.collectionView.scrollToItem(at: IndexPath(index: .zero), at: .left, animated: true)
         self.collectionView.reloadData()
     }
 }

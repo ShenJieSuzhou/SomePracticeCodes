@@ -226,13 +226,13 @@ extension RowStyleView {
                 make.top.equalTo(self.songName.snp.bottom).offset(5)
             }
 
-//             设置 playButtom 的约束
-//            self.playButtom.snp.makeConstraints { (make) in
-//                make.height.equalTo(rowHeight - 10)
-//                make.width.equalTo(40)
-//                make.centerY.equalToSuperview()
-//                make.left.equalTo(self.midView.snp.right)
-//            }
+            // 设置 playButtom 的约束
+            self.playButtom.snp.makeConstraints { (make) in
+                make.height.equalTo(rowHeight * 0.6)
+                make.width.equalTo(rowHeight * 0.6)
+                make.centerY.equalToSuperview()
+                make.left.equalTo(self.midView.snp.right)
+            }
         }
     }
     
@@ -265,9 +265,9 @@ extension RowStyleView {
             self.addSubview(trailText)
         } else if style == .SubTitleStyle {
             self.addSubview(albumCover)
+            self.addSubview(playButtom)
             self.addSubview(midView)
-//            self.addSubview(playButtom)
-            
+
             midView.addSubview(songName)
             midView.addSubview(author)
             midView.addSubview(songDetail)
@@ -306,6 +306,7 @@ extension RowStyleView {
         self.author.text = ""
         self.songDetail.text = ""
         self.albumCover.image = nil
+        
         
         self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
             

@@ -36,14 +36,7 @@ extension PrivateCustomItem {
     /* 布局尺寸必须在 layoutSubViews 中, 否则获取的 size 不正确 **/
     override func layoutSubviews() {
         superview?.layoutSubviews()
-        
-        // 进行约束
-//        stack.snp.makeConstraints { (make) in
-//            make.left.equalToSuperview()
-//            make.top.equalToSuperview()
-//            make.right.equalToSuperview()
-//            make.bottom.equalToSuperview()
-//        }
+    
     }
 }
 

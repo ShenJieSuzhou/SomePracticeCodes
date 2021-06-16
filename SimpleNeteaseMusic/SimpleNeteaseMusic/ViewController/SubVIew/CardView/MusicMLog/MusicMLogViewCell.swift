@@ -14,7 +14,6 @@ class MusicMLogViewCell: UICollectionViewCell {
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
         cover.backgroundColor = UIColor.black
-        cover.layer.cornerRadius = 6
         cover.contentMode = .scaleAspectFill
         return cover
     }()
@@ -31,10 +30,20 @@ class MusicMLogViewCell: UICollectionViewCell {
         return icon
     }()
     
-    lazy var albumViews: UILabel! = {
-        let views = UILabel()
-        
-        return views
+    /// 阅读量
+    var views: String?
+    
+    /// 内边距
+    let padding: CGFloat = 5
+    
+    /// 阅读量按钮
+    lazy var viewsButton: UIButton! = {
+        let button = UIButton(type: .custom)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        button.backgroundColor = UIColor(red: 182/255, green: 182/255, blue: 182/255, alpha: 0.6)
+        button.setImage(UIImage(named: "Views"), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
     }()
     
     override func layoutSubviews() {
@@ -47,12 +56,12 @@ class MusicMLogViewCell: UICollectionViewCell {
         
         self.addSubview(self.albumCover)
         self.albumCover.addSubview(self.playIcon)
-        self.albumCover.addSubview(self.albumViews)
+//        self.albumCover.addSubview(self.albumViews)
         self.addSubview(self.albumDesc)
     
         self.albumCover.snp.makeConstraints { (make) in
             make.width.equalTo(width - 10)
-            make.height.equalTo(width - 10)
+            make.height.equalTo(width + 10)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(5)
         }
@@ -67,12 +76,16 @@ class MusicMLogViewCell: UICollectionViewCell {
     
     func updateUI(coverUrl: String, desc: String, views: String) -> Void {
         if coverUrl != "" {
-            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
+            let radius = albumCover.frame.width * 0.5
+            let cache = KingfisherManager.shared.cache
+            let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache),
+                               KingfisherOptionsInfoItem.processor(RoundCornerImageProcessor(cornerRadius: radius))]
+            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: optionsInfo, progressBlock: nil) { (reslt) in
                 
             }
         }
         
         self.albumDesc.text = desc
-        self.albumViews.text = views
+//        self.albumViews.text = views
     }
 }

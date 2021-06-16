@@ -61,7 +61,7 @@ class CardCollectionView: UIView {
         self.addSubview(self.hotAlbumContainer)
         
         // 设置 item size 大小
-        self.cardFlowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height - 10)
+        self.cardFlowLayout.itemSize = CGSize(width: 120 * scaleW, height: self.frame.size.height - 10)
         
         self.hotAlbumContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
