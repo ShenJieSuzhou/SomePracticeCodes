@@ -15,28 +15,22 @@ class PodcastViewCell: UICollectionViewCell {
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
         cover.backgroundColor = UIColor.black
-        cover.contentMode = .scaleAspectFill
+        cover.contentMode = .scaleAspectFit
         return cover
     }()
     
     lazy var albumDesc: UILabel! = {
         let descLabel = UILabel()
-        descLabel.backgroundColor = UIColor.red
+        descLabel.backgroundColor = UIColor.clear
+        descLabel.font = UIFont(name: "Helvetica-Bold", size: 16)
         return descLabel
     }()
     
     lazy var playIcon: UIImageView! = {
-        let icon = UIImageView()
-        
+        let icon = UIImageView(image: UIImage(named: "play"))
         return icon
     }()
-    
-    lazy var albumViews: UILabel! = {
-        let views = UILabel()
         
-        return views
-    }()
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -47,7 +41,6 @@ class PodcastViewCell: UICollectionViewCell {
         
         self.addSubview(self.albumCover)
         self.albumCover.addSubview(self.playIcon)
-        self.albumCover.addSubview(self.albumViews)
         self.addSubview(self.albumDesc)
     
         self.albumCover.snp.makeConstraints { (make) in
@@ -55,6 +48,16 @@ class PodcastViewCell: UICollectionViewCell {
             make.height.equalTo(width - 10)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(5)
+        }
+        
+        self.albumCover.layer.cornerRadius = (width - 10) / 2
+        self.albumCover.layer.masksToBounds = true
+        
+        self.playIcon.snp.makeConstraints { make in
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
         
         self.albumDesc.snp.makeConstraints { (make) in
@@ -67,6 +70,10 @@ class PodcastViewCell: UICollectionViewCell {
     
     func updateUI(coverUrl: String, desc: String) -> Void {
         if coverUrl != "" {
+//            let radius = albumCover.frame.width / 2
+//            let cache = KingfisherManager.shared.cache
+//            let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache),
+//                               KingfisherOptionsInfoItem.processor(RoundCornerImageProcessor(cornerRadius: radius))]
             self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
                 
             }
