@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-let JJHotAlbumCellId = "JJHotAlbumCellId"
+let RecomendAlbumId = "RecomendAlbumId"
 
 class CardCollectionView: UIView {
     
@@ -27,7 +27,6 @@ class CardCollectionView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         return layout
     }()
@@ -35,21 +34,21 @@ class CardCollectionView: UIView {
     
     /// 歌单的视图
     lazy var hotAlbumContainer: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: self.cardFlowLayout)
-        collectionView.register(CardViewCell.self, forCellWithReuseIdentifier: JJHotAlbumCellId)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.cardFlowLayout)
+        collectionView.register(CardViewCell.self, forCellWithReuseIdentifier: RecomendAlbumId)
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.scrollsToTop = false
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.homeCellColor
         collectionView.bounces = false
         return collectionView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(self.hotAlbumContainer)
     }
     
     required init?(coder: NSCoder) {
@@ -58,15 +57,10 @@ class CardCollectionView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.addSubview(self.hotAlbumContainer)
-        
+        self.hotAlbumContainer.frame = self.bounds
         // 设置 item size 大小
-        self.cardFlowLayout.itemSize = CGSize(width: 120 * scaleW, height: self.frame.size.height - 10)
+        self.cardFlowLayout.itemSize = CGSize(width: itemA_width * scaleW, height: self.frame.size.height)
         
-        self.hotAlbumContainer.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
-        }
     }
     
     deinit {
@@ -89,12 +83,11 @@ extension CardCollectionView: UICollectionViewDataSource {
         if self.songList == nil {
             return 0
         }
-        
         return self.songList!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JJHotAlbumCellId, for: indexPath) as! CardViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecomendAlbumId, for: indexPath) as! CardViewCell
         let result:Creative = self.songList![indexPath.row]
         if result.creativeType == "voiceList" {
             cell.updateUI(coverUrl: (result.uiElement?.image!.imageURL)!, desc: (result.uiElement?.mainTitle!.title)!, views: String((result.creativeEXTInfoVO?.playCount)!))

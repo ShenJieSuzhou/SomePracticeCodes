@@ -32,8 +32,8 @@ class MenusModel: HomeViewModelSection {
     
     /// 根据模型计算 View frame
     class func caculateFrame() -> CGRect {
-        let height: Double = 100 * Double(scaleW)
-        let width: Double = Double(kScreenWidth)
+        let height: CGFloat = sectionC_height * CGFloat(scaleW)
+        let width: CGFloat = CGFloat(kScreenWidth)
         return CGRect(x: 0, y: 0, width: width, height: height)
     }
 }

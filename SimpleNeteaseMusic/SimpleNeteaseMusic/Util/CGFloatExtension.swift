@@ -18,6 +18,19 @@ let kTopMargin: CGFloat = 20.0
 let scaleW: CGFloat = CGFloat(kScreenWidth / 414)
 let scaleH: CGFloat = CGFloat(kSreenHeight / 667)
 
+let sectionA_height: CGFloat = 200 + 40
+
+let sectionB_height: CGFloat = 140 + 40
+
+let sectionC_height: CGFloat = 120
+
+/// 布局 A Cell 的宽度
+let itemA_width: CGFloat = 120
+
+/// headview 高
+let HEADVIEW_H: CGFloat = 40
+
+
 extension CGFloat {
         
 //    func scaleW() -> CGFloat {

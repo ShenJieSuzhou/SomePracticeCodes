@@ -11,12 +11,6 @@ import SwiftyJSON
 import Kingfisher
 import Foundation
 
-/// headview 宽
-let HEADVIEW_W = UIScreen.main.bounds.size.width
-/// headview 高
-let HEADVIEW_H = CGFloat(40)
-let FOOTVIEW_H = CGFloat(100)
-
 class DiscoveryViewController: UITableViewController {
     
     @IBOutlet var homeTableView: UITableView!
@@ -39,9 +33,9 @@ class DiscoveryViewController: UITableViewController {
         // 设置搜索栏
         setupSearchController()
         // 获取首页数据
-        indicatorView = UIActivityIndicatorView(style: .medium)
-        indicatorView.color = .red
-        indicatorView.startAnimating()
+//        indicatorView = UIActivityIndicatorView(style: .medium)
+//        indicatorView.color = .red
+//        indicatorView.startAnimating()
         homeTableView.register(ScrollBannerCell.self, forCellReuseIdentifier: ScrollBannerCell.identifier)
         homeTableView.register(CircleMenusCell.self, forCellReuseIdentifier: CircleMenusCell.identifier)
         homeTableView.register(PlaylistRcmdCell.self, forCellReuseIdentifier: PlaylistRcmdCell.identifier)
@@ -54,7 +48,7 @@ class DiscoveryViewController: UITableViewController {
         homeTableView.register(CalendarCell.self, forCellReuseIdentifier: CalendarCell.identifier)
         homeTableView.register(NewAlbumsCell.self, forCellReuseIdentifier: NewAlbumsCell.identifier)
         homeTableView.register(PodcastCell.self, forCellReuseIdentifier: PodcastCell.identifier)
-        homeTableView.tableFooterView = indicatorView
+//        homeTableView.tableFooterView = indicatorView
         
         homeTableView.delegate = self
         homeViewModel.delegate = self
@@ -72,8 +66,8 @@ class DiscoveryViewController: UITableViewController {
     
     // 设置搜索视图
     func setupSearchController () {
-        let leftItem = UIBarButtonItem(image: UIImage(named: "icon-gmail")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(microphoneBtnClicked))
-        let rightItem = UIBarButtonItem(image: UIImage(named: "icon-hangouts")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(playingBtnClicked))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "menu")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(microphoneBtnClicked))
+        let rightItem = UIBarButtonItem(image: UIImage(named: "microphone")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(playingBtnClicked))
         self.navigationItem.leftBarButtonItem = leftItem
         self.navigationItem.rightBarButtonItem = rightItem
         
@@ -99,94 +93,83 @@ extension DiscoveryViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        if (section == 0 || section == 1) {
-            return 0;
-        }
-        
-        return HEADVIEW_H
+//        if (section == 0 || section == 1) {
+//            return 0;
+//        }
+//        
+//        return HEADVIEW_H
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
-        return 0.0
+        return 0
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 || section == 1 {
-            return nil
-        }
+//        if section == 0 || section == 1 {
+//            return nil
+//        }
+//
+//        let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
+//        headerView.tagDelegate = self
+//
+//        /// 获取headview标题和最右按钮数据
+//        let item = homeViewModel.sections[section]
+//        switch item.type {
+//            case .PLAYLIST_RCMD:
+//                let model = item as? PlaylistRcmdModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+//                break
+//            case .STYLE_RCMD:
+//                let model = item as? StyleRcmdModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .play)
+//                break
+//            case .MUSIC_MLOG:
+//                let model = item as? MusicMLOGModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .refresh)
+//                break
+//            case .MGC_PLAYLIST:
+//                let model = item as? MgcPlaylistModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+//                break
+//            case .MUSIC_CALENDAR:
+//                let model = item as? MusicCalendarModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .calender)
+//                break
+//            case .OFFICIAL_PLAYLIST:
+//                let model = item as? OfficialPlaylistModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+//                break
+//            case .ALBUM_NEW_SONG:
+//                let model = item as? AlbumNewSongModel
+//                var titles:Array<String> = []
+//                /// 整理 新歌 / 新碟 / 数字专辑
+//                for creative in model!.creatives {
+//                    if !titles.contains((creative.uiElement?.mainTitle!.title)!) {
+//                        titles.append((creative.uiElement?.mainTitle!.title)!)
+//                    }
+//                }
+//                headerView.setupUIWithMutiTags(titles: titles, btnName: "更多", type: .rightArrow)
+//                break
+//            case .VOICELIST_RCMD:
+//                let model = item as? VoiceListRcmdModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+//                break
+//            case .PODCAST24:
+//                let model = item as? Podcast24Model
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "", type: .none)
+//                break
+//            case .VIDEO_PLAYLIST:
+//                let model = item as? VideoPlaylistModel
+//                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
+//                break
+//            default:
+//                break
+//        }
         
-        let width: CGFloat = tableView.frame.size.width
-        let height: CGFloat = HEADVIEW_H
-        let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        headerView.tagDelegate = self
-        
-        /// 获取headview标题和最右按钮数据
-        let item = homeViewModel.sections[section]
-        switch item.type {
-            case .PLAYLIST_RCMD:
-                let model = item as? PlaylistRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
-                break
-            case .STYLE_RCMD:
-                let model = item as? StyleRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .play)
-                break
-            case .MUSIC_MLOG:
-                let model = item as? MusicMLOGModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .refresh)
-                break
-            case .MGC_PLAYLIST:
-                let model = item as? MgcPlaylistModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
-                break
-            case .MUSIC_CALENDAR:
-                let model = item as? MusicCalendarModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .calender)
-                break
-            case .OFFICIAL_PLAYLIST:
-                let model = item as? OfficialPlaylistModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
-                break
-            case .ALBUM_NEW_SONG:
-                let model = item as? AlbumNewSongModel
-                var titles:Array<String> = []
-                /// 整理 新歌 / 新碟 / 数字专辑
-                for creative in model!.creatives {
-                    if !titles.contains((creative.uiElement?.mainTitle!.title)!) {
-                        titles.append((creative.uiElement?.mainTitle!.title)!)
-                    }
-                }
-                headerView.setupUIWithMutiTags(titles: titles, btnName: "更多", type: .rightArrow)
-                break
-            case .VOICELIST_RCMD:
-                let model = item as? VoiceListRcmdModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
-                break
-            case .PODCAST24:
-                let model = item as? Podcast24Model
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: "", type: .none)
-                break
-            case .VIDEO_PLAYLIST:
-                let model = item as? VideoPlaylistModel
-                headerView.setupUI(title: (model?.uiElement?.subTitle!.title)!, btnName: (model?.uiElement?.button!.text)!, type: .rightArrow)
-                break
-            default:
-                break
-        }
-        
-        return headerView
+//        return headerView
+        return nil
     }
-    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let width: CGFloat = tableView.frame.size.width
-//        let height: CGFloat = FOOTVIEW_H
-//        let headerView: JJTableViewHeader = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: width, height: height))
-//        headerView.backgroundColor = .darkModeViewColor
-//    }
 }
 
 extension DiscoveryViewController {
@@ -200,6 +183,14 @@ extension DiscoveryViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return homeViewModel.sections[section].rowCount
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        /// 左下角，右下角设置圆角
+        let shapeLayer = CAShapeLayer()
+        let bezierPath = UIBezierPath(roundedRect: cell.bounds.inset(by: UIEdgeInsets.init(top: 0, left: 0, bottom: 10, right: 0)), byRoundingCorners: [.bottomLeft,.bottomRight], cornerRadii: CGSize(width: 10,height: 10))
+        shapeLayer.path = bezierPath.cgPath
+        cell.layer.mask = shapeLayer
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -307,12 +298,12 @@ extension DiscoveryViewController: TagSwitchDelegate {
 extension DiscoveryViewController: HomeViewModelDelegate{
     
     func onFetchComplete(){
-        indicatorView.stopAnimating()
-        homeTableView.reloadData()
+//        indicatorView.stopAnimating()
+//        homeTableView.reloadData()
     }
     
     func onFetchFailed(with reason: String){
-        indicatorView.stopAnimating()
-        homeTableView.reloadData()
+//        indicatorView.stopAnimating()
+//        homeTableView.reloadData()
     }
 }

@@ -11,9 +11,12 @@ import UIKit
 
 /// UITableViewCell 的基类
 class BaseViewCell: UITableViewCell {
+    
+    var headerView: JJTableViewHeader?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .homeCellColor
+        self.backgroundColor = UIColor.homeCellColor
     }
     
     required init?(coder: NSCoder) {
@@ -118,7 +121,9 @@ class PlaylistRcmdCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         rcmdPlayListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(rcmdPlayListView!)
     }
     
@@ -128,10 +133,11 @@ class PlaylistRcmdCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.rcmdPlayListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: PlaylistRcmdModel) {
-        self.rcmdPlayListView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .rightArrow)
         self.rcmdPlayListView.updateUI(songList: model.creatives)
     }
 }
@@ -156,7 +162,9 @@ class StyleRcmdCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         rcmdStyleView = PrivateCustomView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(rcmdStyleView!)
     }
     
@@ -166,10 +174,11 @@ class StyleRcmdCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.rcmdStyleView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: StyleRcmdModel) {
-        self.rcmdStyleView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .play)
         self.rcmdStyleView.updateUI(privateData: model.creatives)
     }
 }
@@ -195,7 +204,9 @@ class MusicMLogCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         musicMLogView = MusicMLogView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(musicMLogView!)
     }
     
@@ -205,10 +216,11 @@ class MusicMLogCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.musicMLogView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: MusicMLOGModel) {
-        self.musicMLogView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .refresh)
         self.musicMLogView.updateUI(songList: model.mLog)
     }
 }
@@ -234,7 +246,9 @@ class MGCPlayListCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         mgcListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(mgcListView!)
     }
     
@@ -244,10 +258,11 @@ class MGCPlayListCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.mgcListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: MgcPlaylistModel) {
-        self.mgcListView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .rightArrow)
         self.mgcListView.updateUI(songList: model.creatives)
     }
 }
@@ -272,7 +287,9 @@ class CalendarCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         calendarView = MusicCalendarView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(calendarView!)
     }
     
@@ -282,10 +299,11 @@ class CalendarCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.calendarView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: MusicCalendarModel) {
-        self.calendarView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .calender)
         self.calendarView.updateUI(data: model.creatives)
     }
 }
@@ -311,7 +329,9 @@ class OfficialPlayListCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         officialListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(officialListView!)
     }
     
@@ -321,10 +341,11 @@ class OfficialPlayListCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.officialListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: OfficialPlaylistModel) {
-        self.officialListView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .rightArrow)
         self.officialListView.updateUI(songList: model.creatives)
     }
 }
@@ -355,7 +376,9 @@ class NewAlbumsCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         newAlbumsView = PrivateCustomView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(newAlbumsView!)
     }
     
@@ -365,10 +388,18 @@ class NewAlbumsCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.newAlbumsView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: AlbumNewSongModel) {
-        self.newAlbumsView.frame = model.frame
+        var titles:Array<String> = []
+        /// 整理 新歌 / 新碟 / 数字专辑
+        for creative in model.creatives {
+            if !titles.contains((creative.uiElement?.mainTitle!.title)!) {
+                titles.append((creative.uiElement?.mainTitle!.title)!)
+            }
+        }
+        headerView!.setupUIWithMutiTags(titles: titles, btnName: "更多", type: .rightArrow)
         
         /// 拆分新歌/新碟/数字专辑
         newSongs.removeAll()
@@ -430,7 +461,9 @@ class VoiceCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         voiceListView = CardCollectionView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(voiceListView!)
     }
     
@@ -440,10 +473,11 @@ class VoiceCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.voiceListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: VoiceListRcmdModel) {
-        self.voiceListView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .rightArrow)
         self.voiceListView.updateUI(songList: model.creatives)
     }
 }
@@ -468,7 +502,9 @@ class PodcastCell: BaseViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
         podCastView = PodcastView(frame: CGRect.zero)
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(podCastView!)
     }
     
@@ -478,10 +514,11 @@ class PodcastCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.podCastView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: Podcast24Model) {
-        self.podCastView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: "", type: .none)
         self.podCastView.updateUI(voiceList: model.creatives)
     }
 }
@@ -508,6 +545,8 @@ class VideoPlayListCell: BaseViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
         videoListView = CardCollectionView(frame: CGRect.zero)
+        headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
+        self.contentView.addSubview(headerView!)
         self.contentView.addSubview(videoListView!)
     }
     
@@ -517,10 +556,11 @@ class VideoPlayListCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.videoListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
     }
     
     func setupUI(model: VideoPlaylistModel) {
-        self.videoListView.frame = model.frame
+        headerView!.setupUI(title: (model.uiElement?.subTitle!.title)!, btnName: (model.uiElement?.button!.text)!, type: .rightArrow)
         self.videoListView.updateUI(songList: model.creatives)
     }
 }

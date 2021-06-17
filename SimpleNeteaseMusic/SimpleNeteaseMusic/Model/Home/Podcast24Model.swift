@@ -35,8 +35,8 @@ class Podcast24Model: HomeViewModelSection
     
     /// 根据模型计算 View frame
     class func caculateFrame() -> CGRect {
-        let height: Double = 180 * Double(scaleW)
-        let width: Double = Double(kScreenWidth)
+        let height: CGFloat = sectionA_height * CGFloat(scaleW)
+        let width: CGFloat = CGFloat(kScreenWidth)
         return CGRect(x: 0, y: 0, width: width, height: height)
     }
 }
