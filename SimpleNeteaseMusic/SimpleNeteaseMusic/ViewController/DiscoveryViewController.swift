@@ -52,7 +52,7 @@ class DiscoveryViewController: UITableViewController {
         
         homeTableView.delegate = self
         homeViewModel.delegate = self
-        homeViewModel.fetchData(url: "http://localhost:3000/homepage/dragon/ball")
+        homeViewModel.fetchData(url: "http://10.200.22.108/homepage/dragon/ball")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -186,11 +186,16 @@ extension DiscoveryViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        /// 左下角，右下角设置圆角
-        let shapeLayer = CAShapeLayer()
-        let bezierPath = UIBezierPath(roundedRect: cell.bounds.inset(by: UIEdgeInsets.init(top: 0, left: 0, bottom: 10, right: 0)), byRoundingCorners: [.bottomLeft,.bottomRight], cornerRadii: CGSize(width: 10,height: 10))
-        shapeLayer.path = bezierPath.cgPath
-        cell.layer.mask = shapeLayer
+        
+        if indexPath.section == 0 || indexPath.section == 1 {
+            return
+        } else if indexPath.section == 2 {
+            /// 左下角，右下角设置圆角
+            cell.roundCorners(cell.bounds.inset(by: UIEdgeInsets.init(top: 0, left: 0, bottom: 10, right: 0)), corners: [.bottomLeft, .bottomRight], radius: 10)
+        } else {
+            /// 四边角设置圆角
+            cell.roundCorners(cell.bounds.inset(by: UIEdgeInsets.init(top: 0, left: 0, bottom: 10, right: 0)), corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -27,12 +27,9 @@ class JJNewsImageViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
-        }
+        imageView.frame = self.bounds
+        /// 四边角设置圆角
+        imageView.roundCorners(imageView.bounds.inset(by: UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)), corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
     }
     
     func setupUI(imageName: String?, imageUrl: String?, placeholderImage: UIImage?, contentMode: ContentMode) {

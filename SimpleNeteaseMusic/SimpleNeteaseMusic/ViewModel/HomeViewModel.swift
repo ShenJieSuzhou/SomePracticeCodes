@@ -30,7 +30,7 @@ class HomeViewModel: NSObject {
         // 2.获取首页数据
         queueGroup.enter()
         do {
-            if let bundlePath = Bundle.main.path(forResource: "mockdata", ofType: "json"),
+            if let bundlePath = Bundle.main.path(forResource: "mockdata1", ofType: "json"),
                 let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 let homeData = try JSONDecoder().decode(HomePage.self, from: jsonData)
                 
@@ -49,21 +49,40 @@ class HomeViewModel: NSObject {
                 
         // 3. 异步获取首页圆形按钮
         queueGroup.enter()
-        // 请求数据 首页发现 + 圆形图片
-        AF.request(url, method: .get).responseDecodable { (response:DataResponse<Menus, AFError>) in
-            guard let value = response.value else {
-                print(response.error ?? "Unknown error")
-                self.delegate?.onFetchFailed(with: (response.error?.errorDescription)!)
+        do {
+            if let bundlePath = Bundle.main.path(forResource: "mockdata2", ofType: "json"),
+                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                let menuData = try JSONDecoder().decode(Menus.self, from: jsonData)
+                let data: [Datum] = menuData.data
+                let model: MenusModel = MenusModel(data: data)
+                if self.sections.count > 0 {
+                    self.sections.insert(model, at: 1)
+                }
                 queueGroup.leave()
-                return
+            } else {
+                self.delegate?.onFetchFailed(with:"++++++++++++ 解析圆形按钮数据失败 ++++++++++++")
+                queueGroup.leave()
             }
-            let data: [Datum] = value.data
-            let model: MenusModel = MenusModel(data: data)
-            if self.sections.count > 0 {
-                self.sections.insert(model, at: 1)
-            }
+        } catch let err {
+            print(err)
+            self.delegate?.onFetchFailed(with: err.localizedDescription)
             queueGroup.leave()
         }
+        // 请求数据 首页发现 + 圆形图片
+//        AF.request(url, method: .get).responseDecodable { (response:DataResponse<Menus, AFError>) in
+//            guard let value = response.value else {
+//                print(response.error ?? "Unknown error")
+//                self.delegate?.onFetchFailed(with: (response.error?.errorDescription)!)
+//                queueGroup.leave()
+//                return
+//            }
+//            let data: [Datum] = value.data
+//            let model: MenusModel = MenusModel(data: data)
+//            if self.sections.count > 0 {
+//                self.sections.insert(model, at: 1)
+//            }
+//            queueGroup.leave()
+//        }
         
         // 4. 执行结果
         queueGroup.notify(qos: .default, flags: [], queue: .main) {

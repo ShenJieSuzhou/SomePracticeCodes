@@ -14,6 +14,13 @@ let JJDragonBallCellId = "JJDragonBallCellId"
 public typealias MenuDidClickedBlock = (_ currentIndex: Int) -> Void
 
 class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
+    // 分割线
+    lazy var separtor: UIImageView = {
+        let line = UIImageView(frame: CGRect.zero)
+        line.backgroundColor = .lightGray
+        return line
+    }()
+    
     // 圆形图标布局
     private lazy var menusViewFlowLayout: UICollectionViewFlowLayout = {
         let collectionFlowLayout = UICollectionViewFlowLayout()
@@ -62,11 +69,18 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
         self.menusContainer.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
         self.menusViewFlowLayout.itemSize = CGSize(width: 75 * scaleW, height: self.bounds.size.height-20)
         self.menusViewFlowLayout.scrollDirection = .horizontal
+        self.separtor.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(0.1)
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-1)
+        }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(self.menusContainer)
+        self.addSubview(self.separtor)
     }
     
     required init?(coder: NSCoder) {

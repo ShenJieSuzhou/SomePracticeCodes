@@ -1,0 +1,78 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "id": -1,
+            "name": "每日推荐",
+            "iconUrl": "http://p1.music.126.net/4DpSgAVpJny4Ewf-Xw_WQQ==/109951163986641971.jpg",
+            "url": "orpheus://songrcmd",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": -6,
+            "name": "私人FM",
+            "iconUrl": "http://p1.music.126.net/Shi7cRT1bDhwpVDM7AOFXg==/109951165265330616.jpg",
+            "url": "orpheus://privatefm",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": -2,
+            "name": "歌单",
+            "iconUrl": "http://p1.music.126.net/uG5p6CnwAHrLqOkaSeRlnA==/109951163986649164.jpg",
+            "url": "orpheus://playlistCollection",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": -3,
+            "name": "排行榜",
+            "iconUrl": "http://p1.music.126.net/SDFC6A3X2wzUCavYyeGIOg==/109951163986649670.jpg",
+            "url": "orpheus://rnpage?component=rn-ranklist-homepage&mainProcessCompat=1&isTheme=true",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": 11000,
+            "name": "直播",
+            "iconUrl": "http://p1.music.126.net/sj_CkEp_0SJmWWf8wOz9zg==/109951164784977965.jpg",
+            "url": "orpheus://playlivehome?referrer=dragonball",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": 13000,
+            "name": "数字专辑",
+            "iconUrl": "http://p1.music.126.net/P1vo_ypx3R6Lzf1eDBQHcg==/109951165018006646.jpg",
+            "url": "https://music.163.com/v/m/album/poly/detail",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": 1024000,
+            "name": "专注冥想",
+            "iconUrl": "http://p1.music.126.net/xgTrYTSvXbMNaLkH5dwHNA==/109951165923227082.jpg",
+            "url": "orpheus://miniProgram?appId=6018f69c6908301053c22a30&query=fromSource%3DMusichome&pageId=index%2Findex&fallbackURL=https%3A%2F%2Fmp.music.163.com%2F6018f69c6908301053c22a30%2Findex%2Findex.html",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": 19000,
+            "name": "歌房",
+            "iconUrl": "http://p1.music.126.net/nDzhrWR2j9z9VbN5SRDpKA==/109951165579591663.jpg",
+            "url": "orpheus://nk/ktvroom/feed?from=10&refer=livetab.recommendpage_guide",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        },
+        {
+            "id": 18000,
+            "name": "游戏专区",
+            "iconUrl": "http://p1.music.126.net/xFEgXy1HDfi5JRVniQej8g==/109951165307875336.jpg",
+            "url": "orpheus://rnpage?component=ReactNativeGame&gameSource=mainpage_circle",
+            "skinSupport": true,
+            "homepageMode": "RCMD_MODE"
+        }
+    ],
+    "message": ""
+}
