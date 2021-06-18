@@ -23,7 +23,7 @@ class CardViewCell: UICollectionViewCell {
     lazy var albumDesc: UILabel! = {
         let descLabel = UILabel()
         descLabel.backgroundColor = UIColor.clear
-        descLabel.font = UIFont.systemFont(ofSize: 13)
+        descLabel.font = UIFont.systemFont(ofSize: 12)
         descLabel.numberOfLines = 0
         return descLabel
     }()
@@ -60,26 +60,27 @@ class CardViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let height: CGFloat = self.frame.size.height
-        let width: CGFloat = self.frame.size.width
+        let height: CGFloat = self.bounds.height
+        let width: CGFloat = self.bounds.width
         
         let descHeight: CGFloat = height * (1/4)
         
+        // 封面样式设置
         self.albumCover.snp.makeConstraints { (make) in
-            make.width.equalTo(width - 10)
-            make.height.equalTo(width - 10)
+            make.width.equalTo(width)
+            make.height.equalTo(width)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(5)
+            make.top.equalToSuperview()
         }
-        
-        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
+        self.albumCover.roundCorners(self.albumCover.bounds, corners: [.allCorners], radius: 10)
+       
+        // 设置按钮样式
+        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize(width: 40, height: 20))
         let viewsW = viewsRect.width * 1.5
         let viewsH = viewsRect.height * 1.2
         self.viewsButton.frame = CGRect(x: self.albumCover.frame.width - viewsW - padding, y: padding, width: viewsW, height: viewsH)
-
-        // 设置按钮样式
         self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)
-        self.viewsButton.layer.cornerRadius = viewsW * 0.15
+        self.viewsButton.roundCorners(self.viewsButton.bounds, corners: [.allCorners], radius: viewsW * 0.2)
         
         self.albumDesc.snp.makeConstraints { (make) in
             make.width.equalTo(width - 10)
@@ -109,13 +110,5 @@ class CardViewCell: UICollectionViewCell {
             let value: String = String(count / 10000)
             self.viewsButton.setTitle(String(value + "万"), for: .normal)
         }
-    }
-    
-    /// 获取字符串边框
-    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
-        let attr = [NSAttributedString.Key.font:font]
-        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-        return rect
     }
 }

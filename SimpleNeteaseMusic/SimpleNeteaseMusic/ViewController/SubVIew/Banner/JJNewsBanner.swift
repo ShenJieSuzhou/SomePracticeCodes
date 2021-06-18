@@ -148,13 +148,11 @@ extension JJNewsBanner {
         super.layoutSubviews()
             
         // 设置 item size 大小
-        self.collectionViewFlowLayout.itemSize = CGSize(width: self.bounds.width - 20, height: self.bounds.height - 20)
+        self.collectionViewFlowLayout.itemSize = CGSize(width: self.bounds.width - margin * 2, height: self.bounds.height - margin * 2)
         // 设置 collectionView frame 大小
         self.collectionView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.bounds.width - 20)
-            make.height.equalTo(self.bounds.height - 20)
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
         }
 
         if self.collectionView.contentOffset.x == 0 && self.totalItemCount > 0 {
@@ -240,9 +238,9 @@ extension JJNewsBanner {
     private func configUI() {
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.minimumLineSpacing = 0
+        collectionViewFlowLayout.minimumLineSpacing = margin * 2
         collectionViewFlowLayout.minimumInteritemSpacing = 0
-        collectionViewFlowLayout.sectionInset = UIEdgeInsets.zero
+        collectionViewFlowLayout.sectionInset = UIEdgeInsets.init(top: 0, left: margin, bottom: 0, right: margin)
 
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.register(JJNewsImageViewCell.self, forCellWithReuseIdentifier: JJScrollBannerCellID)

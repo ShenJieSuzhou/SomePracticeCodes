@@ -13,6 +13,8 @@ let RecomendAlbumId = "RecomendAlbumId"
 
 class CardCollectionView: UIView {
     
+    let margin: CGFloat = 10
+    
     // 推荐歌单数据
     private var songList: [Creative]? {
         didSet{
@@ -25,8 +27,9 @@ class CardCollectionView: UIView {
     /// 布局
     lazy var cardFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets.init(top: -20, left: margin, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         return layout
     }()
@@ -57,9 +60,9 @@ class CardCollectionView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.hotAlbumContainer.frame = self.bounds
+        self.hotAlbumContainer.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         // 设置 item size 大小
-        self.cardFlowLayout.itemSize = CGSize(width: itemA_width * scaleW, height: self.frame.size.height)
+        self.cardFlowLayout.itemSize = CGSize(width: itemA_width * scaleW, height: self.frame.size.height - 3 * margin)
         
     }
     

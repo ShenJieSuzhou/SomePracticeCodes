@@ -105,10 +105,10 @@ extension JJCustomSegmentedControl {
         firstBtn.setTitleColor(selectorTextColor, for: .normal)
     }
 
-    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin)->CGRect{
-        let attr = [NSAttributedString.Key.font:font]
-        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-        return rect
-    }
+//    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
+//                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin)->CGRect{
+//        let attr = [NSAttributedString.Key.font:font]
+//        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+//        return rect
+//    }
 }

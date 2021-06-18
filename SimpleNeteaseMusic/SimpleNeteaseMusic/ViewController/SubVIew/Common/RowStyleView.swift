@@ -6,13 +6,12 @@
 //  Copyright © 2021 shenjie. All rights reserved.
 //
 import UIKit
+import Kingfisher
 
+/// 视图类型 0: 无子标题 1:带子标题
 public enum RowStyle : Int {
-    
     case NoneStyle = 0
-    
     case SubTitleStyle = 1
-    
 }
 
 class RowStyleView: UIView {
@@ -27,8 +26,6 @@ class RowStyleView: UIView {
     private lazy var albumCover: UIImageView = {
         let cover = UIImageView()
         cover.backgroundColor = .clear
-        cover.layer.cornerRadius = 6.0
-        cover.layer.masksToBounds = true
         return cover
     }()
     
@@ -38,7 +35,6 @@ class RowStyleView: UIView {
         order.textColor = .darkModeTextColor
         return order
     }()
-    
     
     // middle content
     private lazy var midView: UIView = {
@@ -59,7 +55,7 @@ class RowStyleView: UIView {
     // author
     private lazy var author: UILabel = {
         let author = UILabel()
-        author.font = UIFont.systemFont(ofSize: 13)
+        author.font = UIFont.systemFont(ofSize: 12)
         author.textColor = .defaultAuthorColor
         author.lineBreakMode = .byTruncatingTail
         return author
@@ -68,7 +64,7 @@ class RowStyleView: UIView {
     // desc
     private lazy var songDetail: UILabel = {
         let songDetail = UILabel()
-        songDetail.font = UIFont.systemFont(ofSize: 13)
+        songDetail.font = UIFont.systemFont(ofSize: 12)
         songDetail.textColor = .defaultAuthorColor
         songDetail.lineBreakMode = .byTruncatingTail
         return songDetail
@@ -124,7 +120,7 @@ extension RowStyleView {
                 make.left.equalToSuperview().offset(10)
                 make.top.equalToSuperview().offset(5)
             }
-
+            
             // 设置排名的约束
             self.orderLabel.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -184,7 +180,8 @@ extension RowStyleView {
                 make.left.equalToSuperview()
                 make.top.equalToSuperview().offset(5)
             }
-
+//            self.albumCover.roundCorners(self.albumCover.frame, corners: [.allCorners], radius: 10)
+            
             // 设置 midView 的约束
             self.midView.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
@@ -235,17 +232,6 @@ extension RowStyleView {
             }
         }
     }
-    
-    /*
-    * 获取字符串边框
-    */
-    private func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-                             option:NSStringDrawingOptions = NSStringDrawingOptions.usesLineFragmentOrigin)->CGRect{
-        let attr = [NSAttributedString.Key.font:font]
-        let rect = str.boundingRect(with: constrainedSize, options: NSStringDrawingOptions.usesFontLeading, attributes:attr , context: nil)
-        let bound: CGRect = CGRect(x: 0, y: 0, width: rect.width + 15, height: rect.height)
-        return bound
-    }
 }
 
 // MARK - Configuration
@@ -290,6 +276,7 @@ extension RowStyleView {
 //    }
     
     public func setUpRowViewWithDefultStyle(image picUrl: String, order: Int, songName: String, singer: String, style: RowStyle, extra: String){
+        
         self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
             
         })
@@ -307,8 +294,10 @@ extension RowStyleView {
         self.songDetail.text = ""
         self.albumCover.image = nil
         
-        
-        self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
+        let cache = KingfisherManager.shared.cache
+        let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache),
+                           KingfisherOptionsInfoItem.processor(RoundCornerImageProcessor(cornerRadius: 10))]
+        self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: optionsInfo, completionHandler:  { ( result ) in
             
         })
         

@@ -45,9 +45,9 @@ extension PrivateCustomItem {
     
     private func createRowStyleView() {
         // 宽度
-        let width: CGFloat = self.frame.size.width
+        let width: CGFloat = self.bounds.width
         // 高度
-        let height: CGFloat = (self.frame.size.height - 20) / 3
+        let height: CGFloat = 60
 
         privateRowViews = [RowStyleView]()
         privateRowViews.removeAll()
@@ -61,7 +61,6 @@ extension PrivateCustomItem {
         
         stack = UIStackView(arrangedSubviews: privateRowViews)
         stack.frame = self.bounds
-        stack.spacing = marginSpace
         stack.axis = .vertical
         stack.distribution = .fillEqually
         self.contentView.addSubview(stack)

@@ -34,7 +34,7 @@ class StyleRcmdModel: HomeViewModelSection {
     
     /// 根据模型计算 View frame
     class func caculateFrame() -> CGRect {
-        let height: CGFloat = sectionA_height * CGFloat(scaleW)
+        let height: CGFloat = sectionE_height * CGFloat(scaleW)
         let width: CGFloat = CGFloat(kScreenWidth)
         return CGRect(x: 0, y: 0, width: width, height: height)
     }

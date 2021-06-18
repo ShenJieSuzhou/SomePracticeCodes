@@ -14,6 +14,8 @@ let JJMusicMLogCellId = "JJMusicMLogCellId"
 
 class MusicMLogView: UIView {
     
+    let margin: CGFloat = 10
+    
     // 推荐视频数据
     private var musicMLogList: [EXTInfoElement]? {
         didSet{
@@ -26,9 +28,9 @@ class MusicMLogView: UIView {
     /// 布局
     lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets.init(top: -20, left: margin, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         return layout
     }()
@@ -61,9 +63,11 @@ class MusicMLogView: UIView {
         self.addSubview(self.musicMLogContainer)
         
         // 设置 item size 大小
-        self.flowLayout.itemSize = CGSize(width: 120 * scaleW, height: self.frame.size.height - 10)
+        self.flowLayout.itemSize = CGSize(width: 100 * scaleW, height: self.frame.size.height - margin * 3)
         
         self.musicMLogContainer.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview()
         }

@@ -13,6 +13,8 @@ let PodcastViewCellId = "PodcastViewCellId"
 
 class PodcastView: UIView {
 
+    let margin: CGFloat = 10
+    
     // 推荐歌单数据
     private var voiceList: [Creative]? {
         didSet{
@@ -27,7 +29,7 @@ class PodcastView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: -20, left: margin, bottom: 0, right: 0)
         layout.scrollDirection = .horizontal
         return layout
     }()
@@ -61,7 +63,7 @@ class PodcastView: UIView {
         self.addSubview(self.voiceContainer)
         
         // 设置 item size 大小
-        self.flowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height - 10)
+        self.flowLayout.itemSize = CGSize(width: 120, height: self.frame.size.height - 3 * margin)
         
         self.voiceContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()

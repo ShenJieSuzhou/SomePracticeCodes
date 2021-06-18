@@ -13,15 +13,14 @@ import Kingfisher
 class MusicMLogViewCell: UICollectionViewCell {
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
-        cover.backgroundColor = UIColor.black
-        cover.contentMode = .scaleAspectFit
+        cover.backgroundColor = UIColor.clear
         return cover
     }()
     
     lazy var albumDesc: UILabel! = {
         let descLabel = UILabel()
         descLabel.backgroundColor = UIColor.clear
-        descLabel.font = UIFont.systemFont(ofSize: 13)
+        descLabel.font = UIFont.systemFont(ofSize: 12)
         descLabel.numberOfLines = 0
         return descLabel
     }()
@@ -54,7 +53,7 @@ class MusicMLogViewCell: UICollectionViewCell {
         let height: CGFloat = self.frame.size.height
         let width: CGFloat = self.frame.size.width
         
-        let descHeight: CGFloat = height * (1/4)
+        let descHeight: CGFloat = 30 * scaleH
         
         self.addSubview(self.albumCover)
         self.albumCover.addSubview(self.playIcon)
@@ -62,11 +61,12 @@ class MusicMLogViewCell: UICollectionViewCell {
         self.addSubview(self.albumDesc)
     
         self.albumCover.snp.makeConstraints { (make) in
-            make.width.equalTo(width - 10)
-            make.height.equalTo(width + 10)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(5)
+            make.width.equalTo(width)
+            make.height.equalTo(height - descHeight - padding)
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
         }
+        self.albumCover.roundCorners(self.albumCover.frame, corners: [.allCorners], radius: 10)
         
         let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
         let viewsW = viewsRect.width * 1.5
@@ -78,7 +78,7 @@ class MusicMLogViewCell: UICollectionViewCell {
         self.viewsButton.layer.cornerRadius = viewsW * 0.15
         
         self.albumDesc.snp.makeConstraints { (make) in
-            make.width.equalTo(width - 10)
+            make.width.equalTo(width)
             make.height.equalTo(descHeight)
             make.centerX.equalToSuperview()
             make.top.equalTo(self.albumCover.snp.bottom).offset(5)
@@ -107,11 +107,11 @@ class MusicMLogViewCell: UICollectionViewCell {
         }
     }
     
-    /// 获取字符串边框
-    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
-        let attr = [NSAttributedString.Key.font:font]
-        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-        return rect
-    }
+//    /// 获取字符串边框
+//    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
+//                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
+//        let attr = [NSAttributedString.Key.font:font]
+//        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+//        return rect
+//    }
 }

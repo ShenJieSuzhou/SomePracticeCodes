@@ -26,6 +26,8 @@ let sectionC_height: CGFloat = 100
 
 let sectionD_height: CGFloat = 180
 
+let sectionE_height: CGFloat = 250 + 40
+
 /// 布局 A Cell 的宽度
 let itemA_width: CGFloat = 120
 

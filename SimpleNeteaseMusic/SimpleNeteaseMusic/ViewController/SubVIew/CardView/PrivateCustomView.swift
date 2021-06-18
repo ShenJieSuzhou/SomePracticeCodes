@@ -13,7 +13,7 @@ let JJPrivateCustomViewID = "JJPrivateCustomViewID"
 class PrivateCustomView: UIView {
             
     // 默认间隔
-    fileprivate var horizonSpace: CGFloat = 10.0
+    fileprivate var margin: CGFloat = 10.0
     
     // 默认上边距
     fileprivate var marginTop: CGFloat = 10.0
@@ -27,28 +27,29 @@ class PrivateCustomView: UIView {
     // 布局 layout
     private lazy var flowLayout: RowStyleLayout = {
         let flowLayout = RowStyleLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: marginTop, left: marginButtom, bottom: marginButtom, right: marginButtom)
-//        flowLayout.sectionInset = UIEdgeInsets.zero
+        flowLayout.sectionInset = UIEdgeInsets.init(top: -20, left: margin, bottom: 0, right: 0)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
         return flowLayout
     }()
     
     /// 歌单的视图
-    private var collectionView: UICollectionView!
+    private lazy var collectionView: UICollectionView = {
+        let collectionV = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionV.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
+        collectionV.showsVerticalScrollIndicator = false
+        collectionV.showsHorizontalScrollIndicator = false
+        collectionV.delegate = self
+        collectionV.dataSource = self
+        collectionV.scrollsToTop = false
+        collectionV.backgroundColor = UIColor.clear
+        collectionV.bounces = false
+        return collectionV
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
-        collectionView.register(PrivateCustomItem.self, forCellWithReuseIdentifier: JJPrivateCustomViewID)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.scrollsToTop = false
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.bounces = false
-
         self.addSubview(collectionView)
     }
     
@@ -95,9 +96,9 @@ extension PrivateCustomView {
         let width: CGFloat = self.frame.size.width
         
         // 设置 frame
-        self.collectionView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        self.collectionView.frame = self.bounds
         // 设置 item size 大小
-        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height - 20 * scaleH)
+        flowLayout.itemSize = CGSize(width: width - 40 * scaleW, height: height - margin * 2)
     }
 }
 

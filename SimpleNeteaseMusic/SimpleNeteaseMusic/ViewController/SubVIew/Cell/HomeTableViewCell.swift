@@ -133,7 +133,7 @@ class PlaylistRcmdCell: BaseViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.rcmdPlayListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)!)
+        self.rcmdPlayListView.frame = CGRect(x: 0, y: (headerView?.frame.maxY)!, width: self.bounds.width, height: self.bounds.height - (headerView?.frame.maxY)! - 10)
     }
     
     func setupUI(model: PlaylistRcmdModel) {

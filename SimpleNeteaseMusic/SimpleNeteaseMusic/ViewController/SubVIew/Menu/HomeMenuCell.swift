@@ -29,7 +29,7 @@ class HomeMenuCell: UICollectionViewCell {
         let mText = UILabel()
         mText.textColor = UIColor.darkModeTextColor
         mText.textAlignment = .center
-        mText.font = UIFont.systemFont(ofSize: 14)
+        mText.font = UIFont.systemFont(ofSize: 12)
         return mText
     }()
     

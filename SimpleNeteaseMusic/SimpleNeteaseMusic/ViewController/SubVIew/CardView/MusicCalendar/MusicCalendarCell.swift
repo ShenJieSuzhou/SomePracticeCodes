@@ -153,11 +153,11 @@ class MusicCalendarViewCell: UICollectionViewCell {
         self.titleL.text = title
     }
 
-    /// 获取字符串边框
-    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
-        let attr = [NSAttributedString.Key.font:font]
-        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-        return rect
-    }
+//    /// 获取字符串边框
+//    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
+//                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
+//        let attr = [NSAttributedString.Key.font:font]
+//        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
+//        return rect
+//    }
 }

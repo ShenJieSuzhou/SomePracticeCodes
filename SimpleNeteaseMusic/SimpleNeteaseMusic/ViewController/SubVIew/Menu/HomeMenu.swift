@@ -14,6 +14,9 @@ let JJDragonBallCellId = "JJDragonBallCellId"
 public typealias MenuDidClickedBlock = (_ currentIndex: Int) -> Void
 
 class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    let margin: CGFloat = 10
+    
     // 分割线
     lazy var separtor: UIImageView = {
         let line = UIImageView(frame: CGRect.zero)
@@ -26,7 +29,7 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
         let collectionFlowLayout = UICollectionViewFlowLayout()
         collectionFlowLayout.minimumLineSpacing = 0
         collectionFlowLayout.minimumInteritemSpacing = 0
-        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
+        collectionFlowLayout.sectionInset = UIEdgeInsets(top: margin, left: 0, bottom: margin, right: 0)
         return collectionFlowLayout
     }()
     

@@ -239,7 +239,7 @@ extension DiscoveryViewController {
             break
         case .MUSIC_CALENDAR:
             if let cell = tableView.dequeueReusableCell(withIdentifier: CalendarCell.identifier, for: indexPath) as? CalendarCell {
-                cell.item = item
+//                cell.item = item
                 return cell
             }
             break
