@@ -23,7 +23,6 @@ class MusicCalendarViewCell: UICollectionViewCell {
     lazy var coverImage: UIImageView! = {
         let cover = UIImageView()
         cover.backgroundColor = UIColor.clear
-        cover.layer.cornerRadius = 6
         cover.contentMode = .scaleAspectFill
         return cover
     }()
@@ -82,8 +81,8 @@ class MusicCalendarViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let marginLeft: CGFloat = 20
-        let marginRight: CGFloat = 20
+        let marginLeft: CGFloat = 10
+        let marginRight: CGFloat = 10
         let marginTop: CGFloat = 5
         let height: CGFloat = self.frame.size.height
         let width: CGFloat = self.frame.size.width
@@ -91,13 +90,13 @@ class MusicCalendarViewCell: UICollectionViewCell {
         let clockH: CGFloat = 25
         
         /// 计算日期的尺寸
-        let rect = getStrBoundRect(str: "今日", font: UIFont.systemFont(ofSize: 12), constrainedSize: CGSize(width: 14, height: 40))
+        let rect = getStrBoundRect(str: "今天", font: UIFont.systemFont(ofSize: 12), constrainedSize: CGSize(width: 14, height: 40))
         
         self.container.snp.makeConstraints { (make) in
             make.width.equalTo(width - (height - marginTop * 2) - marginLeft - marginRight)
             make.height.equalTo(height - marginTop * 2)
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(20)
+            make.left.equalToSuperview().offset(marginLeft)
         }
         
         self.coverImage.snp.makeConstraints { (make) in
@@ -108,7 +107,7 @@ class MusicCalendarViewCell: UICollectionViewCell {
         }
         
         self.dateL.snp.makeConstraints { (make) in
-            make.width.equalTo(rect.width+20)
+            make.width.equalTo(rect.width + 20)
             make.height.equalTo((height - marginTop * 2) / 2)
             make.top.equalToSuperview().offset(-5)
             make.left.equalToSuperview()
@@ -152,12 +151,4 @@ class MusicCalendarViewCell: UICollectionViewCell {
         self.tagL.text = tag
         self.titleL.text = title
     }
-
-//    /// 获取字符串边框
-//    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-//                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
-//        let attr = [NSAttributedString.Key.font:font]
-//        let rect=str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-//        return rect
-//    }
 }

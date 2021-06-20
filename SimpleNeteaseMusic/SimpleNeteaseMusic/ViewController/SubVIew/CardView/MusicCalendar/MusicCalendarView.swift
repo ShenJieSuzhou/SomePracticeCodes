@@ -29,7 +29,7 @@ class MusicCalendarView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: -20, left: margin, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.scrollDirection = .vertical
         return layout
     }()
@@ -46,6 +46,7 @@ class MusicCalendarView: UIView {
         collectionView.scrollsToTop = false
         collectionView.backgroundColor = UIColor.clear
         collectionView.bounces = false
+        collectionView.isScrollEnabled = false
         return collectionView
     }()
     
@@ -62,8 +63,7 @@ class MusicCalendarView: UIView {
         self.addSubview(self.calendarContainer)
         
         // 设置 item size 大小
-        self.flowLayout.itemSize = CGSize(width: self.frame.size.width, height: self.frame.size.height - 3 * margin)
-        
+        self.flowLayout.itemSize = CGSize(width: self.frame.size.width, height: (self.frame.size.height - 3 * margin) / 2)
         self.calendarContainer.frame = self.bounds
     }
     
