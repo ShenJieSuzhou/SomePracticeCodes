@@ -75,8 +75,8 @@ class CardViewCell: UICollectionViewCell {
         self.albumCover.roundCorners(self.albumCover.bounds, corners: [.allCorners], radius: 10)
        
         // 设置按钮样式
-        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize(width: 40, height: 20))
-        let viewsW = viewsRect.width * 1.5
+        let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
+        let viewsW = viewsRect.width
         let viewsH = viewsRect.height * 1.2
         self.viewsButton.frame = CGRect(x: self.albumCover.frame.width - viewsW - padding, y: padding, width: viewsW, height: viewsH)
         self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)

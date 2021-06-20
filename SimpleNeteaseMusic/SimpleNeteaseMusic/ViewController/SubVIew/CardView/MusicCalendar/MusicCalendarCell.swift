@@ -106,6 +106,9 @@ class MusicCalendarViewCell: UICollectionViewCell {
             make.right.equalToSuperview().offset(-marginRight)
         }
         
+        self.coverImage.layer.cornerRadius = 10
+        self.coverImage.layer.masksToBounds = true
+        
         self.dateL.snp.makeConstraints { (make) in
             make.width.equalTo(rect.width + 20)
             make.height.equalTo((height - marginTop * 2) / 2)

@@ -180,55 +180,74 @@ extension RowStyleView {
                 make.left.equalToSuperview()
                 make.top.equalToSuperview().offset(5)
             }
-//            self.albumCover.roundCorners(self.albumCover.frame, corners: [.allCorners], radius: 10)
+            
+            // 设置 playButtom 的约束
+            self.playButtom.snp.makeConstraints { (make) in
+                make.height.equalTo(rowHeight * 0.5)
+                make.width.equalTo(rowHeight * 0.5)
+                make.centerY.equalToSuperview()
+                make.centerX.equalToSuperview()
+            }
+            self.albumCover.layer.cornerRadius = 10
+            self.albumCover.layer.masksToBounds = true
             
             // 设置 midView 的约束
             self.midView.snp.makeConstraints { (make) in
                 make.height.equalTo(rowHeight - 10)
-                make.width.equalTo(rowWidth - Float(self.albumCover.frame.size.width) - 30 - 40 - 20)
+                make.width.equalTo(rowWidth - Float(self.albumCover.frame.size.width))
                 make.left.equalTo(self.albumCover.snp.right).offset(5)
-                make.top.equalToSuperview().offset(5)
+                make.centerY.equalToSuperview()
             }
-
+            
             // 计算歌名长度， 但不超过最大值，超过部分用省略号代替
-            let max_songNameLen = Float(viewWidth * 0.6 - 100)
+            let max_songNameLen = Float(viewWidth * 0.7 - 100)
             var songNameLen: Float = 0
             let rect = getStrBoundRect(str: songName.text!, font: self.songName.font, constrainedSize: CGSize(width: self.songName.frame.size.width, height: 20))
             songNameLen = Float((Float(rect.width) > max_songNameLen) ? max_songNameLen : Float(rect.width))
-            self.songName.snp.makeConstraints { (make) in
-                make.width.equalTo(songNameLen)
-                make.left.equalToSuperview().offset(5)
-                make.top.equalToSuperview()
-            }
-
+            
             // 计算歌手名字长度，但不超过最大值，超过部分用省略号代替
             let max_singerLen = Float(100)
             var singerLen: Float = 0
             let singerRect = getStrBoundRect(str: author.text!, font: self.author.font, constrainedSize: CGSize(width: self.author.frame.size.width, height: 20))
             singerLen = Float((Float(singerRect.width) > max_singerLen) ? max_singerLen : Float(singerRect.width))
-            self.author.snp.makeConstraints { (make) in
-                make.width.equalTo(singerLen)
-                make.left.equalTo(self.songName.snp.right)
-                make.top.equalToSuperview()
-            }
-
+            
             // 计算专辑简介长度，但不超过最大值，超过部分用省略号代替
-            let max_albumDetailLen = rowWidth - Float(self.albumCover.frame.size.width) - 30 - 40 - 20
+            let max_albumDetailLen = rowWidth - Float(self.albumCover.frame.size.width)
             var albumDetailLen: Float = 0
             let detailRect = getStrBoundRect(str: songDetail.text!, font: self.songDetail.font, constrainedSize: CGSize(width: self.songDetail.frame.size.width, height: 20))
             albumDetailLen = Float((Float(detailRect.width) > max_albumDetailLen) ? max_albumDetailLen : Float(detailRect.width))
-            self.songDetail.snp.makeConstraints { (make) in
-                make.width.equalTo(albumDetailLen)
-                make.left.equalToSuperview().offset(5)
-                make.top.equalTo(self.songName.snp.bottom).offset(5)
-            }
+            
+            // 没有详情文字使用该布局
+            if self.songDetail.text == "" {
+                self.songName.snp.makeConstraints { (make) in
+                    make.width.equalTo(songNameLen)
+                    make.left.equalToSuperview().offset(5)
+                    make.centerY.equalToSuperview()
+                }
 
-            // 设置 playButtom 的约束
-            self.playButtom.snp.makeConstraints { (make) in
-                make.height.equalTo(rowHeight * 0.6)
-                make.width.equalTo(rowHeight * 0.6)
-                make.centerY.equalToSuperview()
-                make.left.equalTo(self.midView.snp.right)
+                self.author.snp.makeConstraints { (make) in
+                    make.width.equalTo(singerLen)
+                    make.left.equalTo(self.songName.snp.right)
+                    make.centerY.equalToSuperview()
+                }
+            } else {
+                self.songName.snp.makeConstraints { (make) in
+                    make.width.equalTo(songNameLen)
+                    make.left.equalToSuperview().offset(5)
+                    make.centerY.equalToSuperview().offset(-10)
+                }
+
+                self.author.snp.makeConstraints { (make) in
+                    make.width.equalTo(singerLen)
+                    make.left.equalTo(self.songName.snp.right)
+                    make.centerY.equalToSuperview().offset(-10)
+                }
+                
+                self.songDetail.snp.makeConstraints { (make) in
+                    make.width.equalTo(albumDetailLen)
+                    make.left.equalToSuperview().offset(5)
+                    make.centerY.equalToSuperview().offset(10)
+                }
             }
         }
     }
@@ -251,9 +270,9 @@ extension RowStyleView {
             self.addSubview(trailText)
         } else if style == .SubTitleStyle {
             self.addSubview(albumCover)
-            self.addSubview(playButtom)
+            albumCover.addSubview(playButtom)
             self.addSubview(midView)
-
+           
             midView.addSubview(songName)
             midView.addSubview(author)
             midView.addSubview(songDetail)

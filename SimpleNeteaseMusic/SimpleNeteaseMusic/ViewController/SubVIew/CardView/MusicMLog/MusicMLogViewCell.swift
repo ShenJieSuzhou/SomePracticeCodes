@@ -69,13 +69,14 @@ class MusicMLogViewCell: UICollectionViewCell {
         self.albumCover.roundCorners(self.albumCover.frame, corners: [.allCorners], radius: 10)
         
         let viewsRect = self.getStrBoundRect(str: self.views!, font: self.viewsButton.titleLabel!.font, constrainedSize: CGSize.zero)
-        let viewsW = viewsRect.width * 1.5
-        let viewsH = viewsRect.height * 1.2
+        let viewsW = viewsRect.width
+        let viewsH = viewsRect.height
         self.viewsButton.frame = CGRect(x: self.albumCover.frame.width - viewsW - padding, y: padding, width: viewsW, height: viewsH)
 
         // 设置按钮样式
         self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)
-        self.viewsButton.layer.cornerRadius = viewsW * 0.15
+        self.viewsButton.roundCorners(self.viewsButton.bounds, corners: [.allCorners], radius: viewsW * 0.2)
+//        self.viewsButton.layer.cornerRadius = viewsW * 0.15
         
         self.albumDesc.snp.makeConstraints { (make) in
             make.width.equalTo(width)
@@ -106,12 +107,4 @@ class MusicMLogViewCell: UICollectionViewCell {
             self.viewsButton.setTitle(String(value + "万"), for: .normal)
         }
     }
-    
-//    /// 获取字符串边框
-//    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-//                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin) -> CGRect{
-//        let attr = [NSAttributedString.Key.font:font]
-//        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-//        return rect
-//    }
 }
