@@ -351,7 +351,8 @@ class OfficialPlayListCell: BaseViewCell {
 }
 
 /// 首页-发现  新歌 /新碟 /数字专辑
-class NewAlbumsCell: BaseViewCell {
+class NewAlbumsCell: BaseViewCell, TagSwitchDelegate {
+    
     class var identifier: String {
           return String(describing: self)
     }
@@ -377,6 +378,7 @@ class NewAlbumsCell: BaseViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         /// 初始化
         headerView = JJTableViewHeader(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: HEADVIEW_H))
+        headerView?.tagDelegate = self
         newAlbumsView = PrivateCustomView(frame: CGRect.zero)
         self.contentView.addSubview(headerView!)
         self.contentView.addSubview(newAlbumsView!)
@@ -437,6 +439,11 @@ class NewAlbumsCell: BaseViewCell {
                 digitalAlbums.append(item)
             }
         }
+    }
+    
+    // 视图切换
+    func tagSwitchTo(to index: Int) {
+        switchContent(to: index)
     }
 }
 

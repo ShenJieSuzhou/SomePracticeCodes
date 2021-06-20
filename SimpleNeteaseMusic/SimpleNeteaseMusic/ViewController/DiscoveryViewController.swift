@@ -252,9 +252,6 @@ extension DiscoveryViewController {
         case .ALBUM_NEW_SONG:
             if let cell = tableView.dequeueReusableCell(withIdentifier: NewAlbumsCell.identifier, for: indexPath) as? NewAlbumsCell {
                 cell.item = item
-                if newAlbumCell == nil {
-                    newAlbumCell = cell
-                }
                 return cell
             }
             break
@@ -289,14 +286,6 @@ extension DiscoveryViewController: UISearchBarDelegate {
         self.musicSearchController = MusicSearchViewController()
         self.navigationController?.pushViewController(self.musicSearchController, animated: false)
         return true
-    }
-}
-
-extension DiscoveryViewController: TagSwitchDelegate {
-    // Tag 切换
-    func tagSwitchTo(to index: Int) {
-        // 新歌新碟数字专辑切换事件
-        newAlbumCell.switchContent(to: index)
     }
 }
 
