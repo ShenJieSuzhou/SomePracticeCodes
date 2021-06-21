@@ -44,7 +44,7 @@ class CardCollectionView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.homeCellColor
+        collectionView.backgroundColor = UIColor.clear
         collectionView.bounces = false
         return collectionView
     }()

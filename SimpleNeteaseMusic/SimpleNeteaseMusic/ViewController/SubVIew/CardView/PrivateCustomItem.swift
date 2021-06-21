@@ -12,6 +12,13 @@ import UIKit
 let marginSpace: CGFloat = 10
 
 class PrivateCustomItem: UICollectionViewCell {
+    
+    override var isHighlighted: Bool {
+            didSet {
+                backgroundColor = .clear
+            }
+    }
+    
     // stackView
     private var stack: UIStackView!
     
@@ -23,6 +30,7 @@ class PrivateCustomItem: UICollectionViewCell {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.contentView.backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -63,6 +71,7 @@ extension PrivateCustomItem {
         stack.frame = self.bounds
         stack.axis = .vertical
         stack.distribution = .fillEqually
+        stack.backgroundColor = .clear
         self.contentView.addSubview(stack)
     }
     

@@ -76,7 +76,6 @@ class MusicMLogViewCell: UICollectionViewCell {
         // 设置按钮样式
         self.viewsButton.moveImageLeftTextCenterWithTinySpace(imagePadding: 5)
         self.viewsButton.roundCorners(self.viewsButton.bounds, corners: [.allCorners], radius: viewsW * 0.2)
-//        self.viewsButton.layer.cornerRadius = viewsW * 0.15
         
         self.albumDesc.snp.makeConstraints { (make) in
             make.width.equalTo(width)

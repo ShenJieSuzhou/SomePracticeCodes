@@ -75,7 +75,7 @@ extension JJCustomSegmentedControl {
         subviews.forEach({$0.removeFromSuperview()})
         var pX:CGFloat = 0
         let pY:CGFloat = 0
-        let padding: CGFloat = 10
+        let padding: CGFloat = 0
         var count: Int = 0
         
         for buttonTitle in buttonTitles {
@@ -83,6 +83,7 @@ extension JJCustomSegmentedControl {
             button.setTitle(buttonTitle, for: .normal)
             button.addTarget(self, action:#selector(JJCustomSegmentedControl.buttonAction(sender:)), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
+            button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 17)
             
             let rect = getStrBoundRect(str: buttonTitle, font: UIFont.systemFont(ofSize: 14), constrainedSize: CGSize.zero)
             button.frame = CGRect(x: pX, y: pY, width: rect.width * 1.2, height: rect.height)
@@ -92,8 +93,8 @@ extension JJCustomSegmentedControl {
             
             if count != buttonTitles.count - 1 {
                 let seperateLine = UIView(frame: CGRect.zero)
-                seperateLine.backgroundColor = UIColor.white
-                seperateLine.frame = CGRect(x: pX, y: pY, width: 2, height: rect.height)
+                seperateLine.backgroundColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1)
+                seperateLine.frame = CGRect(x: pX, y: pY, width: 1, height: rect.height)
                 pX = seperateLine.frame.maxX + padding
                 self.addSubview(seperateLine)
                 viewContainer.append(seperateLine)
@@ -104,11 +105,4 @@ extension JJCustomSegmentedControl {
         let firstBtn = viewContainer[0] as! UIButton
         firstBtn.setTitleColor(selectorTextColor, for: .normal)
     }
-
-//    func getStrBoundRect(str:String,font:UIFont,constrainedSize:CGSize,
-//                             option:NSStringDrawingOptions=NSStringDrawingOptions.usesLineFragmentOrigin)->CGRect{
-//        let attr = [NSAttributedString.Key.font:font]
-//        let rect = str.boundingRect(with: constrainedSize, options: option, attributes:attr , context: nil)
-//        return rect
-//    }
 }

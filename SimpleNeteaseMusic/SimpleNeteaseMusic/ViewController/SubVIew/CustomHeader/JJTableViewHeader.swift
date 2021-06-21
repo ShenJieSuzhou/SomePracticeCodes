@@ -30,7 +30,7 @@ class JJTableViewHeader: UIView {
     lazy var title: UILabel = {
         let myTitle = UILabel()
         myTitle.textColor = UIColor.darkModeTextColor
-        myTitle.font = UIFont(name: "Helvetica-Bold", size: 16)
+        myTitle.font = UIFont(name: "Helvetica-Bold", size: 17)
         return myTitle
     }()
     
@@ -49,8 +49,6 @@ class JJTableViewHeader: UIView {
         let myButtom = UIButton()
         myButtom.setTitleColor(UIColor.darkModeTextColor, for: .normal)
         myButtom.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        myButtom.layer.borderColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1).cgColor
-        myButtom.layer.borderWidth = 1
         return myButtom
     }()
     
@@ -79,17 +77,17 @@ class JJTableViewHeader: UIView {
         self.buttom.setTitle(btnName, for: .normal)
         
         if type == .rightArrow {
-            moreBtnW = 60
+            moreBtnW = 65
             self.buttom.setImage(UIImage(named: "right-arrow"), for: .normal)
             self.buttom.moveImageRightTextCenter(imagePadding: 10)
         } else if type == .play {
-            moreBtnW = 60
+            moreBtnW = 65
             self.buttom.setImage(UIImage(named: "play"), for: .normal)
             self.buttom.moveImageLeftTextCenter(imagePadding: 10)
         } else if type == .refresh {
             moreBtnW = 80
             self.buttom.setImage(UIImage(named: "refresh"), for: .normal)
-            self.buttom.moveImageLeftTextCenter(imagePadding: 10)
+            self.buttom.moveImageLeftTextCenterWithTinySpace(imagePadding: 10)
         } else if type == .calender {
             moreBtnW = 80
             self.buttom.setImage(UIImage(named: "right-arrow"), for: .normal)
@@ -100,7 +98,7 @@ class JJTableViewHeader: UIView {
         
         self.title.snp.makeConstraints { (make) in
             make.width.equalTo(width * 0.7)
-            make.height.equalTo(height - 20)
+            make.height.equalTo(height)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(10)
         }
@@ -112,8 +110,20 @@ class JJTableViewHeader: UIView {
             make.right.equalToSuperview().offset(-10)
         }
         
-        // 设置按钮样式
-        self.buttom.layer.cornerRadius = moreBtnW * 0.15
+        // Add rounded corners
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = self.buttom.bounds
+        maskLayer.path = UIBezierPath(roundedRect: self.buttom.bounds, byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        self.buttom.layer.mask = maskLayer
+
+        // Add border
+        let borderLayer = CAShapeLayer()
+        borderLayer.path = maskLayer.path
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1).cgColor
+        borderLayer.lineWidth = 1
+        borderLayer.frame = self.buttom.bounds
+        self.buttom.layer.addSublayer(borderLayer)
     }
         
     public func setupUIWithMutiTags(titles: Array<String>!, btnName: String, type: MoreStyle) -> Void {
@@ -148,8 +158,20 @@ class JJTableViewHeader: UIView {
             make.bottom.equalToSuperview().offset(-10)
         }
         
-        // 设置按钮样式
-        self.buttom.layer.cornerRadius = moreBtnW * 0.15
+        // Add rounded corners
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = self.buttom.bounds
+        maskLayer.path = UIBezierPath(roundedRect: self.buttom.bounds, byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        self.buttom.layer.mask = maskLayer
+
+        // Add border
+        let borderLayer = CAShapeLayer()
+        borderLayer.path = maskLayer.path
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1).cgColor
+        borderLayer.lineWidth = 1
+        borderLayer.frame = self.buttom.bounds
+        self.buttom.layer.addSublayer(borderLayer)
     }
 }
 

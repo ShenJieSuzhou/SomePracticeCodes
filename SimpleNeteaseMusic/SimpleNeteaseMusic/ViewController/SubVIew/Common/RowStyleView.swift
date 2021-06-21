@@ -278,22 +278,7 @@ extension RowStyleView {
             midView.addSubview(songDetail)
         }
     }
-    
-    /// 更新 UI
-    /// - Parameters:
-    ///   - mImgUrl: 图片地址
-    ///   - mSongname: 歌曲名
-    ///   - mAuthor: 歌手
-    ///   - mSongDetail: 详情
-    /// - Returns:
-//    private func updateUI(mImgUrl: String, mSongname: String, mAuthor: String, mSongDetail: String) -> Void {
-//        let num:Int = Int.random(in: 0..<3)
-//        let url = mockdata4[num]
-//        self.albumCover.kf.setImage(with: URL(string: url), placeholder: nil, options: nil, completionHandler:  { ( result ) in
-//
-//        })
-//    }
-    
+        
     public func setUpRowViewWithDefultStyle(image picUrl: String, order: Int, songName: String, singer: String, style: RowStyle, extra: String){
         
         self.albumCover.kf.setImage(with: URL(string: picUrl), placeholder: nil, options: nil, completionHandler:  { ( result ) in
@@ -307,6 +292,13 @@ extension RowStyleView {
         self.style = style
     }
     
+    /// 更新 UI
+    /// - Parameters:
+    ///   - mImgUrl: 图片地址
+    ///   - mSongname: 歌曲名
+    ///   - mAuthor: 歌手
+    ///   - mSongDetail: 详情
+    /// - Returns:
     public func setUpRowViewWithSubTitleStyle(image picUrl: String, songName: String, singer: String, foreword: String, style: RowStyle, extra: String){
         self.songName.text = ""
         self.author.text = ""

@@ -20,7 +20,7 @@ class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
     // 分割线
     lazy var separtor: UIImageView = {
         let line = UIImageView(frame: CGRect.zero)
-        line.backgroundColor = .lightGray
+        line.backgroundColor = UIColor(red: 62/255, green: 62/255, blue: 62/255, alpha: 1)
         return line
     }()
     

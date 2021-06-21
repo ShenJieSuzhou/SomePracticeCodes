@@ -28,7 +28,7 @@ extension UIButton {
         guard let imageViewWidth = self.imageView?.frame.width else{return}
         self.contentHorizontalAlignment = .left
         imageEdgeInsets = UIEdgeInsets(top: 0.0, left: imagePadding, bottom: 0.0, right: 0.0)
-        titleEdgeInsets = UIEdgeInsets(top: 0.0, left: imageViewWidth + imagePadding, bottom: 0.0, right: 0.0)
+        titleEdgeInsets = UIEdgeInsets(top: 0.0, left: imageViewWidth, bottom: 0.0, right: 0.0)
     }
 }
 
