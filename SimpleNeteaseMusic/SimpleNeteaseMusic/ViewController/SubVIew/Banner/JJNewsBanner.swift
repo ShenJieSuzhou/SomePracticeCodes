@@ -27,6 +27,7 @@ public enum PageControlAligment: Int{
 public typealias ItemDidClickedBlock = (_ currentIndex: Int) -> Void
 
 
+/// 首页滚动 Banner
 class JJNewsBanner: UIView {
     
     // item 左右边距

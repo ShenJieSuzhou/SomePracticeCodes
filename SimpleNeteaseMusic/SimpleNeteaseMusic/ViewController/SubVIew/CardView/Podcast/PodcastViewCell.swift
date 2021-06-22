@@ -11,7 +11,7 @@ import SnapKit
 import Kingfisher
 
 class PodcastViewCell: UICollectionViewCell {
-
+    
     lazy var albumCover: UIImageView! = {
         let cover = UIImageView()
         cover.backgroundColor = UIColor.black
@@ -68,17 +68,19 @@ class PodcastViewCell: UICollectionViewCell {
         }
     }
     
+    /// 更新视图
+    /// - Parameters:
+    ///   - coverUrl: 封面url
+    ///   - desc: 描述
     func updateUI(coverUrl: String, desc: String) -> Void {
+        self.albumDesc.text = "";
         if coverUrl != "" {
-//            let radius = albumCover.frame.width / 2
-//            let cache = KingfisherManager.shared.cache
-//            let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache),
-//                               KingfisherOptionsInfoItem.processor(RoundCornerImageProcessor(cornerRadius: radius))]
-            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: nil, progressBlock: nil) { (reslt) in
+            let cache = KingfisherManager.shared.cache
+            let optionsInfo = [KingfisherOptionsInfoItem.targetCache(cache)]
+            self.albumCover.kf.setImage(with: URL(string: coverUrl), placeholder: nil, options: optionsInfo, progressBlock: nil) { (reslt) in
                 
             }
         }
-        
         self.albumDesc.text = desc
     }
 }

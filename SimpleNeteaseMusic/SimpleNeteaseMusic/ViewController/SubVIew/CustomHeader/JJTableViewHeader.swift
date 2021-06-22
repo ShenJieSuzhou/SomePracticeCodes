@@ -17,10 +17,12 @@ enum MoreStyle {
     case none
 }
 
+/// headerView 中 多个 view 视图切换
 public protocol TagSwitchDelegate: NSObject {
     func tagSwitchTo(to index:Int)
 }
 
+/// 首页发现-自定义 HeaderView
 class JJTableViewHeader: UIView {
     
     // 回调实例
@@ -65,6 +67,11 @@ class JJTableViewHeader: UIView {
         super.layoutSubviews()
     }
     
+    /// 设置视图
+    /// - Parameters:
+    ///   - title: 标题
+    ///   - btnName: 按钮文字
+    ///   - type: 按钮类型
     public func setupUI(title: String, btnName: String, type: MoreStyle) -> Void {
         let width: CGFloat = self.frame.size.width
         let height: CGFloat = self.frame.size.height
@@ -125,7 +132,12 @@ class JJTableViewHeader: UIView {
         borderLayer.frame = self.buttom.bounds
         self.buttom.layer.addSublayer(borderLayer)
     }
-        
+    
+    /// 设置 headerView 中多个视图
+    /// - Parameters:
+    ///   - titles: 视图名称，数组形式传入
+    ///   - btnName: 按钮文字
+    ///   - type: 按钮类型
     public func setupUIWithMutiTags(titles: Array<String>!, btnName: String, type: MoreStyle) -> Void {
         var moreBtnW: CGFloat = 0
         let width: CGFloat = self.frame.size.width
@@ -176,6 +188,9 @@ class JJTableViewHeader: UIView {
 }
 
 extension JJTableViewHeader: JJCustomSegmentedControlDelegate {
+    
+    /// 视图切换事件
+    /// - Parameter index: 切换视图的当前索引
     func switchTo(to index: Int) {
         tagDelegate?.tagSwitchTo(to: index)
     }

@@ -10,6 +10,7 @@ import UIKit
 
 let JJPrivateCustomViewID = "JJPrivateCustomViewID"
 
+/// 通用的卡片滚动视图，该控件适用于多行内容的显示
 class PrivateCustomView: UIView {
             
     // 默认间隔

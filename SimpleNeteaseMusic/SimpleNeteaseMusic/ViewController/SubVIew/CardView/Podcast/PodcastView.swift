@@ -11,11 +11,12 @@ import SnapKit
 
 let PodcastViewCellId = "PodcastViewCellId"
 
+/// 播客
 class PodcastView: UIView {
 
     let margin: CGFloat = 10
     
-    // 推荐歌单数据
+    // 播客数据
     private var voiceList: [Creative]? {
         didSet{
             if voiceList != nil {
@@ -35,7 +36,7 @@ class PodcastView: UIView {
     }()
     
     
-    /// 歌单的视图
+    /// 视图容器
     lazy var voiceContainer: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 1, height: 1), collectionViewLayout: self.flowLayout)
         collectionView.register(PodcastViewCell.self, forCellWithReuseIdentifier: PodcastViewCellId)

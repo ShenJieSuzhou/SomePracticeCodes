@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// 类型
 enum HomeViewModelSectionType {
     case BANNER             // Banner
     case MENUS              // 圆形按钮

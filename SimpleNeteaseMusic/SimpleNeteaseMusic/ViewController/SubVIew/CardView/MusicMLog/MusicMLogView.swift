@@ -12,6 +12,7 @@ import SnapKit
 
 let JJMusicMLogCellId = "JJMusicMLogCellId"
 
+/// 音乐VLog
 class MusicMLogView: UIView {
     
     let margin: CGFloat = 10

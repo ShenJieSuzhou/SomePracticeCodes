@@ -13,6 +13,7 @@ let JJDragonBallCellId = "JJDragonBallCellId"
 // 点击cell回调
 public typealias MenuDidClickedBlock = (_ currentIndex: Int) -> Void
 
+/// 首页圆形按钮
 class HomeMenu: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
     
     let margin: CGFloat = 10

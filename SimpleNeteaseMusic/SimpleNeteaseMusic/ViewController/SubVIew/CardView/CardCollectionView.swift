@@ -11,6 +11,7 @@ import SnapKit
 
 let RecomendAlbumId = "RecomendAlbumId"
 
+/// 通用的卡片滚动视图，该控件适用于横向滚动并且上图下文形式
 class CardCollectionView: UIView {
     
     let margin: CGFloat = 10

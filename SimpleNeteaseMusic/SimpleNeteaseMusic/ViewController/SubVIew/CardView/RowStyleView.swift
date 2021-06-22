@@ -14,6 +14,7 @@ public enum RowStyle : Int {
     case SubTitleStyle = 1
 }
 
+/// 行视图
 class RowStyleView: UIView {
     
     // 样式

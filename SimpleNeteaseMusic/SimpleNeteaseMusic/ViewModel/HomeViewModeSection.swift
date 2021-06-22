@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// 数据模型继承此协议
 protocol HomeViewModelSection {
     var type: HomeViewModelSectionType { get }
     var rowCount: Int { get }

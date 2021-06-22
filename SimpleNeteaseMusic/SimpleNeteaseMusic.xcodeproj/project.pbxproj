@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8546B108612069BBFA2DC0E7 /* Pods_SimpleNeteaseMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */; };
-		E505EC892665D01900C62819 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505EC882665D01900C62819 /* UIImageViewExtension.swift */; };
 		E51802272564F3C20041E813 /* HomeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51802262564F3C20041E813 /* HomeMenu.swift */; };
 		E52429DA2583747700082F48 /* JJCustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */; };
 		E53CBF9F2668D2530065CFB3 /* MusicMLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */; };
@@ -41,7 +40,6 @@
 		E57D8741250F46D30030B0FF /* ResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8740250F46D30030B0FF /* ResultContainerViewController.swift */; };
 		E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */; };
 		E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */; };
-		E57D87482511DEC50030B0FF /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D87472511DEC50030B0FF /* Results.swift */; };
 		E587C46A253697360091747D /* JJNewsBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C469253697360091747D /* JJNewsBanner.swift */; };
 		E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */; };
 		E587C4702536F56C0091747D /* JJPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587C46F2536F56C0091747D /* JJPageControl.swift */; };
@@ -50,38 +48,30 @@
 		E590C640264E2B6200E15377 /* HomeViewModeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C63E264E2B6200E15377 /* HomeViewModeSection.swift */; };
 		E590C643264E434300E15377 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C642264E434300E15377 /* HomeViewModel.swift */; };
 		E590C647264E458200E15377 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590C646264E458200E15377 /* HomeTableViewCell.swift */; };
-		E59B0CDB251B160F00BF4E6D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDA251B160E00BF4E6D /* API.swift */; };
 		E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */; };
-		E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */; };
 		E59B25832679F617000F4CC1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B25822679F617000F4CC1 /* UIViewExtension.swift */; };
 		E59B2585267C4A99000F4CC1 /* mockdata2.json in Resources */ = {isa = PBXBuildFile; fileRef = E59B2584267C4A99000F4CC1 /* mockdata2.json */; };
 		E5B225572653C6D300A47B5B /* mockdata1.json in Resources */ = {isa = PBXBuildFile; fileRef = E5B225562653C6D300A47B5B /* mockdata1.json */; };
 		E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B225592654BDD700A47B5B /* BannerModel.swift */; };
-		E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633A25A8293900A7D455 /* RankModel.swift */; };
-		E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8633D25A85DEE00A7D455 /* SongModel.swift */; };
 		E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */; };
-		E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8635125AEC1B500A7D455 /* PrivateCustomModel.swift */; };
 		E5D8635525B18A1200A7D455 /* RowStyleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */; };
 		E5D8DFCE2574CCB6002DF517 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */; };
-		E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */; };
 		E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */; };
 		E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E063257895C4002DF517 /* CGFloatExtension.swift */; };
 		E5D8E068257A0095002DF517 /* PrivateCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E067257A0095002DF517 /* PrivateCustomView.swift */; };
-		E5F941C425A58B7600119D34 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C325A58B7600119D34 /* RankView.swift */; };
-		E5F941C825A58D7100119D34 /* RankDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941C725A58D7100119D34 /* RankDetailItem.swift */; };
 		E5F941D025A5922400119D34 /* RowStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941CF25A5922400119D34 /* RowStyleView.swift */; };
 		F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */; };
 		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
 		F4DF3F62266CEFCE0014EF56 /* PodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */; };
 		F4DF3F64266CEFE70014EF56 /* PodcastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */; };
+		F4DF3F66268239330014EF56 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F65268239330014EF56 /* Results.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		451E2D9D10ADB2AE8D095A14 /* Pods-SimpleNeteaseMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.debug.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		8E7C08FBD078AF7D4FD4A0F4 /* Pods_SimpleNeteaseMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleNeteaseMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC267ABAB82621D139665D67 /* Pods-SimpleNeteaseMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleNeteaseMusic.release.xcconfig"; path = "Target Support Files/Pods-SimpleNeteaseMusic/Pods-SimpleNeteaseMusic.release.xcconfig"; sourceTree = "<group>"; };
-		E505EC882665D01900C62819 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E51802262564F3C20041E813 /* HomeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenu.swift; sourceTree = "<group>"; };
 		E52429D92583747700082F48 /* JJCustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSegmentedControl.swift; sourceTree = "<group>"; };
 		E53CBF9E2668D2530065CFB3 /* MusicMLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMLogView.swift; sourceTree = "<group>"; };
@@ -116,7 +106,6 @@
 		E57D8740250F46D30030B0FF /* ResultContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainerViewController.swift; sourceTree = "<group>"; };
 		E57D8742250F6A0F0030B0FF /* JJCustomSearchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomSearchbar.swift; sourceTree = "<group>"; };
 		E57D8744250F775D0030B0FF /* MusicSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchViewController.swift; sourceTree = "<group>"; };
-		E57D87472511DEC50030B0FF /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		E587C469253697360091747D /* JJNewsBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJNewsBanner.swift; sourceTree = "<group>"; };
 		E587C46C2536E3190091747D /* JJNewsImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJNewsImageViewCell.swift; sourceTree = "<group>"; };
 		E587C46F2536F56C0091747D /* JJPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJPageControl.swift; sourceTree = "<group>"; };
@@ -125,31 +114,24 @@
 		E590C63E264E2B6200E15377 /* HomeViewModeSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModeSection.swift; sourceTree = "<group>"; };
 		E590C642264E434300E15377 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E590C646264E458200E15377 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		E59B0CDA251B160E00BF4E6D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaConfig.swift; sourceTree = "<group>"; };
 		E59B25822679F617000F4CC1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E59B2584267C4A99000F4CC1 /* mockdata2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata2.json; sourceTree = "<group>"; };
 		E5B225562653C6D300A47B5B /* mockdata1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata1.json; sourceTree = "<group>"; };
 		E5B225592654BDD700A47B5B /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
-		E5D8633A25A8293900A7D455 /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
-		E5D8633D25A85DEE00A7D455 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomItem.swift; sourceTree = "<group>"; };
-		E5D8635125AEC1B500A7D455 /* PrivateCustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomModel.swift; sourceTree = "<group>"; };
 		E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleLayout.swift; sourceTree = "<group>"; };
 		E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleCardViewCell.swift; sourceTree = "<group>"; };
 		E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSIntegerExtension.swift; sourceTree = "<group>"; };
 		E5D8E063257895C4002DF517 /* CGFloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		E5D8E067257A0095002DF517 /* PrivateCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomView.swift; sourceTree = "<group>"; };
-		E5F941C325A58B7600119D34 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
-		E5F941C725A58D7100119D34 /* RankDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankDetailItem.swift; sourceTree = "<group>"; };
 		E5F941CF25A5922400119D34 /* RowStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleView.swift; sourceTree = "<group>"; };
 		F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
 		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
 		F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastView.swift; sourceTree = "<group>"; };
 		F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewCell.swift; sourceTree = "<group>"; };
+		F4DF3F65268239330014EF56 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Results.swift; path = SimpleNeteaseMusic/Model/Results.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,9 +189,10 @@
 				E53CBF9D2668D2120065CFB3 /* MusicMLog */,
 				E547FAB2256F507300F0A5B4 /* CardCollectionView.swift */,
 				E547FAB5256F509700F0A5B4 /* CardViewCell.swift */,
-				E5D8E05A25777553002DF517 /* RowStyleCardViewCell.swift */,
 				E5D8E067257A0095002DF517 /* PrivateCustomView.swift */,
 				E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */,
+				E5F941CF25A5922400119D34 /* RowStyleView.swift */,
+				E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -277,10 +260,6 @@
 			isa = PBXGroup;
 			children = (
 				E590C605264D0BC300E15377 /* Home */,
-				E57D87472511DEC50030B0FF /* Results.swift */,
-				E5D8633A25A8293900A7D455 /* RankModel.swift */,
-				E5D8633D25A85DEE00A7D455 /* SongModel.swift */,
-				E5D8635125AEC1B500A7D455 /* PrivateCustomModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,7 +269,6 @@
 			children = (
 				E590C645264E453800E15377 /* Cell */,
 				E5F941CE25A591F200119D34 /* Common */,
-				E5F941C225A58B1100119D34 /* Rank */,
 				E547FAB8256F50AE00F0A5B4 /* CustomHeader */,
 				E547FAB1256F500600F0A5B4 /* CardView */,
 				F40F5C852562D089006AD685 /* Menu */,
@@ -322,6 +300,7 @@
 		E590C605264D0BC300E15377 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F4DF3F65268239330014EF56 /* Results.swift */,
 				E549050A265513DD008C19AC /* MgcPlaylistModel.swift */,
 				E549050C265513DD008C19AC /* MusicCalendarModel.swift */,
 				E5490509265513DD008C19AC /* MusicMLOGModel.swift */,
@@ -350,14 +329,11 @@
 		E59B0CD9251B15F200BF4E6D /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E59B0CDA251B160E00BF4E6D /* API.swift */,
 				E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */,
-				E59B0CDE251B164000BF4E6D /* MoyaConfig.swift */,
 				F42F35A52520F125007EDADD /* NetworkTools.swift */,
 				E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */,
 				E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */,
 				E5D8E063257895C4002DF517 /* CGFloatExtension.swift */,
-				E505EC882665D01900C62819 /* UIImageViewExtension.swift */,
 				E53CBFF92670A0B00065CFB3 /* UIButtonExtension.swift */,
 				E59B25822679F617000F4CC1 /* UIViewExtension.swift */,
 			);
@@ -373,20 +349,9 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		E5F941C225A58B1100119D34 /* Rank */ = {
-			isa = PBXGroup;
-			children = (
-				E5F941C325A58B7600119D34 /* RankView.swift */,
-				E5F941C725A58D7100119D34 /* RankDetailItem.swift */,
-			);
-			path = Rank;
-			sourceTree = "<group>";
-		};
 		E5F941CE25A591F200119D34 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E5F941CF25A5922400119D34 /* RowStyleView.swift */,
-				E5D8635425B18A1200A7D455 /* RowStyleLayout.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -539,42 +504,35 @@
 				E587C4702536F56C0091747D /* JJPageControl.swift in Sources */,
 				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
 				E53CBFFA2670A0B00065CFB3 /* UIButtonExtension.swift in Sources */,
+				F4DF3F66268239330014EF56 /* Results.swift in Sources */,
 				E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */,
 				E547FABA256F50F800F0A5B4 /* JJTableViewHeader.swift in Sources */,
 				E5490513265513DD008C19AC /* MusicCalendarModel.swift in Sources */,
 				E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */,
-				E59B0CDB251B160F00BF4E6D /* API.swift in Sources */,
 				E5D8635525B18A1200A7D455 /* RowStyleLayout.swift in Sources */,
 				E590C640264E2B6200E15377 /* HomeViewModeSection.swift in Sources */,
 				E57D873D250B75A00030B0FF /* JJCustomNavigationController.swift in Sources */,
 				E59B25832679F617000F4CC1 /* UIViewExtension.swift in Sources */,
-				E5D8633E25A85DEE00A7D455 /* SongModel.swift in Sources */,
 				E54905222656391A008C19AC /* MenusModel.swift in Sources */,
 				E587C46A253697360091747D /* JJNewsBanner.swift in Sources */,
 				E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */,
-				E5D8E05B25777553002DF517 /* RowStyleCardViewCell.swift in Sources */,
 				E57D872C250B59680030B0FF /* ViewController.swift in Sources */,
 				E590C607264D0BE400E15377 /* HomePageModel.swift in Sources */,
 				E590C63F264E2B6200E15377 /* HomeViewModelSectionType.swift in Sources */,
 				E57D8728250B59680030B0FF /* AppDelegate.swift in Sources */,
 				E57D872A250B59680030B0FF /* SceneDelegate.swift in Sources */,
-				E57D87482511DEC50030B0FF /* Results.swift in Sources */,
 				E53CBFAB2669F67D0065CFB3 /* MusicCalendarCell.swift in Sources */,
 				E590C647264E458200E15377 /* HomeTableViewCell.swift in Sources */,
-				E5D8633B25A8293900A7D455 /* RankModel.swift in Sources */,
 				E53CBF9F2668D2530065CFB3 /* MusicMLogView.swift in Sources */,
 				E54905182655156B008C19AC /* AlbumNewSongModel.swift in Sources */,
 				E547FAB3256F507300F0A5B4 /* CardCollectionView.swift in Sources */,
 				E57D8743250F6A0F0030B0FF /* JJCustomSearchbar.swift in Sources */,
-				E5F941C425A58B7600119D34 /* RankView.swift in Sources */,
 				E53CBFA32668D35C0065CFB3 /* MusicMLogViewCell.swift in Sources */,
 				E549051C26551632008C19AC /* VoiceListRcmdModel.swift in Sources */,
 				E5490511265513DD008C19AC /* MgcPlaylistModel.swift in Sources */,
 				F4DF3F62266CEFCE0014EF56 /* PodcastView.swift in Sources */,
-				E5D8635225AEC1B500A7D455 /* PrivateCustomModel.swift in Sources */,
 				E53CBFA72669F65C0065CFB3 /* MusicCalendarView.swift in Sources */,
 				E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */,
-				E59B0CDF251B164000BF4E6D /* MoyaConfig.swift in Sources */,
 				E5D8E068257A0095002DF517 /* PrivateCustomView.swift in Sources */,
 				E549050F265513DD008C19AC /* VideoPlaylistModel.swift in Sources */,
 				E5F941D025A5922400119D34 /* RowStyleView.swift in Sources */,
@@ -592,9 +550,7 @@
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E5490515265513DD008C19AC /* OfficialPlaylistModel.swift in Sources */,
 				E590C643264E434300E15377 /* HomeViewModel.swift in Sources */,
-				E505EC892665D01900C62819 /* UIImageViewExtension.swift in Sources */,
 				E57D8745250F775D0030B0FF /* MusicSearchViewController.swift in Sources */,
-				E5F941C825A58D7100119D34 /* RankDetailItem.swift in Sources */,
 				E57D873F250B75B70030B0FF /* DiscoveryViewController.swift in Sources */,
 				E5490512265513DD008C19AC /* PlaylistRcmdModel.swift in Sources */,
 			);

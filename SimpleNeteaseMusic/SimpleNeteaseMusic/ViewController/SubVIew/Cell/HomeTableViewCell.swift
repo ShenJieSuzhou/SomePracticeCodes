@@ -24,7 +24,7 @@ class BaseViewCell: UITableViewCell {
     }
 }
 
-/// 分页滚动 Cell
+/// 首页 Bannerl
 class ScrollBannerCell: BaseViewCell {
     class var identifier: String {
           return String(describing: self)

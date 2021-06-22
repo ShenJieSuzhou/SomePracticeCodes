@@ -12,6 +12,7 @@ protocol JJCustomSegmentedControlDelegate: NSObject{
     func switchTo(to index:Int)
 }
 
+/// 自定义多视图切换控件
 class JJCustomSegmentedControl: UIView {
     // 定义标题与按钮
     private var buttonTitles:[String]!

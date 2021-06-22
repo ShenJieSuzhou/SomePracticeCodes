@@ -15,6 +15,7 @@ protocol HomeViewModelDelegate: NSObject {
     func onFetchFailed(with reason: String)
 }
 
+/// 首页 ViewModel
 class HomeViewModel: NSObject {
     var sections = [HomeViewModelSection]()
     weak var delegate: HomeViewModelDelegate?

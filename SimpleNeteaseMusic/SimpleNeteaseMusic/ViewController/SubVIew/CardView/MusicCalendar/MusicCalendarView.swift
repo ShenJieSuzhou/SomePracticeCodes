@@ -11,11 +11,13 @@ import SnapKit
 
 let JJMusicCalendarCellId = "JJMusicCalendarCellId"
 
+/// 音乐日历
 class MusicCalendarView: UIView {
     
+    /// 边距
     let margin: CGFloat = 10
     
-    // 推荐歌单数据
+    // 日历数据
     private var calendar: [Creative]? {
         didSet{
             if calendar != nil {
