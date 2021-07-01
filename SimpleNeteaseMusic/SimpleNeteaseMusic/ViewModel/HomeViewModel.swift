@@ -22,10 +22,56 @@ class HomeViewModel: NSObject {
     
     override init() {
         super.init()
+        fetchData()
     }
     
     // 获取首页数据，异步请求并将数据配置好
-    func fetchData(url: String) {
+    func fetchData() {
+//        // 1.创建任务组
+//        let queueGroup = DispatchGroup()
+//        // 2.获取首页数据
+//        queueGroup.enter()
+//        // 请求数据 首页发现 + 圆形图片
+//
+//        NetworkManager<HomePage>.requestData(.get, URLString: NeteaseURL.Home.urlString, parameters: nil) { result in
+//            switch result {
+//            case .success(let response):
+//                // 拆分数据模型到各个板块
+//                self.sections = self.splitData(data: response.data.blocks)
+//                queueGroup.leave()
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//                self.delegate?.onFetchFailed(with: error.localizedDescription)
+//                queueGroup.leave()
+//            }
+//        }
+//
+//        // 3. 异步获取首页圆形按钮
+//        queueGroup.enter()
+//        NetworkManager<Menus>.requestData(.get, URLString: NeteaseURL.Menu.urlString, parameters: nil) { result in
+//            switch result {
+//            case .success(let response):
+//                // 拆分数据模型到各个板块
+//                let data: [Datum] = response.data
+//                let model: MenusModel = MenusModel(data: data)
+//                if self.sections.count > 0 {
+//                    self.sections.insert(model, at: 1)
+//                }
+//                queueGroup.leave()
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//                self.delegate?.onFetchFailed(with: error.localizedDescription)
+//                queueGroup.leave()
+//            }
+//        }
+//
+//        // 4. 执行结果
+//        queueGroup.notify(qos: .default, flags: [], queue: .main) {
+//            // 数据回调给 view, 结束 loading 并加载数据
+//            self.delegate?.onFetchComplete()
+//        }
+        
+                
         // 1.创建任务组
         let queueGroup = DispatchGroup()
         // 2.获取首页数据
@@ -34,7 +80,7 @@ class HomeViewModel: NSObject {
             if let bundlePath = Bundle.main.path(forResource: "mockdata1", ofType: "json"),
                 let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 let homeData = try JSONDecoder().decode(HomePage.self, from: jsonData)
-                
+
                 // 拆分数据模型到各个板块
                 self.sections = self.splitData(data: homeData.data.blocks)
                 queueGroup.leave()
@@ -47,7 +93,7 @@ class HomeViewModel: NSObject {
             self.delegate?.onFetchFailed(with: err.localizedDescription)
             queueGroup.leave()
         }
-                
+
         // 3. 异步获取首页圆形按钮
         queueGroup.enter()
         do {
@@ -69,22 +115,7 @@ class HomeViewModel: NSObject {
             self.delegate?.onFetchFailed(with: err.localizedDescription)
             queueGroup.leave()
         }
-        // 请求数据 首页发现 + 圆形图片
-//        AF.request(url, method: .get).responseDecodable { (response:DataResponse<Menus, AFError>) in
-//            guard let value = response.value else {
-//                print(response.error ?? "Unknown error")
-//                self.delegate?.onFetchFailed(with: (response.error?.errorDescription)!)
-//                queueGroup.leave()
-//                return
-//            }
-//            let data: [Datum] = value.data
-//            let model: MenusModel = MenusModel(data: data)
-//            if self.sections.count > 0 {
-//                self.sections.insert(model, at: 1)
-//            }
-//            queueGroup.leave()
-//        }
-        
+
         // 4. 执行结果
         queueGroup.notify(qos: .default, flags: [], queue: .main) {
             // 数据回调给 view, 结束 loading 并加载数据

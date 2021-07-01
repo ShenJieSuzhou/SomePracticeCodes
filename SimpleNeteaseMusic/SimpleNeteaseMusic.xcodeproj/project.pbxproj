@@ -51,6 +51,8 @@
 		E59B0CDD251B162A00BF4E6D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */; };
 		E59B25832679F617000F4CC1 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B25822679F617000F4CC1 /* UIViewExtension.swift */; };
 		E59B2585267C4A99000F4CC1 /* mockdata2.json in Resources */ = {isa = PBXBuildFile; fileRef = E59B2584267C4A99000F4CC1 /* mockdata2.json */; };
+		E59B25A7268D8F0A000F4CC1 /* NeteaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B25A6268D8F0A000F4CC1 /* NeteaseURL.swift */; };
+		E59B25A9268D8FC3000F4CC1 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59B25A8268D8FC3000F4CC1 /* Constant.swift */; };
 		E5B225572653C6D300A47B5B /* mockdata1.json in Resources */ = {isa = PBXBuildFile; fileRef = E5B225562653C6D300A47B5B /* mockdata1.json */; };
 		E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B225592654BDD700A47B5B /* BannerModel.swift */; };
 		E5D8634B25AEA2FF00A7D455 /* PrivateCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */; };
@@ -61,7 +63,6 @@
 		E5D8E068257A0095002DF517 /* PrivateCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D8E067257A0095002DF517 /* PrivateCustomView.swift */; };
 		E5F941D025A5922400119D34 /* RowStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F941CF25A5922400119D34 /* RowStyleView.swift */; };
 		F40F5C872562D0B7006AD685 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */; };
-		F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42F35A52520F125007EDADD /* NetworkTools.swift */; };
 		F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */; };
 		F4DF3F62266CEFCE0014EF56 /* PodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */; };
 		F4DF3F64266CEFE70014EF56 /* PodcastViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */; };
@@ -117,6 +118,8 @@
 		E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E59B25822679F617000F4CC1 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E59B2584267C4A99000F4CC1 /* mockdata2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata2.json; sourceTree = "<group>"; };
+		E59B25A6268D8F0A000F4CC1 /* NeteaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseURL.swift; sourceTree = "<group>"; };
+		E59B25A8268D8FC3000F4CC1 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E5B225562653C6D300A47B5B /* mockdata1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata1.json; sourceTree = "<group>"; };
 		E5B225592654BDD700A47B5B /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		E5D8634A25AEA2FF00A7D455 /* PrivateCustomItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomItem.swift; sourceTree = "<group>"; };
@@ -127,7 +130,6 @@
 		E5D8E067257A0095002DF517 /* PrivateCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateCustomView.swift; sourceTree = "<group>"; };
 		E5F941CF25A5922400119D34 /* RowStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowStyleView.swift; sourceTree = "<group>"; };
 		F40F5C862562D0B7006AD685 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
-		F42F35A52520F125007EDADD /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		F4D113CE250E00F100860F59 /* JJCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCustomNavBar.swift; sourceTree = "<group>"; };
 		F4DF3F61266CEFCE0014EF56 /* PodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastView.swift; sourceTree = "<group>"; };
 		F4DF3F63266CEFE70014EF56 /* PodcastViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewCell.swift; sourceTree = "<group>"; };
@@ -330,12 +332,13 @@
 			isa = PBXGroup;
 			children = (
 				E59B0CDC251B162A00BF4E6D /* NetworkManager.swift */,
-				F42F35A52520F125007EDADD /* NetworkTools.swift */,
 				E5D8DFCD2574CCB6002DF517 /* UIColorExtension.swift */,
 				E5D8E0602578925E002DF517 /* NSIntegerExtension.swift */,
 				E5D8E063257895C4002DF517 /* CGFloatExtension.swift */,
 				E53CBFF92670A0B00065CFB3 /* UIButtonExtension.swift */,
 				E59B25822679F617000F4CC1 /* UIViewExtension.swift */,
+				E59B25A6268D8F0A000F4CC1 /* NeteaseURL.swift */,
+				E59B25A8268D8FC3000F4CC1 /* Constant.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -502,7 +505,6 @@
 			files = (
 				E5490510265513DD008C19AC /* MusicMLOGModel.swift in Sources */,
 				E587C4702536F56C0091747D /* JJPageControl.swift in Sources */,
-				F42F35A62520F125007EDADD /* NetworkTools.swift in Sources */,
 				E53CBFFA2670A0B00065CFB3 /* UIButtonExtension.swift in Sources */,
 				F4DF3F66268239330014EF56 /* Results.swift in Sources */,
 				E5B2255A2654BDD700A47B5B /* BannerModel.swift in Sources */,
@@ -532,6 +534,7 @@
 				E5490511265513DD008C19AC /* MgcPlaylistModel.swift in Sources */,
 				F4DF3F62266CEFCE0014EF56 /* PodcastView.swift in Sources */,
 				E53CBFA72669F65C0065CFB3 /* MusicCalendarView.swift in Sources */,
+				E59B25A7268D8F0A000F4CC1 /* NeteaseURL.swift in Sources */,
 				E5D8E064257895C4002DF517 /* CGFloatExtension.swift in Sources */,
 				E5D8E068257A0095002DF517 /* PrivateCustomView.swift in Sources */,
 				E549050F265513DD008C19AC /* VideoPlaylistModel.swift in Sources */,
@@ -547,6 +550,7 @@
 				E52429DA2583747700082F48 /* JJCustomSegmentedControl.swift in Sources */,
 				F4D113CF250E00F100860F59 /* JJCustomNavBar.swift in Sources */,
 				E5D8E0612578925E002DF517 /* NSIntegerExtension.swift in Sources */,
+				E59B25A9268D8FC3000F4CC1 /* Constant.swift in Sources */,
 				E587C46D2536E3190091747D /* JJNewsImageViewCell.swift in Sources */,
 				E5490515265513DD008C19AC /* OfficialPlaylistModel.swift in Sources */,
 				E590C643264E434300E15377 /* HomeViewModel.swift in Sources */,

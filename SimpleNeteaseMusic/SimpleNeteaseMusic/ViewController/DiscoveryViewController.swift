@@ -52,7 +52,6 @@ class DiscoveryViewController: UITableViewController {
         
         homeTableView.delegate = self
         homeViewModel.delegate = self
-        homeViewModel.fetchData(url: "http://10.200.22.108/homepage/dragon/ball")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,11 +76,11 @@ class DiscoveryViewController: UITableViewController {
     }
 
     @objc func microphoneBtnClicked(){
-        print("11111111")
+        
     }
     
     @objc func menuBtnClicked(){
-        print("22222222")
+        
     }
 }
 
